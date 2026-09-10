@@ -17,10 +17,14 @@ export function ContactSection() {
 
       <a
         href={`mailto:${email}`}
-        className="group mt-10 inline-flex items-baseline gap-3 font-editorial text-[clamp(2.5rem,6vw,6.5rem)] italic leading-none tracking-[-0.045em] text-accent transition-colors hover:text-primary sm:mt-14"
+        className="group relative mt-10 inline-flex items-baseline gap-3 font-editorial text-[clamp(2.5rem,6vw,6.5rem)] italic leading-none tracking-[-0.045em] text-accent transition-colors hover:text-primary sm:mt-14"
       >
-        <span>Let&apos;s talk</span>
-        <span aria-hidden="true" className="font-sans text-[0.55em] not-italic transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+        <span className="inline-flex gap-[0.18em]">
+          <span className="transition-transform duration-300 ease-out group-hover:-translate-x-1">Let&apos;s</span>
+          <span className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:-translate-y-0.5">talk</span>
+        </span>
+        <span aria-hidden="true" className="font-sans text-[0.55em] not-italic transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:rotate-6">↗</span>
+        <span aria-hidden="true" className="absolute -bottom-3 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
       </a>
 
       <div className="mt-28 flex flex-col gap-7 border-t border-white/[0.08] pt-7 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-muted sm:flex-row sm:items-center sm:justify-between lg:mt-40">

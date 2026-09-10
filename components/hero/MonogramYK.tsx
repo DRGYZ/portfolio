@@ -27,10 +27,12 @@ export function MonogramYK({
   const smoothRotateX = useSpring(pointerRotateX, springConfig);
   const smoothRotateY = useSpring(pointerRotateY, springConfig);
 
-  const scrollY = useTransform(scrollProgress, [0, 1], [0, -150]);
-  const scrollScale = useTransform(scrollProgress, [0, 0.72, 1], [1, 1.1, 1.24]);
-  const scrollRotate = useTransform(scrollProgress, [0, 1], [-1.5, 3.5]);
-  const scrollOpacity = useTransform(scrollProgress, [0, 0.72, 1], [0.82, 0.55, 0.08]);
+  const scrollX = useTransform(scrollProgress, [0, 0.24, 0.7, 1], [0, 8, 116, 210]);
+  const scrollY = useTransform(scrollProgress, [0, 0.24, 0.7, 1], [0, 12, 148, 270]);
+  const scrollScale = useTransform(scrollProgress, [0, 0.24, 0.72, 1], [1, 1.03, 1.27, 1.52]);
+  const scrollRotate = useTransform(scrollProgress, [0, 0.24, 1], [-1.5, -1, 4.5]);
+  const scrollOpacity = useTransform(scrollProgress, [0, 0.28, 0.74, 1], [0.82, 0.76, 0.38, 0.12]);
+  const bandX = useTransform(scrollProgress, [0, 1], [0, 34]);
 
   return (
     <motion.div
@@ -48,7 +50,11 @@ export function MonogramYK({
       className="pointer-events-none absolute inset-[-5%_-42%_-5%_-34%] z-0 flex select-none items-center justify-center sm:inset-[-8%_-26%_-8%_-22%] lg:inset-[-14%_-16%_-14%_-12%]"
     >
       <motion.svg
+        initial={prefersReduced ? false : { clipPath: 'inset(0 0 100% 0)' }}
+        animate={{ clipPath: 'inset(0 0 0% 0)' }}
+        transition={{ duration: 1.05, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
         style={{
+          x: prefersReduced ? 0 : scrollX,
           y: prefersReduced ? 0 : scrollY,
           scale: prefersReduced ? 1 : scrollScale,
           rotate: prefersReduced ? 0 : scrollRotate,
@@ -59,27 +65,55 @@ export function MonogramYK({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M 160 80 L 380 80 L 520 360 L 660 80 L 880 80 L 630 520 L 630 720 L 410 720 L 410 520 Z"
-          fill="currentColor"
-          fillOpacity="0.085"
-        />
-        <path
-          d="M 160 80 L 380 80 L 520 360 L 660 80 L 880 80 L 630 520 L 630 720 L 410 720 L 410 520 Z"
-          stroke="currentColor"
-          strokeOpacity="0.34"
-          strokeWidth="1.7"
-        />
+        <defs>
+          <path id="yk-y" d="M160 80h220l140 280L660 80h220L630 520v200H410V520Z" />
+          <path id="yk-k-stem" d="M740 80h190v640H740Z" />
+          <path id="yk-k-arm" d="M900 430 1140 80h210l-310 400Z" />
+          <path id="yk-k-leg" d="m980 400 300 320h-200L870 490Z" />
+          <clipPath id="yk-slice">
+            <rect x="90" y="278" width="1280" height="206" />
+          </clipPath>
+        </defs>
 
-        <g transform="translate(620, 0)">
-          <path d="M 120 80 L 310 80 L 310 720 L 120 720 Z" fill="currentColor" fillOpacity="0.075" />
-          <path d="M 120 80 L 310 80 L 310 720 L 120 720 Z" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.7" />
-          <path d="M 280 430 L 520 80 L 730 80 L 420 480 Z" fill="currentColor" fillOpacity="0.075" />
-          <path d="M 280 430 L 520 80 L 730 80 L 420 480 Z" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.7" />
-          <path d="M 360 400 L 660 720 L 460 720 L 250 490 Z" fill="currentColor" fillOpacity="0.075" />
-          <path d="M 360 400 L 660 720 L 460 720 L 250 490 Z" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.7" />
+        <g transform="translate(-34 26)" fill="none" stroke="currentColor" strokeOpacity="0.14" strokeWidth="2.2">
+          <use href="#yk-y" />
+          <use href="#yk-k-stem" />
+          <use href="#yk-k-arm" />
+          <use href="#yk-k-leg" />
         </g>
+
+        <g fill="currentColor" fillOpacity="0.078" stroke="currentColor" strokeOpacity="0.32" strokeWidth="1.7">
+          <use href="#yk-y" />
+          <use href="#yk-k-stem" />
+          <use href="#yk-k-arm" />
+          <use href="#yk-k-leg" />
+        </g>
+
+        <motion.g
+          clipPath="url(#yk-slice)"
+          style={{ x: prefersReduced ? 0 : bandX }}
+          transform="translate(26 -12)"
+          fill="currentColor"
+          fillOpacity="0.105"
+          stroke="currentColor"
+          strokeOpacity="0.5"
+          strokeWidth="1.5"
+        >
+          <use href="#yk-y" />
+          <use href="#yk-k-stem" />
+          <use href="#yk-k-arm" />
+          <use href="#yk-k-leg" />
+        </motion.g>
+
+        <path d="M116 278h1168M116 484h1168" stroke="currentColor" strokeOpacity="0.2" strokeWidth="1" />
       </motion.svg>
+
+      <motion.span
+        style={{ opacity: prefersReduced ? 0.5 : scrollOpacity }}
+        className="absolute right-[23%] top-[22%] hidden origin-center rotate-180 font-mono text-[9px] uppercase tracking-[0.38em] text-accent/70 [writing-mode:vertical-rl] sm:block lg:right-[18%]"
+      >
+        Yazan Khaled / YK
+      </motion.span>
     </motion.div>
   );
 }

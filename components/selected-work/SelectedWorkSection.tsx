@@ -1,7 +1,7 @@
 'use client';
 
 import { Fragment, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { projects } from '@/data/projects';
 import { ProjectRow } from './ProjectRow';
 import { ProjectPreview } from '../project-preview/ProjectPreview';
@@ -12,11 +12,36 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 export function SelectedWorkSection() {
   const [activeProject, setActiveProject] = useState<Project>(projects[0]);
   const [isEngaged, setIsEngaged] = useState(false);
+  const [previewDirection, setPreviewDirection] = useState(1);
+  const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const prefersReduced = useReducedMotion();
   const pointer = usePointerPosition(stageRef, prefersReduced);
 
+  const { scrollYProgress: entranceProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'start 35%'],
+  });
+
+  const headerY = useTransform(entranceProgress, [0, 1], [44, 0]);
+  const headerOpacity = useTransform(entranceProgress, [0, 0.32, 1], [0, 0.25, 1]);
+  const headingClip = useTransform(
+    entranceProgress,
+    [0.18, 1],
+    ['inset(0 100% 0 0)', 'inset(0 0% 0 0)']
+  );
+  const ruleScale = useTransform(entranceProgress, [0.12, 0.88], [0, 1]);
+
+  const activeIndex = projects.findIndex((project) => project.id === activeProject.id);
+  const previewOffsets = [-82, -28, 32, 88];
+
   const activateProject = (project: Project) => {
+    const nextIndex = projects.findIndex((item) => item.id === project.id);
+
+    if (nextIndex !== activeIndex) {
+      setPreviewDirection(nextIndex > activeIndex ? 1 : -1);
+    }
+
     setActiveProject(project);
     setIsEngaged(true);
   };
@@ -24,26 +49,39 @@ export function SelectedWorkSection() {
   return (
     <section
       id="work"
+      ref={sectionRef}
       aria-labelledby="selected-work-title"
-      className="relative z-20 -mt-[9svh] w-full bg-background px-6 pb-28 pt-28 lg:px-16 lg:pb-40 lg:pt-36"
+      className="relative z-20 -mt-[18svh] w-full px-6 pb-28 pt-24 lg:-mt-[32svh] lg:px-16 lg:pb-40 lg:pt-28"
     >
       <div className="mx-auto w-full max-w-[1600px]">
-        <div className="mb-10 flex items-end justify-between gap-6 border-b border-white/[0.09] pb-6 lg:mb-14">
+        <motion.div
+          style={{
+            y: prefersReduced ? 0 : headerY,
+            opacity: prefersReduced ? 1 : headerOpacity,
+          }}
+          className="relative mb-10 flex items-end justify-between gap-6 pb-6 lg:mb-14"
+        >
           <div>
             <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
               Portfolio index / 01—04
             </p>
-            <h2
+            <motion.h2
               id="selected-work-title"
+              style={{ clipPath: prefersReduced ? 'none' : headingClip }}
               className="font-display text-3xl font-bold uppercase tracking-[-0.04em] text-primary sm:text-5xl lg:text-6xl"
             >
               Selected Work
-            </h2>
+            </motion.h2>
           </div>
           <span className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-primary-subtle sm:block">
             Browse by hover or focus
           </span>
-        </div>
+          <motion.span
+            aria-hidden="true"
+            style={{ scaleX: prefersReduced ? 1 : ruleScale }}
+            className="absolute inset-x-0 bottom-0 h-px origin-left bg-white/[0.12]"
+          />
+        </motion.div>
 
         <div ref={stageRef} className="relative lg:min-h-[760px]">
           <div
@@ -83,7 +121,11 @@ export function SelectedWorkSection() {
                         className="overflow-hidden lg:hidden"
                       >
                         <div className="pb-8 pt-4">
-                          <ProjectPreview project={project} compact />
+                          <ProjectPreview
+                            project={project}
+                            direction={previewDirection}
+                            compact
+                          />
                         </div>
                       </motion.div>
                     )}
@@ -93,12 +135,22 @@ export function SelectedWorkSection() {
             })}
           </div>
 
-          <div className="pointer-events-none absolute right-0 top-1/2 z-10 hidden w-[59%] -translate-y-1/2 lg:block">
-            <ProjectPreview
-              project={activeProject}
-              pointerX={pointer.normalizedX}
-              pointerY={pointer.normalizedY}
-            />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[59%] items-center lg:flex">
+            <motion.div
+              animate={{
+                y: previewOffsets[activeIndex] ?? 0,
+                scale: isEngaged ? 1.018 : 1,
+              }}
+              transition={{ duration: prefersReduced ? 0.01 : 0.42, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full"
+            >
+              <ProjectPreview
+                project={activeProject}
+                pointerX={pointer.normalizedX}
+                pointerY={pointer.normalizedY}
+                direction={previewDirection}
+              />
+            </motion.div>
           </div>
 
           <p className="sr-only" aria-live="polite">

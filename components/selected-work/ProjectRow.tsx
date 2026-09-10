@@ -38,7 +38,7 @@ export function ProjectRow({
         <span
           aria-hidden="true"
           className={`absolute bottom-0 left-0 h-px bg-accent transition-[width,opacity] duration-500 ${
-            isActive ? 'w-[42%] opacity-100' : 'w-0 opacity-0'
+            isActive ? 'w-[64%] opacity-100 lg:w-[84%]' : 'w-0 opacity-0'
           }`}
         />
 
@@ -55,9 +55,9 @@ export function ProjectRow({
             <span
               role="heading"
               aria-level={3}
-              className={`font-display text-[clamp(2.15rem,5.6vw,5.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-colors duration-300 ${
+              className={`inline-block font-display text-[clamp(2.15rem,5.6vw,5.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-[color,transform] duration-300 ${
                 isActive
-                  ? 'font-editorial font-normal italic tracking-[-0.035em] text-accent'
+                  ? 'translate-x-2 font-editorial font-normal italic tracking-[-0.035em] text-accent'
                   : 'text-primary'
               }`}
             >

@@ -29,6 +29,19 @@ const itemVariants: Variants = {
   },
 };
 
+const headlineLineVariants: Variants = {
+  hidden: { y: '112%', rotate: 1.2 },
+  visible: (index: number) => ({
+    y: '0%',
+    rotate: 0,
+    transition: {
+      duration: 0.82,
+      delay: index * 0.075,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
+
 export function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
@@ -39,17 +52,22 @@ export function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const textX = useTransform(scrollYProgress, [0, 0.72, 1], [0, -18, -54]);
-  const textY = useTransform(scrollYProgress, [0, 0.72, 1], [0, -46, -118]);
-  const textScale = useTransform(scrollYProgress, [0, 1], [1, 0.955]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.78, 1], [1, 0.82, 0.12]);
+  const textY = useTransform(scrollYProgress, [0, 0.2, 0.62, 1], [0, -4, -52, -126]);
+  const textScale = useTransform(scrollYProgress, [0, 0.24, 1], [1, 1, 0.94]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.24, 0.64, 0.9], [1, 1, 0.46, 0]);
+  const lineOneX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, -76, -142]);
+  const lineTwoX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, 58, 112]);
+  const lineThreeX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, -34, -82]);
+  const lineOneY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, -36]);
+  const lineTwoY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 8]);
+  const lineThreeY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 42]);
   const cueOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
 
   return (
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-[112svh] overflow-clip lg:min-h-[124svh]"
+      className="relative min-h-[118svh] overflow-clip lg:min-h-[138svh]"
     >
       <div className="sticky top-0 mx-auto flex min-h-svh w-full max-w-[1600px] items-center overflow-hidden px-6 pb-14 pt-28 lg:px-16 lg:pb-16 lg:pt-32">
         <MonogramYK
@@ -63,7 +81,6 @@ export function HeroSection() {
           initial={prefersReduced ? 'visible' : 'hidden'}
           animate="visible"
           style={{
-            x: prefersReduced ? 0 : textX,
             y: prefersReduced ? 0 : textY,
             scale: prefersReduced ? 1 : textScale,
             opacity: prefersReduced ? 1 : textOpacity,
@@ -86,15 +103,43 @@ export function HeroSection() {
 
           <motion.h1
             variants={itemVariants}
-            className="max-w-[1320px] text-balance font-display text-[clamp(2.25rem,7.15vw,6.9rem)] font-bold leading-[0.98] tracking-[-0.055em] text-primary"
+            className="max-w-[1420px] text-balance font-display text-[clamp(2.25rem,7.15vw,6.9rem)] font-bold leading-[0.92] tracking-[-0.055em] text-primary"
           >
-            I build polished{' '}
-            <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
-              interfaces
+            <span className="block overflow-clip pb-[0.08em]">
+              <motion.span custom={0} variants={headlineLineVariants} className="block origin-left">
+                <motion.span
+                  style={{ x: prefersReduced ? 0 : lineOneX, y: prefersReduced ? 0 : lineOneY }}
+                  className="block lg:whitespace-nowrap"
+                >
+                  I build polished{' '}
+                  <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
+                    interfaces
+                  </span>{' '}
+                </motion.span>
+              </motion.span>
             </span>{' '}
-            and interactive products that make{' '}
-            <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
-              complex systems feel simple.
+            <span className="block overflow-clip pb-[0.08em]">
+              <motion.span custom={1} variants={headlineLineVariants} className="block origin-left">
+                <motion.span
+                  style={{ x: prefersReduced ? 0 : lineTwoX, y: prefersReduced ? 0 : lineTwoY }}
+                  className="block lg:ml-[7vw] lg:whitespace-nowrap"
+                >
+                  and interactive products{' '}
+                </motion.span>
+              </motion.span>
+            </span>
+            <span className="block overflow-clip pb-[0.16em]">
+              <motion.span custom={2} variants={headlineLineVariants} className="block origin-left">
+                <motion.span
+                  style={{ x: prefersReduced ? 0 : lineThreeX, y: prefersReduced ? 0 : lineThreeY }}
+                  className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.86em]"
+                >
+                  that make{' '}
+                  <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
+                    complex systems feel simple.
+                  </span>
+                </motion.span>
+              </motion.span>
             </span>
           </motion.h1>
 
