@@ -1,5 +1,7 @@
 'use client';
 
+import { getAssetPath } from '@/lib/assetPath';
+
 export function ContactSection() {
   const email = 'contact@yazankhaled.com';
 
@@ -31,7 +33,7 @@ export function ContactSection() {
         {/* Links */}
         <div className="flex flex-wrap gap-8 sm:gap-12 font-mono text-xs uppercase tracking-wider text-primary-muted">
           <a
-            href="https://github.com"
+            href="https://github.com/DRGYZ"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-colors"
@@ -47,7 +49,7 @@ export function ContactSection() {
             LinkedIn ↗
           </a>
           <a
-            href="/cv.pdf"
+            href={getAssetPath('/cv.pdf')}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-colors"

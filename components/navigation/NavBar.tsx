@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getAssetPath } from '@/lib/assetPath';
 
 export function NavBar() {
   const [activeSection, setActiveSection] = useState('work');
@@ -77,7 +78,7 @@ export function NavBar() {
         {/* Utility Links */}
         <div className="flex items-center space-x-6 font-mono text-xs tracking-wider uppercase text-primary-muted">
           <a
-            href="https://github.com"
+            href="https://github.com/DRGYZ"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-colors"
@@ -93,7 +94,7 @@ export function NavBar() {
             LinkedIn
           </a>
           <a
-            href="/cv.pdf"
+            href={getAssetPath('/cv.pdf')}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent transition-colors"

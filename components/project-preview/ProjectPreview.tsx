@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Project } from '@/types/project';
 import { usePointerPosition } from '@/hooks/usePointerPosition';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { getAssetPath } from '@/lib/assetPath';
 
 interface ProjectPreviewProps {
   project: Project;
@@ -93,7 +94,7 @@ export function ProjectPreview({ project }: ProjectPreviewProps) {
           {/* Visual Media Object */}
           <div className="relative w-full h-full overflow-hidden">
             <Image
-              src={project.previewImage}
+              src={getAssetPath(project.previewImage)}
               alt={`${project.title} Preview`}
               fill
               priority
