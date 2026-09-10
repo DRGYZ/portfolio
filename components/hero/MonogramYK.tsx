@@ -126,15 +126,24 @@ export function MonogramYK({
             style={{ x: prefersReduced ? 0 : bandX }}
           >
             <motion.g
-              style={{ x: prefersReduced ? 0 : accentX, y: prefersReduced ? 0 : accentY }}
-              transform="translate(26 -12)"
-              fill="currentColor"
-              fillOpacity="0.11"
+              animate={
+                prefersReduced
+                  ? undefined
+                  : { x: [0, 5, -2, 0], y: [0, -3, 2, 0] }
+              }
+              transition={{ duration: 9.5, delay: 1.2, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <use href="#yk-y" />
-              <use href="#yk-k-stem" />
-              <use href="#yk-k-arm" />
-              <use href="#yk-k-leg" />
+              <motion.g
+                style={{ x: prefersReduced ? 0 : accentX, y: prefersReduced ? 0 : accentY }}
+                transform="translate(26 -12)"
+                fill="currentColor"
+                fillOpacity="0.11"
+              >
+                <use href="#yk-y" />
+                <use href="#yk-k-stem" />
+                <use href="#yk-k-arm" />
+                <use href="#yk-k-leg" />
+              </motion.g>
             </motion.g>
           </motion.g>
         </motion.g>
@@ -146,19 +155,47 @@ export function MonogramYK({
           transition={{ duration: 0.76, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
         >
           <motion.g
-            style={{ x: prefersReduced ? 0 : secondaryX, y: prefersReduced ? 0 : secondaryY }}
-            transform="translate(-22 14)"
-            fill="currentColor"
-            fillOpacity="0.035"
+            animate={
+              prefersReduced
+                ? undefined
+                : { x: [0, -4, 3, 0], y: [0, 3, -2, 0] }
+            }
+            transition={{ duration: 12, delay: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <use href="#yk-y" />
-            <use href="#yk-k-stem" />
-            <use href="#yk-k-arm" />
-            <use href="#yk-k-leg" />
+            <motion.g
+              style={{ x: prefersReduced ? 0 : secondaryX, y: prefersReduced ? 0 : secondaryY }}
+              transform="translate(-22 14)"
+              fill="currentColor"
+              fillOpacity="0.035"
+            >
+              <use href="#yk-y" />
+              <use href="#yk-k-stem" />
+              <use href="#yk-k-arm" />
+              <use href="#yk-k-leg" />
+            </motion.g>
           </motion.g>
         </motion.g>
 
-        <path d="M250 692 1184 108" stroke="currentColor" strokeOpacity="0.16" strokeWidth="1" />
+        <motion.path
+          d="M250 692 1184 108"
+          initial={prefersReduced ? false : { pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: prefersReduced ? 0.01 : 1.1, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          stroke="currentColor"
+          strokeOpacity="0.16"
+          strokeWidth="1"
+        />
+        {!prefersReduced ? (
+          <motion.path
+            d="M250 692 1184 108"
+            stroke="currentColor"
+            strokeOpacity="0.48"
+            strokeWidth="1.4"
+            strokeDasharray="82 1050"
+            animate={{ strokeDashoffset: [0, -1132] }}
+            transition={{ duration: 7.5, delay: 1.35, repeat: Infinity, ease: 'linear' }}
+          />
+        ) : null}
       </motion.svg>
 
       <motion.span

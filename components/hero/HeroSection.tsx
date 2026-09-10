@@ -247,7 +247,11 @@ export function HeroSection() {
           style={{ opacity: prefersReduced ? 1 : cueOpacity }}
           className="absolute bottom-7 right-6 z-10 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-subtle sm:flex lg:right-16"
         >
-          <span className="h-px w-10 bg-current" />
+          <motion.span
+            animate={prefersReduced ? undefined : { scaleX: [0.45, 1, 0.45], opacity: [0.45, 1, 0.45] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+            className="h-px w-10 origin-right bg-current"
+          />
           Scroll to browse
         </motion.div>
       </div>

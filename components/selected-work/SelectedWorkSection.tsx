@@ -36,6 +36,16 @@ export function SelectedWorkSection() {
     ]
   );
   const surfaceOpacity = useTransform(entranceProgress, [0, 0.24, 1], [0.55, 0.82, 1]);
+  const seamScale = useTransform(entranceProgress, [0.08, 0.88], [0, 1]);
+  const seamClip = useTransform(
+    entranceProgress,
+    [0, 0.6, 1],
+    [
+      'polygon(0 13.92%, 100% 3.92%, 100% 4.08%, 0 14.08%)',
+      'polygon(0 6.92%, 100% 1.42%, 100% 1.58%, 0 7.08%)',
+      'polygon(0 2.92%, 100% 0, 100% 0.16%, 0 3.08%)',
+    ]
+  );
 
   const activeIndex = projects.findIndex((project) => project.id === activeProject.id);
   const previewOffsets = [-64, -20, 24, 68];
@@ -67,6 +77,16 @@ export function SelectedWorkSection() {
           opacity: prefersReduced ? 1 : surfaceOpacity,
         }}
         className="pointer-events-none absolute inset-0 -z-10 bg-[#101113]"
+      />
+      <motion.div
+        aria-hidden="true"
+        style={{
+          clipPath: prefersReduced
+            ? 'polygon(0 2.92%, 100% 0, 100% 0.16%, 0 3.08%)'
+            : seamClip,
+          scaleX: prefersReduced ? 1 : seamScale,
+        }}
+        className="pointer-events-none absolute inset-0 z-0 origin-left bg-accent/45"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-[1600px]">
@@ -156,7 +176,14 @@ export function SelectedWorkSection() {
                 y: previewOffsets[activeIndex] ?? 0,
                 scale: isEngaged ? 1.01 : 1,
               }}
-              transition={{ duration: prefersReduced ? 0.01 : 0.42, ease: [0.16, 1, 0.3, 1] }}
+              transition={
+                prefersReduced
+                  ? { duration: 0.01 }
+                  : {
+                      y: { type: 'spring', stiffness: 250, damping: 31, mass: 0.72 },
+                      scale: { duration: 0.24, ease: [0.16, 1, 0.3, 1] },
+                    }
+              }
               className="w-full"
             >
               <ProjectPreview

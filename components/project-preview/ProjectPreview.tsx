@@ -123,7 +123,7 @@ export function ProjectPreview({
             ? { x: 0, y: 0 }
             : { x: backing.x, y: backing.y }
         }
-        transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
         style={{ clipPath: sharedFrameClip }}
       />
 
@@ -200,6 +200,23 @@ export function ProjectPreview({
             </div>
           </motion.div>
         </AnimatePresence>
+
+        {!prefersReduced ? (
+          <AnimatePresence initial={false}>
+            <motion.span
+              key={`project-sweep-${project.id}`}
+              aria-hidden="true"
+              initial={{ x: direction > 0 ? '-140%' : '800%', opacity: 0 }}
+              animate={{
+                x: direction > 0 ? '800%' : '-140%',
+                opacity: [0, 0.46, 0.28, 0],
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.52, ease: [0.45, 0, 0.55, 1] }}
+              className="pointer-events-none absolute inset-y-[-22%] left-0 z-20 w-[24%] -skew-x-[14deg] border-r border-accent/70 bg-accent/20"
+            />
+          </AnimatePresence>
+        ) : null}
       </motion.div>
     </div>
   );
