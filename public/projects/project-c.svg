@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#0f1013"/>
+  <defs>
+    <radialGradient id="grad-c" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c7d2fe" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0f1013" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Circular Radar / Canvas Waveform Visualization -->
+  <circle cx="400" cy="220" r="180" fill="url(#grad-c)"/>
+  <circle cx="400" cy="220" r="160" fill="none" stroke="#25272e" stroke-width="1"/>
+  <circle cx="400" cy="220" r="120" fill="none" stroke="#25272e" stroke-width="1" stroke-dasharray="2 4"/>
+  <circle cx="400" cy="220" r="80" fill="none" stroke="#c7d2fe" stroke-width="1.2"/>
+  <circle cx="400" cy="220" r="40" fill="none" stroke="#7986cb" stroke-width="1"/>
+  <circle cx="400" cy="220" r="4" fill="#c7d2fe"/>
+
+  <!-- Waveform lines -->
+  <path d="M 220 220 Q 310 170 400 220 T 580 220" fill="none" stroke="#c7d2fe" stroke-width="2"/>
+  <path d="M 220 220 Q 310 270 400 220 T 580 220" fill="none" stroke="#7986cb" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="400" y1="40" x2="400" y2="400" stroke="#25272e" stroke-width="1"/>
+  <line x1="220" y1="220" x2="580" y2="220" stroke="#25272e" stroke-width="1"/>
+
+  <!-- Clean Editorial Typography Markers -->
+  <text x="40" y="440" fill="#e3e2e2" font-family="sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">PROJECT C // WEB PLATFORM &amp; VISUALIZATION</text>
+  <text x="40" y="465" fill="#76797e" font-family="monospace" font-size="12" letter-spacing="0.05em">SPECIMEN PREVIEW — CANVAS RENDERING &amp; AUDIO SIGNALS</text>
+</svg>

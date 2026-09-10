@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YAZAN KHALED // Portfolio &amp; Index [Paris]</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#e3e2e2",
+            "inverse-surface": "#e3e2e2",
+            "surface-container": "#1f2020",
+            "primary-fixed": "#e5e2e1",
+            "secondary-container": "#454747",
+            "secondary-fixed": "#e2e2e2",
+            "primary": "#c9c6c5",
+            "surface-bright": "#393939",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-container": "#496bff",
+            "on-secondary": "#2f3131",
+            "error": "#ffb4ab",
+            "surface-container-low": "#1b1c1c",
+            "on-secondary-container": "#b4b5b5",
+            "on-primary": "#313030",
+            "on-background": "#e3e2e2",
+            "background": "#121414",
+            "tertiary": "#b9c3ff",
+            "primary-fixed-dim": "#c9c6c5",
+            "error-container": "#93000a",
+            "surface-container-highest": "#343535",
+            "inverse-on-surface": "#303031",
+            "on-primary-container": "#7b7979",
+            "on-tertiary-fixed-variant": "#0033c0",
+            "surface": "#121414",
+            "on-primary-fixed": "#1c1b1b",
+            "on-surface-variant": "#c4c7c7",
+            "on-tertiary-fixed": "#001257",
+            "surface-variant": "#343535",
+            "on-primary-fixed-variant": "#474646",
+            "outline": "#8e9192",
+            "tertiary-fixed-dim": "#b9c3ff",
+            "surface-container-high": "#292a2a",
+            "secondary-fixed-dim": "#c6c6c7",
+            "on-tertiary": "#00228a",
+            "tertiary-container": "#00052b",
+            "outline-variant": "#444748",
+            "on-secondary-fixed-variant": "#454747",
+            "surface-dim": "#121414",
+            "on-error": "#690005",
+            "secondary": "#c6c6c7",
+            "inverse-primary": "#5f5e5e",
+            "primary-container": "#0a0a0a",
+            "tertiary-fixed": "#dde1ff",
+            "surface-container-lowest": "#0d0e0f",
+            "on-secondary-fixed": "#1a1c1c",
+            "surface-tint": "#c9c6c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-sm": "1rem",
+            "space-xl": "6rem",
+            "space-xs": "0.5rem",
+            "space-lg": "3rem",
+            "gutter-mobile": "0.75rem",
+            "space-2xl": "10rem",
+            "space-md": "1.5rem",
+            "grid-margin-desktop": "3rem",
+            "baseline-unit": "0.25rem",
+            "grid-margin-mobile": "1.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Geist"],
+            "label-code": ["JetBrains Mono"],
+            "label-meta": ["JetBrains Mono"],
+            "display-xl-mobile": ["Space Grotesk"],
+            "body-sm": ["Geist"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-xl": ["Space Grotesk"],
+            "index-num": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "body-md": ["Geist"],
+            "editorial-italic": ["Newsreader", "serif"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+            "label-code": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+            "label-meta": ["11px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "400"}],
+            "display-xl-mobile": ["44px", {"lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "body-sm": ["13px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "headline-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+            "headline-md": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+            "display-xl": ["84px", {"lineHeight": "88px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+            "index-num": ["14px", {"lineHeight": "14px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "body-md": ["15px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Architectural hairline grid coordinates */
+    .bg-grid-lines {
+      background-size: 120px 120px;
+      background-image: 
+        linear-gradient(to right, rgba(68, 71, 72, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(68, 71, 72, 0.12) 1px, transparent 1px);
+    }
+    
+    /* Precision custom cursor indicator */
+    .cursor-crosshair-mode {
+      cursor: crosshair;
+    }
+    
+    /* Monogram parallax transformation layer */
+    #monogram-layer {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    ::selection {
+      background: #b9c3ff;
+      color: #00052b;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen selection:bg-tertiary selection:text-tertiary-container relative overflow-x-hidden flex flex-col justify-between cursor-crosshair-mode">
+<!-- Architectural Background Grid & Coordinates Layer -->
+<div class="fixed inset-0 pointer-events-none z-0 bg-grid-lines opacity-70"></div>
+<!-- Subtle Spatial Vignette Gradient -->
+<div class="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,transparent_0%,rgba(18,20,20,0.85)_100%)]"></div>
+<!-- ================= TOP NAVIGATION (Shared Component Anchor) ================= -->
+<!-- Follows TopNavBar JSON: product_name, navigation_links, trailing actions, styling -->
+<header class="w-full sticky top-0 z-50 bg-background/95 border-b border-outline-variant px-grid-margin-desktop py-space-sm flex justify-between items-center transition-colors">
+<!-- Brand / Coordinate Anchor -->
+<div class="flex items-center gap-space-sm">
+<span class="text-label-code font-label-code font-bold tracking-widest text-on-surface uppercase">
+        YAZAN KHALED // [48.8566° N, 2.3522° E]
+      </span>
+<span class="hidden lg:inline-block text-label-meta font-label-meta text-outline border-l border-outline-variant pl-space-sm">
+        SYS.STATE // READY
+      </span>
+</div>
+<!-- Center Navigation Links (Exact labels: WORK active, INDEX, ARCHIVE, STACK, CONTACT) -->
+<nav class="hidden md:flex items-center space-x-gutter-desktop">
+<a class="text-tertiary border-b border-tertiary pb-1 font-label-code text-label-code transition-none" href="#work">
+        WORK
+      </a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#index">
+        INDEX
+      </a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#archive">
+        ARCHIVE
+      </a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#stack">
+        STACK
+      </a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#contact">
+        CONTACT
+      </a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs px-space-xs py-1 border border-outline-variant bg-surface-container-lowest">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse inline-block"></span>
+<span class="text-label-meta font-label-meta tracking-wider text-on-surface-variant">
+          AVAILABLE FOR Q2
+        </span>
+</div>
+<button aria-label="Terminal prompt" class="text-on-surface hover:text-tertiary transition-colors flex items-center p-1 border border-outline-variant hover:border-tertiary">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</div>
+</header>
+<!-- ================= HERO EDITORIAL STAGE (DIRECTION E: INITIAL STATE) ================= -->
+<main class="relative z-10 flex-1 flex flex-col justify-center px-grid-margin-desktop py-space-xl max-w-[1440px] mx-auto w-full">
+<!-- Top System Spec Line / Context Bar -->
+<div class="w-full flex justify-between items-end border-b border-outline-variant pb-space-sm mb-space-lg">
+<div class="flex items-baseline gap-space-md">
+<span class="text-index-num font-index-num text-tertiary">[FRAME.01]</span>
+<h2 class="text-label-code font-label-code text-on-surface-variant uppercase tracking-wider">
+          DIRECTION E // INTERACTIVE EDITORIAL
+        </h2>
+</div>
+<div class="text-right font-label-meta text-label-meta text-outline hidden sm:block">
+        RENDER: MONOGRAM_V4.3 // PARALLAX_INITIAL
+      </div>
+</div>
+<!-- Core Layout Grid: Asymmetric Split with Layered Monogram Behind Headline -->
+<div class="relative grid grid-cols-12 gap-gutter-desktop items-center my-space-lg min-h-[480px]">
+<!-- ================= SCULPTURAL CENTERPIECE: ABSTRACT TYPOGRAPHIC 'YK' MONOGRAM ================= -->
+<!-- Positioned absolute/relative behind text with calculated periwinkle stroke geometry -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-visible opacity-85" id="monogram-layer">
+<svg class="w-full h-[120%] max-w-[1100px] text-tertiary/20" fill="none" viewbox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+<!-- Background Axis Calibration Crosses -->
+<g class="text-outline-variant/60" stroke="currentColor" stroke-dasharray="4 8" stroke-width="0.75">
+<line x1="0" x2="1000" y1="300" y2="300"></line>
+<line x1="500" x2="500" y1="0" y2="600"></line>
+<circle cx="500" cy="300" r="160" stroke-dasharray="2 6"></circle>
+<circle cx="500" cy="300" r="280" stroke-dasharray="1 12"></circle>
+</g>
+<!-- Primary Geometric 'Y' Letterform Skeleton -->
+<path class="text-tertiary/30" d="M 220 80 L 370 290 L 370 520" stroke="currentColor" stroke-width="2.5"></path>
+<path class="text-tertiary/30" d="M 520 80 L 370 290" stroke="currentColor" stroke-width="2.5"></path>
+<!-- Outer Structural Offset 'Y' (Chiseled architectural contour) -->
+<path class="text-tertiary/15" d="M 180 80 L 370 345 L 370 540" stroke="currentColor" stroke-width="1"></path>
+<polygon class="text-tertiary/10" fill="currentColor" points="220,80 235,80 370,270 370,290"></polygon>
+<!-- Primary Geometric 'K' Letterform Skeleton -->
+<line class="text-tertiary/30" stroke="currentColor" stroke-width="2.5" x1="540" x2="540" y1="80" y2="520"></line>
+<path class="text-tertiary/30" d="M 780 90 L 540 310 L 810 520" stroke="currentColor" stroke-width="2.5"></path>
+<!-- Offset Secondary Incline & Chamfered Volume Geometry -->
+<path class="text-tertiary/20" d="M 540 270 L 730 80" stroke="currentColor" stroke-width="1.2"></path>
+<path class="text-tertiary/20" d="M 540 340 L 760 540" stroke="currentColor" stroke-width="1.2"></path>
+<polygon class="text-tertiary/15" fill="currentColor" points="540,80 555,80 555,520 540,520"></polygon>
+<polygon class="text-tertiary/[0.07]" fill="currentColor" points="540,310 780,90 750,90 540,285"></polygon>
+<!-- Monospace Blueprint Coordinate Annotations embedded in letterform -->
+<text class="text-tertiary/40 font-label-meta text-[10px]" fill="currentColor" font-family="JetBrains Mono" x="385" y="515">NODE:Y_TERM [370,520]</text>
+<text class="text-tertiary/40 font-label-meta text-[10px]" fill="currentColor" font-family="JetBrains Mono" x="555" y="100">NODE:K_STEM [540,080]</text>
+<text class="text-tertiary/30 font-label-meta text-[9px]" fill="currentColor" font-family="JetBrains Mono" x="760" y="320">Δ_PERIWINKLE_MATRIX</text>
+</svg>
+</div>
+<!-- Left Column: Identity & Positioning (Spans 10 Columns over Monogram) -->
+<div class="col-span-12 lg:col-span-10 z-10 pr-0 lg:pr-space-md">
+<!-- Identity Stamp Header -->
+<div class="inline-flex items-center gap-space-xs mb-space-md py-1 px-space-xs bg-surface-container-lowest border border-outline-variant">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<p class="text-label-code font-label-code text-on-surface uppercase tracking-wider">
+            YAZAN KHALED // Front-end Developer &amp; Creative Technologist // Paris, France
+          </p>
+</div>
+<!-- Position Statement Headline (Geometric Grotesk + High-Contrast Expressive Serif Italics) -->
+<h1 class="text-headline-lg lg:text-display-xl font-headline-lg lg:font-display-xl text-on-surface tracking-tight leading-[1.05] mb-space-lg">
+          I build polished 
+          <span class="font-editorial-italic font-light italic text-tertiary tracking-normal px-1 selection:text-tertiary-container selection:bg-tertiary">interfaces</span> 
+          and interactive products that make 
+          <span class="font-editorial-italic font-light italic text-tertiary tracking-normal px-1 selection:text-tertiary-container selection:bg-tertiary">complex systems</span>
+<br class="hidden xl:inline"/>
+<span class="font-editorial-italic font-light italic text-tertiary tracking-normal px-1 selection:text-tertiary-container selection:bg-tertiary">feel simple.</span>
+</h1>
+<!-- Editorial Subtext Context & Methodology -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop pt-space-xs items-start">
+<div class="md:col-span-8">
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+              Operating at the intersection of browser performance, deterministic layout systems, and computational aesthetics. Crafting software artifacts with extreme typographic discipline and surgical visual clarity.
+            </p>
+</div>
+<!-- Monospace Technical Ledger / Micro Metrics -->
+<div class="md:col-span-4 border-l border-outline-variant pl-space-md hidden md:block">
+<dl class="space-y-1 font-label-meta text-label-meta">
+<div class="flex justify-between">
+<dt class="text-outline">PRIMARY STACK</dt>
+<dd class="text-on-surface">TYPESCRIPT // GLSL</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">FRAMEWORK CORE</dt>
+<dd class="text-on-surface">NEXT.JS / REACT / WASM</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">LOCATION</dt>
+<dd class="text-on-surface">PARIS, FR [UTC+1]</dd>
+</div>
+<div class="flex justify-between">
+<dt class="text-outline">LATENCY</dt>
+<dd class="text-tertiary">0.4ms PERF_BUDGET</dd>
+</div>
+</dl>
+</div>
+</div>
+</div>
+<!-- Right Column: Interactive State Anchors & Actions (Spans 2 columns on desktop) -->
+<div class="col-span-12 lg:col-span-2 z-10 flex flex-col justify-end lg:h-full pt-space-md lg:pt-0">
+<div class="space-y-space-xs w-full">
+<div class="text-label-meta font-label-meta text-outline uppercase tracking-wider pb-1 border-b border-outline-variant mb-space-xs">
+            INDEX [001—004]
+          </div>
+<!-- Architectural Navigation List -->
+<a class="group flex items-center justify-between py-1 text-label-code font-label-code text-on-surface hover:text-tertiary transition-colors" href="#work">
+<span>[01] SELECTED_WORK</span>
+<span class="text-outline group-hover:text-tertiary group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+<a class="group flex items-center justify-between py-1 text-label-code font-label-code text-on-surface-variant hover:text-tertiary transition-colors" href="#lab">
+<span>[02] SHADERS &amp; WEBGL</span>
+<span class="text-outline group-hover:text-tertiary group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+<a class="group flex items-center justify-between py-1 text-label-code font-label-code text-on-surface-variant hover:text-tertiary transition-colors" href="#systems">
+<span>[03] DESIGN_SYSTEMS</span>
+<span class="text-outline group-hover:text-tertiary group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+<a class="group flex items-center justify-between py-1 text-label-code font-label-code text-on-surface-variant hover:text-tertiary transition-colors" href="#about">
+<span>[04] PEDAGOGY_WRITING</span>
+<span class="text-outline group-hover:text-tertiary group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- ================= CLEAN ACTIONS STRIP (Strict Brand Styling Guidance) ================= -->
+<div class="w-full pt-space-lg mt-space-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-space-md z-10">
+<!-- Primary Trigger & External Links Cluster -->
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Primary Action Button: Solid #EEEEEE text-#0A0A0A zero radius uppercase JetBrains Mono, hover to #0047FF -->
+<a class="inline-flex items-center justify-center bg-[#EEEEEE] text-[#0A0A0A] px-6 py-3 text-label-code font-label-code uppercase tracking-[0.08em] font-medium transition-colors hover:bg-tertiary hover:text-surface-container-lowest focus:outline-none focus:ring-1 focus:ring-tertiary" href="#work">
+          VIEW SELECTED WORK
+        </a>
+<!-- Ghost Secondary Terminal Links -->
+<div class="flex items-center space-x-gutter-desktop border-l border-outline-variant pl-space-md">
+<a class="text-label-code font-label-code text-on-surface-variant hover:text-tertiary uppercase tracking-wider transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">
+            GITHUB
+          </a>
+<a class="text-label-code font-label-code text-on-surface-variant hover:text-tertiary uppercase tracking-wider transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+            LINKEDIN
+          </a>
+<a class="text-label-code font-label-code text-on-surface-variant hover:text-tertiary uppercase tracking-wider transition-colors" href="https://read.cv" rel="noopener noreferrer" target="_blank">
+            READCV
+          </a>
+</div>
+</div>
+<!-- Operational Status / Diagnostic Coordinate Stamp -->
+<div class="flex items-center gap-space-md font-label-meta text-label-meta text-outline">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-outline rounded-full"></span>
+          CURSOR_TRACK: <span class="text-on-surface" id="cursor-coords">X: 0000 | Y: 0000</span>
+</span>
+<span class="hidden sm:inline text-outline-variant">|</span>
+<span class="hidden sm:inline text-on-surface-variant">SCROLL_OFFSET: 0.00%</span>
+</div>
+</div>
+</main>
+<!-- ================= COMPONENT / PROJECT PREVIEW SPEC BAR ================= -->
+<!-- Anchors bottom visual weight prior to architectural footer -->
+<aside class="relative z-10 max-w-[1440px] mx-auto w-full px-grid-margin-desktop mb-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 border border-outline-variant bg-surface-container-lowest divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+<!-- Spec Cell 01 -->
+<div class="p-space-md flex flex-col justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-space-xs">
+<span class="text-index-num font-index-num text-tertiary">[001]</span>
+<span class="text-label-meta font-label-meta text-outline">PRODUCTION // 2025</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1">Aura Synthesis</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">High-throughput visual audio processing engine rendered through Web Audio &amp; raw GLSL fragments.</p>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-outline-variant/40 flex items-center justify-between text-label-meta font-label-meta">
+<span class="text-outline">WASM // SHADERS // CANVAS</span>
+<span class="text-tertiary">-&gt; LIVE_INSTANCE</span>
+</div>
+</div>
+<!-- Spec Cell 02 -->
+<div class="p-space-md flex flex-col justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-space-xs">
+<span class="text-index-num font-index-num text-on-surface-variant">[002]</span>
+<span class="text-label-meta font-label-meta text-outline">EXPERIMENT // 2024</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1">Spatial Swiss Grid</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Three-dimensional viewport layout system enforcing strict Müller-Brockmann grid coordinates in CSS 3D space.</p>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-outline-variant/40 flex items-center justify-between text-label-meta font-label-meta">
+<span class="text-outline">NEXT.JS // THREE.JS</span>
+<span class="text-outline hover:text-on-surface">-&gt; REPOSITORY</span>
+</div>
+</div>
+<!-- Spec Cell 03 -->
+<div class="p-space-md flex flex-col justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-space-xs">
+<span class="text-index-num font-index-num text-on-surface-variant">[003]</span>
+<span class="text-label-meta font-label-meta text-outline">TOOLING // 2024</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1">Kinetics Spec 0.8</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Zero-runtime headless spring physics module built for sub-millisecond interaction latency.</p>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-outline-variant/40 flex items-center justify-between text-label-meta font-label-meta">
+<span class="text-outline">TYPESCRIPT // NPM_PKG</span>
+<span class="text-outline hover:text-on-surface">-&gt; ARCHIVE_DOCS</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ================= FOOTER (Shared Component Anchor) ================= -->
+<!-- Follows Footer JSON: architectural type, copyright_text, exact links array, styling -->
+<footer class="w-full border-t border-outline-variant px-grid-margin-desktop py-space-lg flex flex-col gap-space-md bg-surface-container-lowest z-20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-md">
+<!-- Brand Logo / Headline -->
+<div class="text-headline-md font-headline-md text-on-surface uppercase tracking-tight">
+        YAZAN KHALED
+      </div>
+<!-- Architectural Links (Exact match to JSON: GITHUB, READCV, ARE.NA, TWITTER / X, EMAIL, SOURCE_CODE) -->
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface hover:text-tertiary transition-colors duration-150" href="https://github.com">
+          GITHUB
+        </a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface hover:text-tertiary transition-colors duration-150" href="https://read.cv">
+          READCV
+        </a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface hover:text-tertiary transition-colors duration-150" href="https://are.na">
+          ARE.NA
+        </a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface hover:text-tertiary transition-colors duration-150" href="https://x.com">
+          TWITTER / X
+        </a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface hover:text-tertiary transition-colors duration-150" href="mailto:contact@example.com">
+          EMAIL
+        </a>
+<a class="text-tertiary underline underline-offset-4 font-label-code text-label-code" href="#source">
+          SOURCE_CODE
+        </a>
+</div>
+</div>
+<!-- Copyright & Architectural Telemetry -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-space-xs border-t border-outline-variant text-label-meta font-label-meta text-on-surface-variant">
+<p>© 2025 YAZAN KHALED. ALL RIGHTS RESERVED. COMPUTED IN PARIS [CET / UTC+1].</p>
+<div class="flex items-center gap-space-sm mt-2 sm:mt-0 text-outline">
+<span>V4.1.0-STABLE</span>
+<span>•</span>
+<span>LAT: 48.8566 | LON: 2.3522</span>
+</div>
+</div>
+</footer>
+<!-- ================= INTERACTIVE PARALLAX & TELEMETRY SCRIPT ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const monogram = document.getElementById('monogram-layer');
+      const cursorCoords = document.getElementById('cursor-coords');
+      
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let currentX = 0;
+      let currentY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Telemetry readout
+        if (cursorCoords) {
+          const padX = String(Math.floor(mouseX)).padStart(4, '0');
+          const padY = String(Math.floor(mouseY)).padStart(4, '0');
+          cursorCoords.textContent = `X: ${padX} | Y: ${padY}`;
+        }
+      });
+
+      // Smooth subtle mathematical parallax on the geometric monogram centerpiece
+      function animate() {
+        const targetX = (mouseX - window.innerWidth / 2) * -0.035;
+        const targetY = (mouseY - window.innerHeight / 2) * -0.035;
+
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        if (monogram) {
+          monogram.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0px) scale(${1 + Math.abs(currentX) * 0.0003})`;
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    });
+  </script>
+</body></html>

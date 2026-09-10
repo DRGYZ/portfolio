@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YAZAN KHALED // FRAME 04 — SELECTED WORK HOVER STATE</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Space Grotesk & JetBrains Mono & Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400;1,600&amp;family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#e3e2e2",
+            "inverse-surface": "#e3e2e2",
+            "surface-container": "#1f2020",
+            "primary-fixed": "#e5e2e1",
+            "secondary-container": "#454747",
+            "secondary-fixed": "#e2e2e2",
+            "primary": "#c9c6c5",
+            "surface-bright": "#393939",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-container": "#496bff",
+            "on-secondary": "#2f3131",
+            "error": "#ffb4ab",
+            "surface-container-low": "#1b1c1c",
+            "on-secondary-container": "#b4b5b5",
+            "on-primary": "#313030",
+            "on-background": "#e3e2e2",
+            "background": "#121414",
+            "tertiary": "#b9c3ff",
+            "primary-fixed-dim": "#c9c6c5",
+            "error-container": "#93000a",
+            "surface-container-highest": "#343535",
+            "inverse-on-surface": "#303031",
+            "on-primary-container": "#7b7979",
+            "on-tertiary-fixed-variant": "#0033c0",
+            "surface": "#121414",
+            "on-primary-fixed": "#1c1b1b",
+            "on-surface-variant": "#c4c7c7",
+            "on-tertiary-fixed": "#001257",
+            "surface-variant": "#343535",
+            "on-primary-fixed-variant": "#474646",
+            "outline": "#8e9192",
+            "tertiary-fixed-dim": "#b9c3ff",
+            "surface-container-high": "#292a2a",
+            "secondary-fixed-dim": "#c6c6c7",
+            "on-tertiary": "#00228a",
+            "tertiary-container": "#00052b",
+            "outline-variant": "#444748",
+            "on-secondary-fixed-variant": "#454747",
+            "surface-dim": "#121414",
+            "on-error": "#690005",
+            "secondary": "#c6c6c7",
+            "inverse-primary": "#5f5e5e",
+            "primary-container": "#0a0a0a",
+            "tertiary-fixed": "#dde1ff",
+            "surface-container-lowest": "#0d0e0f",
+            "on-secondary-fixed": "#1a1c1c",
+            "surface-tint": "#c9c6c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-sm": "1rem",
+            "space-xl": "6rem",
+            "space-xs": "0.5rem",
+            "space-lg": "3rem",
+            "gutter-mobile": "0.75rem",
+            "space-2xl": "10rem",
+            "space-md": "1.5rem",
+            "grid-margin-desktop": "3rem",
+            "baseline-unit": "0.25rem",
+            "grid-margin-mobile": "1.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Geist"],
+            "label-code": ["JetBrains Mono"],
+            "label-meta": ["JetBrains Mono"],
+            "display-xl-mobile": ["Space Grotesk"],
+            "body-sm": ["Geist"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-xl": ["Space Grotesk"],
+            "index-num": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "body-md": ["Geist"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "label-meta": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "400" }],
+            "display-xl-mobile": ["44px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "headline-md": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "display-xl": ["84px", { "lineHeight": "88px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+            "index-num": ["14px", { "lineHeight": "14px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Architectural hairline grid lines */
+    .hairline-b { border-bottom: 1px solid #262626; }
+    .hairline-t { border-top: 1px solid #262626; }
+    .hairline-l { border-left: 1px solid #262626; }
+    .hairline-r { border-right: 1px solid #262626; }
+    .hairline-all { border: 1px solid #262626; }
+
+    /* Custom preview backdrop with subtle mechanical texture */
+    .dot-matrix {
+      background-image: radial-gradient(#262626 1px, transparent 0);
+      background-size: 16px 16px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-tertiary selection:text-tertiary-container relative overflow-x-hidden min-h-screen">
+<!-- TOP APP BAR (Shared Component Execution) -->
+<header class="w-full sticky top-0 z-50 bg-background/95 backdrop-blur-none border-b border-outline-variant dark:border-outline-variant px-grid-margin-desktop py-space-sm flex justify-between items-center">
+<div class="flex items-center gap-space-sm">
+<span class="text-label-code font-label-code font-bold tracking-widest text-on-surface dark:text-on-surface uppercase">
+        YAZAN KHALED // [48.8566° N, 2.3522° E]
+      </span>
+</div>
+<!-- Primary Navigation: Active 'WORK' -->
+<nav class="hidden md:flex items-center gap-space-md">
+<a class="text-tertiary dark:text-tertiary border-b border-tertiary pb-1 font-label-code text-label-code" href="#work">WORK</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#index">INDEX</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#archive">ARCHIVE</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#stack">STACK</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#contact">CONTACT</a>
+</nav>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs px-space-xs py-1 hairline-all bg-surface-container-lowest">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-tertiary">AVAILABLE FOR Q2</span>
+</div>
+<div class="w-8 h-8 flex items-center justify-center hairline-all bg-surface-container-lowest text-on-surface">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+</div>
+</div>
+</header>
+<!-- SUB-HEADER COORDINATE STRIP -->
+<section class="hairline-b bg-surface-container-lowest px-grid-margin-desktop py-space-xs flex justify-between items-center text-on-surface-variant font-label-meta text-label-meta">
+<div class="flex items-center gap-space-md">
+<span>INDEX REF: ARCH-2025.Q1</span>
+<span class="text-outline">/</span>
+<span>SECTOR: 01_INTERACTIVE_SYSTEMS</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>STATE: [INTERACTION_ROW_ACTIVE]</span>
+<span class="text-outline">/</span>
+<span class="text-tertiary">EVENT: POINTER_ENTER_PROJECT_01</span>
+</div>
+</section>
+<!-- MAIN EDITORIAL CANVAS -->
+<main class="relative px-grid-margin-desktop py-space-lg min-h-[calc(100vh-140px)] flex flex-col justify-between">
+<!-- SECTION TITLE AND METRIC HEADER -->
+<div class="hairline-b pb-space-sm flex justify-between items-end">
+<div>
+<span class="font-label-code text-label-code uppercase tracking-widest text-outline">CATALOGUE // 2023—2025</span>
+<h1 class="font-headline-lg text-headline-lg uppercase text-on-surface mt-1">SELECTED WORK</h1>
+</div>
+<div class="hidden md:flex items-center gap-space-lg font-label-meta text-label-meta text-on-surface-variant">
+<span>ITEMS: [04] TOTAL</span>
+<span>LATENCY: 12ms</span>
+<span>RENDER: WEBGL2_ACCELERATED</span>
+</div>
+</div>
+<!-- EDITORIAL WORK ROWS + DYNAMIC FLOATING PREVIEW CONTAINER -->
+<div class="relative my-space-lg flex-1">
+<!-- ============================================================ -->
+<!-- DYNAMIC FLOATING VISUAL PREVIEW: PROJECT A (Materialized)    -->
+<!-- ============================================================ -->
+<div class="pointer-events-none absolute right-4 top-[-20px] lg:right-16 lg:top-[-10px] z-30 w-[460px] lg:w-[580px] bg-primary-container hairline-all shadow-2xl transition-all duration-300 transform translate-y-0">
+<!-- Preview Panel Spec Header -->
+<div class="hairline-b bg-surface-container-low px-space-sm py-2 flex items-center justify-between font-label-meta text-label-meta text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary"></span>
+<span class="text-on-surface uppercase font-bold">PROJECT A // SPECSHEET_VIEW</span>
+</div>
+<span class="text-tertiary">GLSL_FRAGMENT_V2.0</span>
+</div>
+<!-- High-Fidelity Interface Media Preview -->
+<div class="relative w-full h-[320px] bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A dark-mode high-fidelity creative technology interface featuring intricate WebGL generative node networks and dynamic wireframe topologies. Precision geometric grids, dark charcoal surfaces, sharp cyan-blue vectors, and mathematical monospace telemetry overlays fill the viewport. High-contrast, mathematically ordered editorial design bathed in deep void blacks and crisp periwinkle linear contours." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqID5kNWd4FFk-gfu1kzQyN2iFKK9y97XiBjNpkAXPGZ9VFVNbxggRjnkkv1EX2ZmiXpIf6ayCn9yqejoW0AjyY7rHNdCDAFPdans51mFvHKYqje7c8TXae2ZJ95A5_NVon0EIITHUSpqKq_udjqtaQ0F9xUnRMXphHQhsckolzA_gFKhA3-NH9clVIGg_p3hC00EJFTVLSenqG7u-hSes-5BfKTPXNgWMPum5cRTpYJd0sYgDAGCTlA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-transparent opacity-80"></div>
+<!-- Live Telemetry Code Stamp on Media -->
+<div class="absolute bottom-3 left-3 right-3 flex justify-between items-center font-label-meta text-label-meta bg-surface-container-lowest/90 px-space-xs py-1 hairline-all text-on-surface">
+<span>RES: 3840x2160 // 60FPS</span>
+<span class="text-tertiary">STATUS: OPTIMIZED</span>
+</div>
+<!-- FLOATING CUSTOM CURSOR CAPSULE PILL -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40">
+<div class="bg-tertiary text-on-tertiary px-space-sm py-2 rounded-full font-label-code text-label-code font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg border border-white/20 transform -rotate-3 transition-transform">
+<span>VIEW PROJECT</span>
+<span class="text-sm">↗</span>
+</div>
+</div>
+</div>
+<!-- Spec Sheet Footer Metadata -->
+<div class="p-space-sm bg-surface-container-low hairline-t flex flex-col gap-2 font-label-meta text-label-meta">
+<div class="flex justify-between items-center text-on-surface">
+<span class="font-bold">SYSTEM: SYNTHETIC TOPOLOGY ENGINE</span>
+<span class="text-outline">PARIS, FR</span>
+</div>
+<div class="flex flex-wrap gap-1 mt-1">
+<span class="px-1.5 py-0.5 hairline-all bg-surface-container-lowest text-tertiary">WEBGL</span>
+<span class="px-1.5 py-0.5 hairline-all bg-surface-container-lowest text-on-surface-variant">THREE.JS</span>
+<span class="px-1.5 py-0.5 hairline-all bg-surface-container-lowest text-on-surface-variant">RUST / WASM</span>
+<span class="px-1.5 py-0.5 hairline-all bg-surface-container-lowest text-on-surface-variant">AUDIO REACTIVE</span>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- INTERACTIVE EDITORIAL ROWS                                   -->
+<!-- ============================================================ -->
+<div class="divide-y divide-[#262626] border-y border-[#262626]">
+<!-- ROW 01: PROJECT A (ACTIVE / HOVER STATE) -->
+<div class="relative group bg-surface-container-lowest py-space-md lg:py-space-lg px-space-sm transition-all duration-150 z-20">
+<!-- Background highlight slice indicator -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm">
+<!-- Left Identifier & Shifted Title -->
+<div class="flex items-baseline gap-space-md lg:w-3/5">
+<span class="font-index-num text-index-num text-tertiary font-bold tracking-tight">
+                [01]
+              </span>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg lg:text-[56px] italic font-bold tracking-tight uppercase text-tertiary flex items-center gap-space-sm leading-none">
+                  PROJECT A
+                  <span class="text-headline-md not-italic text-tertiary inline-block ml-2">↗</span>
+</span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-tertiary mt-2">
+                  GENERATIVE TERRAIN SYNTHESIS &amp; SPATIAL AUDIO COMPUTE
+                </span>
+</div>
+</div>
+<!-- Right Meta Cluster (Active State) -->
+<div class="flex items-center justify-between lg:justify-end gap-space-lg lg:w-2/5 font-label-code text-label-code">
+<div class="flex flex-col text-right">
+<span class="text-on-surface font-bold uppercase">COMMISSION // 2025.Q1</span>
+<span class="text-tertiary font-label-meta text-label-meta">DEPLOYED TO EDGE</span>
+</div>
+<div class="px-space-sm py-2 bg-tertiary text-on-tertiary font-bold uppercase tracking-wider hairline-all flex items-center gap-1">
+<span>VIEW PROJECT</span>
+<span>↗</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 02: PROJECT B (DIMMED MUTED OPACITY ~25-30%) -->
+<div class="py-space-md lg:py-space-lg px-space-sm opacity-25 filter blur-[0.3px] transition-opacity duration-300">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm">
+<div class="flex items-baseline gap-space-md lg:w-3/5">
+<span class="font-index-num text-index-num text-outline font-bold tracking-tight">
+                [02]
+              </span>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg uppercase font-semibold tracking-tight text-on-surface">
+                  PROJECT B
+                </span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mt-1">
+                  KINETIC EDITORIAL SCULPTOR &amp; MONOSPACE MATRIX
+                </span>
+</div>
+</div>
+<div class="flex items-center justify-between lg:justify-end gap-space-lg lg:w-2/5 font-label-code text-label-code text-outline">
+<span class="uppercase">RESEARCH // 2024.Q4</span>
+<span class="font-label-meta text-label-meta">[STANDBY]</span>
+</div>
+</div>
+</div>
+<!-- ROW 03: PROJECT C (DIMMED MUTED OPACITY ~25-30%) -->
+<div class="py-space-md lg:py-space-lg px-space-sm opacity-25 filter blur-[0.3px] transition-opacity duration-300">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm">
+<div class="flex items-baseline gap-space-md lg:w-3/5">
+<span class="font-index-num text-index-num text-outline font-bold tracking-tight">
+                [03]
+              </span>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg uppercase font-semibold tracking-tight text-on-surface">
+                  PROJECT C
+                </span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mt-1">
+                  AUTONOMOUS COMPILER HUD &amp; BROWSER MEMORY BENCHMARK
+                </span>
+</div>
+</div>
+<div class="flex items-center justify-between lg:justify-end gap-space-lg lg:w-2/5 font-label-code text-label-code text-outline">
+<span class="uppercase">COMMERCIAL // 2024.Q3</span>
+<span class="font-label-meta text-label-meta">[STANDBY]</span>
+</div>
+</div>
+</div>
+<!-- ROW 04: PROJECT D (DIMMED MUTED OPACITY ~25-30%) -->
+<div class="py-space-md lg:py-space-lg px-space-sm opacity-25 filter blur-[0.3px] transition-opacity duration-300">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm">
+<div class="flex items-baseline gap-space-md lg:w-3/5">
+<span class="font-index-num text-index-num text-outline font-bold tracking-tight">
+                [04]
+              </span>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg uppercase font-semibold tracking-tight text-on-surface">
+                  PROJECT D
+                </span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mt-1">
+                  PARAMETRIC CURSOR TRACER &amp; REALTIME RAYMARCHING SYSTEM
+                </span>
+</div>
+</div>
+<div class="flex items-center justify-between lg:justify-end gap-space-lg lg:w-2/5 font-label-code text-label-code text-outline">
+<span class="uppercase">EXPERIMENTAL // 2024.Q1</span>
+<span class="font-label-meta text-label-meta">[STANDBY]</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CANVAS ANCHOR BAR -->
+<div class="hairline-t pt-space-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-space-sm font-label-meta text-label-meta text-on-surface-variant">
+<div class="flex items-center gap-space-md">
+<span>CURSOR COORDINATES: [X: 1044px, Y: 382px]</span>
+<span class="text-outline">|</span>
+<span class="text-tertiary">HOVER TARGET: #PROJECT_01</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span>SWISS MODULAR 12-COL GRID ACTIVE</span>
+<span class="w-1.5 h-1.5 bg-outline"></span>
+<span>SNAP_TO_BASELINE: TRUE</span>
+</div>
+</div>
+</main>
+<!-- FOOTER (Shared Component Execution) -->
+<footer class="w-full border-t border-outline-variant dark:border-outline-variant px-grid-margin-desktop py-space-lg flex flex-col gap-space-md bg-surface-container-lowest dark:bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-space-md pb-space-sm hairline-b">
+<div>
+<span class="text-headline-md font-headline-md text-on-surface dark:text-on-surface uppercase tracking-tight">
+          YAZAN KHALED
+        </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-lg">
+          Front-end developer &amp; creative technologist operating at the nexus of computational design, browser performance, and avant-garde typography.
+        </p>
+</div>
+<div class="flex flex-wrap gap-x-space-md gap-y-space-xs">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-code text-label-code hover:text-on-surface" href="#github">GITHUB</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-code text-label-code hover:text-on-surface" href="#readcv">READCV</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-code text-label-code hover:text-on-surface" href="#arena">ARE.NA</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-code text-label-code hover:text-on-surface" href="#twitter">TWITTER / X</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-code text-label-code hover:text-on-surface" href="#email">EMAIL</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-code text-label-code hover:text-on-surface" href="#source">SOURCE_CODE</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center text-label-meta font-label-meta tracking-wider uppercase text-on-surface-variant">
+<span>© 2025 YAZAN KHALED. ALL RIGHTS RESERVED. COMPUTED IN PARIS [CET / UTC+1].</span>
+<span class="mt-2 md:mt-0 text-outline">LAT: 48.8566° N // LON: 2.3522° E</span>
+</div>
+</footer>
+</body></html>

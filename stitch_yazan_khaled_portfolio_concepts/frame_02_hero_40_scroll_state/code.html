@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YAZAN KHALED // FRAME 02 [40% SCROLL STATE]</title>
+<!-- Google Fonts: Space Grotesk & JetBrains Mono & Geist -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#e3e2e2",
+            "inverse-surface": "#e3e2e2",
+            "surface-container": "#1f2020",
+            "primary-fixed": "#e5e2e1",
+            "secondary-container": "#454747",
+            "secondary-fixed": "#e2e2e2",
+            "primary": "#c9c6c5",
+            "surface-bright": "#393939",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-container": "#496bff",
+            "on-secondary": "#2f3131",
+            "error": "#ffb4ab",
+            "surface-container-low": "#1b1c1c",
+            "on-secondary-container": "#b4b5b5",
+            "on-primary": "#313030",
+            "on-background": "#e3e2e2",
+            "background": "#101214",
+            "tertiary": "#b9c3ff",
+            "primary-fixed-dim": "#c9c6c5",
+            "error-container": "#93000a",
+            "surface-container-highest": "#343535",
+            "inverse-on-surface": "#303031",
+            "on-primary-container": "#7b7979",
+            "on-tertiary-fixed-variant": "#0033c0",
+            "surface": "#121414",
+            "on-primary-fixed": "#1c1b1b",
+            "on-surface-variant": "#c4c7c7",
+            "on-tertiary-fixed": "#001257",
+            "surface-variant": "#343535",
+            "on-primary-fixed-variant": "#474646",
+            "outline": "#8e9192",
+            "tertiary-fixed-dim": "#b9c3ff",
+            "surface-container-high": "#292a2a",
+            "secondary-fixed-dim": "#c6c6c7",
+            "on-tertiary": "#00228a",
+            "tertiary-container": "#00052b",
+            "outline-variant": "#444748",
+            "on-secondary-fixed-variant": "#454747",
+            "surface-dim": "#121414",
+            "on-error": "#690005",
+            "secondary": "#c6c6c7",
+            "inverse-primary": "#5f5e5e",
+            "primary-container": "#0a0a0a",
+            "tertiary-fixed": "#dde1ff",
+            "surface-container-lowest": "#0d0e0f",
+            "on-secondary-fixed": "#1a1c1c",
+            "surface-tint": "#c9c6c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-sm": "1rem",
+            "space-xl": "6rem",
+            "space-xs": "0.5rem",
+            "space-lg": "3rem",
+            "gutter-mobile": "0.75rem",
+            "space-2xl": "10rem",
+            "space-md": "1.5rem",
+            "grid-margin-desktop": "3rem",
+            "baseline-unit": "0.25rem",
+            "grid-margin-mobile": "1.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Geist"],
+            "label-code": ["JetBrains Mono"],
+            "label-meta": ["JetBrains Mono"],
+            "display-xl-mobile": ["Space Grotesk"],
+            "body-sm": ["Geist"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-xl": ["Space Grotesk"],
+            "index-num": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "body-md": ["Geist"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+            "label-code": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+            "label-meta": ["11px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "400"}],
+            "display-xl-mobile": ["44px", {"lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "body-sm": ["13px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "headline-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+            "headline-md": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+            "display-xl": ["84px", {"lineHeight": "88px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+            "index-num": ["14px", {"lineHeight": "14px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "body-md": ["15px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #101214;
+      color: #e3e2e2;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .grid-lines {
+      background-size: 100% 48px;
+      background-image: linear-gradient(to bottom, rgba(68, 71, 72, 0.08) 1px, transparent 1px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #101214;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #444748;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col justify-between selection:bg-tertiary selection:text-tertiary-container relative grid-lines">
+<!-- Fixed Spatial Coordinates Overlay (Editorial Grid References) -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 flex justify-between px-grid-margin-desktop opacity-20">
+<div class="w-px h-full bg-outline-variant"></div>
+<div class="w-px h-full bg-outline-variant hidden md:block"></div>
+<div class="w-px h-full bg-outline-variant hidden md:block"></div>
+<div class="w-px h-full bg-outline-variant"></div>
+</div>
+<!-- SHARED COMPONENT: TopNavBar (Exact Match & Executed JSON) -->
+<header class="w-full sticky top-0 z-50 bg-background/95 backdrop-blur-none border-b border-outline-variant px-grid-margin-desktop py-space-sm flex justify-between items-center">
+<!-- Brand / Coordinate Anchor -->
+<div class="flex items-center gap-space-sm">
+<span class="text-label-code font-label-code font-bold tracking-widest text-on-surface uppercase">
+        YAZAN KHALED // [48.8566° N, 2.3522° E]
+      </span>
+<span class="inline-flex items-center px-1.5 py-0.5 border border-outline-variant text-[10px] font-label-meta tracking-wider text-tertiary bg-tertiary-container/30">
+        SYS.SCROLL_DELTA: 41.8%
+      </span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-space-md">
+<!-- WORK is the active section based on incoming scroll transition -->
+<a class="text-tertiary border-b border-tertiary pb-1 font-label-code text-label-code uppercase tracking-wider" href="#work">WORK</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150 uppercase tracking-wider" href="#index">INDEX</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150 uppercase tracking-wider" href="#archive">ARCHIVE</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150 uppercase tracking-wider" href="#stack">STACK</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150 uppercase tracking-wider" href="#contact">CONTACT</a>
+</nav>
+<!-- Trailing Primary Action & Icon Action -->
+<div class="flex items-center gap-space-sm">
+<div class="hidden sm:flex items-center gap-2 border border-outline-variant px-3 py-1 bg-surface-container-low">
+<span class="w-1.5 h-1.5 bg-tertiary animate-pulse"></span>
+<span class="text-label-code font-label-code text-on-surface uppercase tracking-wider">AVAILABLE FOR Q2</span>
+</div>
+<button aria-label="Terminal" class="flex items-center justify-center p-1.5 border border-outline-variant hover:border-tertiary text-on-surface hover:text-tertiary transition-colors" title="Terminal Prompt">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER: HERO 40% SCROLL DISPLACEMENT STATE -->
+<main class="relative z-10 flex-1 flex flex-col justify-between overflow-hidden px-grid-margin-desktop pt-8 pb-0">
+<!-- ARCHITECTURAL AMBIENT MONOGRAM (40% Scroll: Scaled Up, Shifted Far Right, Opacity Decreased) -->
+<div class="absolute right-[-6%] top-[-4%] pointer-events-none select-none z-0 transition-transform duration-700 ease-out">
+<div class="font-headline-lg text-[440px] md:text-[620px] font-bold leading-none tracking-tighter text-outline-variant/15 opacity-40 transform translate-x-16 -translate-y-12">
+        YK
+      </div>
+<!-- Coordinate hairline intersecting monogram -->
+<div class="absolute top-[48%] left-[-20%] w-[140%] h-px bg-outline-variant/30"></div>
+</div>
+<!-- UPPER VIEWPORT: SPLIT & DRIFTED HERO HEADLINE -->
+<section class="relative z-10 pt-4 pb-12 w-full max-w-7xl">
+<!-- Metadata Registration Bar -->
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-3 mb-8">
+<div class="flex items-center gap-4">
+<span class="font-label-meta text-label-meta text-tertiary tracking-widest">[DISPLACEMENT_VECTOR: Y-142PX]</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant hidden sm:inline">VELOCITY: 0.428_PX/MS</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PARIS [CET / 14:32:09]</span>
+<span class="font-label-code text-label-code text-on-surface">LOC: E_FRAME_02</span>
+</div>
+</div>
+<!-- Hero Headline Fragments (Separating along typographic baselines & drifting outward/upward) -->
+<div class="relative flex flex-col gap-3 pointer-events-none">
+<!-- Fragment 1: Upward + Leftward drift with slight negative letterspacing -->
+<div class="transform -translate-y-8 -translate-x-3 opacity-60 transition-transform duration-500">
+<h1 class="font-display-xl text-display-xl md:text-[96px] tracking-tight uppercase text-on-surface font-bold">
+            CREATIVE
+          </h1>
+</div>
+<!-- Fragment 2: Greater upward drift + rightward displacement with baseline rule fragment -->
+<div class="flex items-baseline gap-6 transform -translate-y-14 translate-x-12 opacity-40 transition-transform duration-500">
+<h1 class="font-display-xl text-display-xl md:text-[96px] tracking-tight uppercase text-on-surface-variant font-bold">
+            TECHNOLOGIST
+          </h1>
+<div class="hidden lg:block flex-1 h-px bg-outline-variant/40 mt-auto"></div>
+<span class="font-label-code text-label-code text-tertiary hidden lg:inline tracking-wider">EXP_004 // SPLIT</span>
+</div>
+<!-- Fragment 3: Deep upward drift, highest displacement, baseline ghost shadow -->
+<div class="transform -translate-y-20 translate-x-4 opacity-25 flex items-center gap-8 transition-transform duration-500">
+<span class="font-display-xl text-display-xl md:text-[80px] tracking-tight uppercase text-outline font-bold">
+            &amp; INTERFACE
+          </span>
+<span class="font-label-meta text-label-meta text-outline-variant uppercase">INTERACTION ARCHITECTURE / PARIS</span>
+</div>
+</div>
+</section>
+<!-- LOWER 35% VIEWPORT: INCOMING SECTION REGISTRATION & SELECTED WORK ENTRY -->
+<!-- Clear scroll continuity: hairline registration line, periwinkle indicator, entering index row -->
+<section class="relative z-20 mt-auto w-full border-t border-outline-variant bg-surface-container-lowest/80 backdrop-blur-sm -mx-grid-margin-desktop px-grid-margin-desktop pt-6 pb-8" id="work">
+<!-- Hairline Registration Line with Periwinkle Status Node -->
+<div class="relative w-full mb-6">
+<div class="w-full h-px bg-outline-variant flex items-center justify-between">
+<!-- Active periwinkle indicator tag indicating scroll latch -->
+<div class="flex items-center gap-2 bg-background border border-tertiary px-2.5 py-0.5 -mt-px transform -translate-y-1/2">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+<span class="font-label-meta text-label-meta text-tertiary tracking-widest uppercase">LATCH_NODE: 01_SECTION</span>
+</div>
+<div class="hidden sm:flex items-center gap-3 bg-background px-2 -mt-px transform -translate-y-1/2 border border-outline-variant">
+<span class="font-label-meta text-label-meta text-on-surface-variant tracking-widest">THRESHOLD 40% REACHED</span>
+</div>
+</div>
+</div>
+<!-- Section Header Band -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+<div class="flex items-baseline gap-4">
+<span class="font-index-num text-tertiary text-lg font-bold">[ 01 ]</span>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight uppercase">
+            SELECTED WORK
+          </h2>
+<span class="font-label-meta text-label-meta text-on-surface-variant tracking-wider uppercase hidden sm:inline">
+            // INDEXED COMMISSIONS (2023—2025)
+          </span>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-label-meta font-label-meta text-on-surface-variant uppercase">
+            DISPLAYING: <span class="text-on-surface font-semibold">01 OF 08</span>
+</div>
+<div class="w-24 h-1 bg-surface-container-high relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full w-2/5 bg-tertiary"></div>
+</div>
+</div>
+</div>
+<!-- Topmost Incoming Index Item: "01 // PROJECT A" entering the lower screen -->
+<div class="group relative border border-outline-variant bg-surface-container-low hover:border-tertiary transition-colors duration-150 p-6">
+<!-- Spec Sheet Top Sub-Bar -->
+<div class="flex flex-wrap items-center justify-between gap-2 border-b border-outline-variant pb-3 mb-4 font-label-meta text-label-meta">
+<div class="flex items-center gap-3">
+<span class="text-tertiary font-bold">[001]</span>
+<span class="text-on-surface-variant">2025.Q1</span>
+<span class="px-1.5 py-0.2 border border-outline-variant text-[10px] text-on-surface bg-surface-container uppercase">
+              LIVE / MONOGRAPHIC
+            </span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span>CLIENT: ATELIER LUMIÈRE PARIS</span>
+<span class="text-tertiary font-bold tracking-wider">-&gt; [01] VIEW_EXPERIMENT</span>
+</div>
+</div>
+<!-- Main Spec Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+<!-- Column 1-5: Typography & Intent -->
+<div class="lg:col-span-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="font-index-num text-tertiary text-index-num">01 //</span>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight group-hover:text-tertiary transition-colors">
+                  PROJECT A: KINETIC FIELD
+                </h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 leading-relaxed">
+                Autonomous generative spatial engine simulating architectural diffraction gratings. Built for browser execution via low-level compute shaders and custom WebAssembly memory pipelines.
+              </p>
+</div>
+<!-- Tech Stack Registry -->
+<div class="flex flex-wrap gap-2 pt-2 border-t border-outline-variant/40">
+<span class="px-2 py-0.5 border border-outline-variant text-[11px] font-label-meta text-on-surface bg-surface-container-lowest">GLSL</span>
+<span class="px-2 py-0.5 border border-outline-variant text-[11px] font-label-meta text-on-surface bg-surface-container-lowest">THREE.JS</span>
+<span class="px-2 py-0.5 border border-outline-variant text-[11px] font-label-meta text-on-surface bg-surface-container-lowest">REACT</span>
+<span class="px-2 py-0.5 border border-outline-variant text-[11px] font-label-meta text-on-surface bg-surface-container-lowest">WASM</span>
+</div>
+</div>
+<!-- Column 6-12: Interactive Artifact Viewport / Spec Render -->
+<div class="lg:col-span-7 relative h-36 sm:h-44 bg-surface-container-lowest border border-outline-variant overflow-hidden flex items-center justify-center group-hover:border-outline transition-colors">
+<!-- Computational Background Grid Inside Card -->
+<div class="absolute inset-0 opacity-15" style="background-image: linear-gradient(to right, #444748 1px, transparent 1px), linear-gradient(to bottom, #444748 1px, transparent 1px); background-size: 24px 24px;"></div>
+<!-- Real-time Spec Graphics / Data Overlay -->
+<div class="absolute top-2 left-3 font-label-meta text-[10px] text-on-surface-variant flex items-center gap-2">
+<span class="w-1 h-1 bg-tertiary"></span>
+              RENDER_SURFACE: 60FPS [PARIS_BUFFER_0]
+            </div>
+<div class="absolute top-2 right-3 font-label-meta text-[10px] text-on-surface-variant">
+              VERTICES: 131,072
+            </div>
+<!-- Wireframe Structural Core (Simulated Specimen) -->
+<div class="relative flex items-center justify-center">
+<div class="w-48 h-20 border border-tertiary/40 relative flex items-center justify-center transform -skew-x-12 group-hover:scale-105 transition-transform duration-300">
+<div class="w-full h-px bg-tertiary/30 absolute"></div>
+<div class="h-full w-px bg-tertiary/30 absolute"></div>
+<div class="w-24 h-10 border border-outline text-[9px] font-label-code text-tertiary flex items-center justify-center bg-background/80">
+                  SH_PROGRAM_01
+                </div>
+</div>
+</div>
+<!-- Bottom Status Bar inside Spec Media -->
+<div class="absolute bottom-0 left-0 w-full px-3 py-1 bg-surface-container-high border-t border-outline-variant flex justify-between items-center text-[10px] font-label-meta text-on-surface-variant">
+<span>WEIGHT: 142.4 KB (GZIP)</span>
+<span>EXEC: 1.18 MS</span>
+<span class="text-tertiary">STATUS: OPTIMAL</span>
+</div>
+</div>
+</div>
+<!-- Hairline Bottom Edge Accent Snap on Hover -->
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-tertiary opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
+</div>
+</section>
+</main>
+<!-- SHARED COMPONENT: Footer (Exact Architectural Match from JSON) -->
+<footer class="w-full border-t border-outline-variant px-grid-margin-desktop py-space-lg flex flex-col gap-space-md bg-surface-container-lowest relative z-30">
+<!-- Top Row: Architectural Brand and Local Stamp -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<div class="text-headline-md font-headline-md text-on-surface uppercase tracking-tight">
+          YAZAN KHALED
+        </div>
+<div class="text-label-meta font-label-meta text-on-surface-variant tracking-wider uppercase mt-1">
+          CREATIVE TECHNOLOGIST &amp; SYSTEM ARCHITECT
+        </div>
+</div>
+<!-- Global Navigation Anchors matching JSON strings -->
+<div class="flex flex-wrap gap-x-6 gap-y-2 items-center">
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="https://github.com" rel="noreferrer" target="_blank">GITHUB</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="#readcv">READCV</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="https://are.na" rel="noreferrer" target="_blank">ARE.NA</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="https://twitter.com" rel="noreferrer" target="_blank">TWITTER / X</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="mailto:contact@yazankhaled.com">EMAIL</a>
+<a class="text-tertiary underline underline-offset-4 font-label-code text-label-code" href="#source">SOURCE_CODE</a>
+</div>
+</div>
+<!-- Divider Hairline -->
+<div class="w-full h-px bg-outline-variant/60"></div>
+<!-- Bottom Row: Exact Copyright String & System Metas -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-body-sm font-body-sm text-on-surface-variant">
+<div>
+        © 2025 YAZAN KHALED. ALL RIGHTS RESERVED. COMPUTED IN PARIS [CET / UTC+1].
+      </div>
+<div class="flex items-center gap-4 text-label-meta font-label-meta uppercase tracking-wider">
+<span>ENCODING: UTF-8</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>FRAME_REV: 02.40_SCROLL</span>
+</div>
+</div>
+</footer>
+</body></html>

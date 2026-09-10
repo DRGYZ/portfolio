@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Direction E // Selected Work [Default State]</title>
+<!-- Google Fonts: Space Grotesk, Geist, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Config Injection -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#e3e2e2",
+            "inverse-surface": "#e3e2e2",
+            "surface-container": "#1f2020",
+            "primary-fixed": "#e5e2e1",
+            "secondary-container": "#454747",
+            "secondary-fixed": "#e2e2e2",
+            "primary": "#c9c6c5",
+            "surface-bright": "#393939",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-container": "#496bff",
+            "on-secondary": "#2f3131",
+            "error": "#ffb4ab",
+            "surface-container-low": "#1b1c1c",
+            "on-secondary-container": "#b4b5b5",
+            "on-primary": "#313030",
+            "on-background": "#e3e2e2",
+            "background": "#121414",
+            "tertiary": "#b9c3ff",
+            "primary-fixed-dim": "#c9c6c5",
+            "error-container": "#93000a",
+            "surface-container-highest": "#343535",
+            "inverse-on-surface": "#303031",
+            "on-primary-container": "#7b7979",
+            "on-tertiary-fixed-variant": "#0033c0",
+            "surface": "#121414",
+            "on-primary-fixed": "#1c1b1b",
+            "on-surface-variant": "#c4c7c7",
+            "on-tertiary-fixed": "#001257",
+            "surface-variant": "#343535",
+            "on-primary-fixed-variant": "#474646",
+            "outline": "#8e9192",
+            "tertiary-fixed-dim": "#b9c3ff",
+            "surface-container-high": "#292a2a",
+            "secondary-fixed-dim": "#c6c6c7",
+            "on-tertiary": "#00228a",
+            "tertiary-container": "#00052b",
+            "outline-variant": "#444748",
+            "on-secondary-fixed-variant": "#454747",
+            "surface-dim": "#121414",
+            "on-error": "#690005",
+            "secondary": "#c6c6c7",
+            "inverse-primary": "#5f5e5e",
+            "primary-container": "#0a0a0a",
+            "tertiary-fixed": "#dde1ff",
+            "surface-container-lowest": "#0d0e0f",
+            "on-secondary-fixed": "#1a1c1c",
+            "surface-tint": "#c9c6c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-sm": "1rem",
+            "space-xl": "6rem",
+            "space-xs": "0.5rem",
+            "space-lg": "3rem",
+            "gutter-mobile": "0.75rem",
+            "space-2xl": "10rem",
+            "space-md": "1.5rem",
+            "grid-margin-desktop": "3rem",
+            "baseline-unit": "0.25rem",
+            "grid-margin-mobile": "1.25rem"
+          },
+          "fontFamily": {
+            "body-lg": [
+              "Geist"
+            ],
+            "label-code": [
+              "JetBrains Mono"
+            ],
+            "label-meta": [
+              "JetBrains Mono"
+            ],
+            "display-xl-mobile": [
+              "Space Grotesk"
+            ],
+            "body-sm": [
+              "Geist"
+            ],
+            "headline-lg": [
+              "Space Grotesk"
+            ],
+            "headline-md": [
+              "Space Grotesk"
+            ],
+            "display-xl": [
+              "Space Grotesk"
+            ],
+            "index-num": [
+              "JetBrains Mono"
+            ],
+            "headline-lg-mobile": [
+              "Space Grotesk"
+            ],
+            "body-md": [
+              "Geist"
+            ]
+          },
+          "fontSize": {
+            "body-lg": [
+              "18px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "label-code": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.04em",
+                "fontWeight": "500"
+              }
+            ],
+            "label-meta": [
+              "11px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "0.08em",
+                "fontWeight": "400"
+              }
+            ],
+            "display-xl-mobile": [
+              "44px",
+              {
+                "lineHeight": "48px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-sm": [
+              "13px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg": [
+              "48px",
+              {
+                "lineHeight": "52px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-md": [
+              "28px",
+              {
+                "lineHeight": "34px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "500"
+              }
+            ],
+            "display-xl": [
+              "84px",
+              {
+                "lineHeight": "88px",
+                "letterSpacing": "-0.04em",
+                "fontWeight": "700"
+              }
+            ],
+            "index-num": [
+              "14px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-lg-mobile": [
+              "32px",
+              {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-md": [
+              "15px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Baseline visual rules and precision zero-radius constraints */
+    * {
+      border-radius: 0 !important;
+      box-sizing: border-box;
+    }
+    ::selection {
+      background-color: #0047FF;
+      color: #EDEDEA;
+    }
+    .custom-crosshair-grid {
+      background-size: 24px 24px;
+      background-image: 
+        radial-gradient(circle, rgba(142, 145, 146, 0.15) 1px, transparent 1px);
+    }
+    .watermark-tracking {
+      letter-spacing: 0.18em;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-tertiary-container selection:text-tertiary antialiased min-h-screen flex flex-col justify-between font-body-md overflow-x-hidden">
+<!-- ================= TOP APP BAR (SHARED COMPONENT ANCHOR) ================= -->
+<!-- Mapped verbatim from Shared Component: TopNavBar with active state for "WORK" -->
+<header class="w-full sticky top-0 z-50 bg-background/95 backdrop-blur-none border-b border-outline-variant px-grid-margin-desktop py-space-sm flex justify-between items-center">
+<div class="flex items-center gap-space-md">
+<span class="text-label-code font-label-code font-bold tracking-widest text-on-surface uppercase">
+        YAZAN KHALED // [48.8566° N, 2.3522° E]
+      </span>
+<span class="text-outline text-label-meta font-label-meta hidden lg:inline-block">SYS.ENV::PROD</span>
+</div>
+<!-- Central Editorial Nav Anchors -->
+<nav aria-label="Global Primary" class="hidden md:flex items-center gap-space-md">
+<!-- Active Link: WORK -->
+<a class="text-tertiary border-b border-tertiary pb-1 font-label-code text-label-code" href="#">WORK</a>
+<!-- Inactive Links -->
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#">INDEX</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#">ARCHIVE</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#">STACK</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-code text-label-code transition-colors duration-150" href="#">CONTACT</a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-2 border border-outline-variant px-space-xs py-1 text-label-code font-label-code text-on-surface-variant">
+<span class="w-1.5 h-1.5 bg-tertiary animate-pulse inline-block"></span>
+<span>AVAILABLE FOR Q2</span>
+</div>
+<button aria-label="Terminal Session" class="border border-outline-variant p-1 text-on-surface hover:border-on-surface transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+</button>
+</div>
+</header>
+<!-- ================= EDITORIAL WORK INDEX: FRAME 03 RESTING STATE ================= -->
+<main class="w-full flex-grow flex flex-col justify-between px-grid-margin-desktop py-space-lg max-w-[1440px] mx-auto">
+<!-- SECTION HEADER: COORDINATE METRICS & INDEX COUNT -->
+<div class="w-full border-b border-outline-variant pb-space-sm mb-0 flex flex-col md:flex-row justify-between items-start md:items-end gap-space-xs">
+<div class="flex items-baseline gap-space-sm">
+<h1 class="text-headline-md font-headline-md text-on-surface tracking-tight">
+          [ 01 ] SELECTED WORK
+        </h1>
+<span class="text-label-code font-label-code text-on-surface-variant uppercase">
+          INDEX MODE / REPOSE
+        </span>
+</div>
+<div class="flex items-center gap-space-md text-label-meta font-label-meta text-outline">
+<span class="tracking-widest">[ 04 INDEXED ]</span>
+<span class="hidden sm:inline">COORDINATES: CET / PAR</span>
+<span class="hidden lg:inline font-label-code text-[10px] text-tertiary">RESTING_SPECIMEN_VIEW</span>
+</div>
+</div>
+<!-- SPLIT WORK CANVAS & INTERACTIVE INDEX -->
+<section class="w-full grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-outline-variant relative">
+<!-- LEFT COLUMN: 4 BOLD EDITORIAL INDEX ROWS (7 COLS) -->
+<div class="lg:col-span-7 flex flex-col justify-between border-r-0 lg:border-r border-outline-variant divide-y divide-outline-variant">
+<!-- ROW 01 -->
+<article class="group relative py-space-lg pr-space-md flex flex-col justify-between transition-colors duration-150 hover:bg-surface-container-low cursor-pointer">
+<div class="flex justify-between items-start mb-space-xs">
+<div class="flex items-center gap-space-xs text-label-meta font-label-meta text-outline group-hover:text-tertiary transition-colors">
+<span class="font-index-num text-index-num text-on-surface-variant font-bold">[ 01 ]</span>
+<span>// REPO: AURA_CORE</span>
+</div>
+<span class="text-label-meta font-label-meta text-outline">2025</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight leading-none group-hover:translate-x-1 transition-transform duration-150">
+              PROJECT A
+            </h2>
+<p class="text-label-code font-label-code text-on-surface-variant tracking-wider uppercase">
+              INTERACTIVE INTERFACE &amp; COMPOSER
+            </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">WEBGL</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">SHADERS</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">TYPESCRIPT</span>
+</div>
+<span class="text-label-code font-label-code text-outline group-hover:text-on-surface flex items-center gap-1 transition-colors">
+              INSPECT <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</span>
+</div>
+</article>
+<!-- ROW 02 -->
+<article class="group relative py-space-lg pr-space-md flex flex-col justify-between transition-colors duration-150 hover:bg-surface-container-low cursor-pointer">
+<div class="flex justify-between items-start mb-space-xs">
+<div class="flex items-center gap-space-xs text-label-meta font-label-meta text-outline group-hover:text-tertiary transition-colors">
+<span class="font-index-num text-index-num text-on-surface-variant font-bold">[ 02 ]</span>
+<span>// REPO: ORBIT_TELEMETRY</span>
+</div>
+<span class="text-label-meta font-label-meta text-outline">2024</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight leading-none group-hover:translate-x-1 transition-transform duration-150">
+              PROJECT B
+            </h2>
+<p class="text-label-code font-label-code text-on-surface-variant tracking-wider uppercase">
+              TELEMETRY &amp; DATA VISUALIZATION
+            </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">RUST</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">WEBSOCKET</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">CANVAS_2D</span>
+</div>
+<span class="text-label-code font-label-code text-outline group-hover:text-on-surface flex items-center gap-1 transition-colors">
+              INSPECT <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</span>
+</div>
+</article>
+<!-- ROW 03 -->
+<article class="group relative py-space-lg pr-space-md flex flex-col justify-between transition-colors duration-150 hover:bg-surface-container-low cursor-pointer">
+<div class="flex justify-between items-start mb-space-xs">
+<div class="flex items-center gap-space-xs text-label-meta font-label-meta text-outline group-hover:text-tertiary transition-colors">
+<span class="font-index-num text-index-num text-on-surface-variant font-bold">[ 03 ]</span>
+<span>// REPO: SYNT_GRAPHIX</span>
+</div>
+<span class="text-label-meta font-label-meta text-outline">2024</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight leading-none group-hover:translate-x-1 transition-transform duration-150">
+              PROJECT C
+            </h2>
+<p class="text-label-code font-label-code text-on-surface-variant tracking-wider uppercase">
+              CREATIVE COMPUTATION &amp; GRAPHICS
+            </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">THREE.JS</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">GLSL</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">AUDIO_API</span>
+</div>
+<span class="text-label-code font-label-code text-outline group-hover:text-on-surface flex items-center gap-1 transition-colors">
+              INSPECT <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</span>
+</div>
+</article>
+<!-- ROW 04 -->
+<article class="group relative py-space-lg pr-space-md flex flex-col justify-between transition-colors duration-150 hover:bg-surface-container-low cursor-pointer">
+<div class="flex justify-between items-start mb-space-xs">
+<div class="flex items-center gap-space-xs text-label-meta font-label-meta text-outline group-hover:text-tertiary transition-colors">
+<span class="font-index-num text-index-num text-on-surface-variant font-bold">[ 04 ]</span>
+<span>// REPO: AXIS_ENTERPRISE</span>
+</div>
+<span class="text-label-meta font-label-meta text-outline">2023</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight leading-none group-hover:translate-x-1 transition-transform duration-150">
+              PROJECT D
+            </h2>
+<p class="text-label-code font-label-code text-on-surface-variant tracking-wider uppercase">
+              ENTERPRISE PRODUCT &amp; ERP
+            </p>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">NEXT.JS</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">DESIGN_SYSTEM</span>
+<span class="border border-outline-variant px-space-xs py-0.5 text-label-meta font-label-meta text-on-secondary-container">POSTGRES</span>
+</div>
+<span class="text-label-code font-label-code text-outline group-hover:text-on-surface flex items-center gap-1 transition-colors">
+              INSPECT <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</span>
+</div>
+</article>
+</div>
+<!-- RIGHT COLUMN: QUIET ARCHITECTURAL PREVIEW CANVAS (5 COLS) -->
+<div class="lg:col-span-5 bg-surface-container-lowest flex flex-col justify-between p-space-md border-t lg:border-t-0 border-outline-variant min-h-[520px]">
+<!-- Top Telemetry Header Inside Stage -->
+<div class="flex justify-between items-center border-b border-outline-variant/60 pb-space-xs text-label-meta font-label-meta text-outline">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 border border-outline-variant"></span>
+<span>STAGE: IDLE // STANDBY</span>
+</div>
+<span class="font-label-code text-on-surface-variant">FPS: 60.00</span>
+</div>
+<!-- Central Architectural Wireframe Box (Resting State) -->
+<div class="relative w-full my-space-md border border-outline-variant border-dashed p-space-md flex flex-col items-center justify-center min-h-[360px] bg-background/50 custom-crosshair-grid">
+<!-- Corner Register Marks (Swiss Blueprint Aesthetic) -->
+<div class="absolute -top-1.5 -left-1.5 w-3 h-3 border-t border-l border-tertiary"></div>
+<div class="absolute -top-1.5 -right-1.5 w-3 h-3 border-t border-r border-tertiary"></div>
+<div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b border-l border-tertiary"></div>
+<div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b border-r border-tertiary"></div>
+<!-- Central Architectural Wireframe Diagram Placeholder -->
+<div class="w-48 h-32 border border-outline-variant/50 relative flex items-center justify-center mb-space-md opacity-40">
+<div class="absolute inset-0 border border-outline-variant/30 rotate-3"></div>
+<div class="w-full h-px bg-outline-variant/40"></div>
+<div class="h-full w-px bg-outline-variant/40 absolute"></div>
+<span class="material-symbols-outlined text-outline text-[24px]">visibility</span>
+</div>
+<!-- Watermark Restrained Text -->
+<div class="text-center">
+<p class="text-label-code font-label-code text-on-surface-variant uppercase tracking-widest text-[11px] mb-1">
+              HOVER PROJECT TO INSPECT SPECIMEN
+            </p>
+<p class="text-label-meta font-label-meta text-outline uppercase watermark-tracking text-[9px]">
+              CANVAS RENDERS COMPONENT ARCHITECTURE &amp; INTERACTIVE CODE DEMO
+            </p>
+</div>
+<!-- Subtle Coordinate Crosses -->
+<span class="absolute top-2 left-2 text-[9px] font-label-meta text-outline/60">+ 0.00</span>
+<span class="absolute bottom-2 right-2 text-[9px] font-label-meta text-outline/60">Z: 0.00</span>
+</div>
+<!-- Stage Bottom Spec Drawer Strip -->
+<div class="pt-space-xs border-t border-outline-variant/60 flex justify-between items-center text-label-meta font-label-meta text-outline">
+<span class="uppercase">BUFFER: READY</span>
+<span class="text-tertiary font-label-code text-[10px]">EVENT_LISTENER::MOUSE_ENTER</span>
+</div>
+</div>
+</section>
+<!-- HORIZONTAL INDEX GUIDE STRIP -->
+<div class="w-full py-space-sm flex flex-col md:flex-row justify-between items-start md:items-center text-label-meta font-label-meta text-outline gap-space-xs">
+<div class="flex items-center gap-space-md">
+<span>01 // GLSL_SHADERS</span>
+<span>02 // REALTIME_DATA</span>
+<span>03 // COMPUTATIONAL_GEOMETRY</span>
+<span>04 // SYSTEM_ARCHITECTURE</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span>FRAME 03 / E</span>
+<span class="text-on-surface font-label-code">DIRECTION_E::EDITORIAL_DEFAULT</span>
+</div>
+</div>
+</main>
+<!-- ================= FOOTER (SHARED COMPONENT ANCHOR) ================= -->
+<!-- Mapped verbatim from Shared Component: Footer -->
+<footer class="w-full border-t border-outline-variant px-grid-margin-desktop py-space-lg flex flex-col gap-space-md bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-md">
+<!-- Architectural Brand Title -->
+<span class="text-headline-md font-headline-md text-on-surface uppercase tracking-tight">
+        YAZAN KHALED
+      </span>
+<!-- Inactive & Active Navigation Links from JSON -->
+<div class="flex items-center gap-space-md flex-wrap">
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="#">GITHUB</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="#">READCV</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="#">ARE.NA</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="#">TWITTER / X</a>
+<a class="text-on-surface-variant font-label-code text-label-code hover:text-on-surface transition-colors duration-150" href="#">EMAIL</a>
+<a class="text-tertiary underline underline-offset-4 font-label-code text-label-code" href="#">SOURCE_CODE</a>
+</div>
+</div>
+<!-- Architectural Monospace Copyright & Locale Footprint -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center border-t border-outline-variant/40 pt-space-md gap-2">
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+        © 2025 YAZAN KHALED. ALL RIGHTS RESERVED. COMPUTED IN PARIS [CET / UTC+1].
+      </p>
+<div class="flex items-center gap-space-sm text-label-meta font-label-meta text-outline">
+<span>LAT: 48.8566° N</span>
+<span>LON: 2.3522° E</span>
+<span>GRID: 12-COL-SWISS</span>
+</div>
+</div>
+</footer>
+</body></html>
