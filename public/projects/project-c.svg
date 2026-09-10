@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
   <rect width="960" height="720" fill="#15161a"/>
-  <circle cx="472" cy="358" r="290" fill="none" stroke="#c7d2fe" stroke-opacity=".13" stroke-width="116"/>
-  <circle cx="472" cy="358" r="236" fill="none" stroke="#eeeeee" stroke-opacity=".16" stroke-width="2"/>
-  <text x="112" y="628" fill="#c7d2fe" fill-opacity=".9" font-family="Georgia, serif" font-size="650" font-style="italic" letter-spacing="-58">C</text>
-  <rect x="698" y="0" width="118" height="720" fill="#c7d2fe" fill-opacity=".075"/>
-  <path d="M72 96h816M72 624h816" stroke="#eeeeee" stroke-opacity=".2" stroke-width="2"/>
+  <circle cx="510" cy="356" r="298" fill="#b9c3ff" fill-opacity=".055"/>
+  <circle cx="510" cy="356" r="244" fill="none" stroke="#eeeeee" stroke-opacity=".2" stroke-width="2"/>
+  <circle cx="510" cy="356" r="176" fill="none" stroke="#b9c3ff" stroke-opacity=".28" stroke-width="38"/>
+  <text x="52" y="648" fill="#b9c3ff" fill-opacity=".9" font-family="Georgia,serif" font-size="700" font-style="italic" letter-spacing="-64">C</text>
+  <text x="668" y="268" fill="#eeeeee" fill-opacity=".72" font-family="Georgia,serif" font-size="176" font-style="italic">c</text>
+  <path d="M64 90h832M64 630h832M510 42v636" stroke="#eeeeee" stroke-opacity=".16" stroke-width="2"/>
+  <text x="744" y="664" fill="#eeeeee" fill-opacity=".5" font-family="Arial,sans-serif" font-size="25" letter-spacing="8">DEPTH 03</text>
 </svg>

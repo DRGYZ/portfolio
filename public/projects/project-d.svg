@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <clipPath id="top"><rect width="960" height="342"/></clipPath>
+    <clipPath id="bottom"><rect y="378" width="960" height="342"/></clipPath>
+  </defs>
   <rect width="960" height="720" fill="#121315"/>
-  <path d="M92 78h392c250 0 382 111 382 282S734 642 484 642H92V78Z" fill="#b9c3ff" fill-opacity=".09" stroke="#b9c3ff" stroke-opacity=".28" stroke-width="2"/>
-  <text x="110" y="640" fill="#eeeeee" fill-opacity=".84" font-family="Arial Black, Arial, sans-serif" font-size="690" font-weight="900" letter-spacing="-52">D</text>
-  <rect x="0" y="498" width="960" height="94" fill="#b9c3ff" fill-opacity=".13"/>
-  <path d="M64 118h292M604 118h292" stroke="#b9c3ff" stroke-opacity=".65" stroke-width="8"/>
+  <text x="92" y="650" clip-path="url(#top)" fill="#eeeeee" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="720" font-weight="900" letter-spacing="-56">D</text>
+  <text x="132" y="650" clip-path="url(#bottom)" fill="#b9c3ff" fill-opacity=".68" font-family="Arial Black,Arial,sans-serif" font-size="720" font-weight="900" letter-spacing="-56">D</text>
+  <rect y="342" width="960" height="36" fill="#b9c3ff" fill-opacity=".13"/>
+  <path d="M66 104h334M560 104h334M66 616h334M560 616h334" stroke="#b9c3ff" stroke-opacity=".58" stroke-width="5"/>
+  <path d="M480 50v620" stroke="#eeeeee" stroke-opacity=".18" stroke-width="2"/>
+  <text x="778" y="666" fill="#eeeeee" fill-opacity=".56" font-family="Arial,sans-serif" font-size="26" letter-spacing="9">04</text>
 </svg>

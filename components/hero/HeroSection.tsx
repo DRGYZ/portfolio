@@ -11,8 +11,8 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.09,
-      delayChildren: 0.12,
+      staggerChildren: 0.06,
+      delayChildren: 0.05,
     },
   },
 };
@@ -23,20 +23,36 @@ const itemVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
+      duration: 0.56,
       ease: [0.16, 1, 0.3, 1],
     },
   },
 };
 
 const headlineLineVariants: Variants = {
-  hidden: { y: '112%', rotate: 1.2 },
+  hidden: { y: '106%', rotate: 0.8, scale: 0.985, opacity: 0.2 },
   visible: (index: number) => ({
     y: '0%',
     rotate: 0,
+    scale: 1,
+    opacity: 1,
     transition: {
-      duration: 0.82,
-      delay: index * 0.075,
+      duration: 0.68,
+      delay: index * 0.055,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
+
+const accentWordVariants: Variants = {
+  hidden: { y: '92%', opacity: 0, scale: 0.97 },
+  visible: (index: number) => ({
+    y: '0%',
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.58,
+      delay: 0.16 + index * 0.045,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -61,6 +77,12 @@ export function HeroSection() {
   const lineOneY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, -36]);
   const lineTwoY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 8]);
   const lineThreeY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 42]);
+  const interfacesX = useTransform(scrollYProgress, [0, 0.22, 0.7, 1], [0, 0, 25, 68]);
+  const interfacesY = useTransform(scrollYProgress, [0, 0.22, 1], [0, 0, -18]);
+  const complexX = useTransform(scrollYProgress, [0, 0.22, 0.7, 1], [0, 0, -12, -34]);
+  const complexScale = useTransform(scrollYProgress, [0, 0.24, 0.72, 1], [1, 1, 1.025, 1.055]);
+  const simpleX = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [0, 0, 18, 52]);
+  const simpleY = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0, 20]);
   const cueOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
 
   return (
@@ -113,7 +135,17 @@ export function HeroSection() {
                 >
                   I build polished{' '}
                   <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
-                    interfaces
+                    <motion.span
+                      custom={0}
+                      variants={accentWordVariants}
+                      style={{
+                        x: prefersReduced ? 0 : interfacesX,
+                        y: prefersReduced ? 0 : interfacesY,
+                      }}
+                      className="inline-block origin-left"
+                    >
+                      interfaces
+                    </motion.span>
                   </span>{' '}
                 </motion.span>
               </motion.span>
@@ -132,11 +164,35 @@ export function HeroSection() {
               <motion.span custom={2} variants={headlineLineVariants} className="block origin-left">
                 <motion.span
                   style={{ x: prefersReduced ? 0 : lineThreeX, y: prefersReduced ? 0 : lineThreeY }}
-                  className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.86em]"
+                  className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.8em]"
                 >
                   that make{' '}
-                  <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
+                  <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent lg:hidden">
                     complex systems feel simple.
+                  </span>
+                  <span className="hidden px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent lg:inline">
+                    <motion.span
+                      custom={1}
+                      variants={accentWordVariants}
+                      style={{
+                        x: prefersReduced ? 0 : complexX,
+                        scale: prefersReduced ? 1 : complexScale,
+                      }}
+                      className="inline-block origin-left"
+                    >
+                      complex systems
+                    </motion.span>{' '}
+                    <motion.span
+                      custom={2}
+                      variants={accentWordVariants}
+                      style={{
+                        x: prefersReduced ? 0 : simpleX,
+                        y: prefersReduced ? 0 : simpleY,
+                      }}
+                      className="inline-block"
+                    >
+                      feel simple.
+                    </motion.span>
                   </span>
                 </motion.span>
               </motion.span>
@@ -151,8 +207,8 @@ export function HeroSection() {
               href="#work"
               className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-background transition-colors hover:bg-accent focus-visible:bg-accent"
             >
-              <span>View Work</span>
-              <span aria-hidden="true" className="transition-transform group-hover:translate-y-0.5">
+              <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">View Work</span>
+              <span aria-hidden="true" className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:translate-y-1">
                 ↓
               </span>
             </a>
@@ -162,7 +218,7 @@ export function HeroSection() {
                 href="https://github.com/DRGYZ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-primary focus-visible:text-primary"
+                className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
               >
                 GitHub ↗
               </a>
@@ -170,7 +226,7 @@ export function HeroSection() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-primary focus-visible:text-primary"
+                className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
               >
                 LinkedIn ↗
               </a>
@@ -178,7 +234,7 @@ export function HeroSection() {
                 href={getAssetPath('/cv.pdf')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-primary focus-visible:text-primary"
+                className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
               >
                 CV ↗
               </a>

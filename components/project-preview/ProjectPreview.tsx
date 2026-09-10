@@ -74,11 +74,13 @@ export function ProjectPreview({
   const idleY = useMotionValue(0);
   const sourceX = pointerX ?? idleX;
   const sourceY = pointerY ?? idleY;
-  const imageX = useSpring(useTransform(sourceX, [-1, 1], [-13, 13]), {
+  const imageTravelX = project.id === '03' ? 18 : 13;
+  const imageTravelY = project.id === '03' ? 15 : 10;
+  const imageX = useSpring(useTransform(sourceX, [-1, 1], [-imageTravelX, imageTravelX]), {
     stiffness: 70,
     damping: 24,
   });
-  const imageY = useSpring(useTransform(sourceY, [-1, 1], [-10, 10]), {
+  const imageY = useSpring(useTransform(sourceY, [-1, 1], [-imageTravelY, imageTravelY]), {
     stiffness: 70,
     damping: 24,
   });
@@ -88,7 +90,7 @@ export function ProjectPreview({
   });
   const projectUrl = getProjectUrl(project);
 
-  const getVariants = (style: Project['motionStyle']) => {
+  const getVariants = (projectId: Project['id']) => {
     if (prefersReduced) {
       return {
         initial: { opacity: 0 },
@@ -97,42 +99,50 @@ export function ProjectPreview({
       };
     }
 
-    switch (style) {
-      case 'clip':
+    switch (projectId) {
+      case '01':
         return {
           initial: {
-            clipPath: direction > 0 ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)',
+            clipPath: direction > 0 ? 'inset(100% 0 0 0)' : 'inset(0 0 100% 0)',
+            y: 16 * direction,
             opacity: 0.7,
           },
-          animate: { clipPath: 'inset(0 0% 0 0)', opacity: 1 },
+          animate: { clipPath: 'inset(0 0 0 0)', y: 0, opacity: 1 },
           exit: {
-            clipPath: direction > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)',
+            clipPath: direction > 0 ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)',
+            y: -10 * direction,
             opacity: 0.3,
           },
         };
-      case 'slide':
+      case '02':
         return {
-          initial: { x: 70 * direction, opacity: 0 },
-          animate: { x: 0, opacity: 1 },
-          exit: { x: -42 * direction, opacity: 0 },
+          initial: { x: 76 * direction, rotate: 0.8 * direction, opacity: 0 },
+          animate: { x: 0, rotate: 0, opacity: 1 },
+          exit: { x: -48 * direction, rotate: -0.45 * direction, opacity: 0 },
         };
-      case 'scale':
+      case '03':
         return {
-          initial: { scale: 0.94, opacity: 0 },
-          animate: { scale: 1, opacity: 1 },
-          exit: { scale: 1.03, opacity: 0 },
-        };
-      case 'layers':
-        return {
-          initial: { x: -34 * direction, y: 24, rotate: -1.2 * direction, opacity: 0 },
-          animate: { x: 0, y: 0, opacity: 1 },
-          exit: { x: 30 * direction, y: -18, rotate: 0.8 * direction, opacity: 0 },
-        };
-      case 'parallax':
-        return {
-          initial: { y: 42 * direction, scale: 1.07, opacity: 0 },
+          initial: { y: 18, scale: 0.9, opacity: 0.25 },
           animate: { y: 0, scale: 1, opacity: 1 },
-          exit: { y: -28 * direction, scale: 0.97, opacity: 0 },
+          exit: { y: -10, scale: 1.055, opacity: 0 },
+        };
+      case '04':
+        return {
+          initial: {
+            clipPath: 'polygon(0 50%, 100% 50%, 100% 50%, 0 50%, 0 50%, 100% 50%, 100% 50%, 0 50%)',
+            scale: 1.025,
+            opacity: 0.55,
+          },
+          animate: {
+            clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%, 0 50%, 100% 50%, 100% 100%, 0 100%)',
+            scale: 1,
+            opacity: 1,
+          },
+          exit: {
+            clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0, 0 100%, 100% 100%, 100% 100%, 0 100%)',
+            scale: 0.985,
+            opacity: 0.2,
+          },
         };
       default:
         return {
@@ -143,7 +153,7 @@ export function ProjectPreview({
     }
   };
 
-  const variants = getVariants(project.motionStyle);
+  const variants = getVariants(project.id);
   const frame = frameStyles[project.motionStyle];
 
   return (
@@ -163,7 +173,7 @@ export function ProjectPreview({
         style={{ clipPath: frame.clipPath }}
       />
 
-      {project.motionStyle === 'layers' ? (
+      {project.id === '02' ? (
         <motion.span
           aria-hidden="true"
           className="absolute inset-[8%] border border-accent/25"
@@ -189,12 +199,23 @@ export function ProjectPreview({
             transition={{ duration: prefersReduced ? 0.01 : 0.48, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0"
           >
+            {project.id === '02' ? (
+              <motion.span
+                aria-hidden="true"
+                initial={prefersReduced ? false : { x: `${72 * direction}%`, opacity: 0.5 }}
+                animate={{ x: '0%', opacity: 0 }}
+                exit={{ x: `${-55 * direction}%`, opacity: 0 }}
+                transition={{ duration: prefersReduced ? 0.01 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 z-10 bg-accent/25"
+              />
+            ) : null}
+
             <motion.div
               style={{
                 x: prefersReduced ? 0 : imageX,
                 y: prefersReduced ? 0 : imageY,
                 rotate: prefersReduced ? 0 : objectRotate,
-                scale: prefersReduced ? 1 : 1.045,
+                scale: prefersReduced ? 1 : project.id === '03' ? 1.07 : 1.045,
               }}
               className="absolute inset-[-3%]"
             >
@@ -210,6 +231,17 @@ export function ProjectPreview({
             </motion.div>
 
             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-background/25" />
+
+            {project.id === '04' ? (
+              <motion.span
+                aria-hidden="true"
+                initial={prefersReduced ? false : { scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 0.42 }}
+                exit={{ scaleX: 0, opacity: 0 }}
+                transition={{ duration: prefersReduced ? 0.01 : 0.44, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-x-0 top-1/2 h-px origin-center bg-accent"
+              />
+            ) : null}
 
             <div className="absolute bottom-[7%] left-[8%] right-[7%] flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
               <span>{project.id} / {project.title}</span>

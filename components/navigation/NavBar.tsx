@@ -78,7 +78,7 @@ export function NavBar() {
                 key={item.id}
                 href={`#${item.id}`}
                 aria-current={isActive ? 'location' : undefined}
-                className={`relative py-1 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors ${
+                className={`group relative py-1 font-mono text-[10px] uppercase tracking-[0.18em] transition-[color,letter-spacing] duration-300 hover:tracking-[0.23em] ${
                   isActive ? 'text-accent' : 'text-primary-muted hover:text-primary'
                 }`}
               >
@@ -86,7 +86,7 @@ export function NavBar() {
                 <span
                   aria-hidden="true"
                   className={`absolute inset-x-0 bottom-0 h-px origin-left bg-accent transition-transform ${
-                    isActive ? 'scale-x-100' : 'scale-x-0'
+                    isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`}
                 />
               </a>
@@ -95,13 +95,13 @@ export function NavBar() {
         </nav>
 
         <div className="hidden items-center gap-6 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-muted md:flex">
-          <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">
+          <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">
             GitHub
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">
             LinkedIn
           </a>
-          <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
+          <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-accent">
             CV
           </a>
         </div>
