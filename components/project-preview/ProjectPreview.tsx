@@ -1,68 +1,88 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionValue, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { Project } from '@/types/project';
-import { usePointerPosition } from '@/hooks/usePointerPosition';
+import { getProjectUrl, Project } from '@/types/project';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { getAssetPath } from '@/lib/assetPath';
 
 interface ProjectPreviewProps {
   project: Project;
+  pointerX?: MotionValue<number>;
+  pointerY?: MotionValue<number>;
+  compact?: boolean;
 }
 
-export function ProjectPreview({ project }: ProjectPreviewProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+export function ProjectPreview({
+  project,
+  pointerX,
+  pointerY,
+  compact = false,
+}: ProjectPreviewProps) {
   const prefersReduced = useReducedMotion();
-  const { normalizedX, normalizedY } = usePointerPosition(containerRef);
+  const idleX = useMotionValue(0);
+  const idleY = useMotionValue(0);
+  const sourceX = pointerX ?? idleX;
+  const sourceY = pointerY ?? idleY;
+  const imageX = useSpring(useTransform(sourceX, [-1, 1], [-13, 13]), {
+    stiffness: 70,
+    damping: 24,
+  });
+  const imageY = useSpring(useTransform(sourceY, [-1, 1], [-10, 10]), {
+    stiffness: 70,
+    damping: 24,
+  });
+  const objectRotate = useSpring(useTransform(sourceX, [-1, 1], [-0.7, 0.7]), {
+    stiffness: 70,
+    damping: 24,
+  });
+  const projectUrl = getProjectUrl(project);
 
-  // Subtle pointer response
-  const tiltX = prefersReduced ? 0 : normalizedY * -5;
-  const tiltY = prefersReduced ? 0 : normalizedX * 5;
-  const pillOffsetX = prefersReduced ? 0 : normalizedX * 16;
-  const pillOffsetY = prefersReduced ? 0 : normalizedY * 16;
-
-  // Clean motion variants based on project motionStyle
   const getVariants = (style: Project['motionStyle']) => {
     if (prefersReduced) {
       return {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        transition: { duration: 0.2 },
       };
     }
 
     switch (style) {
-      case 'clip-path':
+      case 'clip':
         return {
-          initial: { clipPath: 'inset(100% 0 0 0)', opacity: 0.8 },
-          animate: { clipPath: 'inset(0% 0 0 0)', opacity: 1 },
-          exit: { clipPath: 'inset(0 0 100% 0)', opacity: 0.6 },
-          transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
+          initial: { clipPath: 'inset(0 100% 0 0)', opacity: 0.7 },
+          animate: { clipPath: 'inset(0 0% 0 0)', opacity: 1 },
+          exit: { clipPath: 'inset(0 0 0 100%)', opacity: 0.3 },
         };
-      case 'slide-up':
+      case 'slide':
         return {
-          initial: { y: 30, opacity: 0 },
-          animate: { y: 0, opacity: 1 },
-          exit: { y: -30, opacity: 0 },
-          transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+          initial: { x: 46, opacity: 0 },
+          animate: { x: 0, opacity: 1 },
+          exit: { x: -30, opacity: 0 },
         };
       case 'scale':
         return {
-          initial: { scale: 0.92, opacity: 0 },
+          initial: { scale: 0.94, opacity: 0 },
           animate: { scale: 1, opacity: 1 },
-          exit: { scale: 1.05, opacity: 0 },
-          transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+          exit: { scale: 1.03, opacity: 0 },
         };
-      case 'fade':
+      case 'layers':
+        return {
+          initial: { x: -28, y: 20, opacity: 0 },
+          animate: { x: 0, y: 0, opacity: 1 },
+          exit: { x: 24, y: -14, opacity: 0 },
+        };
+      case 'parallax':
+        return {
+          initial: { y: 34, scale: 1.03, opacity: 0 },
+          animate: { y: 0, scale: 1, opacity: 1 },
+          exit: { y: -24, scale: 0.98, opacity: 0 },
+        };
       default:
         return {
           initial: { opacity: 0 },
           animate: { opacity: 1 },
           exit: { opacity: 0 },
-          transition: { duration: 0.35, ease: 'easeInOut' as const },
         };
     }
   };
@@ -71,60 +91,67 @@ export function ProjectPreview({ project }: ProjectPreviewProps) {
 
   return (
     <div
-      ref={containerRef}
-      className="relative w-full h-[380px] sm:h-[440px] lg:h-[500px] flex items-center justify-center p-2 lg:p-4"
-      style={{
-        perspective: 1200,
-      }}
+      className={`relative w-full ${compact ? 'aspect-[1.18/1]' : 'aspect-[1.32/1]'}`}
+      style={{ perspective: 1200 }}
     >
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={project.id}
-          initial={variants.initial}
-          animate={variants.animate}
-          exit={variants.exit}
-          transition={variants.transition}
-          style={{
-            rotateX: tiltX,
-            rotateY: tiltY,
-            transformStyle: 'preserve-3d',
-          }}
-          className="relative w-full h-full shadow-2xl shadow-black/80 border border-white/10 overflow-hidden bg-[#121316] group"
-        >
-          {/* Visual Media Object */}
-          <div className="relative w-full h-full overflow-hidden">
-            <Image
-              src={getAssetPath(project.previewImage)}
-              alt={`${project.title} Preview`}
-              fill
-              priority
-              unoptimized
-              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-            {/* Subtle Vignette & Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-50" />
-          </div>
-
-          {/* Floating "View Project" Pill */}
+      <div
+        className="absolute inset-0 overflow-hidden bg-surface-low"
+        style={{ clipPath: 'polygon(7% 0, 100% 0, 94% 100%, 0 94%)' }}
+      >
+        <AnimatePresence mode="sync" initial={false}>
           <motion.div
-            style={{
-              x: pillOffsetX,
-              y: pillOffsetY,
-            }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none z-30"
+            key={project.id}
+            initial={variants.initial}
+            animate={variants.animate}
+            exit={variants.exit}
+            transition={{ duration: prefersReduced ? 0.01 : 0.48, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0"
           >
-            <a
-              href={project.liveDemoUrl || project.caseStudyUrl || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pointer-events-auto inline-flex items-center gap-2 bg-accent text-background px-5 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest transition-all duration-200 hover:scale-105 shadow-xl border border-white/20"
+            <motion.div
+              style={{
+                x: prefersReduced ? 0 : imageX,
+                y: prefersReduced ? 0 : imageY,
+                rotate: prefersReduced ? 0 : objectRotate,
+                scale: prefersReduced ? 1 : 1.045,
+              }}
+              className="absolute inset-[-3%]"
             >
-              <span>View Project</span>
-              <span className="text-sm font-normal">↗</span>
-            </a>
+              <Image
+                src={getAssetPath(project.previewImage)}
+                alt={`${project.title} placeholder artwork`}
+                fill
+                priority={!compact && project.id === '01'}
+                unoptimized
+                sizes={compact ? 'calc(100vw - 3rem)' : '(min-width: 1024px) 59vw, 100vw'}
+                className="object-cover object-center"
+              />
+            </motion.div>
+
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-background/25" />
+
+            <div className="absolute bottom-[7%] left-[8%] right-[7%] flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
+              <span>{project.id} / {project.title}</span>
+              {projectUrl ? (
+                <a
+                  href={projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pointer-events-auto bg-accent px-4 py-2.5 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                >
+                  View project ↗
+                </a>
+              ) : (
+                <span className="text-primary/55">Project preview</span>
+              )}
+            </div>
           </motion.div>
-        </motion.div>
-      </AnimatePresence>
+        </AnimatePresence>
+      </div>
+
+      <span
+        aria-hidden="true"
+        className="absolute -bottom-2 right-[2%] h-16 w-16 border-b border-r border-accent/30 sm:h-24 sm:w-24"
+      />
     </div>
   );
 }

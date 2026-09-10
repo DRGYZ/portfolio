@@ -3,7 +3,6 @@ import type { Config } from 'tailwindcss';
 const config: Config = {
   darkMode: 'class',
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -25,7 +24,7 @@ const config: Config = {
         primary: {
           DEFAULT: '#eeeeee',
           muted: '#a2a5a8',
-          subtle: '#686b6e',
+          subtle: '#85888b',
         },
         accent: {
           DEFAULT: '#b9c3ff',
@@ -39,10 +38,6 @@ const config: Config = {
         editorial: ['var(--font-newsreader)', 'serif'],
         sans: ['var(--font-geist)', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'monospace'],
-      },
-      spacing: {
-        'grid-desktop': '3rem',
-        'grid-mobile': '1.25rem',
       },
       borderRadius: {
         none: '0px',

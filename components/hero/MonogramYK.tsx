@@ -1,101 +1,83 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, MotionValue, useSpring, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface MonogramYKProps {
-  pointerX?: number; // normalized -1 to 1
-  pointerY?: number; // normalized -1 to 1
+  pointerX: MotionValue<number>;
+  pointerY: MotionValue<number>;
+  scrollProgress: MotionValue<number>;
 }
 
-export function MonogramYK({ pointerX = 0, pointerY = 0 }: MonogramYKProps) {
+export function MonogramYK({
+  pointerX,
+  pointerY,
+  scrollProgress,
+}: MonogramYKProps) {
   const prefersReduced = useReducedMotion();
-  const { scrollY } = useScroll();
+  const springConfig = { stiffness: 62, damping: 24, mass: 0.75 };
 
-  // Scroll driven transforms
-  const scrollYTransform = useTransform(scrollY, [0, 600], [0, -80]);
-  const scrollScaleTransform = useTransform(scrollY, [0, 600], [1, 1.08]);
-  const scrollOpacityTransform = useTransform(scrollY, [0, 450, 700], [0.85, 0.35, 0]);
+  const pointerOffsetX = useTransform(pointerX, [-1, 1], [-38, 38]);
+  const pointerOffsetY = useTransform(pointerY, [-1, 1], [-28, 28]);
+  const pointerRotateX = useTransform(pointerY, [-1, 1], [2.4, -2.4]);
+  const pointerRotateY = useTransform(pointerX, [-1, 1], [-2.8, 2.8]);
 
-  // Spring smoothed mouse parallax
-  const springConfig = { stiffness: 50, damping: 24, mass: 0.8 };
-  const smoothMouseX = useSpring(prefersReduced ? 0 : pointerX * 28, springConfig);
-  const smoothMouseY = useSpring(prefersReduced ? 0 : pointerY * 22, springConfig);
+  const smoothX = useSpring(pointerOffsetX, springConfig);
+  const smoothY = useSpring(pointerOffsetY, springConfig);
+  const smoothRotateX = useSpring(pointerRotateX, springConfig);
+  const smoothRotateY = useSpring(pointerRotateY, springConfig);
+
+  const scrollY = useTransform(scrollProgress, [0, 1], [0, -150]);
+  const scrollScale = useTransform(scrollProgress, [0, 0.72, 1], [1, 1.1, 1.24]);
+  const scrollRotate = useTransform(scrollProgress, [0, 1], [-1.5, 3.5]);
+  const scrollOpacity = useTransform(scrollProgress, [0, 0.72, 1], [0.82, 0.55, 0.08]);
 
   return (
     <motion.div
       aria-hidden="true"
+      initial={prefersReduced ? false : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
       style={{
-        y: prefersReduced ? 0 : scrollYTransform,
-        scale: prefersReduced ? 1 : scrollScaleTransform,
-        opacity: scrollOpacityTransform,
-        x: smoothMouseX,
+        x: prefersReduced ? 0 : smoothX,
+        y: prefersReduced ? 0 : smoothY,
+        rotateX: prefersReduced ? 0 : smoothRotateX,
+        rotateY: prefersReduced ? 0 : smoothRotateY,
+        transformPerspective: 1200,
       }}
-      className="absolute inset-0 pointer-events-none select-none z-0 flex items-center justify-center overflow-visible"
+      className="pointer-events-none absolute inset-[-5%_-42%_-5%_-34%] z-0 flex select-none items-center justify-center sm:inset-[-8%_-26%_-8%_-22%] lg:inset-[-14%_-16%_-14%_-12%]"
     >
       <motion.svg
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] as const }}
-        className="w-[140%] max-w-[1500px] h-auto text-accent/[0.07] hover:text-accent/[0.1] transition-colors"
+        style={{
+          y: prefersReduced ? 0 : scrollY,
+          scale: prefersReduced ? 1 : scrollScale,
+          rotate: prefersReduced ? 0 : scrollRotate,
+          opacity: prefersReduced ? 0.66 : scrollOpacity,
+        }}
+        className="h-auto w-full min-w-[760px] text-accent sm:min-w-[1050px]"
         viewBox="0 0 1400 800"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Typographic 'Y' Letterform — Bold Architectural Grotesque Silhouette */}
         <path
           d="M 160 80 L 380 80 L 520 360 L 660 80 L 880 80 L 630 520 L 630 720 L 410 720 L 410 520 Z"
           fill="currentColor"
-          className="text-accent/[0.06]"
+          fillOpacity="0.085"
         />
-        {/* Typographic 'Y' Contour Accent Rule */}
         <path
           d="M 160 80 L 380 80 L 520 360 L 660 80 L 880 80 L 630 520 L 630 720 L 410 720 L 410 520 Z"
           stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-accent/[0.14]"
+          strokeOpacity="0.34"
+          strokeWidth="1.7"
         />
 
-        {/* Typographic 'K' Letterform — Intersecting Bold Architectural Silhouette */}
         <g transform="translate(620, 0)">
-          {/* Vertical Stem */}
-          <path
-            d="M 120 80 L 310 80 L 310 720 L 120 720 Z"
-            fill="currentColor"
-            className="text-accent/[0.05]"
-          />
-          <path
-            d="M 120 80 L 310 80 L 310 720 L 120 720 Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-accent/[0.12]"
-          />
-
-          {/* Upper Diagonal Arm */}
-          <path
-            d="M 280 430 L 520 80 L 730 80 L 420 480 Z"
-            fill="currentColor"
-            className="text-accent/[0.05]"
-          />
-          <path
-            d="M 280 430 L 520 80 L 730 80 L 420 480 Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-accent/[0.12]"
-          />
-
-          {/* Lower Diagonal Leg */}
-          <path
-            d="M 360 400 L 660 720 L 460 720 L 250 490 Z"
-            fill="currentColor"
-            className="text-accent/[0.05]"
-          />
-          <path
-            d="M 360 400 L 660 720 L 460 720 L 250 490 Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-accent/[0.12]"
-          />
+          <path d="M 120 80 L 310 80 L 310 720 L 120 720 Z" fill="currentColor" fillOpacity="0.075" />
+          <path d="M 120 80 L 310 80 L 310 720 L 120 720 Z" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.7" />
+          <path d="M 280 430 L 520 80 L 730 80 L 420 480 Z" fill="currentColor" fillOpacity="0.075" />
+          <path d="M 280 430 L 520 80 L 730 80 L 420 480 Z" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.7" />
+          <path d="M 360 400 L 660 720 L 460 720 L 250 490 Z" fill="currentColor" fillOpacity="0.075" />
+          <path d="M 360 400 L 660 720 L 460 720 L 250 490 Z" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.7" />
         </g>
       </motion.svg>
     </motion.div>

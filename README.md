@@ -18,7 +18,7 @@ Built with Next.js App Router, TypeScript, Tailwind CSS, and Motion (`framer-mot
 ├── app/
 │   ├── layout.tsx              # Google font variables & root metadata
 │   ├── page.tsx                # Single-page interactive composition
-│   └── globals.css             # 0px Euclidean geometry, dark charcoal background
+│   └── globals.css             # Global palette, focus, and reduced-motion fallbacks
 ├── components/
 │   ├── navigation/
 │   │   └── NavBar.tsx          # Minimal sticky navigation
@@ -26,8 +26,8 @@ Built with Next.js App Router, TypeScript, Tailwind CSS, and Motion (`framer-mot
 │   │   ├── HeroSection.tsx     # Expressive hero with scroll transitions
 │   │   └── MonogramYK.tsx      # Typographic YK vector with pointer parallax & scroll scaling
 │   ├── selected-work/
-│   │   ├── SelectedWorkSection.tsx # Split 7/5 editorial archive & preview layout
-│   │   └── ProjectRow.tsx      # Project row with hover italic transition & inactive dimming
+│   │   ├── SelectedWorkSection.tsx # Overlapping editorial index and media stage
+│   │   └── ProjectRow.tsx      # Shared hover, focus, and touch project state
 │   ├── project-preview/
 │   │   └── ProjectPreview.tsx  # Floating visual preview with AnimatePresence transitions
 │   ├── about/
@@ -40,7 +40,7 @@ Built with Next.js App Router, TypeScript, Tailwind CSS, and Motion (`framer-mot
 │   └── projects.ts             # Strongly-typed project dataset
 ├── hooks/
 │   ├── usePointerPosition.ts   # rAF-throttled normalized pointer tracking
-│   └── useReducedMotion.ts     # prefers-reduced-motion detection
+│   └── useReducedMotion.ts     # Framer Motion preference wrapper
 └── types/
     └── project.ts              # TypeScript project & motion interfaces
 ```
@@ -65,5 +65,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to view th
 
 ```bash
 npm run build
-npm run start
+```
+
+The project uses `output: 'export'`, so the production result is the static `out/`
+directory. Serve that directory with any static file server when previewing locally.
+
+Run the TypeScript check independently with:
+
+```bash
+npm run check
 ```

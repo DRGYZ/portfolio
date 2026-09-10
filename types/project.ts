@@ -1,16 +1,13 @@
 export type PreviewType = 'image' | 'video' | 'interactive';
 
-export type MotionStyle = 'fade' | 'slide-up' | 'clip-path' | 'scale';
+export type MotionStyle = 'default' | 'clip' | 'slide' | 'scale' | 'layers' | 'parallax';
 
 export interface Project {
-  id: string; // e.g. "01"
-  title: string; // e.g. "Project A"
+  id: string;
+  title: string;
   slug: string;
-  year: string; // e.g. "2025"
-  category: string; // e.g. "Interactive Interface"
-  shortDescription: string;
-  role: string;
-  technologies: string[];
+  year?: string;
+  category?: string;
   previewImage: string;
   previewType: PreviewType;
   caseStudyUrl?: string;
@@ -18,4 +15,8 @@ export interface Project {
   liveDemoUrl?: string;
   accent?: string;
   motionStyle: MotionStyle;
+}
+
+export function getProjectUrl(project: Project): string | undefined {
+  return project.caseStudyUrl ?? project.liveDemoUrl ?? project.gitHubUrl;
 }

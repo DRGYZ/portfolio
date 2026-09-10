@@ -1,88 +1,74 @@
 'use client';
 
-import { useState, useEffect, useCallback, RefObject } from 'react';
+import { RefObject, useEffect } from 'react';
+import { MotionValue, useMotionValue } from 'framer-motion';
 
 interface PointerPosition {
-  x: number;
-  y: number;
-  normalizedX: number; // -1 to 1
-  normalizedY: number; // -1 to 1
-  isInside: boolean;
+  x: MotionValue<number>;
+  y: MotionValue<number>;
+  normalizedX: MotionValue<number>;
+  normalizedY: MotionValue<number>;
+  isInside: MotionValue<boolean>;
 }
 
-export function usePointerPosition(targetRef?: RefObject<HTMLElement | null>): PointerPosition {
-  const [position, setPosition] = useState<PointerPosition>({
-    x: 0,
-    y: 0,
-    normalizedX: 0,
-    normalizedY: 0,
-    isInside: false,
-  });
+const clamp = (value: number) => Math.max(-1, Math.min(1, value));
 
-  const handlePointerMove = useCallback(
-    (e: PointerEvent | MouseEvent) => {
-      if (targetRef && targetRef.current) {
-        const rect = targetRef.current.getBoundingClientRect();
-        const clientX = e.clientX;
-        const clientY = e.clientY;
-
-        const isInside =
-          clientX >= rect.left &&
-          clientX <= rect.right &&
-          clientY >= rect.top &&
-          clientY <= rect.bottom;
-
-        const rawX = clientX - rect.left;
-        const rawY = clientY - rect.top;
-
-        // Normalized from -1 to 1 relative to target center
-        const normX = ((rawX / rect.width) * 2 - 1);
-        const normY = ((rawY / rect.height) * 2 - 1);
-
-        setPosition({
-          x: rawX,
-          y: rawY,
-          normalizedX: Math.max(-1, Math.min(1, normX)),
-          normalizedY: Math.max(-1, Math.min(1, normY)),
-          isInside,
-        });
-      } else {
-        const winWidth = window.innerWidth || 1;
-        const winHeight = window.innerHeight || 1;
-
-        const normX = (e.clientX / winWidth) * 2 - 1;
-        const normY = (e.clientY / winHeight) * 2 - 1;
-
-        setPosition({
-          x: e.clientX,
-          y: e.clientY,
-          normalizedX: Math.max(-1, Math.min(1, normX)),
-          normalizedY: Math.max(-1, Math.min(1, normY)),
-          isInside: true,
-        });
-      }
-    },
-    [targetRef]
-  );
+export function usePointerPosition(
+  targetRef: RefObject<HTMLElement | null>,
+  disabled = false
+): PointerPosition {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const normalizedX = useMotionValue(0);
+  const normalizedY = useMotionValue(0);
+  const isInside = useMotionValue(false);
 
   useEffect(() => {
-    const element = targetRef?.current || window;
-    let animationFrameId: number;
+    const element = targetRef.current;
 
-    const onMove = (e: Event) => {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(() => {
-        handlePointerMove(e as MouseEvent);
-      });
+    if (!element || disabled || !window.matchMedia('(any-pointer: fine)').matches) {
+      return;
+    }
+
+    let animationFrameId = 0;
+    let latestEvent: PointerEvent | null = null;
+
+    const updatePosition = () => {
+      if (!latestEvent) return;
+
+      const rect = element.getBoundingClientRect();
+      const rawX = latestEvent.clientX - rect.left;
+      const rawY = latestEvent.clientY - rect.top;
+
+      x.set(rawX);
+      y.set(rawY);
+      normalizedX.set(clamp((rawX / Math.max(rect.width, 1)) * 2 - 1));
+      normalizedY.set(clamp((rawY / Math.max(rect.height, 1)) * 2 - 1));
+      isInside.set(true);
     };
 
-    element.addEventListener('pointermove', onMove as EventListener, { passive: true });
+    const handlePointerMove = (event: PointerEvent) => {
+      latestEvent = event;
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updatePosition);
+    };
+
+    const handlePointerLeave = () => {
+      cancelAnimationFrame(animationFrameId);
+      normalizedX.set(0);
+      normalizedY.set(0);
+      isInside.set(false);
+    };
+
+    element.addEventListener('pointermove', handlePointerMove, { passive: true });
+    element.addEventListener('pointerleave', handlePointerLeave, { passive: true });
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      element.removeEventListener('pointermove', onMove as EventListener);
+      element.removeEventListener('pointermove', handlePointerMove);
+      element.removeEventListener('pointerleave', handlePointerLeave);
     };
-  }, [handlePointerMove, targetRef]);
+  }, [disabled, isInside, normalizedX, normalizedY, targetRef, x, y]);
 
-  return position;
+  return { x, y, normalizedX, normalizedY, isInside };
 }

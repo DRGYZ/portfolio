@@ -1,108 +1,149 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getAssetPath } from '@/lib/assetPath';
 
+const sectionLinks = [
+  { id: 'work', label: 'Work' },
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact', label: 'Contact' },
+] as const;
+
+type SectionId = 'hero' | (typeof sectionLinks)[number]['id'];
+
 export function NavBar() {
-  const [activeSection, setActiveSection] = useState('work');
+  const [activeSection, setActiveSection] = useState<SectionId>('hero');
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    let animationFrameId = 0;
 
-      const sections = ['work', 'about', 'experience', 'contact'];
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            setActiveSection(section);
-            break;
-          }
+    const updateNavigation = () => {
+      const marker = window.scrollY + Math.min(window.innerHeight * 0.34, 240);
+      let currentSection: SectionId = 'hero';
+
+      for (const id of ['hero', ...sectionLinks.map(({ id }) => id)] as SectionId[]) {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= marker) {
+          currentSection = id;
         }
       }
+
+      setScrolled(window.scrollY > 24);
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const scheduleUpdate = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateNavigation);
+    };
+
+    updateNavigation();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+    };
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-background/90 backdrop-blur-md border-b border-white/[0.06]'
-          : 'bg-transparent border-b border-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || menuOpen
+          ? 'border-white/[0.07] bg-background/[0.92] backdrop-blur-md'
+          : 'border-transparent bg-transparent'
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-16 h-20 flex items-center justify-between">
-        {/* Brand Lockup */}
+      <div className="mx-auto flex h-20 max-w-[1600px] items-center justify-between px-6 lg:px-16">
         <Link
           href="#hero"
-          className="group flex items-center gap-2.5 font-mono text-xs tracking-wider uppercase text-primary hover:text-accent transition-colors"
+          onClick={() => setMenuOpen(false)}
+          className="group flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-primary transition-colors hover:text-accent"
         >
-          <span className="w-1.5 h-1.5 bg-accent inline-block transition-transform group-hover:scale-125" />
-          <span className="font-semibold tracking-widest">Yazan Khaled</span>
+          <span className="h-1.5 w-1.5 bg-accent transition-transform group-hover:scale-125" />
+          <span className="font-semibold">Yazan Khaled</span>
         </Link>
 
-        {/* Primary Navigation Links */}
-        <nav aria-label="Main Navigation" className="hidden md:flex items-center space-x-10">
-          {[
-            { id: 'work', label: 'Work' },
-            { id: 'about', label: 'About' },
-            { id: 'experience', label: 'Experience' },
-            { id: 'contact', label: 'Contact' },
-          ].map((item) => {
+        <nav aria-label="Main navigation" className="hidden items-center gap-10 md:flex">
+          {sectionLinks.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`font-mono text-xs tracking-widest uppercase transition-colors py-1 relative ${
-                  isActive
-                    ? 'text-accent font-medium'
-                    : 'text-primary-muted hover:text-primary'
+                aria-current={isActive ? 'location' : undefined}
+                className={`relative py-1 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors ${
+                  isActive ? 'text-accent' : 'text-primary-muted hover:text-primary'
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[1px] bg-accent" />
-                )}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-0 bottom-0 h-px origin-left bg-accent transition-transform ${
+                    isActive ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                />
               </a>
             );
           })}
         </nav>
 
-        {/* Utility Links */}
-        <div className="flex items-center space-x-6 font-mono text-xs tracking-wider uppercase text-primary-muted">
-          <a
-            href="https://github.com/DRGYZ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary transition-colors"
-          >
+        <div className="hidden items-center gap-6 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-muted md:flex">
+          <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">
             GitHub
           </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary transition-colors"
-          >
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">
             LinkedIn
           </a>
-          <a
-            href={getAssetPath('/cv.pdf')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
-          >
+          <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
             CV
           </a>
         </div>
+
+        <button
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setMenuOpen((isOpen) => !isOpen)}
+          className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-muted transition-colors hover:text-primary md:hidden"
+        >
+          {menuOpen ? 'Close' : 'Index'}
+        </button>
       </div>
+
+      {menuOpen && (
+        <div id="mobile-navigation" className="border-t border-white/[0.07] bg-background px-6 pb-8 pt-3 md:hidden">
+          <nav aria-label="Mobile navigation" className="flex flex-col">
+            {sectionLinks.map((item, index) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                aria-current={activeSection === item.id ? 'location' : undefined}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-baseline justify-between border-b border-white/[0.07] py-4 font-display text-2xl uppercase tracking-[-0.03em] ${
+                  activeSection === item.id ? 'font-editorial italic text-accent' : 'text-primary'
+                }`}
+              >
+                <span>{item.label}</span>
+                <span className="font-mono text-[10px] not-italic tracking-[0.16em] text-primary-subtle">
+                  0{index + 1}
+                </span>
+              </a>
+            ))}
+          </nav>
+          <div className="mt-6 flex gap-7 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-muted">
+            <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer">CV ↗</a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

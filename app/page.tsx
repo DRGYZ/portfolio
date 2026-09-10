@@ -4,20 +4,27 @@ import { SelectedWorkSection } from '@/components/selected-work/SelectedWorkSect
 import { AboutSection } from '@/components/about/AboutSection';
 import { ExperienceSection } from '@/components/experience/ExperienceSection';
 import { ContactSection } from '@/components/contact/ContactSection';
-import { GridLines } from '@/components/ui/GridLines';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-background text-primary selection:bg-accent selection:text-background">
-      <GridLines />
+    <>
+      <a
+        href="#content"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-background transition-transform focus:translate-y-0"
+      >
+        Skip to content
+      </a>
       <NavBar />
-      <div className="relative z-10">
+      <main
+        id="content"
+        className="relative min-h-screen bg-background text-primary selection:bg-accent selection:text-background"
+      >
         <HeroSection />
         <SelectedWorkSection />
         <AboutSection />
         <ExperienceSection />
         <ContactSection />
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

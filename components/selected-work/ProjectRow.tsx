@@ -1,98 +1,88 @@
 'use client';
 
-import { Project } from '@/types/project';
+import { getProjectUrl, Project } from '@/types/project';
 
 interface ProjectRowProps {
   project: Project;
   isActive: boolean;
-  isAnyActive: boolean;
-  onHover: () => void;
-  onLeave: () => void;
-  onSelect: () => void;
+  isEngaged: boolean;
+  onActivate: () => void;
 }
 
 export function ProjectRow({
   project,
   isActive,
-  isAnyActive,
-  onHover,
-  onLeave,
-  onSelect,
+  isEngaged,
+  onActivate,
 }: ProjectRowProps) {
-  const isDimmed = isAnyActive && !isActive;
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onSelect();
-    }
-  };
+  const isDimmed = isEngaged && !isActive;
+  const hasProjectLink = Boolean(getProjectUrl(project));
 
   return (
-    <article
-      tabIndex={0}
-      role="button"
-      aria-label={`${project.title}, ${project.category}, ${project.year}`}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      onFocus={onHover}
-      onBlur={onLeave}
-      onKeyDown={handleKeyDown}
-      onClick={onSelect}
-      className={`group relative w-full py-8 sm:py-10 lg:py-12 border-b border-white/[0.06] transition-all duration-300 cursor-pointer outline-none ${
-        isActive
-          ? 'opacity-100 z-10'
-          : isDimmed
-          ? 'opacity-25 filter blur-[0.2px] hover:opacity-100 hover:filter-none'
-          : 'opacity-85 hover:opacity-100'
-      }`}
-    >
-      <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-6">
-        {/* Left: Index & Large Expressive Title */}
-        <div className="flex items-baseline gap-6 sm:gap-10">
+    <article className="relative border-b border-white/[0.075] first:border-t">
+      <button
+        type="button"
+        aria-pressed={isActive}
+        aria-label={`Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`}
+        onPointerEnter={onActivate}
+        onFocus={onActivate}
+        onClick={onActivate}
+        className={`group relative block w-full py-7 text-left transition-[opacity,transform] duration-300 sm:py-9 lg:py-11 ${
+          isDimmed
+            ? 'opacity-20 hover:opacity-100 focus-visible:opacity-100'
+            : isActive
+              ? 'opacity-100'
+              : 'opacity-70 hover:opacity-100 focus-visible:opacity-100'
+        }`}
+      >
+        <span
+          aria-hidden="true"
+          className={`absolute bottom-0 left-0 h-px bg-accent transition-[width,opacity] duration-500 ${
+            isActive ? 'w-[42%] opacity-100' : 'w-0 opacity-0'
+          }`}
+        />
+
+        <span className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-3 gap-y-3 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:gap-x-5">
           <span
-            className={`font-mono text-xs sm:text-sm font-medium tracking-wider transition-colors duration-200 ${
+            className={`font-mono text-[11px] font-semibold tracking-[0.08em] transition-colors ${
               isActive ? 'text-accent' : 'text-primary-subtle'
             }`}
           >
             {project.id}
           </span>
 
-          <div className="flex items-baseline gap-4">
-            <h2
-              className={`font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight uppercase transition-all duration-200 ${
+          <span className="min-w-0">
+            <span
+              role="heading"
+              aria-level={3}
+              className={`font-display text-[clamp(2.15rem,5.6vw,5.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-colors duration-300 ${
                 isActive
-                  ? 'font-editorial italic font-normal text-accent'
+                  ? 'font-editorial font-normal italic tracking-[-0.035em] text-accent'
                   : 'text-primary'
               }`}
             >
               {project.title}
-            </h2>
-
-            <span
-              className={`text-2xl sm:text-4xl transition-all duration-200 ${
-                isActive
-                  ? 'text-accent opacity-100 translate-x-1 -translate-y-1'
-                  : 'text-primary-subtle opacity-0'
-              }`}
-            >
-              ↗
             </span>
-          </div>
-        </div>
+          </span>
 
-        {/* Right: Category & Year */}
-        <div className="flex items-center gap-6 font-mono text-xs uppercase tracking-wider text-primary-muted pl-10 md:pl-0">
+          <span className="col-start-2 flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-subtle sm:col-start-3 sm:row-start-1 sm:justify-self-end">
+            {project.category && (
+              <span className={isActive ? 'text-primary-muted' : undefined}>
+                {project.category}
+              </span>
+            )}
+            {project.year && <span>{project.year}</span>}
+          </span>
+
           <span
-            className={`transition-colors duration-200 ${
-              isActive ? 'text-accent/90' : 'text-primary-muted'
+            className={`col-start-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-[opacity,transform] duration-300 sm:col-start-2 ${
+              isActive ? 'translate-x-0 text-accent opacity-100' : '-translate-x-2 opacity-0'
             }`}
           >
-            {project.category}
+            {hasProjectLink ? 'View project ↗' : 'Preview selected →'}
           </span>
-          <span className="text-primary-subtle">{project.year}</span>
-        </div>
-      </div>
+        </span>
+      </button>
     </article>
   );
 }

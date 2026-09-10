@@ -4,7 +4,11 @@
  * Local dev: base path is '' -> '/projects/project-a.svg'
  * GitHub Pages: base path is '/portfolio' -> '/portfolio/projects/project-a.svg'
  */
-export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const configuredBasePath = process.env.NEXT_PUBLIC_BASE_PATH?.trim() ?? '';
+
+export const basePath = configuredBasePath
+  ? `/${configuredBasePath.replace(/^\/+|\/+$/g, '')}`
+  : '';
 
 export function getAssetPath(path: string): string {
   if (!path) return '';
@@ -23,7 +27,10 @@ export function getAssetPath(path: string): string {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
   // If basePath is already present (or empty), avoid double-prefixing
-  if (basePath && normalizedPath.startsWith(basePath)) {
+  if (
+    basePath &&
+    (normalizedPath === basePath || normalizedPath.startsWith(`${basePath}/`))
+  ) {
     return normalizedPath;
   }
 
