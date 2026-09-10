@@ -14,52 +14,13 @@ interface ProjectPreviewProps {
   direction?: number;
 }
 
-const frameStyles: Record<
-  Project['motionStyle'],
-  { clipPath: string; rotate: number; backX: number; backY: number; backRotate: number }
-> = {
-  default: {
-    clipPath: 'polygon(7% 0, 100% 0, 94% 100%, 0 94%)',
-    rotate: 0,
-    backX: -12,
-    backY: 12,
-    backRotate: -1,
-  },
-  clip: {
-    clipPath: 'polygon(8% 0, 100% 0, 92% 100%, 0 92%)',
-    rotate: -0.65,
-    backX: -18,
-    backY: 15,
-    backRotate: -1.6,
-  },
-  slide: {
-    clipPath: 'polygon(0 6%, 94% 0, 100% 91%, 8% 100%)',
-    rotate: 0.55,
-    backX: 18,
-    backY: -13,
-    backRotate: 1.45,
-  },
-  scale: {
-    clipPath: 'polygon(5% 0, 100% 4%, 96% 100%, 0 94%)',
-    rotate: 0,
-    backX: 0,
-    backY: 14,
-    backRotate: -0.7,
-  },
-  layers: {
-    clipPath: 'polygon(5% 0, 100% 8%, 94% 100%, 0 92%)',
-    rotate: -0.4,
-    backX: -15,
-    backY: -14,
-    backRotate: -1.2,
-  },
-  parallax: {
-    clipPath: 'polygon(9% 0, 100% 4%, 96% 94%, 0 100%)',
-    rotate: 0.7,
-    backX: 17,
-    backY: 16,
-    backRotate: 1.6,
-  },
+const sharedFrameClip = 'polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%)';
+
+const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
+  '01': { x: -10, y: 12 },
+  '02': { x: 12, y: -8 },
+  '03': { x: -8, y: -10 },
+  '04': { x: 10, y: 10 },
 };
 
 export function ProjectPreview({
@@ -81,10 +42,6 @@ export function ProjectPreview({
     damping: 24,
   });
   const imageY = useSpring(useTransform(sourceY, [-1, 1], [-imageTravelY, imageTravelY]), {
-    stiffness: 70,
-    damping: 24,
-  });
-  const objectRotate = useSpring(useTransform(sourceX, [-1, 1], [-0.7, 0.7]), {
     stiffness: 70,
     damping: 24,
   });
@@ -154,41 +111,25 @@ export function ProjectPreview({
   };
 
   const variants = getVariants(project.id);
-  const frame = frameStyles[project.motionStyle];
+  const backing = backingOffsets[project.id];
 
   return (
-    <div
-      className={`relative w-full ${compact ? 'aspect-[1.18/1]' : 'aspect-[1.32/1]'}`}
-      style={{ perspective: 1200 }}
-    >
+    <div className={`relative w-full ${compact ? 'aspect-[1.18/1]' : 'aspect-[1.48/1]'}`}>
       <motion.span
         aria-hidden="true"
-        className="absolute inset-[5%] bg-accent/[0.11]"
+        className="absolute inset-[4%] border border-accent/25"
         animate={
           prefersReduced
-            ? { x: 0, y: 0, rotate: 0 }
-            : { x: frame.backX, y: frame.backY, rotate: frame.backRotate }
+            ? { x: 0, y: 0 }
+            : { x: backing.x, y: backing.y }
         }
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        style={{ clipPath: frame.clipPath }}
+        transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1] }}
+        style={{ clipPath: sharedFrameClip }}
       />
 
-      {project.id === '02' ? (
-        <motion.span
-          aria-hidden="true"
-          className="absolute inset-[8%] border border-accent/25"
-          initial={false}
-          animate={prefersReduced ? { x: 0, y: 0 } : { x: 24, y: 23 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{ clipPath: frame.clipPath }}
-        />
-      ) : null}
-
       <motion.div
-        className="absolute inset-[2%] overflow-hidden bg-surface-low"
-        animate={{ rotate: prefersReduced || compact ? 0 : frame.rotate }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        style={{ clipPath: frame.clipPath }}
+        className="absolute inset-[1%] overflow-hidden bg-surface-low"
+        style={{ clipPath: sharedFrameClip }}
       >
         <AnimatePresence mode="sync" initial={false}>
           <motion.div
@@ -196,7 +137,7 @@ export function ProjectPreview({
             initial={variants.initial}
             animate={variants.animate}
             exit={variants.exit}
-            transition={{ duration: prefersReduced ? 0.01 : 0.48, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: prefersReduced ? 0.01 : 0.44, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0"
           >
             {project.id === '02' ? (
@@ -214,8 +155,7 @@ export function ProjectPreview({
               style={{
                 x: prefersReduced ? 0 : imageX,
                 y: prefersReduced ? 0 : imageY,
-                rotate: prefersReduced ? 0 : objectRotate,
-                scale: prefersReduced ? 1 : project.id === '03' ? 1.07 : 1.045,
+                scale: prefersReduced ? 1 : project.id === '03' ? 1.055 : 1.025,
               }}
               className="absolute inset-[-3%]"
             >
@@ -225,12 +165,12 @@ export function ProjectPreview({
                 fill
                 priority={project.id === '01'}
                 unoptimized
-                sizes={compact ? 'calc(100vw - 3rem)' : '(min-width: 1024px) 59vw, 100vw'}
+                sizes={compact ? 'calc(100vw - 3rem)' : '(min-width: 1024px) 55vw, 100vw'}
                 className="object-cover object-center"
               />
             </motion.div>
 
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-background/25" />
+            <div className="absolute inset-0 bg-background/[0.06]" />
 
             {project.id === '04' ? (
               <motion.span
@@ -261,11 +201,6 @@ export function ProjectPreview({
           </motion.div>
         </AnimatePresence>
       </motion.div>
-
-      <span
-        aria-hidden="true"
-        className="absolute -bottom-2 right-[2%] h-16 w-16 border-b border-r border-accent/30 sm:h-24 sm:w-24"
-      />
     </div>
   );
 }

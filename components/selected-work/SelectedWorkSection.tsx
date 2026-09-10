@@ -25,15 +25,20 @@ export function SelectedWorkSection() {
 
   const headerY = useTransform(entranceProgress, [0, 1], [44, 0]);
   const headerOpacity = useTransform(entranceProgress, [0, 0.32, 1], [0, 0.25, 1]);
-  const headingClip = useTransform(
-    entranceProgress,
-    [0.18, 1],
-    ['inset(0 100% 0 0)', 'inset(0 0% 0 0)']
-  );
   const ruleScale = useTransform(entranceProgress, [0.12, 0.88], [0, 1]);
+  const surfaceClip = useTransform(
+    entranceProgress,
+    [0, 0.6, 1],
+    [
+      'polygon(0 14%, 100% 4%, 100% 100%, 0 100%)',
+      'polygon(0 7%, 100% 1.5%, 100% 100%, 0 100%)',
+      'polygon(0 3%, 100% 0, 100% 100%, 0 100%)',
+    ]
+  );
+  const surfaceOpacity = useTransform(entranceProgress, [0, 0.24, 1], [0.55, 0.82, 1]);
 
   const activeIndex = projects.findIndex((project) => project.id === activeProject.id);
-  const previewOffsets = [-82, -28, 32, 88];
+  const previewOffsets = [-64, -20, 24, 68];
 
   const activateProject = (project: Project) => {
     const nextIndex = projects.findIndex((item) => item.id === project.id);
@@ -51,9 +56,20 @@ export function SelectedWorkSection() {
       id="work"
       ref={sectionRef}
       aria-labelledby="selected-work-title"
-      className="relative z-20 -mt-[18svh] w-full px-6 pb-28 pt-24 lg:-mt-[32svh] lg:px-16 lg:pb-40 lg:pt-28"
+      className="relative z-20 -mt-[18svh] w-full px-6 pb-24 pt-24 lg:-mt-[32svh] lg:px-16 lg:pb-28 lg:pt-28"
     >
-      <div className="mx-auto w-full max-w-[1600px]">
+      <motion.div
+        aria-hidden="true"
+        style={{
+          clipPath: prefersReduced
+            ? 'polygon(0 3%, 100% 0, 100% 100%, 0 100%)'
+            : surfaceClip,
+          opacity: prefersReduced ? 1 : surfaceOpacity,
+        }}
+        className="pointer-events-none absolute inset-0 -z-10 bg-[#101113]"
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1600px]">
         <motion.div
           style={{
             y: prefersReduced ? 0 : headerY,
@@ -67,7 +83,6 @@ export function SelectedWorkSection() {
             </p>
             <motion.h2
               id="selected-work-title"
-              style={{ clipPath: prefersReduced ? 'none' : headingClip }}
               className="font-display text-3xl font-bold uppercase tracking-[-0.04em] text-primary sm:text-5xl lg:text-6xl"
             >
               Selected Work
@@ -83,9 +98,9 @@ export function SelectedWorkSection() {
           />
         </motion.div>
 
-        <div ref={stageRef} className="relative lg:min-h-[760px]">
+        <div ref={stageRef} className="relative lg:min-h-[700px]">
           <div
-            className="relative z-20 lg:w-[73%]"
+            className="relative z-20 lg:w-[74%]"
             onPointerLeave={(event) => {
               if (!event.currentTarget.contains(document.activeElement)) {
                 setIsEngaged(false);
@@ -135,11 +150,11 @@ export function SelectedWorkSection() {
             })}
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[59%] items-center lg:flex">
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[55%] items-center lg:flex">
             <motion.div
               animate={{
                 y: previewOffsets[activeIndex] ?? 0,
-                scale: isEngaged ? 1.018 : 1,
+                scale: isEngaged ? 1.01 : 1,
               }}
               transition={{ duration: prefersReduced ? 0.01 : 0.42, ease: [0.16, 1, 0.3, 1] }}
               className="w-full"

@@ -3,7 +3,7 @@ export function AboutSection() {
     <section
       id="about"
       aria-labelledby="about-title"
-      className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-6 py-28 lg:grid-cols-12 lg:px-16 lg:py-40"
+      className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-6 py-24 lg:grid-cols-12 lg:px-16 lg:py-32"
     >
       <div className="lg:col-span-3">
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">02 / About</p>
@@ -23,6 +23,29 @@ export function AboutSection() {
           while the site itself remains the first demonstration of the craft behind them.
         </p>
       </div>
+
+      <ul
+        aria-label="Design priorities"
+        className="col-span-full mt-8 grid border-y border-white/[0.08] sm:grid-cols-3 lg:mt-14"
+      >
+        {[
+          ['01', 'Clear systems'],
+          ['02', 'Careful typography'],
+          ['03', 'Useful interaction'],
+        ].map(([number, label], index) => (
+          <li
+            key={number}
+            className={`flex items-baseline gap-5 py-6 sm:px-6 lg:py-8 ${
+              index > 0 ? 'border-t border-white/[0.08] sm:border-l sm:border-t-0' : ''
+            }`}
+          >
+            <span className="font-mono text-[9px] tracking-[0.16em] text-accent">{number}</span>
+            <span className="font-editorial text-2xl italic tracking-[-0.025em] text-primary sm:text-xl lg:text-3xl">
+              {label}
+            </span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

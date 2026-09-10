@@ -38,7 +38,7 @@ export function ProjectRow({
         <span
           aria-hidden="true"
           className={`absolute bottom-0 left-0 h-px bg-accent transition-[width,opacity] duration-500 ${
-            isActive ? 'w-[64%] opacity-100 lg:w-[84%]' : 'w-0 opacity-0'
+            isActive ? 'w-[64%] opacity-100 lg:w-[92%]' : 'w-0 opacity-0'
           }`}
         />
 

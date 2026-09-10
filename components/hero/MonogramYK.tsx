@@ -35,7 +35,7 @@ export function MonogramYK({
   const scrollY = useTransform(scrollProgress, [0, 0.24, 0.7, 1], [0, 12, 148, 270]);
   const scrollScale = useTransform(scrollProgress, [0, 0.24, 0.72, 1], [1, 1.03, 1.27, 1.52]);
   const scrollRotate = useTransform(scrollProgress, [0, 0.24, 1], [-1.5, -1, 4.5]);
-  const scrollOpacity = useTransform(scrollProgress, [0, 0.28, 0.74, 1], [0.82, 0.76, 0.38, 0.12]);
+  const scrollOpacity = useTransform(scrollProgress, [0, 0.28, 0.74, 1], [0.72, 0.66, 0.32, 0.08]);
   const bandX = useTransform(scrollProgress, [0, 1], [0, 34]);
 
   return (
@@ -86,8 +86,8 @@ export function MonogramYK({
             transform="translate(-34 26)"
             fill="none"
             stroke="currentColor"
-            strokeOpacity="0.14"
-            strokeWidth="2.2"
+            strokeOpacity="0.11"
+            strokeWidth="1.8"
           >
             <use href="#yk-y" />
             <use href="#yk-k-stem" />
@@ -104,10 +104,10 @@ export function MonogramYK({
           <motion.g
             style={{ x: prefersReduced ? 0 : baseX, y: prefersReduced ? 0 : baseY }}
             fill="currentColor"
-            fillOpacity="0.078"
+            fillOpacity="0.065"
             stroke="currentColor"
-            strokeOpacity="0.32"
-            strokeWidth="1.7"
+            strokeOpacity="0.24"
+            strokeWidth="1.5"
           >
             <use href="#yk-y" />
             <use href="#yk-k-stem" />
@@ -129,10 +129,7 @@ export function MonogramYK({
               style={{ x: prefersReduced ? 0 : accentX, y: prefersReduced ? 0 : accentY }}
               transform="translate(26 -12)"
               fill="currentColor"
-              fillOpacity="0.105"
-              stroke="currentColor"
-              strokeOpacity="0.5"
-              strokeWidth="1.5"
+              fillOpacity="0.11"
             >
               <use href="#yk-y" />
               <use href="#yk-k-stem" />
@@ -152,10 +149,7 @@ export function MonogramYK({
             style={{ x: prefersReduced ? 0 : secondaryX, y: prefersReduced ? 0 : secondaryY }}
             transform="translate(-22 14)"
             fill="currentColor"
-            fillOpacity="0.045"
-            stroke="currentColor"
-            strokeOpacity="0.34"
-            strokeWidth="1.25"
+            fillOpacity="0.035"
           >
             <use href="#yk-y" />
             <use href="#yk-k-stem" />
@@ -164,7 +158,7 @@ export function MonogramYK({
           </motion.g>
         </motion.g>
 
-        <path d="M116 278h1168M116 484h1168M116 624h1168" stroke="currentColor" strokeOpacity="0.18" strokeWidth="1" />
+        <path d="M250 692 1184 108" stroke="currentColor" strokeOpacity="0.16" strokeWidth="1" />
       </motion.svg>
 
       <motion.span

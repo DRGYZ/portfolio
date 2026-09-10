@@ -3,7 +3,7 @@ export function ExperienceSection() {
     <section
       id="experience"
       aria-labelledby="experience-title"
-      className="mx-auto w-full max-w-[1600px] px-6 py-20 lg:px-16 lg:py-28"
+      className="mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-20"
     >
       <div className="grid gap-8 border-y border-white/[0.08] py-10 sm:grid-cols-[1fr_auto] sm:items-end lg:py-14">
         <div>
