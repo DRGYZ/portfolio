@@ -1,0 +1,186 @@
+'use client';
+
+import { useState } from 'react';
+
+interface MemoryItem {
+  id: string;
+  fact: string;
+  source: string;
+  confidence: string;
+  confirmation: string;
+  category: string;
+  badge: string;
+  badgeColor: string;
+}
+
+const sanitisedFacts: MemoryItem[] = [
+  {
+    id: '1',
+    fact: 'Prefers dark themes, concise comments, and local models.',
+    source: 'persona-studio',
+    confidence: '95%',
+    confirmation: 'Confirmed 3x',
+    category: 'User Preference',
+    badge: 'Taught by User',
+    badgeColor: 'text-[#f09acb] border-[#f09acb]/40 bg-[#f09acb]/10',
+  },
+  {
+    id: '2',
+    fact: 'Works primarily in VS Code and PowerShell on Windows.',
+    source: 'desktop-menu',
+    confidence: '92%',
+    confirmation: 'Confirmed 2x',
+    category: 'Environment',
+    badge: 'Taught by User',
+    badgeColor: 'text-[#f09acb] border-[#f09acb]/40 bg-[#f09acb]/10',
+  },
+  {
+    id: '3',
+    fact: 'Listens to lo-fi hip hop and instrumental tracks while coding.',
+    source: 'audio-routine',
+    confidence: '85%',
+    confirmation: 'Confirmed 5x',
+    category: 'Acoustic Habit',
+    badge: 'Inferred / Detected',
+    badgeColor: 'text-accent border-accent/40 bg-accent/10',
+  },
+  {
+    id: '4',
+    fact: 'Frequent late-night engineering sessions detected.',
+    source: 'circadian-heuristic',
+    confidence: '70%',
+    confirmation: 'Confirmed 1x',
+    category: 'Work Routine',
+    badge: 'Stored Pattern',
+    badgeColor: 'text-primary-subtle border-white/20 bg-white/5',
+  },
+];
+
+const personaJsonSnippet = `{
+  "name": "Miko",
+  "style": {
+    "tone": "cute, observant, slightly dramatic, local-first",
+    "boundaries": [
+      "Keep reactions short enough for a desktop pet bubble.",
+      "React to what the user is doing without interrupting too often.",
+      "Prefer playful body language and brief comments over long speeches."
+    ]
+  },
+  "activityReactions": {
+    "coding": {
+      "reactionId": "coding_focus",
+      "mood": "coding",
+      "priority": 7,
+      "cooldownMinutes": 20,
+      "maxPerDay": 4,
+      "avoidRepeatWithinMinutes": 120,
+      "variants": ["review mode", "checking the logic", "focus focus"]
+    },
+    "music": {
+      "reactionId": "music_vibe",
+      "mood": "listening",
+      "priority": 6,
+      "cooldownMinutes": 20,
+      "avoidRepeatWithinMinutes": 120,
+      "variants": ["hum hum hum", "this beat is nice", "tiny concert mode"]
+    }
+  }
+}`;
+
+export function MikoMemoryInspector() {
+  const [viewMode, setViewMode] = useState<'facts' | 'persona'>('facts');
+
+  return (
+    <div className="border border-white/[0.08] bg-surface font-mono">
+      {/* Header Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 bg-[#f09acb]" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+            Inspectable Local Memory &amp; Persona Model
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setViewMode('facts')}
+            className={`px-3 py-1 text-[10px] uppercase tracking-wider border transition-colors ${
+              viewMode === 'facts'
+                ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
+                : 'border-white/[0.08] text-primary-muted hover:border-white/20'
+            }`}
+          >
+            Learned Facts (UI)
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode('persona')}
+            className={`px-3 py-1 text-[10px] uppercase tracking-wider border transition-colors ${
+              viewMode === 'persona'
+                ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
+                : 'border-white/[0.08] text-primary-muted hover:border-white/20'
+            }`}
+          >
+            persona.json (Source)
+          </button>
+        </div>
+      </div>
+
+      {viewMode === 'facts' ? (
+        <div className="p-6 sm:p-8 space-y-4">
+          <p className="text-xs font-sans text-primary-muted leading-relaxed max-w-2xl">
+            MIKO accumulates gentle facts and habits over time. Operator preferences can be explicitly taught through the desktop menu or inferred by local recurring routine heuristics. All entries remain strictly local and operator-editable.
+          </p>
+
+          <div className="space-y-3 pt-2">
+            {sanitisedFacts.map((item) => (
+              <div
+                key={item.id}
+                className="border border-white/[0.06] bg-background/40 p-4 transition-colors hover:border-white/15"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[9px] uppercase tracking-wider px-2 py-0.5 border ${item.badgeColor}`}>
+                      {item.badge}
+                    </span>
+                    <span className="text-[10px] uppercase text-primary-subtle">
+                      &bull; {item.category}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[9px] text-primary-subtle">
+                    <span>Source: <code>{item.source}</code></span>
+                    <span>Confidence: <strong className="text-accent">{item.confidence}</strong></span>
+                    <span>{item.confirmation}</span>
+                  </div>
+                </div>
+                <p className="mt-2.5 font-sans text-sm font-medium text-primary">
+                  &ldquo;{item.fact}&rdquo;
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-2 flex items-center justify-between text-[9px] uppercase tracking-wider text-primary-subtle border-t border-white/[0.06]">
+            <span>Storage: <code>miko-memory.json</code> (Local JSON Schema)</span>
+            <span className="text-[#f09acb]">Sanitised Representative Data</span>
+          </div>
+        </div>
+      ) : (
+        <div className="p-6 sm:p-8 space-y-4">
+          <p className="text-xs font-sans text-primary-muted leading-relaxed">
+            The Python sidecar references <code>persona.json</code> to enforce priority levels, maximum reactions per day, and repeat suppression intervals:
+          </p>
+          <div className="border border-white/[0.08] bg-[#0c0d10] p-4 text-xs overflow-x-auto text-[#e3e2e2]">
+            <pre className="font-mono text-[11px] leading-relaxed">
+              <code>{personaJsonSnippet}</code>
+            </pre>
+          </div>
+          <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-primary-subtle">
+            <span>Schema: Persona Boundaries &amp; Cooldown Gates</span>
+            <span className="text-[#f09acb]">Human-Editable Configuration</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

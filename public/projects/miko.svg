@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+  <defs>
+    <clipPath id="miko-slice"><path d="M0 440 1200 170v136L0 576Z"/></clipPath>
+    <clipPath id="miko-panel"><path d="M360 0h840v820H140Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="820" fill="#111218"/>
+  <path d="M360 0h840v820H140Z" fill="#f09acb" fill-opacity=".045"/>
+  <text x="54" y="78" fill="#f09acb" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">MIKO / 06</text>
+  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">DESKTOP COMPANION / 2026</text>
+  <text x="-16" y="732" fill="#eeeeee" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">M</text>
+  <g clip-path="url(#miko-panel)">
+    <text x="-16" y="732" fill="#f09acb" fill-opacity=".55" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">M</text>
+  </g>
+  <text x="430" y="240" fill="#eeeeee" fill-opacity=".92" font-family="Georgia,serif" font-size="148" font-style="italic" letter-spacing="-7">Miko</text>
+  <text x="396" y="520" fill="#eeeeee" fill-opacity=".1" font-family="Arial Black,Arial,sans-serif" font-size="190" font-weight="900" letter-spacing="-14">PERIPHERAL</text>
+  <g clip-path="url(#miko-slice)" transform="translate(-24 10)">
+    <text x="-16" y="732" fill="#ffadd8" fill-opacity=".92" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">M</text>
+    <text x="430" y="240" fill="#f09acb" font-family="Georgia,serif" font-size="148" font-style="italic" letter-spacing="-7">Miko</text>
+    <text x="396" y="520" fill="#eeeeee" fill-opacity=".28" font-family="Arial Black,Arial,sans-serif" font-size="190" font-weight="900" letter-spacing="-14">PERIPHERAL</text>
+  </g>
+  <!-- Telemetry signals -->
+  <path d="M430 354 l140 -28 l120 42 l160 -64 l170 30" fill="none" stroke="#f09acb" stroke-opacity=".4" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <rect x="426" y="350" width="8" height="8" fill="#ffadd8" fill-opacity=".8"/>
+  <rect x="566" y="322" width="8" height="8" fill="#f09acb" fill-opacity=".8"/>
+  <rect x="686" y="364" width="8" height="8" fill="#ffadd8" fill-opacity=".8"/>
+  <rect x="846" y="300" width="8" height="8" fill="#f09acb" fill-opacity=".8"/>
+  <rect x="1016" y="330" width="8" height="8" fill="#ffadd8" fill-opacity=".8"/>
+  <text x="430" y="380" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">PROCESS</text>
+  <text x="686" y="392" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">AUDIO SESSION</text>
+  <text x="1016" y="356" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">HEURISTIC</text>
+  <path d="M54 154h380M584 154h562M54 756h236M990 756h156" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
+  <path d="M0 576 424 451M588 402l612-184" stroke="#f09acb" stroke-opacity=".68" stroke-width="3"/>
+  <path d="M360 28 140 792M860 38 720 792" stroke="#eeeeee" stroke-opacity=".14" stroke-width="2"/>
+  <text x="1146" y="760" text-anchor="end" fill="#eeeeee" fill-opacity=".48" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">COMPANION / 06</text>
+</svg>

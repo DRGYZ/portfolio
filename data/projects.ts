@@ -60,4 +60,17 @@ export const projects: Project[] = [
     liveDemoUrl: 'https://drgyz.github.io/nyxboard-commerce-dashboard/',
     gitHubUrl: 'https://github.com/DRGYZ/nyxboard-commerce-dashboard',
   },
+  {
+    id: '06',
+    title: 'MIKO',
+    slug: 'miko',
+    year: '2026',
+    category: 'Desktop Companion',
+    description: 'An experimental local-first desktop companion that responds to context, not just prompts.',
+    previewImage: '/projects/miko.svg?v=1',
+    previewType: 'image',
+    accent: '#f09acb',
+    motionStyle: 'layers',
+    caseStudyUrl: '/work/miko',
+  },
 ];
