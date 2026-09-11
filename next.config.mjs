@@ -5,6 +5,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? (isGithubActions ? '/portf
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  trailingSlash: true,
   basePath,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,

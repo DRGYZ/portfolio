@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { getProjectUrl, Project } from '@/types/project';
 
 interface ProjectRowProps {
@@ -15,8 +16,26 @@ export function ProjectRow({
   isEngaged,
   onActivate,
 }: ProjectRowProps) {
+  const router = useRouter();
   const isDimmed = isEngaged && !isActive;
   const hasProjectLink = Boolean(getProjectUrl(project));
+
+  const handleRowClick = () => {
+    if (isActive) {
+      if (project.caseStudyUrl) {
+        router.push(project.caseStudyUrl);
+        return;
+      }
+      if (hasProjectLink) {
+        const url = getProjectUrl(project);
+        if (url) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+          return;
+        }
+      }
+    }
+    onActivate();
+  };
 
   return (
     <article className={`relative overflow-visible border-b border-white/[0.075] first:border-t ${isActive ? 'z-30' : 'z-0'}`}>
@@ -24,22 +43,15 @@ export function ProjectRow({
         type="button"
         aria-pressed={isActive}
         aria-label={
-          isActive && hasProjectLink
-            ? `Open ${project.title} project link in new tab`
-            : `Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`
+          isActive && project.caseStudyUrl
+            ? `View ${project.title} case study`
+            : isActive && hasProjectLink
+              ? `Open ${project.title} project link in new tab`
+              : `Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`
         }
         onPointerEnter={onActivate}
         onFocus={onActivate}
-        onClick={() => {
-          if (isActive && hasProjectLink) {
-            const url = getProjectUrl(project);
-            if (url) {
-              window.open(url, '_blank', 'noopener,noreferrer');
-              return;
-            }
-          }
-          onActivate();
-        }}
+        onClick={handleRowClick}
         className={`group relative block w-full overflow-visible py-7 text-left transition-[opacity,transform] duration-300 sm:py-9 lg:py-11 ${
           isDimmed
             ? 'opacity-20 hover:opacity-100 focus-visible:opacity-100'
@@ -104,7 +116,11 @@ export function ProjectRow({
               isActive ? 'translate-x-0 text-accent opacity-100' : '-translate-x-2 opacity-0'
             }`}
           >
-            {hasProjectLink ? 'View project ↗' : 'Preview selected →'}
+            {project.caseStudyUrl
+              ? 'Case study →'
+              : hasProjectLink
+                ? 'View project ↗'
+                : 'Preview selected →'}
           </span>
         </span>
       </button>

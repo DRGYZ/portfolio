@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion, AnimatePresence, MotionValue, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { getProjectUrl, Project } from '@/types/project';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -295,7 +296,40 @@ export function ProjectPreview({
             <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex flex-wrap items-end justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
               <span>{project.id} / {project.title}</span>
               {projectUrl ? (
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                  {project.caseStudyUrl && (
+                    <Link
+                      href={project.caseStudyUrl}
+                      className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                    >
+                      Case study →
+                    </Link>
+                  )}
+                  {project.liveDemoUrl ? (
+                    <a
+                      href={project.liveDemoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`pointer-events-auto px-3.5 py-2 font-semibold transition-colors ${
+                        project.caseStudyUrl
+                          ? 'border border-white/20 bg-[#121318]/90 text-primary hover:border-accent hover:text-accent focus-visible:border-accent'
+                          : 'bg-accent text-background hover:bg-primary focus-visible:bg-primary'
+                      }`}
+                    >
+                      Live demo ↗
+                    </a>
+                  ) : (
+                    !project.caseStudyUrl && (
+                      <a
+                        href={projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                      >
+                        View project ↗
+                      </a>
+                    )
+                  )}
                   {project.gitHubUrl && (
                     <a
                       href={project.gitHubUrl}
@@ -304,25 +338,6 @@ export function ProjectPreview({
                       className="pointer-events-auto border border-white/20 bg-[#121318]/90 px-3 py-2 text-primary transition-colors hover:border-accent hover:text-accent focus-visible:border-accent"
                     >
                       GitHub ↗
-                    </a>
-                  )}
-                  {project.liveDemoUrl ? (
-                    <a
-                      href={project.liveDemoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
-                    >
-                      Live demo ↗
-                    </a>
-                  ) : (
-                    <a
-                      href={projectUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
-                    >
-                      View project ↗
                     </a>
                   )}
                 </div>
