@@ -46,7 +46,7 @@ const featuredMoods: FeaturedMood[] = [
     id: 'annoyed',
     name: 'Annoyed / Relocation',
     category: 'Disruption Stance',
-    triggerCondition: 'Moved to secondary monitor, chaotic task switching, or rapid conflicting app pivots.',
+    triggerCondition: 'Triggered by desktop relocation states such as moving MIKO to a secondary monitor, or by explicit/internal annoyed state.',
     dialoguePreview: '"wrong monitor" · "bring me back" · "hmph"',
     assetFile: '/case-studies/miko/miko-annoyed-row.png',
   },
@@ -63,7 +63,7 @@ const secondaryMoods: SecondaryMood[] = [
   {
     id: 'sleepy',
     name: 'Sleepy / Standby',
-    triggerCondition: 'Inactivity threshold exceeded (Win32 input idle > 90s) or late-night circadian hours.',
+    triggerCondition: 'User inactivity exceeds the configured Win32 idle threshold (idleThresholdSeconds: 90s).',
     dialoguePreview: '"still here" · "tiny standby mode"',
     assetFile: '/case-studies/miko/miko-sleepy-row.png',
   },
@@ -71,7 +71,7 @@ const secondaryMoods: SecondaryMood[] = [
     id: 'celebrating',
     name: 'Celebrating / Proud',
     triggerCondition: 'Personality or explicit mood state used for positive/achievement moments.',
-    dialoguePreview: '"proud mode!" · "clean build"',
+    dialoguePreview: '"proud mode!" · "yay!" · "level up"',
     assetFile: '/case-studies/miko/miko-celebrating-row.png',
   },
 ];
@@ -83,7 +83,7 @@ export function MikoMoodShowcase() {
       <div className="border border-white/[0.08] bg-background/50 px-4 py-3 text-[10px] uppercase tracking-wider text-primary-subtle">
         <span>Design Architecture: </span>
         <span className="text-[#f09acb]">
-          Visual moods are driven by sensed context, user interaction, or internal state.
+          MIKO&apos;s visual moods can be driven by sensed desktop context, explicit user state, or internal companion state.
         </span>
       </div>
 
@@ -92,32 +92,32 @@ export function MikoMoodShowcase() {
         {featuredMoods.map((mood) => (
           <div
             key={mood.id}
-            className="border border-white/[0.08] bg-surface p-4 sm:p-5"
+            className="border border-white/[0.08] bg-surface p-3.5 sm:p-5"
           >
-            <div className="grid gap-4 lg:grid-cols-12 lg:items-center">
+            <div className="grid gap-3.5 lg:grid-cols-12 lg:items-center">
               {/* Left Column: Mood Info */}
               <div className="space-y-1.5 lg:col-span-5">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="h-1.5 w-1.5 bg-[#f09acb] flex-shrink-0" />
-                  <h3 className="font-sans text-sm font-bold uppercase tracking-wider text-primary">
+                  <h3 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
                     {mood.name}
                   </h3>
-                  <span className="text-[10px] uppercase tracking-wider text-[#f09acb]/80">
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#f09acb]/80">
                     &bull; {mood.category}
                   </span>
                 </div>
                 <p className="text-xs text-primary-muted font-sans leading-relaxed">
                   {mood.triggerCondition}
                 </p>
-                <div className="pt-1 text-[10px] text-primary-subtle">
+                <div className="pt-0.5 text-[10px] text-primary-subtle">
                   <span className="text-primary-subtle">Variants: </span>
                   <span className="italic text-[#ffadd8]">{mood.dialoguePreview}</span>
                 </div>
               </div>
 
               {/* Right Column: Authentic 6-Frame Sprite Strip */}
-              <div className="overflow-x-auto pb-2 lg:col-span-7 lg:pb-0">
-                <div className="inline-block min-w-[340px] border border-white/[0.06] bg-[#0c0d10] p-2">
+              <div className="overflow-x-auto pb-1 lg:col-span-7 lg:pb-0">
+                <div className="inline-block min-w-[320px] sm:min-w-[340px] border border-white/[0.06] bg-[#0c0d10] p-2">
                   <img
                     src={getAssetPath(mood.assetFile)}
                     alt={`${mood.name} 6-frame sprite strip`}
@@ -125,7 +125,7 @@ export function MikoMoodShowcase() {
                     height={208}
                     loading="lazy"
                     decoding="async"
-                    className="h-20 w-auto object-contain select-none [image-rendering:pixelated]"
+                    className="h-16 sm:h-20 w-auto object-contain select-none [image-rendering:pixelated]"
                   />
                   <div className="mt-1 flex items-center justify-between border-t border-white/[0.06] pt-1 text-[8px] uppercase tracking-widest text-primary-subtle">
                     <span>6-Frame Mood Sequence (192&times;208/cell)</span>
@@ -139,7 +139,7 @@ export function MikoMoodShowcase() {
       </div>
 
       {/* 3 Secondary Reference States */}
-      <div className="border border-white/[0.08] bg-surface p-6">
+      <div className="border border-white/[0.08] bg-surface p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-accent" />
@@ -152,17 +152,17 @@ export function MikoMoodShowcase() {
           </span>
         </div>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
           {secondaryMoods.map((mood) => (
             <div
               key={mood.id}
-              className="border border-white/[0.06] bg-background/40 p-3 space-y-2"
+              className="border border-white/[0.06] bg-background/40 p-3 space-y-1.5"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-1">
                 <span className="font-sans text-xs font-semibold text-primary">{mood.name}</span>
                 <span className="text-[9px] text-[#ffadd8] italic">{mood.dialoguePreview}</span>
               </div>
-              <p className="font-sans text-[11px] text-primary-muted leading-relaxed">
+              <p className="font-sans text-[10px] sm:text-[11px] text-primary-muted leading-relaxed">
                 {mood.triggerCondition}
               </p>
               <div className="border border-white/[0.04] bg-[#0c0d10] p-1.5 overflow-x-auto">
@@ -173,7 +173,7 @@ export function MikoMoodShowcase() {
                   height={208}
                   loading="lazy"
                   decoding="async"
-                  className="h-12 w-auto object-contain select-none [image-rendering:pixelated]"
+                  className="h-10 sm:h-12 w-auto object-contain select-none [image-rendering:pixelated]"
                 />
               </div>
             </div>
@@ -182,15 +182,15 @@ export function MikoMoodShowcase() {
       </div>
 
       {/* Movement Atlas Card */}
-      <div className="border border-white/[0.08] bg-surface p-6 sm:p-8">
+      <div className="border border-white/[0.08] bg-surface p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-4">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-            <h3 className="font-sans text-sm font-bold uppercase tracking-wider text-primary">
+            <h3 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
               Secondary Atlas &amp; Locomotion Map
             </h3>
           </div>
-          <span className="text-[10px] uppercase tracking-wider text-primary-subtle">
+          <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-primary-subtle">
             Desktop Movement States &bull; 10&times;10 Grid
           </span>
         </div>
@@ -198,7 +198,8 @@ export function MikoMoodShowcase() {
           Beyond activity mood rows, MIKO maintains physical locomotion animations for desktop movement: wandering across taskbars, waving on double-click, crouching on idle, jumping, and secondary monitor relocation tantrums.
         </p>
 
-        <div className="mt-6 overflow-x-auto border border-white/[0.06] bg-[#0c0d10] p-4">
+        {/* Desktop Always Visible */}
+        <div className="hidden lg:block mt-6 overflow-x-auto border border-white/[0.06] bg-[#0c0d10] p-4">
           <img
             src={getAssetPath('/case-studies/miko/miko-spritesheet.png')}
             alt="MIKO primary sprite atlas showing locomotion animations"
@@ -209,6 +210,26 @@ export function MikoMoodShowcase() {
             className="max-h-72 w-auto object-contain select-none opacity-90 [image-rendering:pixelated]"
           />
         </div>
+
+        {/* Mobile Progressive Disclosure */}
+        <details className="lg:hidden mt-4 group border border-white/[0.08] bg-background/50 p-3">
+          <summary className="cursor-pointer text-[10px] uppercase tracking-wider text-[#f09acb] font-semibold flex items-center justify-between">
+            <span>View 10&times;10 Locomotion Atlas</span>
+            <span className="text-primary-subtle text-xs transition-transform group-open:rotate-180">&darr;</span>
+          </summary>
+          <div className="mt-3 overflow-x-auto border border-white/[0.06] bg-[#0c0d10] p-2">
+            <img
+              src={getAssetPath('/case-studies/miko/miko-spritesheet.png')}
+              alt="MIKO primary sprite atlas showing locomotion animations"
+              width={1920}
+              height={1920}
+              loading="lazy"
+              decoding="async"
+              className="max-h-56 w-auto object-contain select-none opacity-90 [image-rendering:pixelated]"
+            />
+          </div>
+        </details>
+
         <div className="mt-2 flex items-center justify-between text-[9px] uppercase tracking-wider text-primary-subtle">
           <span>Atlas Format: 1920&times;1920 Full Sprite Matrix</span>
           <span className="text-[#f09acb]">WPF Animation Loop</span>

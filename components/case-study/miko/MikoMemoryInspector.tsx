@@ -100,6 +100,25 @@ const confidenceLadder = [
 export function MikoMemoryInspector() {
   const [viewMode, setViewMode] = useState<'facts' | 'persona'>('facts');
 
+  const handleKeyDown = (e: React.KeyboardEvent, currentMode: 'facts' | 'persona') => {
+    let nextMode = currentMode;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      nextMode = currentMode === 'facts' ? 'persona' : 'facts';
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      nextMode = 'facts';
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      nextMode = 'persona';
+    } else {
+      return;
+    }
+    setViewMode(nextMode);
+    const btn = document.getElementById(`tab-${nextMode}`);
+    btn?.focus();
+  };
+
   return (
     <div className="border border-white/[0.08] bg-surface font-mono">
       {/* Header Bar */}
@@ -121,8 +140,10 @@ export function MikoMemoryInspector() {
             role="tab"
             aria-selected={viewMode === 'facts'}
             aria-controls="panel-facts"
+            tabIndex={viewMode === 'facts' ? 0 : -1}
             onClick={() => setViewMode('facts')}
-            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center ${
+            onKeyDown={(e) => handleKeyDown(e, 'facts')}
+            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
               viewMode === 'facts'
                 ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
                 : 'border-white/[0.08] text-primary-muted hover:border-white/20'
@@ -136,8 +157,10 @@ export function MikoMemoryInspector() {
             role="tab"
             aria-selected={viewMode === 'persona'}
             aria-controls="panel-persona"
+            tabIndex={viewMode === 'persona' ? 0 : -1}
             onClick={() => setViewMode('persona')}
-            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center ${
+            onKeyDown={(e) => handleKeyDown(e, 'persona')}
+            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
               viewMode === 'persona'
                 ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
                 : 'border-white/[0.08] text-primary-muted hover:border-white/20'

@@ -7,12 +7,12 @@ import { getAssetPath } from '@/lib/assetPath';
 
 export type ContextKey =
   | 'coding'
-  | 'gaming'
+  | 'coding_music'
+  | 'secondary_monitor'
   | 'browsing'
   | 'youtube'
   | 'music'
-  | 'idle'
-  | 'latenight';
+  | 'idle';
 
 export type IntensityKey = 'chill' | 'balanced' | 'expressive';
 export type InterruptionKey = 'normal' | 'quiet' | 'focus';
@@ -55,29 +55,49 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     bridgeEvent: 'None (Editor focused)',
     screenTone: 'Dark tone, low brightness',
     interpretation: 'Active code editor foregrounded. Low ambient audio. Heuristic assigns coding/review state.',
-    winningRule: 'activityRules.coding.processNames ["Code", "devenv"]',
+    winningRule: 'activityRules.codingProcesses ["Code", "devenv", "WindowsTerminal"]',
     confidence: 'High (Rule Priority 7)',
     baseCooldownMinutes: 20,
   },
-  gaming: {
-    id: 'gaming',
-    label: 'Gaming',
-    category: 'Interactive',
-    badge: 'EXCLUSIVE MATCH',
-    mood: 'watching',
-    moodFolder: 'watching',
-    bubbleText: 'wait, this part',
-    variantOptions: ['wait, this part', 'I am watching too', 'staying quiet'],
-    foregroundProcess: 'League of Legends.exe',
-    windowTitle: 'League of Legends (TM) Client',
-    audioState: 'Active game audio session',
-    idleTimer: 'Sustained active input',
-    bridgeEvent: 'None (Fullscreen window)',
-    screenTone: 'Normal tone, cool cast',
-    interpretation: 'Foreground game process classified as active gameplay with active audio session. Non-intrusive spectator stance engaged.',
-    winningRule: 'activityRules.gaming.processNames ["League of Legends", "steam"]',
-    confidence: 'High (Rule Priority 6)',
+  coding_music: {
+    id: 'coding_music',
+    label: 'Coding + Music',
+    category: 'Multi-Signal',
+    badge: 'ARBITRATION',
+    mood: 'coding',
+    moodFolder: 'coding',
+    bubbleText: 'review mode',
+    variantOptions: ['review mode', 'checking the logic', 'focus focus'],
+    foregroundProcess: 'Code.exe (VS Code)',
+    windowTitle: 'router.ts — portfolio-v2',
+    audioState: 'Audible background music session (Spotify)',
+    idleTimer: 'Active keyboard/mouse',
+    bridgeEvent: 'None (Editor focused)',
+    screenTone: 'Dark tone, low brightness',
+    interpretation: 'Active code editor combined with background audio stream. Arbitration selects coding stance (Priority 7) over listening (Priority 6) while keeping audio ambient.',
+    winningRule: 'Arbitration: coding (Priority 7) > music (Priority 6)',
+    confidence: 'High (Priority Arbitration)',
     baseCooldownMinutes: 20,
+  },
+  secondary_monitor: {
+    id: 'secondary_monitor',
+    label: 'Secondary Monitor',
+    category: 'Relocation',
+    badge: 'DESKTOP RELOCATION',
+    mood: 'annoyed',
+    moodFolder: 'annoyed',
+    bubbleText: 'wrong monitor',
+    variantOptions: ['wrong monitor', 'bring me back', 'hmph'],
+    foregroundProcess: 'Desktop Shell (Secondary Display)',
+    windowTitle: 'Display 2 (Auxiliary Screen)',
+    audioState: 'Silent / Inactive',
+    idleTimer: 'Active desktop session',
+    bridgeEvent: 'None (Display relocation event)',
+    screenTone: 'Secondary display boundaries',
+    interpretation: 'MIKO shell moved to secondary display bounds. Relocation rule triggers highest-priority annoyance state requesting primary monitor return.',
+    winningRule: 'desktopBehavior.secondaryMonitorEnabled (Priority 8)',
+    confidence: 'High (Rule Priority 8)',
+    baseCooldownMinutes: 12,
   },
   browsing: {
     id: 'browsing',
@@ -92,10 +112,10 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     windowTitle: 'Web Audio API Documentation — MDN',
     audioState: 'Silent / Inactive',
     idleTimer: 'Reading / scroll activity',
-    bridgeEvent: 'Tab URL: developer.mozilla.org',
+    bridgeEvent: 'Host: developer.mozilla.org • active',
     screenTone: 'Dark background, high contrast text',
-    interpretation: 'Web browser active with technical documentation URL detected via local browser-bridge.',
-    winningRule: 'browserBridge.tabClassification ["docs", "github", "mdn"]',
+    interpretation: 'Web browser active with technical documentation host detected via local browser-bridge.',
+    winningRule: 'browserBridge.hostMatch ["developer.mozilla.org"] (Priority 4)',
     confidence: 'Normal (Rule Priority 4)',
     baseCooldownMinutes: 15,
   },
@@ -107,15 +127,15 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     mood: 'watching',
     moodFolder: 'watching',
     bubbleText: 'movie mode',
-    variantOptions: ['movie mode', 'I am watching too', 'staying quiet for the good part'],
+    variantOptions: ['movie mode', 'I am watching too', 'wait, this part'],
     foregroundProcess: 'msedge.exe',
     windowTitle: 'Designing Ambient Computing Interfaces — YouTube',
     audioState: 'Active media audio session',
     idleTimer: 'Passive media consumption',
-    bridgeEvent: 'media-tab: youtube.com/watch (playing)',
+    bridgeEvent: 'Host: youtube.com • audible • mediaLikely',
     screenTone: 'Dimmed background, video rectangle',
-    interpretation: 'Windows Media Session reports video playback with active audio output. Spectator mood active.',
-    winningRule: 'windowsMediaSession.status "Playing" && browserBridge.isVideoPage',
+    interpretation: 'Windows Media Session reports video playback with active audio output and mediaLikely flag.',
+    winningRule: 'mediaSession.status "Playing" && browserBridge.mediaLikely (Priority 6)',
     confidence: 'High (Rule Priority 6)',
     baseCooldownMinutes: 20,
   },
@@ -134,8 +154,8 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     idleTimer: 'Intermittent desktop activity',
     bridgeEvent: 'None (System media transport)',
     screenTone: 'Dark media player tone',
-    interpretation: 'Continuous audio session from background music service. Listening mood engaged with rhythmic sway.',
-    winningRule: 'windowsAudioSession.peak > threshold && mediaSession.artist != null',
+    interpretation: 'Continuous audio session from background music service with audible output.',
+    winningRule: 'activityRules.musicProcesses ["Spotify"] (Priority 6)',
     confidence: 'High (Rule Priority 6)',
     baseCooldownMinutes: 20,
   },
@@ -151,33 +171,13 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     foregroundProcess: 'explorer.exe (Desktop)',
     windowTitle: 'None (System Idle)',
     audioState: 'Silent / Inactive',
-    idleTimer: 'Inactivity > 90s (idleThreshold)',
-    bridgeEvent: 'Stale (> 90s inactive)',
+    idleTimer: 'User input idle > 90s',
+    bridgeEvent: 'Stale / Inactive',
     screenTone: 'Unchanged desktop',
-    interpretation: 'User inactivity timer exceeds idleThresholdSeconds. Companion transitions to sleep posture.',
+    interpretation: 'Win32 operator inactivity timer exceeds idleThresholdSeconds (90s). Companion transitions to sleep posture.',
     winningRule: 'idleTracker.secondsWithoutInput > idleThresholdSeconds (90s)',
     confidence: 'High (Rule Priority 5)',
     baseCooldownMinutes: 25,
-  },
-  latenight: {
-    id: 'latenight',
-    label: 'Late Night Work',
-    category: 'Circadian',
-    badge: 'NIGHT LOGIC',
-    mood: 'sleepy',
-    moodFolder: 'sleepy',
-    bubbleText: 'tiny standby mode',
-    variantOptions: ['tiny standby mode', 'getting late...', 'dim ambient light'],
-    foregroundProcess: 'WindowsTerminal.exe',
-    windowTitle: 'pwsh — git commit & test runner',
-    audioState: 'Silent / Inactive',
-    idleTimer: 'Intermittent commands',
-    bridgeEvent: 'Local terminal hook',
-    screenTone: 'Dark screen tone, nighttime hour',
-    interpretation: 'System clock reports 02:40 AM alongside prolonged keyboard activity. Ambient fatigue posture active.',
-    winningRule: 'heuristics.circadianHour < 05 && activityDuration > 120min',
-    confidence: 'Moderate (Habit Warning)',
-    baseCooldownMinutes: 30,
   },
 };
 
@@ -231,12 +231,12 @@ export function MikoContextLab() {
         explanation: 'Quiet timer active (30m): spontaneous dialogue bubbles are suppressed without queuing to protect concentration.',
       };
     }
-    if (activeContext === 'gaming') {
+    if (activeContext === 'secondary_monitor') {
       return {
-        permitted: false,
-        statusLabel: 'SUPPRESSED (GAMEPLAY)',
-        statusColor: 'text-amber-400',
-        explanation: 'Foreground game process classified as active gameplay: all bubbles silenced to prevent disruption.',
+        permitted: true,
+        statusLabel: 'PRIORITY RELOCATION (8)',
+        statusColor: 'text-[#f09acb]',
+        explanation: 'Secondary monitor relocation triggers priority annoyance reaction asking to return to primary display.',
       };
     }
     if (activeContext === 'idle') {
@@ -272,9 +272,9 @@ export function MikoContextLab() {
           </span>
         </div>
         <div className="flex items-center gap-3 text-[10px] uppercase tracking-wider text-primary-subtle">
-          <span>Simulated Context</span>
+          <span>Source-Informed Simulation</span>
           <span className="text-white/20">&bull;</span>
-          <span className="text-[#f09acb]">Derived from real MIKO behaviour architecture</span>
+          <span className="text-[#f09acb]">Illustrative Runtime Policy Mirror</span>
         </div>
       </div>
 
@@ -502,7 +502,7 @@ export function MikoContextLab() {
             </p>
             <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[10px] text-primary-subtle">
               <div>
-                <span className="text-primary-subtle">Matched Rule: </span>
+                <span className="text-primary-subtle">Decision Rationale: </span>
                 <code className="text-accent text-[10px]">{scenario.winningRule}</code>
               </div>
             </div>
@@ -528,10 +528,10 @@ export function MikoContextLab() {
             <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[10px] text-primary-subtle">
               <div className="flex flex-wrap items-center justify-between gap-1">
                 <span>Gate: <strong className="text-primary">{scenario.baseCooldownMinutes}m baseline</strong> &rarr; <strong className="text-accent">{effectiveCooldownMinutes}m ({intensity} {intensityConfig[intensity].label})</strong></span>
-                <span>Repeat avoidance: 120m</span>
+                <span>Repeat avoidance: 120–180m</span>
               </div>
               <p className="mt-1 text-[9px] text-primary-subtle italic">
-                Source-informed simulation. Relative cooldown behavior mirrors MIKO&apos;s runtime policy; displayed scenario values are illustrative.
+                Source-informed simulation. Relative policy behavior mirrors MIKO&apos;s current runtime architecture; displayed contexts and values are illustrative rather than live telemetry.
               </p>
             </div>
           </div>

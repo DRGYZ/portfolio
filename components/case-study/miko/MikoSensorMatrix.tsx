@@ -71,6 +71,29 @@ export function MikoSensorMatrix() {
   const [activeTab, setActiveTab] = useState<string>('process');
   const selected = pipelines.find((p) => p.id === activeTab) ?? pipelines[0];
 
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let nextIndex = index;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      nextIndex = (index + 1) % pipelines.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      nextIndex = (index - 1 + pipelines.length) % pipelines.length;
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      nextIndex = 0;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      nextIndex = pipelines.length - 1;
+    } else {
+      return;
+    }
+    const nextId = pipelines[nextIndex].id;
+    setActiveTab(nextId);
+    const btn = document.getElementById(`sensor-tab-${nextId}`);
+    btn?.focus();
+  };
+
   return (
     <div className="border border-white/[0.08] bg-surface font-mono">
       {/* Top Header */}
@@ -92,7 +115,7 @@ export function MikoSensorMatrix() {
         aria-label="Local OS sensor pipelines"
         className="grid grid-cols-2 border-b border-white/[0.08] sm:grid-cols-4"
       >
-        {pipelines.map((pipe) => {
+        {pipelines.map((pipe, idx) => {
           const isSelected = activeTab === pipe.id;
           return (
             <button
@@ -101,9 +124,11 @@ export function MikoSensorMatrix() {
               id={`sensor-tab-${pipe.id}`}
               aria-selected={isSelected}
               aria-controls={`sensor-panel-${pipe.id}`}
+              tabIndex={isSelected ? 0 : -1}
               type="button"
               onClick={() => setActiveTab(pipe.id)}
-              className={`p-3 sm:p-4 text-left border-r last:border-r-0 border-white/[0.08] transition-colors ${
+              onKeyDown={(e) => handleKeyDown(e, idx)}
+              className={`p-3 sm:p-4 text-left border-r last:border-r-0 border-white/[0.08] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
                 isSelected
                   ? 'bg-[#f09acb]/10 border-b-2 border-b-[#f09acb] text-primary'
                   : 'bg-background/20 text-primary-muted hover:bg-background/40 hover:text-primary'

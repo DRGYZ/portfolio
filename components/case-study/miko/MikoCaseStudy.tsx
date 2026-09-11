@@ -29,9 +29,24 @@ export function MikoCaseStudy() {
               </span>
             </div>
 
-            <h1 className="font-display text-[clamp(2.5rem,8vw,7.2rem)] font-bold uppercase leading-[0.88] tracking-[-0.04em] text-primary">
-              MIKO
-            </h1>
+            <div className="flex items-start justify-between gap-4">
+              <h1 className="font-display text-[clamp(2.5rem,8vw,7.2rem)] font-bold uppercase leading-[0.88] tracking-[-0.04em] text-primary">
+                MIKO
+              </h1>
+              {/* Mobile early companion presence */}
+              <div className="flex flex-col items-center gap-1 border border-white/[0.08] bg-[#0c0d10] p-2 lg:hidden shrink-0">
+                <img
+                  src={getAssetPath('/case-studies/miko/frames/curious/00.png')}
+                  alt="MIKO idle companion sprite"
+                  className="h-14 w-auto object-contain [image-rendering:pixelated]"
+                  width={64}
+                  height={69}
+                />
+                <span className="font-mono text-[9px] uppercase tracking-wider text-[#f09acb]">
+                  idle
+                </span>
+              </div>
+            </div>
 
             <p className="font-editorial text-2xl italic tracking-[-0.02em] text-[#f09acb] sm:text-3xl lg:text-4xl">
               A desktop companion that responds to context, not just prompts.
@@ -275,10 +290,10 @@ export function MikoCaseStudy() {
               Inspectable Decisions
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              A companion shouldn&apos;t be an opaque black box. Operators can inspect representative event traces, winning heuristic rules, and cooldown counters directly through Persona Studio.
+              A companion shouldn&apos;t be an opaque black box. Operators can inspect context signals, runtime state, reaction history, and representative decision traces through Persona Studio.
             </p>
             <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs text-primary-subtle space-y-2">
-              <div>&bull; Repeat avoidance prevents repeating identical lines within 120 minutes.</div>
+              <div>&bull; Reaction-specific repeat suppression typically ranges from 120–180 minutes.</div>
               <div>&bull; Cooldown gate prevents reaction spam during rapid window switches.</div>
               <div>&bull; Strict boundary rules keep bubbles short and relevant.</div>
             </div>
@@ -398,13 +413,13 @@ export function MikoCaseStudy() {
         <div className="grid gap-6 sm:grid-cols-2">
           {/* Card 1: Desktop Menu */}
           <div className="space-y-3">
-            <div className="border border-white/[0.08] bg-surface p-2">
+            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
               <img
                 src={getAssetPath('/case-studies/miko/miko_menu_expanded.png')}
                 alt="MIKO desktop shell context menu"
                 loading="lazy"
                 decoding="async"
-                className="w-full object-contain"
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
@@ -415,13 +430,13 @@ export function MikoCaseStudy() {
 
           {/* Card 2: Persona Studio Presence */}
           <div className="space-y-3">
-            <div className="border border-white/[0.08] bg-surface p-2">
+            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_presence.png')}
                 alt="Persona Studio Presence & Behavior dashboard"
                 loading="lazy"
                 decoding="async"
-                className="w-full object-contain"
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
@@ -432,13 +447,13 @@ export function MikoCaseStudy() {
 
           {/* Card 3: Awareness Controls Screenshot */}
           <div className="space-y-3">
-            <div className="border border-white/[0.08] bg-surface p-2">
+            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_awareness.png')}
                 alt="Persona Studio Awareness & Privacy dashboard"
                 loading="lazy"
                 decoding="async"
-                className="w-full object-contain"
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
@@ -449,13 +464,13 @@ export function MikoCaseStudy() {
 
           {/* Card 4: Memory Inspector Screenshot */}
           <div className="space-y-3">
-            <div className="border border-white/[0.08] bg-surface p-2">
+            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_memory_facts.png')}
                 alt="Persona Studio Memory & Context inspection view"
                 loading="lazy"
                 decoding="async"
-                className="w-full object-contain"
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
@@ -479,7 +494,10 @@ export function MikoCaseStudy() {
               Prototype Boundaries
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              Operating at the operating system boundary introduces genuine architectural trade-offs. MIKO is authored as a transparent desktop prototype, prioritizing inspectability and local privacy over persistent deep background services:
+              Operating at the operating system boundary introduces genuine architectural trade-offs. MIKO is authored as a transparent desktop prototype, prioritizing inspectability and local privacy over persistent deep background services.
+            </p>
+            <p className="border-l-2 border-[#f09acb]/60 pl-3 font-sans text-xs leading-relaxed text-primary-subtle">
+              MIKO is an active experimental project. The current case study documents the working prototype as it exists today; architecture, interaction rules, and packaging may continue to evolve during development.
             </p>
           </div>
 
@@ -495,9 +513,15 @@ export function MikoCaseStudy() {
             </div>
 
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-accent">Grounded Next Steps</span>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-wider text-accent">Future Explorations</span>
+                <span className="text-[9px] uppercase tracking-wider text-primary-subtle">Exploratory</span>
+              </div>
+              <p className="text-[11px] leading-relaxed text-primary-subtle">
+                These are directions currently being explored, not committed product promises:
+              </p>
               <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Standalone single-binary packaging and installer distribution</li>
+                <li>&bull; Standalone single-binary packaging and distribution exploration</li>
                 <li>&bull; Multi-monitor boundary and high-DPI scaling validation</li>
                 <li>&bull; Streamlined browser-bridge setup and manifest installation</li>
                 <li>&bull; Sidecar module refactoring for long-term maintainability</li>
