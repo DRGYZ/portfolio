@@ -9,7 +9,7 @@ import { ScanOrderTrack } from './ScanOrderTrack';
 import { StatePipelineFlow } from './StatePipelineFlow';
 import { ResponsiveColumnPriority } from './ResponsiveColumnPriority';
 import { ReactiveMutationLoop } from './ReactiveMutationLoop';
-import { VisualSeamGraphic } from './VisualSeamGraphic';
+import { StatusTokenMatrix } from './StatusTokenMatrix';
 
 export function NyxboardCaseStudy() {
   const prefersReduced = useReducedMotion();
@@ -660,7 +660,7 @@ export function NyxboardCaseStudy() {
           </div>
 
           <div className="lg:col-span-7">
-            <VisualSeamGraphic />
+            <StatusTokenMatrix />
           </div>
         </div>
       </section>
