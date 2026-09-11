@@ -78,9 +78,9 @@ const secondaryMoods: SecondaryMood[] = [
 
 export function MikoMoodShowcase() {
   return (
-    <div className="space-y-6 font-mono">
+    <div className="space-y-10 font-mono">
       {/* Editorial Note */}
-      <div className="border border-white/[0.08] bg-background/50 px-4 py-3 text-[11px] uppercase tracking-wider text-primary-subtle">
+      <div className="max-w-3xl border-l border-[#f09acb]/70 pl-4 text-[11px] uppercase tracking-wider text-primary-subtle">
         <span>Design Architecture: </span>
         <span className="text-[#f09acb]">
           MIKO&apos;s visual moods can be driven by sensed desktop context, explicit user state, or internal companion state.
@@ -88,15 +88,15 @@ export function MikoMoodShowcase() {
       </div>
 
       {/* 4 Featured Context Moods */}
-      <div className="space-y-4">
+      <div className="border-y border-white/[0.08]">
         {featuredMoods.map((mood) => (
           <div
             key={mood.id}
-            className="border border-white/[0.08] bg-surface p-3.5 sm:p-5"
+            className="border-t border-white/[0.08] py-6 first:border-t-0 sm:py-8"
           >
-            <div className="grid gap-3.5 lg:grid-cols-12 lg:items-center">
+            <div className="grid gap-5 lg:grid-cols-12 lg:items-center">
               {/* Left Column: Mood Info */}
-              <div className="space-y-1.5 lg:col-span-5">
+              <div className="space-y-2 lg:col-span-5">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="h-1.5 w-1.5 bg-[#f09acb] flex-shrink-0" />
                   <h3 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
@@ -117,7 +117,7 @@ export function MikoMoodShowcase() {
 
               {/* Right Column: Authentic 6-Frame Sprite Strip */}
               <div className="overflow-x-auto pb-1 lg:col-span-7 lg:pb-0">
-                <div className="inline-block min-w-[320px] sm:min-w-[340px] border border-white/[0.06] bg-[#0c0d10] p-2">
+                <div className="inline-block min-w-[320px] sm:min-w-[340px] border-y border-white/[0.08] bg-[#0c0d10] px-2 py-3">
                   <img
                     src={getAssetPath(mood.assetFile)}
                     alt={`${mood.name} 6-frame sprite strip`}
@@ -139,7 +139,7 @@ export function MikoMoodShowcase() {
       </div>
 
       {/* 3 Secondary Reference States */}
-      <div className="border border-white/[0.08] bg-surface p-4 sm:p-6">
+      <div className="border-y border-white/[0.08] py-6 sm:py-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-accent" />
@@ -154,10 +154,7 @@ export function MikoMoodShowcase() {
 
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           {secondaryMoods.map((mood) => (
-            <div
-              key={mood.id}
-              className="border border-white/[0.06] bg-background/40 p-3 space-y-1.5"
-            >
+            <div key={mood.id} className="border-t border-white/[0.08] pt-4 space-y-2 first:border-t-0 first:pt-0">
               <div className="flex items-center justify-between gap-1">
                 <span className="font-sans text-xs font-semibold text-primary">{mood.name}</span>
                 <span className="text-[11px] text-[#ffadd8] italic">{mood.dialoguePreview}</span>
@@ -165,7 +162,7 @@ export function MikoMoodShowcase() {
               <p className="font-sans text-[11px] sm:text-xs text-primary-muted leading-relaxed">
                 {mood.triggerCondition}
               </p>
-              <div className="border border-white/[0.04] bg-[#0c0d10] p-1.5 overflow-x-auto">
+              <div className="border-y border-white/[0.06] bg-[#0c0d10] px-1.5 py-2 overflow-x-auto">
                 <img
                   src={getAssetPath(mood.assetFile)}
                   alt={`${mood.name} reference strip`}
@@ -182,7 +179,7 @@ export function MikoMoodShowcase() {
       </div>
 
       {/* Movement Atlas Card */}
-      <div className="border border-white/[0.08] bg-surface p-4 sm:p-6 lg:p-8">
+      <div className="border-y border-white/[0.08] py-6 sm:py-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-4">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-[#f09acb]" />
@@ -199,7 +196,7 @@ export function MikoMoodShowcase() {
         </p>
 
         {/* Compact Teaser / Metadata Bar */}
-        <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-white/[0.06] bg-[#0c0d10] px-4 py-2.5">
+        <div className="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-y border-white/[0.08] bg-[#0c0d10] px-4 py-3">
           <div className="flex items-center gap-2 text-xs">
             <span className="font-semibold text-primary">Locomotion Preview:</span>
             <span className="text-primary-muted">100 frames &bull; wandering, jumping, idle crouch, tantrums</span>
@@ -210,7 +207,7 @@ export function MikoMoodShowcase() {
         </div>
 
         {/* Progressive Disclosure (Desktop & Mobile) */}
-        <details className="mt-3 group border border-white/[0.08] bg-background/50 p-3 sm:p-4">
+        <details className="mt-3 group border-y border-white/[0.08] bg-background/50 p-3 sm:p-4">
           <summary className="cursor-pointer text-xs uppercase tracking-wider text-[#f09acb] font-semibold flex items-center justify-between focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f09acb]">
             <span className="flex items-center gap-2">
               <span>View Full 10&times;10 Locomotion Atlas</span>

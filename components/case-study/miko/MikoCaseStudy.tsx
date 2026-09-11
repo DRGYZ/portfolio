@@ -8,7 +8,7 @@ import { MikoMemoryInspector } from './MikoMemoryInspector';
 
 export function MikoCaseStudy() {
   return (
-    <article className="relative min-h-screen bg-background text-primary selection:bg-[#f09acb] selection:text-background">
+    <article className="relative min-h-screen overflow-hidden bg-background text-primary selection:bg-[#f09acb] selection:text-background">
       {/* Background Ambience */}
       <div
         aria-hidden="true"
@@ -16,10 +16,10 @@ export function MikoCaseStudy() {
       />
 
       {/* ACT 1: HERO */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 pb-16 pt-28 sm:pt-36 lg:px-16 lg:pb-24">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 pb-20 pt-32 sm:px-8 sm:pt-40 lg:px-12 lg:pb-28">
+        <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Title & Overview */}
-          <div className="space-y-6 lg:col-span-7">
+          <div className="space-y-7 lg:col-span-7">
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#f09acb]">
                 Experimental &bull; Windows &bull; Local-First &bull; 2026
@@ -30,7 +30,7 @@ export function MikoCaseStudy() {
             </div>
 
             <div className="flex items-start justify-between gap-4">
-              <h1 className="font-display text-[clamp(2.5rem,8vw,7.2rem)] font-bold uppercase leading-[0.88] tracking-[-0.04em] text-primary">
+              <h1 className="font-display text-[clamp(3.25rem,8vw,7.8rem)] font-bold uppercase leading-[0.82] tracking-[-0.055em] text-primary">
                 MIKO
               </h1>
               {/* Mobile early companion presence */}
@@ -48,11 +48,11 @@ export function MikoCaseStudy() {
               </div>
             </div>
 
-            <p className="font-editorial text-2xl italic tracking-[-0.02em] text-[#f09acb] sm:text-3xl lg:text-4xl">
+            <p className="max-w-xl font-editorial text-2xl italic leading-[1.05] tracking-[-0.02em] text-[#f09acb] sm:text-3xl lg:text-[2.65rem]">
               A desktop companion that responds to context, not just prompts.
             </p>
 
-            <p className="max-w-2xl font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
+            <p className="max-w-xl font-sans text-[15px] leading-relaxed text-primary-muted sm:text-lg">
               MIKO is an experimental local-first desktop companion for Windows. Unlike prompt-first assistants, MIKO explores ambient interaction through local context, living quietly in your peripheral field of view, observing active engineering tasks, audio playback, and media sessions through low-overhead local OS hooks to express calm, context-aware reactions.
             </p>
 
@@ -97,7 +97,7 @@ export function MikoCaseStudy() {
           </div>
 
           {/* Right Column: Hero Visual Card */}
-          <div className="relative border border-white/[0.08] bg-surface p-6 lg:col-span-5 sm:p-8">
+          <div className="relative border border-white/[0.08] bg-surface/80 p-6 lg:col-span-5 lg:-mt-8 sm:p-8">
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
               <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-primary-subtle">
                 <span className="h-1.5 w-1.5 bg-[#f09acb]" />
@@ -145,15 +145,15 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 2: DESIGNING FOR THE PERIPHERY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <SeamDivider className="mb-14" label="01 / premise" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
               01 / Core Premise
             </span>
-            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
               Designing for the Periphery
             </h2>
             <p className="font-editorial text-xl italic leading-snug text-primary-muted sm:text-2xl">
@@ -162,8 +162,8 @@ export function MikoCaseStudy() {
           </div>
 
           <div className="space-y-6 lg:col-span-7">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="border border-white/[0.08] bg-surface p-6">
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div className="border-t border-white/[0.12] pt-5">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 bg-[#f09acb]" />
                   <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
@@ -175,7 +175,7 @@ export function MikoCaseStudy() {
                 </p>
               </div>
 
-              <div className="border border-white/[0.08] bg-surface p-6">
+              <div className="border-t border-white/[0.12] pt-5">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 bg-[#ffadd8]" />
                   <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
@@ -189,8 +189,8 @@ export function MikoCaseStudy() {
             </div>
 
             {/* Pullquote Banner */}
-            <div className="border border-[#f09acb]/30 bg-[#f09acb]/[0.05] p-6 sm:p-8">
-              <p className="font-display text-lg font-semibold uppercase tracking-tight text-primary sm:text-xl">
+            <div className="border-l-2 border-[#f09acb] bg-[#f09acb]/[0.045] px-6 py-5 sm:px-8 sm:py-6">
+              <p className="max-w-2xl font-display text-xl font-semibold uppercase tracking-tight text-primary sm:text-2xl">
                 A companion should fit into your workflow, not fight for your attention.
               </p>
               <span className="mt-2 block font-mono text-[10px] uppercase tracking-widest text-[#f09acb]">
@@ -202,14 +202,13 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 3: MOOD SYSTEM */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
             02 / Mood System
           </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
             A Companion Has Moods
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
@@ -221,14 +220,14 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 4: LOCAL CONTEXT SENSORS */}
-      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section id="architecture" className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <SeamDivider className="mb-14" label="03 / system" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
             03 / Local Sensors
           </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
             Local Context, Real Reactions
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
@@ -240,14 +239,13 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 5: INTERACTIVE CONTEXT LAB */}
-      <section id="context-lab" className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section id="context-lab" className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
             04 / Interactive Context Lab
           </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
             Try Different Contexts
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
@@ -259,14 +257,13 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 6: PERSONA + MEMORY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
             05 / Persona &amp; Memory
           </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
             More Than a Response
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
@@ -278,21 +275,21 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 7: DIAGNOSTICS & EXPLAINABILITY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <SeamDivider className="mb-14" label="06 / proof" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
               06 / Diagnostics &amp; Explainability
             </span>
-            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
               Inspectable Decisions
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
               A companion shouldn&apos;t be an opaque black box. Operators can inspect context signals, runtime state, reaction history, and representative decision traces through Persona Studio.
             </p>
-            <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs sm:text-[13px] text-primary-subtle space-y-2">
+            <div className="border-l border-white/[0.16] pl-4 font-mono text-xs sm:text-[13px] text-primary-subtle space-y-2">
               <div>&bull; Reaction-specific repeat suppression typically ranges from 120–180 minutes.</div>
               <div>&bull; Cooldown gate prevents reaction spam during rapid window switches.</div>
               <div>&bull; Strict boundary rules keep bubbles short and relevant.</div>
@@ -300,7 +297,7 @@ export function MikoCaseStudy() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs sm:text-[13px]">
+            <div className="border-y border-white/[0.08] py-6 font-mono text-xs sm:text-[13px]">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[11px] uppercase tracking-wider text-primary-subtle">
                 <span>Representative Event Trace</span>
                 <span className="text-[#f09acb]">Simulated Log</span>
@@ -340,9 +337,9 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 8: PRIVACY / LOCAL-FIRST DESIGN */}
-      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="relative">
-          <SeamDivider className="mb-12" />
+          <SeamDivider className="mb-14" label="07 / local-first" />
           {/* Subtle living system moment: peek sprite sitting quietly at seam */}
           <div
             aria-hidden="true"
@@ -362,7 +359,7 @@ export function MikoCaseStudy() {
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
             07 / Architecture &amp; Privacy
           </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
             Designed for Your Machine
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
@@ -370,8 +367,8 @@ export function MikoCaseStudy() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-3 font-mono">
-          <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
+        <div className="grid gap-0 border-y border-white/[0.08] sm:grid-cols-3 font-mono">
+          <div className="space-y-3 px-0 py-6 sm:border-r sm:border-white/[0.08] sm:px-6 sm:py-8">
             <span className="text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
               01 / Local-First Core
             </span>
@@ -383,7 +380,7 @@ export function MikoCaseStudy() {
             </p>
           </div>
 
-          <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
+          <div className="space-y-3 border-t border-white/[0.08] px-0 py-6 sm:border-t-0 sm:border-r sm:border-white/[0.08] sm:px-6 sm:py-8">
             <span className="text-[11px] uppercase tracking-[0.18em] text-accent">
               02 / Transient In-Memory Hooks
             </span>
@@ -395,7 +392,7 @@ export function MikoCaseStudy() {
             </p>
           </div>
 
-          <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
+          <div className="space-y-3 border-t border-white/[0.08] px-0 py-6 sm:border-t-0 sm:px-6 sm:py-8">
             <span className="text-[11px] uppercase tracking-[0.18em] text-[#ffadd8]">
               03 / User-Configured Endpoints
             </span>
@@ -410,14 +407,13 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 9: PROTOTYPE DOCUMENTATION */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
             08 / Prototype Documentation
           </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
             Real Runtime Interfaces
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
@@ -426,10 +422,10 @@ export function MikoCaseStudy() {
         </div>
 
         {/* Asymmetric Editorial Composition */}
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           {/* Left Column: Portrait Tray & Quick Controls */}
           <div className="space-y-3 lg:col-span-4">
-            <div className="border border-white/[0.08] bg-[#0c0d10] p-4 flex items-center justify-center">
+            <div className="border-y border-white/[0.08] bg-[#0c0d10] p-4 flex items-center justify-center">
               <img
                 src={getAssetPath('/case-studies/miko/miko_menu_expanded.png')}
                 alt="MIKO desktop shell context menu"
@@ -451,7 +447,7 @@ export function MikoCaseStudy() {
           <div className="space-y-6 lg:col-span-8">
             {/* Flagship: Persona Studio Presence */}
             <div className="space-y-3">
-              <div className="border border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
+              <div className="border-y border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
                 <img
                   src={getAssetPath('/case-studies/miko/persona_studio_presence.png')}
                   alt="Persona Studio Presence & Behavior dashboard"
@@ -473,7 +469,7 @@ export function MikoCaseStudy() {
             <div className="grid gap-6 sm:grid-cols-2">
               {/* Card 3: Awareness Controls */}
               <div className="space-y-3">
-                <div className="border border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
+                <div className="border-y border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
                   <img
                     src={getAssetPath('/case-studies/miko/persona_studio_awareness.png')}
                     alt="Persona Studio Awareness & Privacy dashboard"
@@ -493,7 +489,7 @@ export function MikoCaseStudy() {
 
               {/* Card 4: Memory Facts */}
               <div className="space-y-3">
-                <div className="border border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
+                <div className="border-y border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
                   <img
                     src={getAssetPath('/case-studies/miko/persona_studio_memory_facts.png')}
                     alt="Persona Studio Memory & Context inspection view"
@@ -516,15 +512,15 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 10: PROTOTYPE BOUNDARIES */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <SeamDivider className="mb-14" label="09 / boundaries" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
               09 / Prototype Boundaries
             </span>
-            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold uppercase leading-[0.92] tracking-[-0.04em] text-primary sm:text-5xl">
               Prototype Boundaries
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
@@ -536,7 +532,7 @@ export function MikoCaseStudy() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 font-mono text-xs sm:text-[13px]">
-            <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
+            <div className="border-t border-white/[0.12] pt-5 space-y-3">
               <span className="text-[11px] uppercase tracking-wider text-[#f09acb]">Architectural Boundaries</span>
               <ul className="space-y-2 text-primary-muted">
                 <li>&bull; Windows-specific Win32 and WPF desktop runtime (`powershell.exe` launcher)</li>
@@ -546,7 +542,7 @@ export function MikoCaseStudy() {
               </ul>
             </div>
 
-            <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
+            <div className="border-t border-white/[0.12] pt-5 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] uppercase tracking-wider text-accent">Future Explorations</span>
                 <span className="text-[10px] uppercase tracking-wider text-primary-subtle">Exploratory</span>
@@ -567,8 +563,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 11: CLOSING / FOOTER BANNER */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-20 lg:px-16 lg:py-28">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1320px] px-6 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <SeamDivider className="mb-14" />
 
         <div className="border border-white/[0.08] bg-surface p-8 sm:p-12">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">

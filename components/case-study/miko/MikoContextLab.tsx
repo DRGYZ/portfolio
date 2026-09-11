@@ -262,9 +262,9 @@ export function MikoContextLab() {
   const frameSrc = getAssetPath(`/case-studies/miko/frames/${scenario.moodFolder}/${paddedIndex}.png`);
 
   return (
-    <div className="relative border border-white/[0.08] bg-surface font-mono">
+    <div className="relative border-y border-white/[0.08] bg-surface/70 font-mono">
       {/* Top Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] bg-background/60 p-4 sm:px-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] bg-background/30 px-0 py-5 sm:px-6">
         <div className="flex items-center gap-2.5">
           <span className="h-2 w-2 bg-[#f09acb]" aria-hidden="true" />
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary">
@@ -281,7 +281,7 @@ export function MikoContextLab() {
       {/* Control Strip */}
       <div className="grid border-b border-white/[0.08] lg:grid-cols-12">
         {/* Context Selector Buttons */}
-        <div className="p-4 sm:p-6 lg:col-span-8 lg:border-r lg:border-white/[0.08]">
+        <div className="px-0 py-6 sm:px-6 lg:col-span-8 lg:border-r lg:border-white/[0.08]">
           <span className="block text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
             Select Simulated Context:
           </span>
@@ -317,7 +317,7 @@ export function MikoContextLab() {
         </div>
 
         {/* Global Policies: Intensity & Interruption */}
-        <div className="grid gap-4 p-4 sm:p-6 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
+        <div className="grid gap-4 px-0 py-6 sm:px-6 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
           {/* Behavior Intensity */}
           <div>
             <div className="flex items-center justify-between">
@@ -379,7 +379,7 @@ export function MikoContextLab() {
       {/* Main Simulation Viewport & Telemetry Grid */}
       <div className="grid lg:grid-cols-12">
         {/* Center Miko Virtual Stage */}
-        <div className="relative flex flex-col items-center justify-center border-b border-white/[0.08] bg-[#0c0d10] p-8 lg:col-span-6 lg:border-b-0 lg:border-r lg:p-12">
+        <div className="relative flex flex-col items-center justify-center border-b border-white/[0.08] bg-[#0c0d10] px-6 py-10 lg:col-span-6 lg:border-b-0 lg:border-r lg:px-8 lg:py-12">
           {/* Subtle Stage Grid */}
           <div
             className="pointer-events-none absolute inset-0 opacity-15"
@@ -458,7 +458,7 @@ export function MikoContextLab() {
         </div>
 
         {/* Right Telemetry & Reasoning Inspector */}
-        <div className="space-y-5 p-6 lg:col-span-6 lg:p-8">
+        <div className="space-y-5 px-0 py-7 sm:px-6 lg:col-span-6 lg:px-8 lg:py-9">
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <span className="text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
               Representative Event Trace
@@ -493,7 +493,7 @@ export function MikoContextLab() {
           </div>
 
           {/* Interpretation / Reasoning */}
-          <div className="border border-white/[0.08] bg-background/50 p-4">
+          <div className="border-l border-[#f09acb]/60 bg-background/30 pl-4 py-1">
             <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
               Local Evaluation Summary:
             </span>
@@ -512,7 +512,7 @@ export function MikoContextLab() {
           <div
             role="status"
             aria-live="polite"
-            className="border border-white/[0.08] bg-background/50 p-4"
+            className="border-l border-white/[0.16] bg-background/30 pl-4 py-1"
           >
             <div className="flex items-center justify-between">
               <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-primary-subtle">

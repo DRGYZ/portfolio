@@ -120,9 +120,9 @@ export function MikoMemoryInspector() {
   };
 
   return (
-    <div className="border border-white/[0.08] bg-surface font-mono">
+    <div className="border-y border-white/[0.08] bg-surface/40 font-mono">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] px-0 py-5 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 bg-[#f09acb]" aria-hidden="true" />
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
@@ -176,17 +176,17 @@ export function MikoMemoryInspector() {
           id="panel-facts"
           role="tabpanel"
           aria-labelledby="tab-facts"
-          className="p-6 sm:p-8 space-y-6"
+          className="px-0 py-7 sm:px-6 sm:py-9 space-y-7"
         >
           <p className="text-xs sm:text-[13px] font-sans text-primary-muted leading-relaxed max-w-2xl">
             MIKO accumulates gentle facts and habits over time. Operator preferences can be explicitly taught through the desktop menu or inferred by local recurring routine heuristics. All entries remain strictly local and operator-editable.
           </p>
 
-          <div className="space-y-3">
+          <div className="border-y border-white/[0.08]">
             {sanitisedFacts.map((item) => (
               <div
                 key={item.id}
-                className="border border-white/[0.06] bg-background/40 p-4 transition-colors hover:border-white/15"
+                className="border-t border-white/[0.08] py-4 first:border-t-0 transition-colors hover:bg-white/[0.02]"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
@@ -211,7 +211,7 @@ export function MikoMemoryInspector() {
           </div>
 
           {/* Confidence Ladder Strip */}
-          <div className="border border-white/[0.08] bg-background/30 p-4 space-y-3">
+          <div className="border-l border-[#f09acb]/60 bg-background/20 pl-4 py-1 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-2">
               <span className="text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[#f09acb] font-bold">
                 Memory Confidence Ladder
@@ -222,7 +222,7 @@ export function MikoMemoryInspector() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-1 text-[11px]">
               {confidenceLadder.map((tier) => (
-                <div key={tier.level} className="border border-white/[0.06] bg-surface p-2.5 space-y-1">
+                <div key={tier.level} className="border-t border-white/[0.12] pt-2.5 space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-[#f09acb] uppercase font-bold">{tier.level}</span>
                     <span className="text-accent font-semibold">{tier.weight}</span>
@@ -245,12 +245,12 @@ export function MikoMemoryInspector() {
           id="panel-persona"
           role="tabpanel"
           aria-labelledby="tab-persona"
-          className="p-6 sm:p-8 space-y-4"
+          className="px-0 py-7 sm:px-6 sm:py-9 space-y-4"
         >
           <p className="text-xs sm:text-[13px] font-sans text-primary-muted leading-relaxed">
             The Python sidecar references <code>persona.json</code> to enforce priority levels, maximum reactions per day, and repeat suppression intervals:
           </p>
-          <div className="border border-white/[0.08] bg-[#0c0d10] p-4 text-xs overflow-x-auto text-[#e3e2e2]">
+          <div className="border-y border-white/[0.08] bg-[#0c0d10] p-4 text-xs overflow-x-auto text-[#e3e2e2]">
             <pre className="font-mono text-[11px] sm:text-xs leading-relaxed">
               <code>{personaJsonSnippet}</code>
             </pre>

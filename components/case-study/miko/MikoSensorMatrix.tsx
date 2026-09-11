@@ -95,9 +95,9 @@ export function MikoSensorMatrix() {
   };
 
   return (
-    <div className="border border-white/[0.08] bg-surface font-mono">
+    <div className="border-y border-white/[0.08] bg-surface/40 font-mono">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] px-0 py-5 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 bg-[#f09acb]" />
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary">
@@ -150,7 +150,7 @@ export function MikoSensorMatrix() {
         role="tabpanel"
         id={`sensor-panel-${selected.id}`}
         aria-labelledby={`sensor-tab-${selected.id}`}
-        className="p-6 sm:p-8 space-y-6"
+        className="px-0 py-7 sm:px-6 sm:py-9 space-y-7"
       >
         <div className="grid gap-6 lg:grid-cols-12">
           {/* Left Column: API & Sampling */}
@@ -199,7 +199,7 @@ export function MikoSensorMatrix() {
               </ul>
             </div>
 
-            <div className="border border-white/[0.08] bg-background/50 p-4">
+            <div className="border-l border-[#f09acb]/60 bg-background/30 pl-4 py-1">
               <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
                 Privacy &amp; Security Boundary
               </span>
