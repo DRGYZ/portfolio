@@ -38,14 +38,14 @@ const steps: PipelineStep[] = [
     id: 'service',
     label: 'Pure Service Query Calculation',
     code: 'orderService.getOrders(filterState)',
-    detail: 'Calculates filtered slice, total match count, pagination offsets, and facet aggregations.',
+    detail: 'Performs filtering, search, sorting, and pagination, returning the matching slice and total count.',
     badge: 'COMPUTE',
   },
   {
     id: 'render',
-    label: 'Synchronized Table & Facet Badges',
-    code: 'Table Rows · Tab Counts · KPIs',
-    detail: 'Table rows render with active filters; tab counts and overview indicators reflect filtered domain.',
+    label: 'Synchronized Table & Status Counts',
+    code: 'Table Rows · Status Counts · Pagination',
+    detail: 'Table rows render with active filters; status tab counts and pagination controls reflect the resulting dataset.',
     badge: 'REACTIVE UI',
   },
 ];

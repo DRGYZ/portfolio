@@ -55,7 +55,7 @@ export function ScanOrderTrack({ onSelectPhase }: ScanOrderTrackProps) {
     <div className="w-full max-w-xl font-mono text-[10px]">
       <div className="flex items-center justify-between text-primary-subtle uppercase tracking-[0.16em] mb-2">
         <span>Operator Scanning Order</span>
-        <span className="text-accent/90">Cognitive Eye Path</span>
+        <span className="text-accent/90">Operator Scan Hierarchy</span>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 border border-white/[0.08] bg-surface">

@@ -20,20 +20,20 @@ const targets: TargetItem[] = [
   },
   {
     id: 'tabs',
-    name: 'Faceted Status Tabs',
+    name: 'Status Tabs',
     effect: 'Unshipped counter decrements (-1), Shipped counter increments (+1).',
     layer: 'Filter Navigation',
   },
   {
     id: 'sidebar',
     name: 'Sidebar Queue Telemetry',
-    effect: 'Global pending order badge decrements across active storefront channel.',
+    effect: 'Orders queue badge decrements across active storefront channel (reflecting pending + unshipped queue).',
     layer: 'App Layout Navigation',
   },
   {
     id: 'overview',
-    name: 'Overview KPIs & Charts',
-    effect: 'Fulfillment rate recalculates and Recharts sales volume trajectory updates.',
+    name: 'Overview Fulfillment & Distribution',
+    effect: 'Fulfillment rate and status distribution update; 14-day revenue trajectory remains unchanged (revenue unaffected by shipping status; only cancellation excludes revenue).',
     layer: 'Executive Analytics View',
   },
 ];

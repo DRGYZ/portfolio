@@ -19,6 +19,7 @@ const desktopColumns: ColumnDef[] = [
   { name: 'Ship Before', priority: 'secondary', mobileBehavior: 'Collapsed at lg breakpoint' },
   { name: 'Total', priority: 'primary', mobileBehavior: 'Retained on mobile row right' },
   { name: 'Status', priority: 'primary', mobileBehavior: 'Retained as center status badge' },
+  { name: 'Actions', priority: 'secondary', mobileBehavior: 'Cell collapsed; row tap triggers drawer' },
 ];
 
 export function ResponsiveColumnPriority() {
@@ -44,7 +45,7 @@ export function ResponsiveColumnPriority() {
               viewMode === 'desktop' ? 'bg-accent text-background font-semibold' : 'text-primary-subtle hover:text-primary'
             }`}
           >
-            Desktop (8 Cols)
+            Desktop (8 Fields + Actions)
           </button>
           <button
             type="button"
@@ -53,7 +54,7 @@ export function ResponsiveColumnPriority() {
               viewMode === 'mobile' ? 'bg-accent text-background font-semibold' : 'text-primary-subtle hover:text-primary'
             }`}
           >
-            Mobile (3 Cols)
+            Mobile (3 Data Columns)
           </button>
         </div>
       </div>
@@ -66,7 +67,7 @@ export function ResponsiveColumnPriority() {
             initial={prefersReduced ? false : { opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-2"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-2"
           >
             {desktopColumns.map((col) => (
               <div
@@ -113,20 +114,20 @@ export function ResponsiveColumnPriority() {
                 <span className="text-[8px] uppercase tracking-wider text-accent font-mono">Tuck Pattern</span>
               </div>
               <p className="mt-1 text-[11px] font-sans text-primary leading-relaxed">
-                <strong>Order ID (#ORD-98421)</strong> acts as primary heading with customer name (Claire Dupont) and company (NovaFlow Labs) stacked underneath within the single tap boundary.
+                <strong>Order ID</strong> acts as primary heading with <strong>Customer</strong> and <strong>Company</strong> stacked underneath within the single tap boundary.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div className="p-3 border border-white/10 bg-background/50 rounded-sm">
                 <span className="text-[10px] uppercase text-primary-subtle font-mono">Cell 02 / Total</span>
-                <p className="mt-1 font-semibold text-primary text-xs">$2,418.00</p>
+                <p className="mt-1 font-semibold text-primary text-xs">€ Total</p>
                 <span className="text-[9px] font-sans text-primary-subtle">Aligned right for rapid sum scanning</span>
               </div>
 
               <div className="p-3 border border-white/10 bg-background/50 rounded-sm">
                 <span className="text-[10px] uppercase text-primary-subtle font-mono">Cell 03 / Status</span>
-                <p className="mt-1 font-semibold text-accent text-xs">Shipped · Badge</p>
+                <p className="mt-1 font-semibold text-accent text-xs">Status Badge</p>
                 <span className="text-[9px] font-sans text-primary-subtle">Color-coded high-contrast pill</span>
               </div>
             </div>
