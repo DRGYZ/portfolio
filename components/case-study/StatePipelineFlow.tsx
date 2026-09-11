@@ -90,7 +90,7 @@ export function StatePipelineFlow() {
                 onMouseLeave={() => setActiveStep(null)}
                 onFocus={() => setActiveStep(step.id)}
                 onBlur={() => setActiveStep(null)}
-                className={`group w-full text-left p-3.5 transition-[background-color,border-color] duration-200 border rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                className={`group w-full text-left p-3.5 transition-[background-color,border-color] duration-200 border focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   isSelected
                     ? 'border-accent/50 bg-accent/[0.06]'
                     : 'border-white/[0.06] bg-background/40 hover:border-white/20 hover:bg-background/70'
@@ -99,7 +99,7 @@ export function StatePipelineFlow() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5">
                     <span
-                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                      className={`h-1.5 w-1.5 transition-colors ${
                         isSelected ? 'bg-accent' : 'bg-white/40 group-hover:bg-accent'
                       }`}
                     />

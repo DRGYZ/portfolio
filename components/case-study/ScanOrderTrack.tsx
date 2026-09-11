@@ -68,7 +68,7 @@ export function ScanOrderTrack({ onSelectPhase }: ScanOrderTrackProps) {
               type="button"
               onClick={() => handleSelect(phase.id)}
               onMouseEnter={() => handleSelect(phase.id)}
-              className={`group text-left p-2.5 transition-all rounded-sm focus:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
+              className={`group text-left p-2.5 transition-all focus:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
                 isActive
                   ? 'bg-accent/[0.12] border border-accent/40 text-primary'
                   : 'bg-transparent border border-transparent text-primary-muted hover:text-primary hover:bg-white/[0.02]'
@@ -98,7 +98,7 @@ export function ScanOrderTrack({ onSelectPhase }: ScanOrderTrackProps) {
         transition={{ duration: 0.2 }}
         className="mt-2 text-[11px] font-sans text-primary-subtle flex items-center gap-2"
       >
-        <span className="h-1 w-1 bg-accent rounded-full" />
+        <span className="h-1.5 w-1.5 bg-accent" />
         <span>{phases.find((p) => p.id === activeId)?.detail}</span>
       </motion.div>
     </div>

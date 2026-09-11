@@ -34,7 +34,7 @@ export function NyxboardCaseStudy() {
                 initial={prefersReduced ? false : { y: '104%', opacity: 0.2 }}
                 animate={{ y: '0%', opacity: 1 }}
                 transition={{ duration: 0.72, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-[clamp(2.8rem,7.5vw,7.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.05em] text-primary origin-left"
+                className="font-display text-[clamp(2.25rem,7.5vw,7.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.05em] text-primary origin-left"
               >
                 Nyxboard
               </motion.h1>
@@ -135,11 +135,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 2: THE INTERFACE PROBLEM */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-20 lg:px-16 lg:py-28">
-        <SeamDivider label="01 // Problem" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">01 // Problem</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">01 / Problem</span>
             <h2 className="mt-3 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-3xl">
               The Interface Challenge
             </h2>
@@ -180,11 +180,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 3: SCAN — THE OVERVIEW */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="02 // Scan" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">02 // Scan</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">02 / Scan</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               The Operations Overview
             </h2>
@@ -198,7 +198,7 @@ export function NyxboardCaseStudy() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden border border-white/[0.08] bg-[#0d0f14] p-2 sm:p-4 lg:p-6 shadow-2xl"
+          className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 lg:p-6 shadow-2xl"
         >
           <img
             src={getAssetPath('/case-studies/nyxboard/overview-desktop.png')}
@@ -210,6 +210,9 @@ export function NyxboardCaseStudy() {
             className="w-full border border-white/[0.05] object-contain shadow-2xl"
           />
         </motion.div>
+        <span className="mt-3 block text-right font-mono text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
+          Operations Overview // Desktop View
+        </span>
 
         {/* Overview Implementation Callouts with Staggered Expansion */}
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -259,11 +262,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 4: FILTER — THE ORDERS WORKSPACE */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="03 // Filter" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">03 // Filter</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">03 / Filter</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               The Orders Workspace
             </h2>
@@ -299,7 +302,7 @@ export function NyxboardCaseStudy() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="relative overflow-hidden border border-white/[0.08] bg-[#0d0f14] p-2 sm:p-4 shadow-2xl"
+              className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 shadow-2xl"
             >
               <img
                 src={getAssetPath('/case-studies/nyxboard/orders-desktop.png')}
@@ -320,10 +323,10 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 5: INSPECT / ACT — DETAIL WITHOUT LOSING CONTEXT */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="04 // Inspect & Act" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="mb-10 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">04 // Inspect &amp; Act</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">04 / Inspect &amp; Act</span>
           <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
             Detail in Place
           </h2>
@@ -340,7 +343,7 @@ export function NyxboardCaseStudy() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden border border-white/[0.08] bg-[#0d0f14] p-2 sm:p-4 lg:p-6 shadow-2xl"
+          className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 lg:p-6 shadow-2xl"
         >
           <img
             src={getAssetPath('/case-studies/nyxboard/order-drawer.png')}
@@ -352,6 +355,9 @@ export function NyxboardCaseStudy() {
             className="w-full border border-white/[0.05] object-contain shadow-2xl"
           />
         </motion.div>
+        <span className="mt-3 block text-right font-mono text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
+          Order Inspection // Slide-Over Drawer
+        </span>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-3">
           {[
@@ -395,11 +401,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 6: RESPONSIVE INFORMATION PRIORITIZATION */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="05 // Responsive" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">05 // Responsive</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">05 / Responsive</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               Responsive Prioritization
             </h2>
@@ -433,7 +439,7 @@ export function NyxboardCaseStudy() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-[360px] overflow-hidden border border-white/[0.1] bg-[#0d0f14] p-3 shadow-2xl transition-transform hover:scale-[1.01]"
+              className="max-w-[360px] overflow-hidden border border-white/[0.1] bg-surface p-3 shadow-2xl transition-transform hover:scale-[1.01]"
             >
               <img
                 src={getAssetPath('/case-studies/nyxboard/mobile-orders.png')}
@@ -454,10 +460,10 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 7: UNDER THE SURFACE — ARCHITECTURE */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="06 // Architecture" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="mb-10 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">06 // Architecture</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">06 / Architecture</span>
           <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
             Under the Surface
           </h2>
@@ -526,11 +532,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 8: ACCESSIBILITY AS INTERACTION LOGIC */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="07 // Accessibility" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">07 // Accessibility</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">07 / Accessibility</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               Accessibility as Interaction Logic
             </h2>
@@ -614,11 +620,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 9: VISUAL SYSTEM */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="08 // Visual System" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">08 // Visual System</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">08 / Visual System</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               Ink, Violet, and Seams
             </h2>
@@ -627,7 +633,7 @@ export function NyxboardCaseStudy() {
             </p>
 
             <dl className="mt-8 space-y-4 font-mono text-xs">
-              <div className="group flex items-center gap-4 p-2 border border-transparent rounded transition-colors hover:border-white/10 hover:bg-surface">
+              <div className="group flex items-center gap-4 p-2 border border-transparent transition-colors hover:border-white/10 hover:bg-surface">
                 <dt className="h-8 w-8 border border-white/20 bg-[#11121a] flex-shrink-0 transition-transform group-hover:scale-105" aria-label="Color swatch: Nyx Ink" />
                 <dd>
                   <span className="text-primary font-semibold">Nyx Ink (`#11121a`)</span>
@@ -635,7 +641,7 @@ export function NyxboardCaseStudy() {
                 </dd>
               </div>
 
-              <div className="group flex items-center gap-4 p-2 border border-transparent rounded transition-colors hover:border-white/10 hover:bg-surface">
+              <div className="group flex items-center gap-4 p-2 border border-transparent transition-colors hover:border-white/10 hover:bg-surface">
                 <dt className="h-8 w-8 border border-white/20 bg-[#6d5dfc] flex-shrink-0 transition-transform group-hover:scale-105" aria-label="Color swatch: Nyx Violet" />
                 <dd>
                   <span className="text-primary font-semibold">Nyx Violet (`#6d5dfc`)</span>
@@ -643,7 +649,7 @@ export function NyxboardCaseStudy() {
                 </dd>
               </div>
 
-              <div className="group flex items-center gap-4 p-2 border border-transparent rounded transition-colors hover:border-white/10 hover:bg-surface">
+              <div className="group flex items-center gap-4 p-2 border border-transparent transition-colors hover:border-white/10 hover:bg-surface">
                 <dt className="h-8 w-8 border border-white/20 bg-[#35b9c8] flex-shrink-0 transition-transform group-hover:scale-105" aria-label="Color swatch: Nyx Cyan" />
                 <dd>
                   <span className="text-primary font-semibold">Nyx Cyan (`#35b9c8`)</span>
@@ -661,11 +667,11 @@ export function NyxboardCaseStudy() {
 
       {/* ACT 10: REFLECTION & FUTURE WORK */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider label="09 // Reflection" className="mb-12" />
+        <SeamDivider className="mb-12" />
 
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">09 // Reflection</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">09 / Reflection</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-3xl">
               Implementation Takeaways
             </h2>

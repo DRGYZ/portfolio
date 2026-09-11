@@ -116,7 +116,7 @@ export function ReactiveMutationLoop() {
                   key={t.id}
                   onMouseEnter={() => setActiveTarget(t.id)}
                   onMouseLeave={() => setActiveTarget(null)}
-                  className={`p-2.5 border transition-all rounded-sm cursor-default ${
+                  className={`p-2.5 border transition-all cursor-default ${
                     isHovered
                       ? 'border-accent/60 bg-accent/[0.08] shadow-sm'
                       : 'border-white/[0.06] bg-background/40 hover:border-white/20'

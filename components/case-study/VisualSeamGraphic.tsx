@@ -76,7 +76,7 @@ export function VisualSeamGraphic() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.4, delay: 0.7 }}
-          className="absolute left-[47%] top-2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 bg-[#111218] border border-accent/40 text-accent rounded-sm shadow-sm"
+          className="absolute left-[47%] top-2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 bg-[#111218] border border-accent/40 text-accent shadow-sm"
         >
           &ang; 18.4&deg; Seam Slope
         </motion.div>

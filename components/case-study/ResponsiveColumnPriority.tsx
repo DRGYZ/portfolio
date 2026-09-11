@@ -37,11 +37,11 @@ export function ResponsiveColumnPriority() {
         </div>
 
         {/* View mode toggle */}
-        <div className="inline-flex p-0.5 border border-white/10 bg-background/50 rounded-sm">
+        <div className="inline-flex p-0.5 border border-white/10 bg-background/50">
           <button
             type="button"
             onClick={() => setViewMode('desktop')}
-            className={`px-3 py-1 font-mono text-[10px] uppercase tracking-wider transition-colors rounded-sm ${
+            className={`px-3 py-1 font-mono text-[10px] uppercase tracking-wider transition-colors ${
               viewMode === 'desktop' ? 'bg-accent text-background font-semibold' : 'text-primary-subtle hover:text-primary'
             }`}
           >
@@ -50,7 +50,7 @@ export function ResponsiveColumnPriority() {
           <button
             type="button"
             onClick={() => setViewMode('mobile')}
-            className={`px-3 py-1 font-mono text-[10px] uppercase tracking-wider transition-colors rounded-sm ${
+            className={`px-3 py-1 font-mono text-[10px] uppercase tracking-wider transition-colors ${
               viewMode === 'mobile' ? 'bg-accent text-background font-semibold' : 'text-primary-subtle hover:text-primary'
             }`}
           >
@@ -72,22 +72,22 @@ export function ResponsiveColumnPriority() {
             {desktopColumns.map((col) => (
               <div
                 key={col.name}
-                className={`p-2.5 border rounded-sm ${
+                className={`p-2.5 border ${
                   col.priority === 'primary'
                     ? 'border-accent/40 bg-accent/[0.06]'
                     : col.priority === 'consolidated'
-                      ? 'border-violet-400/30 bg-violet-950/20'
+                      ? 'border-accent/40 bg-accent/[0.08]'
                       : 'border-white/[0.06] bg-background/40'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-primary text-[11px]">{col.name}</span>
                   <span
-                    className={`text-[8px] uppercase tracking-wider px-1 py-0.2 border rounded-sm ${
+                    className={`text-[8px] uppercase tracking-wider px-1 py-0.2 border ${
                       col.priority === 'primary'
                         ? 'text-accent border-accent/40'
                         : col.priority === 'consolidated'
-                          ? 'text-violet-300 border-violet-400/30'
+                          ? 'text-accent border-accent/40'
                           : 'text-primary-subtle border-white/10'
                     }`}
                   >
@@ -108,7 +108,7 @@ export function ResponsiveColumnPriority() {
             transition={{ duration: 0.25 }}
             className="space-y-3"
           >
-            <div className="p-3 border border-accent/40 bg-accent/[0.08] rounded-sm">
+            <div className="p-3 border border-accent/40 bg-accent/[0.08]">
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-accent text-[11px]">Cell 01 / Consolidated Order &amp; Identity</span>
                 <span className="text-[8px] uppercase tracking-wider text-accent font-mono">Tuck Pattern</span>
@@ -119,13 +119,13 @@ export function ResponsiveColumnPriority() {
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-              <div className="p-3 border border-white/10 bg-background/50 rounded-sm">
+              <div className="p-3 border border-white/10 bg-background/50">
                 <span className="text-[10px] uppercase text-primary-subtle font-mono">Cell 02 / Total</span>
                 <p className="mt-1 font-semibold text-primary text-xs">€ Total</p>
                 <span className="text-[9px] font-sans text-primary-subtle">Aligned right for rapid sum scanning</span>
               </div>
 
-              <div className="p-3 border border-white/10 bg-background/50 rounded-sm">
+              <div className="p-3 border border-white/10 bg-background/50">
                 <span className="text-[10px] uppercase text-primary-subtle font-mono">Cell 03 / Status</span>
                 <p className="mt-1 font-semibold text-accent text-xs">Status Badge</p>
                 <span className="text-[9px] font-sans text-primary-subtle">Color-coded high-contrast pill</span>
