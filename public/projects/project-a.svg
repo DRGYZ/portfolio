@@ -5,7 +5,7 @@
   <rect width="1200" height="820" fill="#121316"/>
   <path d="M0 0h464L80 820H0ZM1200 0v820H816Z" fill="#b9c3ff" fill-opacity=".035"/>
   <text x="54" y="78" fill="#b9c3ff" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">PROJECT A / 01</text>
-  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">INTERACTIVE PRODUCT / 2025</text>
+  <text x="1088" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">INTERACTIVE PRODUCT / 2025</text>
   <text x="-66" y="756" fill="#b9c3ff" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="790" font-weight="900" letter-spacing="-58">A</text>
   <text x="380" y="538" fill="#eeeeee" fill-opacity=".94" font-family="Georgia,serif" font-size="176" font-style="italic" letter-spacing="-10">Project</text>
   <g clip-path="url(#a-slice)" transform="translate(34 -13)">

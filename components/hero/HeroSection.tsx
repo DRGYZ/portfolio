@@ -63,7 +63,7 @@ export function HeroSection() {
   const prefersReduced = useReducedMotion();
   const pointer = usePointerPosition(containerRef, prefersReduced);
 
-  const { scrollYProgress } = useScroll({
+  const { scrollY, scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   });
@@ -83,6 +83,7 @@ export function HeroSection() {
   const complexScale = useTransform(scrollYProgress, [0, 0.24, 0.72, 1], [1, 1, 1.025, 1.055]);
   const simpleX = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [0, 0, 18, 52]);
   const simpleY = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0, 20]);
+  const actionsOpacity = useTransform(scrollY, [0, 180, 320], [1, 0.18, 0]);
   const cueOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
 
   return (
@@ -164,7 +165,7 @@ export function HeroSection() {
               <motion.span custom={2} variants={headlineLineVariants} className="block origin-left">
                 <motion.span
                   style={{ x: prefersReduced ? 0 : lineThreeX, y: prefersReduced ? 0 : lineThreeY }}
-                  className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.8em]"
+                  className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.76em] 2xl:text-[0.8em]"
                 >
                   that make{' '}
                   <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent lg:hidden">
@@ -200,45 +201,52 @@ export function HeroSection() {
           </motion.h1>
 
           <motion.div
-            variants={itemVariants}
-            className="mt-10 flex flex-col items-start gap-7 sm:mt-12 sm:flex-row sm:items-center sm:gap-9"
+            inherit={false}
+            style={{ opacity: prefersReduced ? 1 : actionsOpacity }}
           >
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-background transition-colors hover:bg-accent focus-visible:bg-accent"
+            <motion.div
+              initial={prefersReduced ? 'visible' : 'hidden'}
+              animate="visible"
+              variants={itemVariants}
+              className="mt-10 flex flex-col items-start gap-7 sm:mt-12 sm:flex-row sm:items-center sm:gap-9"
             >
-              <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">View Work</span>
-              <span aria-hidden="true" className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:translate-y-1">
-                ↓
-              </span>
-            </a>
+              <a
+                href="#work"
+                className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-background transition-colors hover:bg-accent focus-visible:bg-accent"
+              >
+                <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">View Work</span>
+                <span aria-hidden="true" className="transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:translate-y-1">
+                  ↓
+                </span>
+              </a>
 
-            <div className="flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted sm:gap-7">
-              <a
-                href="https://github.com/DRGYZ"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
-              >
-                GitHub ↗
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
-              >
-                LinkedIn ↗
-              </a>
-              <a
-                href={getAssetPath('/cv.pdf')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
-              >
-                CV ↗
-              </a>
-            </div>
+              <div className="flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted sm:gap-7">
+                <a
+                  href="https://github.com/DRGYZ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
+                >
+                  GitHub ↗
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
+                >
+                  LinkedIn ↗
+                </a>
+                <a
+                  href={getAssetPath('/cv.pdf')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
+                >
+                  CV ↗
+                </a>
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 

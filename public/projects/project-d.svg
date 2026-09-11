@@ -7,7 +7,7 @@
   <rect width="1200" height="820" fill="#111216"/>
   <path d="M0 710 1200 334v486H0Z" fill="#b9c3ff" fill-opacity=".08"/>
   <text x="54" y="78" fill="#b9c3ff" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">PROJECT D / 04</text>
-  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">EDITORIAL PLATFORM / 2023</text>
+  <text x="1088" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">EDITORIAL PLATFORM / 2023</text>
   <g clip-path="url(#d-upper)">
     <text x="22" y="730" fill="#eeeeee" fill-opacity=".9" font-family="Arial Black,Arial,sans-serif" font-size="790" font-weight="900" letter-spacing="-72">D</text>
     <text x="488" y="334" fill="#b9c3ff" font-family="Georgia,serif" font-size="166" font-style="italic" letter-spacing="-8">Project D</text>
