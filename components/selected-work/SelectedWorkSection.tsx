@@ -30,9 +30,9 @@ export function SelectedWorkSection() {
     entranceProgress,
     [0, 0.6, 1],
     [
-      'polygon(0 14%, 100% 4%, 100% 100%, 0 100%)',
-      'polygon(0 7%, 100% 1.5%, 100% 100%, 0 100%)',
-      'polygon(0 3%, 100% 0, 100% 100%, 0 100%)',
+      'polygon(0 14%, 100% 4%, 100% 95%, 69% 100%, 0 97%)',
+      'polygon(0 7%, 100% 1.5%, 100% 95%, 69% 100%, 0 97%)',
+      'polygon(0 3%, 100% 0, 100% 95%, 69% 100%, 0 97%)',
     ]
   );
   const surfaceOpacity = useTransform(entranceProgress, [0, 0.24, 1], [0.55, 0.82, 1]);
@@ -48,7 +48,7 @@ export function SelectedWorkSection() {
   );
 
   const activeIndex = projects.findIndex((project) => project.id === activeProject.id);
-  const previewOffsets = [-64, -20, 24, 68];
+  const previewOffsets = [-92, -30, 32, 94];
 
   const activateProject = (project: Project) => {
     const nextIndex = projects.findIndex((item) => item.id === project.id);
@@ -72,7 +72,7 @@ export function SelectedWorkSection() {
         aria-hidden="true"
         style={{
           clipPath: prefersReduced
-            ? 'polygon(0 3%, 100% 0, 100% 100%, 0 100%)'
+            ? 'polygon(0 3%, 100% 0, 100% 95%, 69% 100%, 0 97%)'
             : surfaceClip,
           opacity: prefersReduced ? 1 : surfaceOpacity,
         }}
@@ -118,9 +118,9 @@ export function SelectedWorkSection() {
           />
         </motion.div>
 
-        <div ref={stageRef} className="relative lg:min-h-[700px]">
+        <div ref={stageRef} className="relative lg:min-h-[740px]">
           <div
-            className="relative z-20 lg:w-[74%]"
+            className="relative lg:w-[74%]"
             onPointerLeave={(event) => {
               if (!event.currentTarget.contains(document.activeElement)) {
                 setIsEngaged(false);
@@ -200,6 +200,25 @@ export function SelectedWorkSection() {
           </p>
         </div>
       </div>
+
+      <motion.svg
+        aria-hidden="true"
+        viewBox="0 0 100 8"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[5%] w-full text-accent"
+      >
+        <motion.path
+          d="M0 5.5 L55 7.2 M68.5 7.8 L100 4"
+          initial={prefersReduced ? false : { pathLength: 0, opacity: 0 }}
+          whileInView={{ pathLength: 1, opacity: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: prefersReduced ? 0.01 : 0.9, ease: [0.16, 1, 0.3, 1] }}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.18"
+          vectorEffect="non-scaling-stroke"
+        />
+      </motion.svg>
     </section>
   );
 }

@@ -21,6 +21,8 @@ export function AboutSection() {
     ['inset(0 0 32% 0)', 'inset(0 0 0% 0)']
   );
   const listRuleScale = useTransform(scrollYProgress, [0.35, 1], [0, 1]);
+  const seamRotate = useTransform(scrollYProgress, [0, 1], [-3.4, 0]);
+  const seamX = useTransform(scrollYProgress, [0, 1], [-22, 0]);
 
   return (
     <section
@@ -29,6 +31,21 @@ export function AboutSection() {
       aria-labelledby="about-title"
       className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-6 py-24 lg:grid-cols-12 lg:px-16 lg:py-32"
     >
+      <div aria-hidden="true" className="pointer-events-none absolute left-6 right-6 top-8 flex items-center gap-[7%] lg:left-16 lg:right-16 lg:top-10">
+        <motion.span
+          style={{
+            x: prefersReduced ? 0 : seamX,
+            rotate: prefersReduced ? 0 : seamRotate,
+            scaleX: prefersReduced ? 1 : listRuleScale,
+          }}
+          className="h-px w-[34%] origin-left bg-accent/30"
+        />
+        <motion.span
+          style={{ scaleX: prefersReduced ? 1 : listRuleScale }}
+          className="h-px flex-1 origin-left bg-white/[0.1]"
+        />
+      </div>
+
       <motion.div
         style={{
           x: prefersReduced ? 0 : titleX,

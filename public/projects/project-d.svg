@@ -1,13 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
   <defs>
-    <clipPath id="top"><rect width="960" height="342"/></clipPath>
-    <clipPath id="bottom"><rect y="378" width="960" height="342"/></clipPath>
+    <clipPath id="d-upper"><path d="M0 0h1200v334L0 710Z"/></clipPath>
+    <clipPath id="d-lower"><path d="M0 710 1200 334v486H0Z"/></clipPath>
+    <clipPath id="d-slice"><path d="M0 470 1200 94v142L0 612Z"/></clipPath>
   </defs>
-  <rect width="960" height="720" fill="#121315"/>
-  <text x="92" y="650" clip-path="url(#top)" fill="#eeeeee" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="720" font-weight="900" letter-spacing="-56">D</text>
-  <text x="132" y="650" clip-path="url(#bottom)" fill="#b9c3ff" fill-opacity=".68" font-family="Arial Black,Arial,sans-serif" font-size="720" font-weight="900" letter-spacing="-56">D</text>
-  <rect y="342" width="960" height="36" fill="#b9c3ff" fill-opacity=".13"/>
-  <path d="M66 104h334M560 104h334M66 616h334M560 616h334" stroke="#b9c3ff" stroke-opacity=".58" stroke-width="5"/>
-  <path d="M480 50v620" stroke="#eeeeee" stroke-opacity=".18" stroke-width="2"/>
-  <text x="778" y="666" fill="#eeeeee" fill-opacity=".56" font-family="Arial,sans-serif" font-size="26" letter-spacing="9">04</text>
+  <rect width="1200" height="820" fill="#111216"/>
+  <path d="M0 710 1200 334v486H0Z" fill="#b9c3ff" fill-opacity=".08"/>
+  <text x="54" y="78" fill="#b9c3ff" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">PROJECT D / 04</text>
+  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">EDITORIAL PLATFORM / 2023</text>
+  <g clip-path="url(#d-upper)">
+    <text x="22" y="730" fill="#eeeeee" fill-opacity=".9" font-family="Arial Black,Arial,sans-serif" font-size="790" font-weight="900" letter-spacing="-72">D</text>
+    <text x="488" y="334" fill="#b9c3ff" font-family="Georgia,serif" font-size="166" font-style="italic" letter-spacing="-8">Project D</text>
+  </g>
+  <g clip-path="url(#d-lower)" transform="translate(38)">
+    <text x="22" y="730" fill="#b9c3ff" fill-opacity=".74" font-family="Arial Black,Arial,sans-serif" font-size="790" font-weight="900" letter-spacing="-72">D</text>
+    <text x="488" y="334" fill="#eeeeee" fill-opacity=".82" font-family="Georgia,serif" font-size="166" font-style="italic" letter-spacing="-8">Project D</text>
+  </g>
+  <g clip-path="url(#d-slice)" transform="translate(-24 10)"><text x="22" y="730" fill="#eeeeee" fill-opacity=".38" font-family="Arial Black,Arial,sans-serif" font-size="790" font-weight="900" letter-spacing="-72">D</text></g>
+  <path d="M0 710 404 583M566 532l634-198" stroke="#b9c3ff" stroke-opacity=".7" stroke-width="3"/>
+  <path d="M54 154h366M590 154h556M54 756h232M1002 756h144" stroke="#eeeeee" stroke-opacity=".25" stroke-width="2"/>
+  <path d="M862 112v596" stroke="#eeeeee" stroke-opacity=".13" stroke-width="2"/>
+  <text x="1146" y="760" text-anchor="end" fill="#eeeeee" fill-opacity=".5" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">SPLIT / 04</text>
 </svg>

@@ -59,15 +59,21 @@ export function ContactSection() {
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       >
         <div className="absolute -left-[14vw] top-[53%] w-[132vw] -rotate-[14deg]">
-          <motion.span
-            style={{ scaleX: prefersReduced ? 1 : threadScale }}
-            className="block h-px w-full origin-left bg-accent/20"
-          />
+          <span className="relative block h-px w-full">
+            <motion.span
+              style={{ scaleX: prefersReduced ? 1 : threadScale }}
+              className="absolute left-0 top-0 h-px w-[42%] origin-left bg-accent/20"
+            />
+            <motion.span
+              style={{ scaleX: prefersReduced ? 1 : threadScale }}
+              className="absolute right-0 top-0 h-px w-[49%] origin-left bg-accent/20"
+            />
+          </span>
           {!prefersReduced ? (
             <motion.span
-              animate={{ x: ['-12vw', '132vw'] }}
+              animate={{ x: ['50vw', '132vw'] }}
               transition={{ duration: 8.5, delay: 1.1, repeat: Infinity, ease: 'linear' }}
-              className="absolute left-0 top-0 h-px w-28 bg-accent/70"
+              className="absolute left-0 top-0 h-px w-24 bg-accent/70"
             />
           ) : null}
         </div>

@@ -1,10 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
-  <rect width="960" height="720" fill="#111214"/>
-  <rect x="0" y="82" width="960" height="128" fill="#b9c3ff" fill-opacity=".12"/>
-  <rect x="0" y="286" width="620" height="116" fill="#eeeeee" fill-opacity=".06"/>
-  <rect x="214" y="492" width="746" height="134" fill="#b9c3ff" fill-opacity=".08"/>
-  <text x="316" y="654" fill="#eeeeee" fill-opacity=".92" font-family="Arial Black,Arial,sans-serif" font-size="720" font-weight="900" letter-spacing="-54">B</text>
-  <path d="M70 146h406M560 146h330M70 344h520M250 558h640" stroke="#b9c3ff" stroke-opacity=".58" stroke-width="4"/>
-  <path d="M214 50v620" stroke="#eeeeee" stroke-opacity=".22" stroke-width="2"/>
-  <text x="72" y="666" fill="#eeeeee" fill-opacity=".55" font-family="Arial,sans-serif" font-size="26" letter-spacing="9">02 / OFFSET</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+  <defs>
+    <clipPath id="b-slice"><path d="M0 246h1200v150H0Z"/></clipPath>
+    <clipPath id="b-field"><path d="M326 0h874v820H0Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="820" fill="#101114"/>
+  <path d="M326 0h874v820H0Z" fill="#b9c3ff" fill-opacity=".055"/>
+  <text x="54" y="78" fill="#b9c3ff" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">PROJECT B / 02</text>
+  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">DESIGN SYSTEM / 2024</text>
+  <text x="-4" y="720" fill="#eeeeee" fill-opacity=".9" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-68">B</text>
+  <g clip-path="url(#b-field)"><text x="-4" y="720" fill="#b9c3ff" fill-opacity=".55" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-68">B</text></g>
+  <text x="424" y="210" fill="#eeeeee" fill-opacity=".9" font-family="Georgia,serif" font-size="142" font-style="italic" letter-spacing="-7">Project B</text>
+  <text x="402" y="514" fill="#eeeeee" fill-opacity=".12" font-family="Arial Black,Arial,sans-serif" font-size="226" font-weight="900" letter-spacing="-17">PROJECT</text>
+  <g clip-path="url(#b-slice)" transform="translate(-42 12)">
+    <text x="-4" y="720" fill="#b9c3ff" fill-opacity=".92" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-68">B</text>
+    <text x="424" y="210" fill="#b9c3ff" font-family="Georgia,serif" font-size="142" font-style="italic" letter-spacing="-7">Project B</text>
+  </g>
+  <path d="M54 246h404M606 246h540M54 396h260M470 396h676" stroke="#b9c3ff" stroke-opacity=".58" stroke-width="3"/>
+  <path d="M326 34 52 786M534 34 260 786M1146 650l-50 136" stroke="#eeeeee" stroke-opacity=".17" stroke-width="2"/>
+  <text x="1146" y="760" text-anchor="end" fill="#eeeeee" fill-opacity=".48" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">OFFSET / 02</text>
 </svg>

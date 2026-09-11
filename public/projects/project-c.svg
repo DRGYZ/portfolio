@@ -1,10 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
-  <rect width="960" height="720" fill="#15161a"/>
-  <circle cx="510" cy="356" r="298" fill="#b9c3ff" fill-opacity=".055"/>
-  <circle cx="510" cy="356" r="244" fill="none" stroke="#eeeeee" stroke-opacity=".2" stroke-width="2"/>
-  <circle cx="510" cy="356" r="176" fill="none" stroke="#b9c3ff" stroke-opacity=".28" stroke-width="38"/>
-  <text x="52" y="648" fill="#b9c3ff" fill-opacity=".9" font-family="Georgia,serif" font-size="700" font-style="italic" letter-spacing="-64">C</text>
-  <text x="668" y="268" fill="#eeeeee" fill-opacity=".72" font-family="Georgia,serif" font-size="176" font-style="italic">c</text>
-  <path d="M64 90h832M64 630h832M510 42v636" stroke="#eeeeee" stroke-opacity=".16" stroke-width="2"/>
-  <text x="744" y="664" fill="#eeeeee" fill-opacity=".5" font-family="Arial,sans-serif" font-size="25" letter-spacing="8">DEPTH 03</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+  <defs>
+    <clipPath id="c-slice"><path d="M0 570 1200 194v122L0 692Z"/></clipPath>
+    <clipPath id="c-window"><path d="M472 116h674v590H286Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="820" fill="#15161a"/>
+  <path d="M472 116h674v590H286Z" fill="#b9c3ff" fill-opacity=".055" stroke="#b9c3ff" stroke-opacity=".22" stroke-width="2"/>
+  <text x="54" y="78" fill="#b9c3ff" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">PROJECT C / 03</text>
+  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">WEB EXPERIENCE / 2024</text>
+  <text x="-118" y="748" fill="#b9c3ff" fill-opacity=".86" font-family="Georgia,serif" font-size="820" font-style="italic" letter-spacing="-80">C</text>
+  <g clip-path="url(#c-window)">
+    <text x="164" y="598" fill="#eeeeee" fill-opacity=".84" font-family="Arial Black,Arial,sans-serif" font-size="330" font-weight="900" letter-spacing="-34">PROJECT</text>
+    <text x="738" y="684" fill="#b9c3ff" fill-opacity=".62" font-family="Georgia,serif" font-size="360" font-style="italic">C</text>
+  </g>
+  <g clip-path="url(#c-slice)" transform="translate(28 -9)">
+    <text x="-118" y="748" fill="#eeeeee" fill-opacity=".72" font-family="Georgia,serif" font-size="820" font-style="italic" letter-spacing="-80">C</text>
+    <text x="164" y="598" fill="#b9c3ff" fill-opacity=".74" font-family="Arial Black,Arial,sans-serif" font-size="330" font-weight="900" letter-spacing="-34">PROJECT</text>
+  </g>
+  <path d="M54 158h240M420 158h334M908 158h238" stroke="#eeeeee" stroke-opacity=".22" stroke-width="2"/>
+  <path d="M0 692 392 569M560 516l640-201" stroke="#b9c3ff" stroke-opacity=".68" stroke-width="3"/>
+  <path d="M54 756h156M990 756h156" stroke="#eeeeee" stroke-opacity=".36" stroke-width="2"/>
+  <text x="1146" y="760" text-anchor="end" fill="#eeeeee" fill-opacity=".5" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">CROP / 03</text>
 </svg>

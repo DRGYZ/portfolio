@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, AnimatePresence, MotionValue, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import Image from 'next/image';
 import { getProjectUrl, Project } from '@/types/project';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { getAssetPath } from '@/lib/assetPath';
@@ -14,7 +13,40 @@ interface ProjectPreviewProps {
   direction?: number;
 }
 
-const sharedFrameClip = 'polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%)';
+const frameClips: Record<string, string> = {
+  '01': 'polygon(0 0, 92% 0, 100% 13%, 100% 100%, 8% 100%, 0 87%)',
+  '02': 'polygon(7% 0, 100% 0, 100% 87%, 93% 100%, 0 100%, 0 13%)',
+  '03': 'polygon(0 0, 100% 0, 100% 100%, 9% 100%, 0 84%)',
+  '04': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 0 100%, 0 14%)',
+};
+
+const compactFrameClips: Record<string, string> = {
+  '01': 'polygon(0 0, 90% 0, 100% 10%, 100% 100%, 7% 100%, 0 92%)',
+  '02': 'polygon(8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%, 0 9%)',
+  '03': 'polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)',
+  '04': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%, 0 12%)',
+};
+
+const sliceClips: Record<string, string> = {
+  '01': 'polygon(0 60%, 100% 21%, 100% 38%, 0 77%)',
+  '02': 'polygon(0 31%, 100% 31%, 100% 49%, 0 49%)',
+  '03': 'polygon(0 69%, 100% 30%, 100% 45%, 0 84%)',
+  '04': 'polygon(0 58%, 100% 20%, 100% 37%, 0 75%)',
+};
+
+const seamPaths: Record<string, string> = {
+  '01': 'M0 78 L38 66 M52 61 L100 46',
+  '02': 'M0 39 H37 M51 39 H100',
+  '03': 'M0 84 L34 73 M49 68 L100 52',
+  '04': 'M0 86 L36 75 M51 70 L100 54',
+};
+
+const compactObjectPositions: Record<string, string> = {
+  '01': '18% center',
+  '02': '55% center',
+  '03': '37% center',
+  '04': '58% center',
+};
 
 const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
   '01': { x: -10, y: 12 },
@@ -45,7 +77,17 @@ export function ProjectPreview({
     stiffness: 70,
     damping: 24,
   });
+  const sliceX = useSpring(
+    useTransform(sourceX, [-1, 1], project.id === '02' ? [8, -8] : [-7, 7]),
+    { stiffness: 82, damping: 26 }
+  );
+  const sliceY = useSpring(
+    useTransform(sourceY, [-1, 1], project.id === '03' ? [5, -5] : [-3, 3]),
+    { stiffness: 82, damping: 26 }
+  );
   const projectUrl = getProjectUrl(project);
+  const frameClip = (compact ? compactFrameClips : frameClips)[project.id] ?? frameClips['01'];
+  const objectPosition = compact ? compactObjectPositions[project.id] ?? 'center' : 'center';
 
   const getVariants = (projectId: Project['id']) => {
     if (prefersReduced) {
@@ -124,12 +166,12 @@ export function ProjectPreview({
             : { x: backing.x, y: backing.y }
         }
         transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-        style={{ clipPath: sharedFrameClip }}
+        style={{ clipPath: frameClip }}
       />
 
       <motion.div
         className="absolute inset-[1%] overflow-hidden bg-surface-low"
-        style={{ clipPath: sharedFrameClip }}
+        style={{ clipPath: frameClip }}
       >
         <AnimatePresence mode="sync" initial={false}>
           <motion.div
@@ -159,18 +201,61 @@ export function ProjectPreview({
               }}
               className="absolute inset-[-3%]"
             >
-              <Image
+              <img
                 src={getAssetPath(project.previewImage)}
-                alt={`${project.title} placeholder artwork`}
-                fill
-                priority={project.id === '01'}
-                unoptimized
-                sizes={compact ? 'calc(100vw - 3rem)' : '(min-width: 1024px) 55vw, 100vw'}
-                className="object-cover object-center"
+                alt={`${project.title} editorial artwork`}
+                width="1200"
+                height="820"
+                loading="eager"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                style={{ objectPosition }}
               />
             </motion.div>
 
-            <div className="absolute inset-0 bg-background/[0.06]" />
+            <motion.div
+              aria-hidden="true"
+              style={{
+                x: prefersReduced ? 0 : sliceX,
+                y: prefersReduced ? 0 : sliceY,
+                clipPath: sliceClips[project.id] ?? sliceClips['01'],
+              }}
+              className="absolute inset-[-3%] z-[2]"
+            >
+              <img
+                src={getAssetPath(project.previewImage)}
+                alt=""
+                width="1200"
+                height="820"
+                loading="eager"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                style={{ objectPosition }}
+              />
+              <div className="absolute inset-0 bg-accent/[0.06]" />
+            </motion.div>
+
+            <div className="absolute inset-0 z-[3] bg-background/[0.035]" />
+
+            <motion.svg
+              key={`poster-seam-${project.id}`}
+              aria-hidden="true"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              className="pointer-events-none absolute inset-0 z-[4] h-full w-full"
+            >
+              <motion.path
+                d={seamPaths[project.id] ?? seamPaths['01']}
+                initial={prefersReduced ? false : { pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.74 }}
+                transition={{ duration: prefersReduced ? 0.01 : 0.58, delay: prefersReduced ? 0 : 0.08, ease: [0.16, 1, 0.3, 1] }}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.28"
+                vectorEffect="non-scaling-stroke"
+                className="text-accent"
+              />
+            </motion.svg>
 
             {project.id === '04' ? (
               <motion.span
@@ -179,11 +264,11 @@ export function ProjectPreview({
                 animate={{ scaleX: 1, opacity: 0.42 }}
                 exit={{ scaleX: 0, opacity: 0 }}
                 transition={{ duration: prefersReduced ? 0.01 : 0.44, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-x-0 top-1/2 h-px origin-center bg-accent"
+                className="absolute inset-x-0 top-1/2 z-[5] h-px origin-center bg-accent"
               />
             ) : null}
 
-            <div className="absolute bottom-[7%] left-[8%] right-[7%] flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
+            <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
               <span>{project.id} / {project.title}</span>
               {projectUrl ? (
                 <a
@@ -201,22 +286,6 @@ export function ProjectPreview({
           </motion.div>
         </AnimatePresence>
 
-        {!prefersReduced ? (
-          <AnimatePresence initial={false}>
-            <motion.span
-              key={`project-sweep-${project.id}`}
-              aria-hidden="true"
-              initial={{ x: direction > 0 ? '-140%' : '800%', opacity: 0 }}
-              animate={{
-                x: direction > 0 ? '800%' : '-140%',
-                opacity: [0, 0.46, 0.28, 0],
-              }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.52, ease: [0.45, 0, 0.55, 1] }}
-              className="pointer-events-none absolute inset-y-[-22%] left-0 z-20 w-[24%] -skew-x-[14deg] border-r border-accent/70 bg-accent/20"
-            />
-          </AnimatePresence>
-        ) : null}
       </motion.div>
     </div>
   );
