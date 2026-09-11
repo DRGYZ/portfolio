@@ -17,38 +17,38 @@ const pipelines: SensorPipeline[] = [
     id: 'process',
     name: 'Window & Process Hooks',
     api: 'Win32 GetForegroundWindow / GetWindowThreadProcessId',
-    samplingRate: 'Polled every 2.0s',
-    privacyGuarantee: 'Only active window title and process name read in RAM. Keystrokes and clipboard never accessed.',
+    samplingRate: 'Polled on 2.0s foreground loop',
+    privacyGuarantee: 'Only active window title and process name are read in RAM to infer task context. Keystrokes, clipboard, and source-file contents are never captured.',
     extractedSignals: [
       'Active process basename (e.g. Code.exe, chrome.exe)',
-      'Cleaned window title (filtered against blacklist)',
-      'Win32 GetLastInputInfo operator idle ticks',
+      'Foreground window title metadata',
+      'Win32 GetLastInputInfo operator idle ticks (90s default threshold)',
     ],
     role: 'Determines primary operator task: coding IDE, terminal, gaming client, or idle desktop.',
   },
   {
     id: 'audio',
     name: 'Audio Session & Media API',
-    api: 'CoreAudio IAudioSessionControl2 + SystemMediaTransportControls',
-    samplingRate: 'Peak level sampled every 1.5s',
-    privacyGuarantee: 'Reads audio session peak volume scalar and media track metadata. Audio content is never captured or recorded.',
+    api: 'GlobalSystemMediaTransportControlsSessionManager + CoreAudio WASAPI',
+    samplingRate: 'Evaluated on foreground activity loop (2.0s interval)',
+    privacyGuarantee: 'Reads audio session peak volume scalar and media transport metadata. Raw audio is never recorded or streamed.',
     extractedSignals: [
-      'Per-process audio peak levels',
-      'SystemMediaTransportControls artist and track title',
-      'Media playback state: Playing, Paused, Stopped',
+      'Per-process audio session peak levels',
+      'Windows Media Session artist, track title, and playback status',
+      'Distinguishes background music from video and foreground audio',
     ],
-    role: 'Distinguishes background music from video streaming and active gameplay audio.',
+    role: 'Distinguishes background music from video streaming and active foreground audio sessions.',
   },
   {
     id: 'bridge',
     name: 'Browser Bridge & UI Automation',
-    api: 'Unpacked Manifest V3 Extension over 127.0.0.1 TCP Loopback',
-    samplingRate: 'Event-driven on tab switch',
-    privacyGuarantee: 'Evaluates domain category (docs, video, articles) via in-memory whitelist. Page DOM and cookies are strictly excluded.',
+    api: 'Unpacked Manifest V3 Extension over 127.0.0.1 Loopback (Port 50557)',
+    samplingRate: 'Event-driven on tab activation, relevant tab metadata changes and browser-window focus',
+    privacyGuarantee: 'Posts title, host, audible, muted, active, and media-likelihood metadata locally using a generated loopback token. DOM content and cookies are strictly excluded.',
     extractedSignals: [
-      'Tab classification tag (docs, media, general)',
-      'Audible background tab flag',
-      'UI Automation foreground control tree snapshot',
+      'Active tab host and page title',
+      'Audible tab and media playing indicators',
+      'Foreground UI Automation element properties (Name, ClassName, FrameworkId, ControlType)',
     ],
     role: 'Enriches browser context: recognizes when operator is browsing API documentation vs watching video.',
   },
@@ -56,12 +56,12 @@ const pipelines: SensorPipeline[] = [
     id: 'heuristics',
     name: 'Arbitration & Cooldown Engine',
     api: 'Python Sidecar Loopback (127.0.0.1:50558) / WPF Heuristic Core',
-    samplingRate: 'Evaluated on state change',
-    privacyGuarantee: 'Local-first core with no built-in remote telemetry. Optional model integrations follow the user-configured endpoint (disabled by default).',
+    samplingRate: 'Evaluated on state transition',
+    privacyGuarantee: 'Local-first core with no built-in remote telemetry. Optional model features are disabled by default and follow user-configured endpoints.',
     extractedSignals: [
-      'Weighted heuristic score matrix',
-      'Per-mode cooldown gates (15–30 min timer)',
-      'Anti-repeat dialogue queue (avoids identical lines within 120 min)',
+      'Heuristic arbitration across window, media, audio, and browser signals',
+      'Per-reaction cooldown gates (commonly 12–25 min by behaviour)',
+      'Configurable repeat-suppression window (commonly 120–180 min)',
     ],
     role: 'Resolves conflicting signals, suppresses spam, and decides companion mood and reaction bubble.',
   },
@@ -87,12 +87,20 @@ export function MikoSensorMatrix() {
       </div>
 
       {/* Tabs */}
-      <div className="grid grid-cols-2 border-b border-white/[0.08] sm:grid-cols-4">
+      <div
+        role="tablist"
+        aria-label="Local OS sensor pipelines"
+        className="grid grid-cols-2 border-b border-white/[0.08] sm:grid-cols-4"
+      >
         {pipelines.map((pipe) => {
           const isSelected = activeTab === pipe.id;
           return (
             <button
               key={pipe.id}
+              role="tab"
+              id={`sensor-tab-${pipe.id}`}
+              aria-selected={isSelected}
+              aria-controls={`sensor-panel-${pipe.id}`}
               type="button"
               onClick={() => setActiveTab(pipe.id)}
               className={`p-3 sm:p-4 text-left border-r last:border-r-0 border-white/[0.08] transition-colors ${
@@ -113,7 +121,12 @@ export function MikoSensorMatrix() {
       </div>
 
       {/* Active Pipeline Detail */}
-      <div className="p-6 sm:p-8 space-y-6">
+      <div
+        role="tabpanel"
+        id={`sensor-panel-${selected.id}`}
+        aria-labelledby={`sensor-tab-${selected.id}`}
+        className="p-6 sm:p-8 space-y-6"
+      >
         <div className="grid gap-6 lg:grid-cols-12">
           {/* Left Column: API & Sampling */}
           <div className="space-y-4 lg:col-span-6">

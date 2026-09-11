@@ -87,6 +87,16 @@ const personaJsonSnippet = `{
   }
 }`;
 
+const confidenceLadder = [
+  { level: 'explicit', weight: '0.90', desc: 'Directly taught by operator via menu/prompt' },
+  { level: 'preference', weight: '0.84', desc: 'Confirmed preference or saved setting' },
+  { level: 'project', weight: '0.78', desc: 'Active workspace or repository context' },
+  { level: 'inferred', weight: '0.66', desc: 'Observed activity pattern or acoustic habit' },
+  { level: 'default', weight: '0.62', desc: 'Fallback heuristic confidence' },
+  { level: 'session', weight: '0.58', desc: 'Ephemeral runtime session context' },
+  { level: 'temporary', weight: '0.45', desc: 'Transient scratch observation' },
+];
+
 export function MikoMemoryInspector() {
   const [viewMode, setViewMode] = useState<'facts' | 'persona'>('facts');
 
@@ -95,16 +105,24 @@ export function MikoMemoryInspector() {
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
         <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 bg-[#f09acb]" />
+          <span className="h-1.5 w-1.5 bg-[#f09acb]" aria-hidden="true" />
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
             Inspectable Local Memory &amp; Persona Model
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div
+          role="tablist"
+          aria-label="Memory Inspector Views"
+          className="flex items-center gap-2"
+        >
           <button
+            id="tab-facts"
             type="button"
+            role="tab"
+            aria-selected={viewMode === 'facts'}
+            aria-controls="panel-facts"
             onClick={() => setViewMode('facts')}
-            className={`px-3 py-1 text-[10px] uppercase tracking-wider border transition-colors ${
+            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center ${
               viewMode === 'facts'
                 ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
                 : 'border-white/[0.08] text-primary-muted hover:border-white/20'
@@ -113,9 +131,13 @@ export function MikoMemoryInspector() {
             Learned Facts (UI)
           </button>
           <button
+            id="tab-persona"
             type="button"
+            role="tab"
+            aria-selected={viewMode === 'persona'}
+            aria-controls="panel-persona"
             onClick={() => setViewMode('persona')}
-            className={`px-3 py-1 text-[10px] uppercase tracking-wider border transition-colors ${
+            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center ${
               viewMode === 'persona'
                 ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
                 : 'border-white/[0.08] text-primary-muted hover:border-white/20'
@@ -127,12 +149,17 @@ export function MikoMemoryInspector() {
       </div>
 
       {viewMode === 'facts' ? (
-        <div className="p-6 sm:p-8 space-y-4">
+        <div
+          id="panel-facts"
+          role="tabpanel"
+          aria-labelledby="tab-facts"
+          className="p-6 sm:p-8 space-y-6"
+        >
           <p className="text-xs font-sans text-primary-muted leading-relaxed max-w-2xl">
             MIKO accumulates gentle facts and habits over time. Operator preferences can be explicitly taught through the desktop menu or inferred by local recurring routine heuristics. All entries remain strictly local and operator-editable.
           </p>
 
-          <div className="space-y-3 pt-2">
+          <div className="space-y-3">
             {sanitisedFacts.map((item) => (
               <div
                 key={item.id}
@@ -160,13 +187,43 @@ export function MikoMemoryInspector() {
             ))}
           </div>
 
-          <div className="pt-2 flex items-center justify-between text-[9px] uppercase tracking-wider text-primary-subtle border-t border-white/[0.06]">
+          {/* Confidence Ladder Strip */}
+          <div className="border border-white/[0.08] bg-background/30 p-4 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-2">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[#f09acb] font-bold">
+                Memory Confidence Ladder
+              </span>
+              <span className="text-[9px] text-primary-subtle font-mono">
+                Source: <code>sidecar/miko_sidecar_lib/constants.py</code>
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-1 text-[10px]">
+              {confidenceLadder.map((tier) => (
+                <div key={tier.level} className="border border-white/[0.06] bg-surface p-2.5 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#f09acb] uppercase font-bold">{tier.level}</span>
+                    <span className="text-accent font-semibold">{tier.weight}</span>
+                  </div>
+                  <p className="text-[9px] font-sans text-primary-subtle leading-tight">
+                    {tier.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[9px] uppercase tracking-wider text-primary-subtle border-t border-white/[0.06]">
             <span>Storage: <code>miko-memory.json</code> (Local JSON Schema)</span>
             <span className="text-[#f09acb]">Sanitised Representative Data &bull; Configured Weights</span>
           </div>
         </div>
       ) : (
-        <div className="p-6 sm:p-8 space-y-4">
+        <div
+          id="panel-persona"
+          role="tabpanel"
+          aria-labelledby="tab-persona"
+          className="p-6 sm:p-8 space-y-4"
+        >
           <p className="text-xs font-sans text-primary-muted leading-relaxed">
             The Python sidecar references <code>persona.json</code> to enforce priority levels, maximum reactions per day, and repeat suppression intervals:
           </p>

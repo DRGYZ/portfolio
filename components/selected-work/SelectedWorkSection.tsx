@@ -48,11 +48,11 @@ export function SelectedWorkSection() {
   );
 
   const activeIndex = projects.findIndex((project) => project.id === activeProject.id);
-  const previewOffsets = projects.length === 6
-    ? [-140, -84, -28, 28, 84, 140]
-    : projects.length === 5
-      ? [-120, -60, 0, 60, 120]
-      : [-92, -30, 32, 94];
+  const count = projects.length;
+  const step = count > 5 ? 56 : 60;
+  const previewOffsets = Array.from({ length: count }, (_, i) =>
+    Math.round((i - (count - 1) / 2) * step)
+  );
 
   const activateProject = (project: Project) => {
     const nextIndex = projects.findIndex((item) => item.id === project.id);

@@ -35,7 +35,7 @@ interface ContextScenario {
   interpretation: string;
   winningRule: string;
   confidence: string;
-  baseCooldown: string;
+  baseCooldownMinutes: number;
 }
 
 const scenarios: Record<ContextKey, ContextScenario> = {
@@ -57,7 +57,7 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'Active code editor foregrounded. Low ambient audio. Heuristic assigns coding/review state.',
     winningRule: 'activityRules.coding.processNames ["Code", "devenv"]',
     confidence: 'High (Rule Priority 7)',
-    baseCooldown: '20 min gate (1200s)',
+    baseCooldownMinutes: 20,
   },
   gaming: {
     id: 'gaming',
@@ -77,7 +77,7 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'Foreground game process classified as active gameplay with active audio session. Non-intrusive spectator stance engaged.',
     winningRule: 'activityRules.gaming.processNames ["League of Legends", "steam"]',
     confidence: 'High (Rule Priority 6)',
-    baseCooldown: '20 min gate (1200s)',
+    baseCooldownMinutes: 20,
   },
   browsing: {
     id: 'browsing',
@@ -97,7 +97,7 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'Web browser active with technical documentation URL detected via local browser-bridge.',
     winningRule: 'browserBridge.tabClassification ["docs", "github", "mdn"]',
     confidence: 'Normal (Rule Priority 4)',
-    baseCooldown: '15 min gate (900s)',
+    baseCooldownMinutes: 15,
   },
   youtube: {
     id: 'youtube',
@@ -117,7 +117,7 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'Windows Media Session reports video playback with active audio output. Spectator mood active.',
     winningRule: 'windowsMediaSession.status "Playing" && browserBridge.isVideoPage',
     confidence: 'High (Rule Priority 6)',
-    baseCooldown: '20 min gate (1200s)',
+    baseCooldownMinutes: 20,
   },
   music: {
     id: 'music',
@@ -137,7 +137,7 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'Continuous audio session from background music service. Listening mood engaged with rhythmic sway.',
     winningRule: 'windowsAudioSession.peak > threshold && mediaSession.artist != null',
     confidence: 'High (Rule Priority 6)',
-    baseCooldown: '20 min gate (1200s)',
+    baseCooldownMinutes: 20,
   },
   idle: {
     id: 'idle',
@@ -157,7 +157,7 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'User inactivity timer exceeds idleThresholdSeconds. Companion transitions to sleep posture.',
     winningRule: 'idleTracker.secondsWithoutInput > idleThresholdSeconds (90s)',
     confidence: 'High (Rule Priority 5)',
-    baseCooldown: '25 min gate (1500s)',
+    baseCooldownMinutes: 25,
   },
   latenight: {
     id: 'latenight',
@@ -177,8 +177,14 @@ const scenarios: Record<ContextKey, ContextScenario> = {
     interpretation: 'System clock reports 02:40 AM alongside prolonged keyboard activity. Ambient fatigue posture active.',
     winningRule: 'heuristics.circadianHour < 05 && activityDuration > 120min',
     confidence: 'Moderate (Habit Warning)',
-    baseCooldown: '30 min gate',
+    baseCooldownMinutes: 30,
   },
+};
+
+const intensityConfig: Record<IntensityKey, { factor: number; label: string }> = {
+  chill: { factor: 1.5, label: '1.5×' },
+  balanced: { factor: 1.0, label: '1.0×' },
+  expressive: { factor: 0.75, label: '0.75×' },
 };
 
 export function MikoContextLab() {
@@ -189,6 +195,9 @@ export function MikoContextLab() {
   const [frameIndex, setFrameIndex] = useState<number>(0);
 
   const scenario = scenarios[activeContext];
+  const effectiveCooldownMinutes = Math.round(
+    scenario.baseCooldownMinutes * intensityConfig[intensity].factor
+  );
 
   // Frame animation loop (cycles through the 6 mood frames: 00 to 05)
   useEffect(() => {
@@ -219,7 +228,7 @@ export function MikoContextLab() {
         permitted: false,
         statusLabel: 'RESTRAINED',
         statusColor: 'text-amber-400',
-        explanation: 'Quiet timer active (30m): spontaneous bubbles queued until concentration window expires.',
+        explanation: 'Quiet timer active (30m): spontaneous dialogue bubbles are suppressed without queuing to protect concentration.',
       };
     }
     if (activeContext === 'gaming') {
@@ -288,9 +297,9 @@ export function MikoContextLab() {
                     setActiveContext(key);
                     setFrameIndex(0);
                   }}
-                  className={`flex items-center gap-2 border px-3 py-2 text-left text-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
+                  className={`min-h-[44px] flex items-center gap-2 border px-3.5 py-2 text-left text-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
                     isSelected
-                      ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary'
+                      ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-medium'
                       : 'border-white/[0.08] bg-background/40 text-primary-muted hover:border-white/20 hover:text-primary'
                   }`}
                   aria-pressed={isSelected}
@@ -300,7 +309,7 @@ export function MikoContextLab() {
                       isSelected ? 'bg-[#f09acb]' : 'bg-white/30'
                     }`}
                   />
-                  <span className="font-sans font-medium">{item.label}</span>
+                  <span className="font-sans">{item.label}</span>
                 </button>
               );
             })}
@@ -315,15 +324,18 @@ export function MikoContextLab() {
               <span className="text-[10px] uppercase tracking-[0.18em] text-primary-subtle">
                 Behavior Intensity
               </span>
-              <span className="text-[9px] uppercase text-[#f09acb]">{intensity}</span>
+              <span className="text-[9px] uppercase text-[#f09acb]">
+                {intensity} ({intensityConfig[intensity].label})
+              </span>
             </div>
             <div className="mt-2 grid grid-cols-3 gap-1">
               {(['chill', 'balanced', 'expressive'] as IntensityKey[]).map((mode) => (
                 <button
                   key={mode}
                   type="button"
+                  aria-pressed={intensity === mode}
                   onClick={() => setIntensity(mode)}
-                  className={`border py-1.5 text-center text-[10px] uppercase tracking-wider transition-colors ${
+                  className={`min-h-[44px] flex items-center justify-center border py-2 text-center text-[10px] uppercase tracking-wider transition-colors ${
                     intensity === mode
                       ? 'border-[#f09acb] bg-[#f09acb]/20 font-bold text-primary'
                       : 'border-white/[0.08] bg-background/30 text-primary-muted hover:border-white/20'
@@ -348,8 +360,9 @@ export function MikoContextLab() {
                 <button
                   key={policy}
                   type="button"
+                  aria-pressed={interruption === policy}
                   onClick={() => setInterruption(policy)}
-                  className={`border py-1.5 text-center text-[10px] uppercase tracking-wider transition-colors ${
+                  className={`min-h-[44px] flex items-center justify-center border py-2 text-center text-[10px] uppercase tracking-wider transition-colors ${
                     interruption === policy
                       ? 'border-[#ffadd8] bg-[#ffadd8]/20 font-bold text-primary'
                       : 'border-white/[0.08] bg-background/30 text-primary-muted hover:border-white/20'
@@ -385,7 +398,11 @@ export function MikoContextLab() {
           </div>
 
           {/* Companion Thought / Reaction Bubble */}
-          <div className="relative z-10 mb-4 h-16 flex items-end justify-center">
+          <div
+            role="status"
+            aria-live="polite"
+            className="relative z-10 mb-4 h-16 flex items-end justify-center"
+          >
             <AnimatePresence mode="wait">
               {verdict.permitted ? (
                 <motion.div
@@ -492,7 +509,11 @@ export function MikoContextLab() {
           </div>
 
           {/* Interruption Gate Verdict */}
-          <div className="border border-white/[0.08] bg-background/50 p-4">
+          <div
+            role="status"
+            aria-live="polite"
+            className="border border-white/[0.08] bg-background/50 p-4"
+          >
             <div className="flex items-center justify-between">
               <span className="text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
                 Interruption Gate Verdict
@@ -504,9 +525,14 @@ export function MikoContextLab() {
             <p className="mt-2 font-sans text-xs text-primary-muted">
               {verdict.explanation}
             </p>
-            <div className="mt-3 flex items-center justify-between border-t border-white/[0.06] pt-2 text-[10px] text-primary-subtle">
-              <span>Gate: {scenario.baseCooldown}</span>
-              <span>Repeat avoidance: active</span>
+            <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[10px] text-primary-subtle">
+              <div className="flex flex-wrap items-center justify-between gap-1">
+                <span>Gate: <strong className="text-primary">{scenario.baseCooldownMinutes}m baseline</strong> &rarr; <strong className="text-accent">{effectiveCooldownMinutes}m ({intensity} {intensityConfig[intensity].label})</strong></span>
+                <span>Repeat avoidance: 120m</span>
+              </div>
+              <p className="mt-1 text-[9px] text-primary-subtle italic">
+                Source-informed simulation. Relative cooldown behavior mirrors MIKO&apos;s runtime policy; displayed scenario values are illustrative.
+              </p>
             </div>
           </div>
         </div>

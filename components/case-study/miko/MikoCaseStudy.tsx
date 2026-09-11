@@ -1,8 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { getAssetPath } from '@/lib/assetPath';
 import { SeamDivider } from '../SeamDivider';
 import { MikoContextLab } from './MikoContextLab';
@@ -11,8 +7,6 @@ import { MikoSensorMatrix } from './MikoSensorMatrix';
 import { MikoMemoryInspector } from './MikoMemoryInspector';
 
 export function MikoCaseStudy() {
-  const prefersReduced = useReducedMotion();
-
   return (
     <article className="relative min-h-screen bg-background text-primary selection:bg-[#f09acb] selection:text-background">
       {/* Background Ambience */}
@@ -74,7 +68,7 @@ export function MikoCaseStudy() {
               </div>
               <div>
                 <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Runtime</dt>
-                <dd className="mt-1 font-semibold text-primary">Windows (PowerShell &bull; WPF)</dd>
+                <dd className="mt-1 font-semibold text-primary">Windows &bull; PowerShell / WPF</dd>
               </div>
               <div>
                 <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Core Engine</dt>
@@ -124,11 +118,11 @@ export function MikoCaseStudy() {
               </div>
               <div className="flex justify-between">
                 <span className="text-primary-subtle">Audio State:</span>
-                <span className="text-accent">Active Output (Simulated)</span>
+                <span className="text-accent">Qualitative Active/Silent Detection</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-primary-subtle">Interruption Mode:</span>
-                <span className="text-[#f09acb]">Balanced Peripheral</span>
+                <span className="text-primary-subtle">Behavior / Attention:</span>
+                <span className="text-[#f09acb]">Balanced &bull; Normal</span>
               </div>
             </div>
           </div>
@@ -401,13 +395,49 @@ export function MikoCaseStudy() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-12">
-          {/* Awareness Controls Screenshot */}
-          <div className="lg:col-span-6 space-y-3">
+        <div className="grid gap-6 sm:grid-cols-2">
+          {/* Card 1: Desktop Menu */}
+          <div className="space-y-3">
+            <div className="border border-white/[0.08] bg-surface p-2">
+              <img
+                src={getAssetPath('/case-studies/miko/miko_menu_expanded.png')}
+                alt="MIKO desktop shell context menu"
+                loading="lazy"
+                decoding="async"
+                className="w-full object-contain"
+              />
+            </div>
+            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
+              <span>Desktop Shell // Tray &amp; Quick Controls</span>
+              <span className="text-[#f09acb]">Win32 Shell Tray</span>
+            </div>
+          </div>
+
+          {/* Card 2: Persona Studio Presence */}
+          <div className="space-y-3">
+            <div className="border border-white/[0.08] bg-surface p-2">
+              <img
+                src={getAssetPath('/case-studies/miko/persona_studio_presence.png')}
+                alt="Persona Studio Presence & Behavior dashboard"
+                loading="lazy"
+                decoding="async"
+                className="w-full object-contain"
+              />
+            </div>
+            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
+              <span>Persona Studio // Presence &amp; Mood State</span>
+              <span className="text-[#f09acb]">Persona Studio</span>
+            </div>
+          </div>
+
+          {/* Card 3: Awareness Controls Screenshot */}
+          <div className="space-y-3">
             <div className="border border-white/[0.08] bg-surface p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_awareness.png')}
                 alt="Persona Studio Awareness & Privacy dashboard"
+                loading="lazy"
+                decoding="async"
                 className="w-full object-contain"
               />
             </div>
@@ -417,12 +447,14 @@ export function MikoCaseStudy() {
             </div>
           </div>
 
-          {/* Memory Inspector Screenshot */}
-          <div className="lg:col-span-6 space-y-3">
+          {/* Card 4: Memory Inspector Screenshot */}
+          <div className="space-y-3">
             <div className="border border-white/[0.08] bg-surface p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_memory_facts.png')}
                 alt="Persona Studio Memory & Context inspection view"
+                loading="lazy"
+                decoding="async"
                 className="w-full object-contain"
               />
             </div>
@@ -434,43 +466,42 @@ export function MikoCaseStudy() {
         </div>
       </section>
 
-      {/* ACT 10: EXPERIMENTAL STATUS / ROADMAP */}
+      {/* ACT 10: PROTOTYPE BOUNDARIES */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
         <SeamDivider className="mb-12" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-              09 / Experimental Status
+              09 / Prototype Boundaries
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-              Experimental by Design
+              Prototype Boundaries
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              MIKO is an ongoing personal research project exploring how computing interfaces can provide calm companionship without requiring constant prompt interaction or disruptive notifications.
+              Operating at the operating system boundary introduces genuine architectural trade-offs. MIKO is authored as a transparent desktop prototype, prioritizing inspectability and local privacy over persistent deep background services:
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 font-mono text-xs">
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-[#f09acb]">Current Status</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#f09acb]">Architectural Boundaries</span>
               <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Transparent WPF desktop shell with animated pixel sprite loop</li>
-                <li>&bull; Python sidecar over 127.0.0.1 loopback for persona arbitration</li>
-                <li>&bull; Windows Audio Session &amp; Media Transport integration</li>
-                <li>&bull; Persona Studio interface for memory and privacy configuration</li>
+                <li>&bull; Windows-specific Win32 and WPF desktop runtime (`powershell.exe` launcher)</li>
+                <li>&bull; Local loopback arbitration (IPC between UI shell and Python sidecar on 127.0.0.1)</li>
+                <li>&bull; Heuristic-first classification rather than continuous token streaming or heavy neural vision</li>
+                <li>&bull; Low CPU footprint via 2.0s polling cadence with zero background telemetry</li>
               </ul>
             </div>
 
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-accent">Future Explorations</span>
+              <span className="text-[10px] uppercase tracking-wider text-accent">Grounded Next Steps</span>
               <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Packaging &amp; standalone installer distribution</li>
-                <li>&bull; Easier onboarding &amp; browser bridge setup</li>
-                <li>&bull; Refactoring large source modules for maintainability</li>
-                <li>&bull; Voice improvements &amp; speech tuning</li>
-                <li>&bull; Richer ambient behaviour &amp; multi-factor heuristics</li>
-                <li>&bull; Broader real-world multi-monitor testing</li>
+                <li>&bull; Standalone single-binary packaging and installer distribution</li>
+                <li>&bull; Multi-monitor boundary and high-DPI scaling validation</li>
+                <li>&bull; Streamlined browser-bridge setup and manifest installation</li>
+                <li>&bull; Sidecar module refactoring for long-term maintainability</li>
+                <li>&bull; Local voice synthesis and localized audio response tuning</li>
               </ul>
             </div>
           </div>
