@@ -143,7 +143,7 @@ export function MikoMemoryInspector() {
             tabIndex={viewMode === 'facts' ? 0 : -1}
             onClick={() => setViewMode('facts')}
             onKeyDown={(e) => handleKeyDown(e, 'facts')}
-            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
+            className={`min-h-[44px] px-3.5 py-2 text-[11px] sm:text-xs uppercase tracking-wider border transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
               viewMode === 'facts'
                 ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
                 : 'border-white/[0.08] text-primary-muted hover:border-white/20'
@@ -160,7 +160,7 @@ export function MikoMemoryInspector() {
             tabIndex={viewMode === 'persona' ? 0 : -1}
             onClick={() => setViewMode('persona')}
             onKeyDown={(e) => handleKeyDown(e, 'persona')}
-            className={`min-h-[44px] px-3 py-2 text-[10px] uppercase tracking-wider border transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
+            className={`min-h-[44px] px-3.5 py-2 text-[11px] sm:text-xs uppercase tracking-wider border transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
               viewMode === 'persona'
                 ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-bold'
                 : 'border-white/[0.08] text-primary-muted hover:border-white/20'
@@ -178,7 +178,7 @@ export function MikoMemoryInspector() {
           aria-labelledby="tab-facts"
           className="p-6 sm:p-8 space-y-6"
         >
-          <p className="text-xs font-sans text-primary-muted leading-relaxed max-w-2xl">
+          <p className="text-xs sm:text-[13px] font-sans text-primary-muted leading-relaxed max-w-2xl">
             MIKO accumulates gentle facts and habits over time. Operator preferences can be explicitly taught through the desktop menu or inferred by local recurring routine heuristics. All entries remain strictly local and operator-editable.
           </p>
 
@@ -190,14 +190,14 @@ export function MikoMemoryInspector() {
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className={`text-[9px] uppercase tracking-wider px-2 py-0.5 border ${item.badgeColor}`}>
+                    <span className={`text-[10px] sm:text-[11px] uppercase tracking-wider px-2 py-0.5 border ${item.badgeColor}`}>
                       {item.badge}
                     </span>
-                    <span className="text-[10px] uppercase text-primary-subtle">
+                    <span className="text-[11px] uppercase text-primary-subtle">
                       &bull; {item.category}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-[9px] text-primary-subtle">
+                  <div className="flex items-center gap-3 text-[11px] text-primary-subtle">
                     <span>Source: <code>{item.source}</code></span>
                     <span>Weight: <strong className="text-accent">{item.confidence}</strong></span>
                     <span>{item.confirmation}</span>
@@ -213,21 +213,21 @@ export function MikoMemoryInspector() {
           {/* Confidence Ladder Strip */}
           <div className="border border-white/[0.08] bg-background/30 p-4 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-2">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-[#f09acb] font-bold">
+              <span className="text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[#f09acb] font-bold">
                 Memory Confidence Ladder
               </span>
-              <span className="text-[9px] text-primary-subtle font-mono">
+              <span className="text-[10px] sm:text-[11px] text-primary-subtle font-mono">
                 Source: <code>sidecar/miko_sidecar_lib/constants.py</code>
               </span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-1 text-[10px]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-1 text-[11px]">
               {confidenceLadder.map((tier) => (
                 <div key={tier.level} className="border border-white/[0.06] bg-surface p-2.5 space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-[#f09acb] uppercase font-bold">{tier.level}</span>
                     <span className="text-accent font-semibold">{tier.weight}</span>
                   </div>
-                  <p className="text-[9px] font-sans text-primary-subtle leading-tight">
+                  <p className="text-[10px] sm:text-[11px] font-sans text-primary-subtle leading-tight">
                     {tier.desc}
                   </p>
                 </div>
@@ -235,7 +235,7 @@ export function MikoMemoryInspector() {
             </div>
           </div>
 
-          <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[9px] uppercase tracking-wider text-primary-subtle border-t border-white/[0.06]">
+          <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[10px] sm:text-[11px] uppercase tracking-wider text-primary-subtle border-t border-white/[0.06]">
             <span>Storage: <code>miko-memory.json</code> (Local JSON Schema)</span>
             <span className="text-[#f09acb]">Sanitised Representative Data &bull; Configured Weights</span>
           </div>
@@ -247,15 +247,15 @@ export function MikoMemoryInspector() {
           aria-labelledby="tab-persona"
           className="p-6 sm:p-8 space-y-4"
         >
-          <p className="text-xs font-sans text-primary-muted leading-relaxed">
+          <p className="text-xs sm:text-[13px] font-sans text-primary-muted leading-relaxed">
             The Python sidecar references <code>persona.json</code> to enforce priority levels, maximum reactions per day, and repeat suppression intervals:
           </p>
           <div className="border border-white/[0.08] bg-[#0c0d10] p-4 text-xs overflow-x-auto text-[#e3e2e2]">
-            <pre className="font-mono text-[11px] leading-relaxed">
+            <pre className="font-mono text-[11px] sm:text-xs leading-relaxed">
               <code>{personaJsonSnippet}</code>
             </pre>
           </div>
-          <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-primary-subtle">
+          <div className="flex items-center justify-between text-[10px] sm:text-[11px] uppercase tracking-wider text-primary-subtle">
             <span>Schema: Persona Boundaries &amp; Cooldown Gates</span>
             <span className="text-[#f09acb]">Human-Editable Configuration</span>
           </div>

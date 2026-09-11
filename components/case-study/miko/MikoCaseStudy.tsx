@@ -21,10 +21,10 @@ export function MikoCaseStudy() {
           {/* Left Column: Title & Overview */}
           <div className="space-y-6 lg:col-span-7">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#f09acb]">
                 Experimental &bull; Windows &bull; Local-First &bull; 2026
               </span>
-              <span className="border border-[#f09acb]/30 bg-[#f09acb]/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#ffadd8]">
+              <span className="border border-[#f09acb]/30 bg-[#f09acb]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#ffadd8]">
                 Prototype Runtime
               </span>
             </div>
@@ -42,7 +42,7 @@ export function MikoCaseStudy() {
                   width={64}
                   height={69}
                 />
-                <span className="font-mono text-[9px] uppercase tracking-wider text-[#f09acb]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#f09acb]">
                   idle
                 </span>
               </div>
@@ -78,20 +78,20 @@ export function MikoCaseStudy() {
             {/* Metadata Chips */}
             <dl className="grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-6 font-mono text-xs sm:grid-cols-4">
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Year</dt>
+                <dt className="text-[11px] uppercase tracking-wider text-primary-subtle">Year</dt>
                 <dd className="mt-1 font-semibold text-primary">2026</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Runtime</dt>
+                <dt className="text-[11px] uppercase tracking-wider text-primary-subtle">Runtime</dt>
                 <dd className="mt-1 font-semibold text-primary">Windows &bull; PowerShell / WPF</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Core Engine</dt>
+                <dt className="text-[11px] uppercase tracking-wider text-primary-subtle">Core Engine</dt>
                 <dd className="mt-1 font-semibold text-primary">Python Sidecar</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Palette</dt>
-                <dd className="mt-1 font-semibold text-[#f09acb]">Miko Pink</dd>
+                <dt className="text-[11px] uppercase tracking-wider text-primary-subtle">Interaction</dt>
+                <dd className="mt-1 font-semibold text-[#f09acb]">Peripheral / Ambient</dd>
               </div>
             </dl>
           </div>
@@ -99,11 +99,11 @@ export function MikoCaseStudy() {
           {/* Right Column: Hero Visual Card */}
           <div className="relative border border-white/[0.08] bg-surface p-6 lg:col-span-5 sm:p-8">
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
-              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-primary-subtle">
+              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-primary-subtle">
                 <span className="h-1.5 w-1.5 bg-[#f09acb]" />
                 <span>Persona Studio &bull; Representative Telemetry</span>
               </div>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-[#ffadd8]">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#ffadd8]">
                 127.0.0.1:50558
               </span>
             </div>
@@ -263,7 +263,7 @@ export function MikoCaseStudy() {
         <SeamDivider className="mb-12" />
 
         <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
             05 / Persona &amp; Memory
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
@@ -283,7 +283,7 @@ export function MikoCaseStudy() {
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
               06 / Diagnostics &amp; Explainability
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
@@ -292,7 +292,7 @@ export function MikoCaseStudy() {
             <p className="font-sans text-base leading-relaxed text-primary-muted">
               A companion shouldn&apos;t be an opaque black box. Operators can inspect context signals, runtime state, reaction history, and representative decision traces through Persona Studio.
             </p>
-            <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs text-primary-subtle space-y-2">
+            <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs sm:text-[13px] text-primary-subtle space-y-2">
               <div>&bull; Reaction-specific repeat suppression typically ranges from 120–180 minutes.</div>
               <div>&bull; Cooldown gate prevents reaction spam during rapid window switches.</div>
               <div>&bull; Strict boundary rules keep bubbles short and relevant.</div>
@@ -300,38 +300,38 @@ export function MikoCaseStudy() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[10px] uppercase tracking-wider text-primary-subtle">
+            <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs sm:text-[13px]">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[11px] uppercase tracking-wider text-primary-subtle">
                 <span>Representative Event Trace</span>
                 <span className="text-[#f09acb]">Simulated Log</span>
               </div>
 
               <div className="mt-4 space-y-3">
                 <div className="border-b border-white/[0.04] pb-3">
-                  <div className="flex justify-between text-[10px] text-primary-subtle">
+                  <div className="flex justify-between text-[11px] text-primary-subtle">
                     <span>Sample Event &bull; Process Sensor</span>
                     <span className="text-[#f09acb]">Triggered</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Code.exe &rarr; coding mood</div>
-                  <div className="text-[10px] text-primary-muted mt-0.5">Matched rule: activityRules.coding &bull; Cooldown gate: active (1200s)</div>
+                  <div className="text-[11px] text-primary-muted mt-0.5">Matched rule: activityRules.coding &bull; Cooldown gate: active (1200s)</div>
                 </div>
 
                 <div className="border-b border-white/[0.04] pb-3">
-                  <div className="flex justify-between text-[10px] text-primary-subtle">
+                  <div className="flex justify-between text-[11px] text-primary-subtle">
                     <span>Sample Event &bull; Audio Sensor</span>
                     <span className="text-amber-400">Restrained</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Spotify.exe &rarr; audible track detected</div>
-                  <div className="text-[10px] text-primary-muted mt-0.5">Bubble suppressed by active coding priority &bull; Passive listening stance set</div>
+                  <div className="text-[11px] text-primary-muted mt-0.5">Bubble suppressed by active coding priority &bull; Passive listening stance set</div>
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-[10px] text-primary-subtle">
+                  <div className="flex justify-between text-[11px] text-primary-subtle">
                     <span>Sample Event &bull; Win32 Input Idle</span>
                     <span className="text-[#ffadd8]">Standby</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Inactivity &gt; 90s &rarr; sleepy mood</div>
-                  <div className="text-[10px] text-primary-muted mt-0.5">Operator away &bull; Ambient standby posture without audio notifications</div>
+                  <div className="text-[11px] text-primary-muted mt-0.5">Operator away &bull; Ambient standby posture without audio notifications</div>
                 </div>
               </div>
             </div>
@@ -340,11 +340,26 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 8: PRIVACY / LOCAL-FIRST DESIGN */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
+        <div className="relative">
+          <SeamDivider className="mb-12" />
+          {/* Subtle living system moment: peek sprite sitting quietly at seam */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-8 right-8 hidden sm:block select-none"
+          >
+            <img
+              src={getAssetPath('/case-studies/miko/frames/curious/02.png')}
+              alt=""
+              className="h-9 w-auto object-contain [image-rendering:pixelated] opacity-75"
+              width={36}
+              height={39}
+            />
+          </div>
+        </div>
 
         <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
             07 / Architecture &amp; Privacy
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
@@ -357,37 +372,37 @@ export function MikoCaseStudy() {
 
         <div className="grid gap-6 sm:grid-cols-3 font-mono">
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
               01 / Local-First Core
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
               127.0.0.1 Loopback
             </h3>
-            <p className="font-sans text-xs leading-relaxed text-primary-muted">
+            <p className="font-sans text-xs sm:text-[13px] leading-relaxed text-primary-muted">
               The local PowerShell WPF client and Python sidecar communicate over local loopback sockets. There is no built-in remote telemetry; optional model integrations follow the user-configured endpoint.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-accent">
               02 / Transient In-Memory Hooks
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
               Strict Privacy Boundaries
             </h3>
-            <p className="font-sans text-xs leading-relaxed text-primary-muted">
+            <p className="font-sans text-xs sm:text-[13px] leading-relaxed text-primary-muted">
               Window titles and media metadata are read transiently in memory to infer context. Keystrokes, clipboard contents, and files are never read or stored.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#ffadd8]">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[#ffadd8]">
               03 / User-Configured Endpoints
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
               Optional AI Integrations
             </h3>
-            <p className="font-sans text-xs leading-relaxed text-primary-muted">
+            <p className="font-sans text-xs sm:text-[13px] leading-relaxed text-primary-muted">
               MIKO does not rely on an external LLM. If the user opts into model dialogue or vision, requests route exclusively to their own configured endpoint (such as local Ollama).
             </p>
           </div>
@@ -399,7 +414,7 @@ export function MikoCaseStudy() {
         <SeamDivider className="mb-12" />
 
         <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
             08 / Prototype Documentation
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
@@ -410,72 +425,91 @@ export function MikoCaseStudy() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {/* Card 1: Desktop Menu */}
-          <div className="space-y-3">
-            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
+        {/* Asymmetric Editorial Composition */}
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
+          {/* Left Column: Portrait Tray & Quick Controls */}
+          <div className="space-y-3 lg:col-span-4">
+            <div className="border border-white/[0.08] bg-[#0c0d10] p-4 flex items-center justify-center">
               <img
                 src={getAssetPath('/case-studies/miko/miko_menu_expanded.png')}
                 alt="MIKO desktop shell context menu"
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-contain"
+                className="max-h-[680px] w-auto object-contain"
               />
             </div>
-            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
-              <span>Desktop Shell // Tray &amp; Quick Controls</span>
-              <span className="text-[#f09acb]">Win32 Shell Tray</span>
+            <div className="font-mono text-xs text-primary-subtle flex items-center justify-between border-b border-white/[0.06] pb-2">
+              <span className="text-primary font-medium">Desktop Shell // Tray &amp; Quick Controls</span>
+              <span className="text-[#f09acb] uppercase tracking-wider text-[11px]">Win32 Shell Tray</span>
             </div>
+            <p className="font-sans text-xs text-primary-muted leading-relaxed">
+              Compact native desktop tray offering immediate companion status, mode toggles, manual overrides, and diagnostics access.
+            </p>
           </div>
 
-          {/* Card 2: Persona Studio Presence */}
-          <div className="space-y-3">
-            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
-              <img
-                src={getAssetPath('/case-studies/miko/persona_studio_presence.png')}
-                alt="Persona Studio Presence & Behavior dashboard"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-contain"
-              />
+          {/* Right Column: Persona Studio Suite (1 flagship + 2 companion captures) */}
+          <div className="space-y-6 lg:col-span-8">
+            {/* Flagship: Persona Studio Presence */}
+            <div className="space-y-3">
+              <div className="border border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
+                <img
+                  src={getAssetPath('/case-studies/miko/persona_studio_presence.png')}
+                  alt="Persona Studio Presence & Behavior dashboard"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <div className="font-mono text-xs text-primary-subtle flex items-center justify-between border-b border-white/[0.06] pb-2">
+                <span className="text-primary font-medium">Persona Studio // Presence &amp; Mood State</span>
+                <span className="text-[#f09acb] uppercase tracking-wider text-[11px]">Flagship Interface</span>
+              </div>
+              <p className="font-sans text-xs text-primary-muted leading-relaxed">
+                Primary control center showing live companion state, baseline behavior intensity, reaction limits, and focus policies.
+              </p>
             </div>
-            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
-              <span>Persona Studio // Presence &amp; Mood State</span>
-              <span className="text-[#f09acb]">Persona Studio</span>
-            </div>
-          </div>
 
-          {/* Card 3: Awareness Controls Screenshot */}
-          <div className="space-y-3">
-            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
-              <img
-                src={getAssetPath('/case-studies/miko/persona_studio_awareness.png')}
-                alt="Persona Studio Awareness & Privacy dashboard"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-contain"
-              />
-            </div>
-            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
-              <span>Persona Studio // Awareness &amp; Privacy Controls</span>
-              <span className="text-[#f09acb]">Sensor Toggles</span>
-            </div>
-          </div>
+            {/* Sub-grid: Awareness + Memory Side-by-Side */}
+            <div className="grid gap-6 sm:grid-cols-2">
+              {/* Card 3: Awareness Controls */}
+              <div className="space-y-3">
+                <div className="border border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
+                  <img
+                    src={getAssetPath('/case-studies/miko/persona_studio_awareness.png')}
+                    alt="Persona Studio Awareness & Privacy dashboard"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                <div className="font-mono text-xs text-primary-subtle flex items-center justify-between border-b border-white/[0.06] pb-2">
+                  <span className="text-primary font-medium">Awareness &amp; Privacy</span>
+                  <span className="text-[#f09acb] uppercase tracking-wider text-[11px]">Sensor Toggles</span>
+                </div>
+                <p className="font-sans text-xs text-primary-muted leading-relaxed">
+                  Granular OS sensor toggles for active window, audio, and browser signals with in-memory boundaries.
+                </p>
+              </div>
 
-          {/* Card 4: Memory Inspector Screenshot */}
-          <div className="space-y-3">
-            <div className="relative aspect-[4/3] flex items-center justify-center overflow-hidden border border-white/[0.08] bg-[#0c0d10] p-2">
-              <img
-                src={getAssetPath('/case-studies/miko/persona_studio_memory_facts.png')}
-                alt="Persona Studio Memory & Context inspection view"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-contain"
-              />
-            </div>
-            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
-              <span>Persona Studio // Memory &amp; Learned Facts</span>
-              <span className="text-[#f09acb]">Memory Weights</span>
+              {/* Card 4: Memory Facts */}
+              <div className="space-y-3">
+                <div className="border border-white/[0.08] bg-[#0c0d10] p-3 flex items-center justify-center">
+                  <img
+                    src={getAssetPath('/case-studies/miko/persona_studio_memory_facts.png')}
+                    alt="Persona Studio Memory & Context inspection view"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                <div className="font-mono text-xs text-primary-subtle flex items-center justify-between border-b border-white/[0.06] pb-2">
+                  <span className="text-primary font-medium">Memory &amp; Learned Facts</span>
+                  <span className="text-[#f09acb] uppercase tracking-wider text-[11px]">Local Memory</span>
+                </div>
+                <p className="font-sans text-xs text-primary-muted leading-relaxed">
+                  Inspectable local memory ledger tracking taught preferences, habits, and confirmed workspace facts.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -487,7 +521,7 @@ export function MikoCaseStudy() {
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
               09 / Prototype Boundaries
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
@@ -501,23 +535,23 @@ export function MikoCaseStudy() {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 font-mono text-xs">
+          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 font-mono text-xs sm:text-[13px]">
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-[#f09acb]">Architectural Boundaries</span>
+              <span className="text-[11px] uppercase tracking-wider text-[#f09acb]">Architectural Boundaries</span>
               <ul className="space-y-2 text-primary-muted">
                 <li>&bull; Windows-specific Win32 and WPF desktop runtime (`powershell.exe` launcher)</li>
                 <li>&bull; Local loopback arbitration (IPC between UI shell and Python sidecar on 127.0.0.1)</li>
                 <li>&bull; Heuristic-first classification rather than continuous token streaming or heavy neural vision</li>
-                <li>&bull; Low CPU footprint via 2.0s polling cadence with zero background telemetry</li>
+                <li>&bull; Lightweight 2.0s foreground activity polling with no built-in remote telemetry</li>
               </ul>
             </div>
 
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-wider text-accent">Future Explorations</span>
-                <span className="text-[9px] uppercase tracking-wider text-primary-subtle">Exploratory</span>
+                <span className="text-[11px] uppercase tracking-wider text-accent">Future Explorations</span>
+                <span className="text-[10px] uppercase tracking-wider text-primary-subtle">Exploratory</span>
               </div>
-              <p className="text-[11px] leading-relaxed text-primary-subtle">
+              <p className="text-xs leading-relaxed text-primary-subtle">
                 These are directions currently being explored, not committed product promises:
               </p>
               <ul className="space-y-2 text-primary-muted">
@@ -539,8 +573,15 @@ export function MikoCaseStudy() {
         <div className="border border-white/[0.08] bg-surface p-8 sm:p-12">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center border border-[#f09acb]/40 bg-[#f09acb]/10">
-                <span className="font-display text-xl font-bold text-[#f09acb]">M</span>
+              <div className="flex h-12 w-12 items-center justify-center border border-[#f09acb]/40 bg-[#f09acb]/10 p-1">
+                <img
+                  src={getAssetPath('/case-studies/miko/frames/sleepy/00.png')}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-10 w-auto object-contain [image-rendering:pixelated]"
+                  width={48}
+                  height={52}
+                />
               </div>
               <div>
                 <h3 className="font-display text-xl font-bold uppercase text-primary sm:text-2xl">

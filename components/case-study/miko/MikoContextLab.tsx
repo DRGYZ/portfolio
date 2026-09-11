@@ -267,11 +267,11 @@ export function MikoContextLab() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] bg-background/60 p-4 sm:px-6">
         <div className="flex items-center gap-2.5">
           <span className="h-2 w-2 bg-[#f09acb]" aria-hidden="true" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary">
             Context Lab / Browser-Side Behaviour Simulation
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] uppercase tracking-wider text-primary-subtle">
+        <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider text-primary-subtle">
           <span>Source-Informed Simulation</span>
           <span className="text-white/20">&bull;</span>
           <span className="text-[#f09acb]">Illustrative Runtime Policy Mirror</span>
@@ -282,7 +282,7 @@ export function MikoContextLab() {
       <div className="grid border-b border-white/[0.08] lg:grid-cols-12">
         {/* Context Selector Buttons */}
         <div className="p-4 sm:p-6 lg:col-span-8 lg:border-r lg:border-white/[0.08]">
-          <span className="block text-[10px] uppercase tracking-[0.2em] text-primary-subtle">
+          <span className="block text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
             Select Simulated Context:
           </span>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -297,7 +297,7 @@ export function MikoContextLab() {
                     setActiveContext(key);
                     setFrameIndex(0);
                   }}
-                  className={`min-h-[44px] flex items-center gap-2 border px-3.5 py-2 text-left text-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
+                  className={`min-h-[44px] flex items-center gap-2 border px-3.5 py-2 text-left text-xs sm:text-[13px] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
                     isSelected
                       ? 'border-[#f09acb] bg-[#f09acb]/10 text-primary font-medium'
                       : 'border-white/[0.08] bg-background/40 text-primary-muted hover:border-white/20 hover:text-primary'
@@ -321,10 +321,10 @@ export function MikoContextLab() {
           {/* Behavior Intensity */}
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-primary-subtle">
+              <span className="text-[11px] uppercase tracking-[0.16em] text-primary-subtle">
                 Behavior Intensity
               </span>
-              <span className="text-[9px] uppercase text-[#f09acb]">
+              <span className="text-[11px] uppercase text-[#f09acb] font-semibold">
                 {intensity} ({intensityConfig[intensity].label})
               </span>
             </div>
@@ -335,7 +335,7 @@ export function MikoContextLab() {
                   type="button"
                   aria-pressed={intensity === mode}
                   onClick={() => setIntensity(mode)}
-                  className={`min-h-[44px] flex items-center justify-center border py-2 text-center text-[10px] uppercase tracking-wider transition-colors ${
+                  className={`min-h-[44px] flex items-center justify-center border py-2 text-center text-[10px] sm:text-[11px] uppercase tracking-wider transition-colors ${
                     intensity === mode
                       ? 'border-[#f09acb] bg-[#f09acb]/20 font-bold text-primary'
                       : 'border-white/[0.08] bg-background/30 text-primary-muted hover:border-white/20'
@@ -350,10 +350,10 @@ export function MikoContextLab() {
           {/* Interruption Policy */}
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-primary-subtle">
+              <span className="text-[11px] uppercase tracking-[0.16em] text-primary-subtle">
                 Interruption Policy
               </span>
-              <span className="text-[9px] uppercase text-[#ffadd8]">{interruption}</span>
+              <span className="text-[11px] uppercase text-[#ffadd8] font-semibold">{interruption}</span>
             </div>
             <div className="mt-2 grid grid-cols-3 gap-1">
               {(['normal', 'quiet', 'focus'] as InterruptionKey[]).map((policy) => (
@@ -460,50 +460,50 @@ export function MikoContextLab() {
         {/* Right Telemetry & Reasoning Inspector */}
         <div className="space-y-5 p-6 lg:col-span-6 lg:p-8">
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
               Representative Event Trace
             </span>
-            <span className="text-[9px] uppercase text-primary-subtle">
+            <span className="text-[10px] sm:text-[11px] uppercase text-primary-subtle">
               Simulated Match: <strong className="text-primary">{scenario.confidence}</strong>
             </span>
           </div>
 
           {/* Sensor Inputs Readout */}
-          <div className="space-y-2 text-xs">
+          <div className="space-y-2 text-xs sm:text-[13px]">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1 border-b border-white/[0.04]">
-              <span className="text-[10px] uppercase text-primary-subtle">Foreground App</span>
+              <span className="text-[11px] uppercase text-primary-subtle">Foreground App</span>
               <span className="font-semibold text-primary">{scenario.foregroundProcess}</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1 border-b border-white/[0.04]">
-              <span className="text-[10px] uppercase text-primary-subtle">Window Title</span>
+              <span className="text-[11px] uppercase text-primary-subtle">Window Title</span>
               <span className="text-primary-muted truncate max-w-xs">{scenario.windowTitle}</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1 border-b border-white/[0.04]">
-              <span className="text-[10px] uppercase text-primary-subtle">Audio Session</span>
+              <span className="text-[11px] uppercase text-primary-subtle">Audio Session</span>
               <span className="text-primary-muted">{scenario.audioState}</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1 border-b border-white/[0.04]">
-              <span className="text-[10px] uppercase text-primary-subtle">Win32 Input Idle</span>
+              <span className="text-[11px] uppercase text-primary-subtle">Win32 Input Idle</span>
               <span className="text-primary-muted">{scenario.idleTimer}</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1 border-b border-white/[0.04]">
-              <span className="text-[10px] uppercase text-primary-subtle">Browser Bridge</span>
+              <span className="text-[11px] uppercase text-primary-subtle">Browser Bridge</span>
               <span className="text-primary-muted truncate max-w-xs">{scenario.bridgeEvent}</span>
             </div>
           </div>
 
           {/* Interpretation / Reasoning */}
           <div className="border border-white/[0.08] bg-background/50 p-4">
-            <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
+            <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
               Local Evaluation Summary:
             </span>
-            <p className="mt-1 font-sans text-xs leading-relaxed text-primary-muted">
+            <p className="mt-1 font-sans text-xs sm:text-[13px] leading-relaxed text-primary-muted">
               {scenario.interpretation}
             </p>
-            <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[10px] text-primary-subtle">
+            <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[11px] text-primary-subtle">
               <div>
                 <span className="text-primary-subtle">Decision Rationale: </span>
-                <code className="text-accent text-[10px]">{scenario.winningRule}</code>
+                <code className="text-accent text-[11px]">{scenario.winningRule}</code>
               </div>
             </div>
           </div>
@@ -515,22 +515,22 @@ export function MikoContextLab() {
             className="border border-white/[0.08] bg-background/50 p-4"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
                 Interruption Gate Verdict
               </span>
-              <span className={`text-[10px] font-bold uppercase tracking-wider ${verdict.statusColor}`}>
+              <span className={`text-[11px] font-bold uppercase tracking-wider ${verdict.statusColor}`}>
                 {verdict.statusLabel}
               </span>
             </div>
-            <p className="mt-2 font-sans text-xs text-primary-muted">
+            <p className="mt-2 font-sans text-xs sm:text-[13px] text-primary-muted">
               {verdict.explanation}
             </p>
-            <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[10px] text-primary-subtle">
+            <div className="mt-3 flex flex-col gap-1 border-t border-white/[0.06] pt-2 text-[11px] text-primary-subtle">
               <div className="flex flex-wrap items-center justify-between gap-1">
                 <span>Gate: <strong className="text-primary">{scenario.baseCooldownMinutes}m baseline</strong> &rarr; <strong className="text-accent">{effectiveCooldownMinutes}m ({intensity} {intensityConfig[intensity].label})</strong></span>
                 <span>Repeat avoidance: 120–180m</span>
               </div>
-              <p className="mt-1 text-[9px] text-primary-subtle italic">
+              <p className="mt-1 text-[10px] text-primary-subtle italic">
                 Source-informed simulation. Relative policy behavior mirrors MIKO&apos;s current runtime architecture; displayed contexts and values are illustrative rather than live telemetry.
               </p>
             </div>
@@ -539,7 +539,7 @@ export function MikoContextLab() {
       </div>
 
       {/* Bottom Architectural Note */}
-      <div className="border-t border-white/[0.08] bg-background/40 px-6 py-3 text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
+      <div className="border-t border-white/[0.08] bg-background/40 px-6 py-3 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-primary-subtle">
         <span>Architectural Pipeline: </span>
         <span className="text-primary">Context Signals &rarr; Local Arbitration &rarr; Mood Selection &rarr; Attention Policy &rarr; Peripheral Reaction</span>
       </div>

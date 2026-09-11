@@ -100,11 +100,11 @@ export function MikoSensorMatrix() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary">
             Local OS Sensor Pipelines
           </span>
         </div>
-        <span className="text-[10px] uppercase tracking-wider text-primary-subtle">
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-primary-subtle">
           Local-First Core &bull; No Built-In Remote Telemetry
         </span>
       </div>
@@ -134,10 +134,10 @@ export function MikoSensorMatrix() {
                   : 'bg-background/20 text-primary-muted hover:bg-background/40 hover:text-primary'
               }`}
             >
-              <span className="block text-[9px] uppercase tracking-widest text-primary-subtle">
+              <span className="block text-[10px] uppercase tracking-widest text-primary-subtle">
                 {pipe.id.toUpperCase()}
               </span>
-              <span className="mt-1 block font-sans text-xs font-semibold text-primary truncate">
+              <span className="mt-1 block font-sans text-xs sm:text-sm font-semibold text-primary truncate">
                 {pipe.name}
               </span>
             </button>
@@ -156,7 +156,7 @@ export function MikoSensorMatrix() {
           {/* Left Column: API & Sampling */}
           <div className="space-y-4 lg:col-span-6">
             <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
+              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
                 Underlying OS API / Mechanism
               </span>
               <p className="mt-1 text-sm font-semibold text-primary">
@@ -165,19 +165,19 @@ export function MikoSensorMatrix() {
             </div>
 
             <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
+              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
                 Sampling Rate &amp; Hook Type
               </span>
-              <p className="mt-1 text-xs text-primary-muted">
+              <p className="mt-1 text-xs sm:text-[13px] text-primary-muted">
                 {selected.samplingRate}
               </p>
             </div>
 
             <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
+              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
                 Operational Purpose
               </span>
-              <p className="mt-1 font-sans text-xs leading-relaxed text-primary-muted">
+              <p className="mt-1 font-sans text-xs sm:text-[13px] leading-relaxed text-primary-muted">
                 {selected.role}
               </p>
             </div>
@@ -186,10 +186,10 @@ export function MikoSensorMatrix() {
           {/* Right Column: Signals & Privacy */}
           <div className="space-y-4 lg:col-span-6">
             <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-accent">
+              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-accent">
                 Extracted In-Memory Signals
               </span>
-              <ul className="mt-2 space-y-1.5 text-xs text-primary-muted">
+              <ul className="mt-2 space-y-1.5 text-xs sm:text-[13px] text-primary-muted">
                 {selected.extractedSignals.map((signal, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="text-[#f09acb] select-none">&bull;</span>
@@ -200,10 +200,10 @@ export function MikoSensorMatrix() {
             </div>
 
             <div className="border border-white/[0.08] bg-background/50 p-4">
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
+              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
                 Privacy &amp; Security Boundary
               </span>
-              <p className="mt-1 font-sans text-xs text-primary-subtle leading-relaxed">
+              <p className="mt-1 font-sans text-xs sm:text-[13px] text-primary-subtle leading-relaxed">
                 {selected.privacyGuarantee}
               </p>
             </div>
