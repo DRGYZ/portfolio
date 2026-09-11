@@ -1,10 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
 import Link from 'next/link';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { usePointerPosition } from '@/hooks/usePointerPosition';
 import { getAssetPath } from '@/lib/assetPath';
 import { SeamDivider } from './SeamDivider';
 import { ScanOrderTrack } from './ScanOrderTrack';
@@ -15,18 +13,6 @@ import { VisualSeamGraphic } from './VisualSeamGraphic';
 
 export function NyxboardCaseStudy() {
   const prefersReduced = useReducedMotion();
-  const posterRef = useRef<HTMLDivElement>(null);
-  const pointer = usePointerPosition(posterRef, prefersReduced);
-
-  // Subtle pointer tracking on the poster artwork
-  const posterImageX = useSpring(useTransform(pointer.normalizedX, [-1, 1], [-8, 8]), {
-    stiffness: 75,
-    damping: 24,
-  });
-  const posterImageY = useSpring(useTransform(pointer.normalizedY, [-1, 1], [-6, 6]), {
-    stiffness: 75,
-    damping: 24,
-  });
 
   return (
     <article className="relative min-h-screen bg-background text-primary selection:bg-accent selection:text-background">
@@ -122,34 +108,22 @@ export function NyxboardCaseStudy() {
           </aside>
         </div>
 
-        {/* Authored Project Poster Artwork with Signature Polygon Clip and Spring Pointer Parallax */}
+        {/* Authored Project Poster Artwork */}
         <motion.div
-          ref={posterRef}
           initial={prefersReduced ? false : { opacity: 0, y: 28, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.75, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="relative mt-16 overflow-hidden border border-white/[0.08] bg-[#111218] p-3 sm:p-6 lg:mt-24"
         >
-          <div
-            style={{
-              clipPath: prefersReduced
-                ? 'none'
-                : 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
-            }}
-            className="relative aspect-[1200/680] w-full overflow-hidden bg-surface-low"
-          >
-            <motion.img
+          <div className="relative aspect-[1200/820] w-full overflow-hidden bg-surface-low border border-white/[0.04]">
+            <img
               src={getAssetPath('/projects/nyxboard.svg?v=2')}
               alt="Nyxboard visual poster showing architectural typography, operations nodes, and diagonal seam cut"
               width="1200"
               height="820"
               loading="eager"
               decoding="async"
-              style={{
-                x: prefersReduced ? 0 : posterImageX,
-                y: prefersReduced ? 0 : posterImageY,
-              }}
-              className="h-full w-full object-cover object-center transition-transform"
+              className="h-full w-full object-contain object-center"
             />
           </div>
           <div className="mt-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-primary-subtle">
