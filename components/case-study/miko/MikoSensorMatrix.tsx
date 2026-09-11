@@ -31,7 +31,7 @@ const pipelines: SensorPipeline[] = [
     name: 'Audio Session & Media API',
     api: 'CoreAudio IAudioSessionControl2 + SystemMediaTransportControls',
     samplingRate: 'Peak level sampled every 1.5s',
-    privacyGuarantee: 'Reads peak amplitude numeric scalar [0.0 - 1.0] and media track metadata. Audio content is never captured or recorded.',
+    privacyGuarantee: 'Reads audio session peak volume scalar and media track metadata. Audio content is never captured or recorded.',
     extractedSignals: [
       'Per-process audio peak levels',
       'SystemMediaTransportControls artist and track title',
@@ -57,7 +57,7 @@ const pipelines: SensorPipeline[] = [
     name: 'Arbitration & Cooldown Engine',
     api: 'Python Sidecar Loopback (127.0.0.1:50558) / WPF Heuristic Core',
     samplingRate: 'Evaluated on state change',
-    privacyGuarantee: 'Runs completely offline. Optional user-configured model endpoints are disabled by default.',
+    privacyGuarantee: 'Local-first core with no built-in remote telemetry. Optional model integrations follow the user-configured endpoint (disabled by default).',
     extractedSignals: [
       'Weighted heuristic score matrix',
       'Per-mode cooldown gates (15–30 min timer)',
@@ -82,7 +82,7 @@ export function MikoSensorMatrix() {
           </span>
         </div>
         <span className="text-[10px] uppercase tracking-wider text-primary-subtle">
-          100% In-Memory Evaluation &bull; Zero Remote Telemetry
+          Local-First Core &bull; No Built-In Remote Telemetry
         </span>
       </div>
 

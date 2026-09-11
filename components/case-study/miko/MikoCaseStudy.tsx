@@ -44,7 +44,7 @@ export function MikoCaseStudy() {
             </p>
 
             <p className="max-w-2xl font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-              MIKO is an experimental local-first desktop companion for Windows. Unlike conversational chatbots that demand your direct attention, MIKO lives quietly in your peripheral field of view, observing active engineering tasks, audio playback, and media sessions through low-overhead local OS hooks to express calm, context-aware reactions.
+              MIKO is an experimental local-first desktop companion for Windows. Unlike prompt-first assistants, MIKO explores ambient interaction through local context, living quietly in your peripheral field of view, observing active engineering tasks, audio playback, and media sessions through low-overhead local OS hooks to express calm, context-aware reactions.
             </p>
 
             {/* CTA Buttons */}
@@ -74,7 +74,7 @@ export function MikoCaseStudy() {
               </div>
               <div>
                 <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Runtime</dt>
-                <dd className="mt-1 font-semibold text-primary">Windows (WPF)</dd>
+                <dd className="mt-1 font-semibold text-primary">Windows (PowerShell &bull; WPF)</dd>
               </div>
               <div>
                 <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Core Engine</dt>
@@ -92,7 +92,7 @@ export function MikoCaseStudy() {
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-primary-subtle">
                 <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-                <span>Persona Studio &bull; Local Telemetry</span>
+                <span>Persona Studio &bull; Representative Telemetry</span>
               </div>
               <span className="font-mono text-[9px] uppercase tracking-wider text-[#ffadd8]">
                 127.0.0.1:50558
@@ -124,7 +124,7 @@ export function MikoCaseStudy() {
               </div>
               <div className="flex justify-between">
                 <span className="text-primary-subtle">Audio State:</span>
-                <span className="text-accent">Active Output (Peak: 0.28)</span>
+                <span className="text-accent">Active Output (Simulated)</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-primary-subtle">Interruption Mode:</span>
@@ -148,7 +148,7 @@ export function MikoCaseStudy() {
               Designing for the Periphery
             </h2>
             <p className="font-editorial text-xl italic leading-snug text-primary-muted sm:text-2xl">
-              &ldquo;Most software demands your central attention. MIKO is built for the periphery — staying quietly out of the way until there is genuinely something to express.&rdquo;
+              &ldquo;Where prompt-first software requires explicit input, MIKO is designed for the periphery — staying quietly in your workspace until there is genuinely something to express.&rdquo;
             </p>
           </div>
 
@@ -162,7 +162,7 @@ export function MikoCaseStudy() {
                   </h3>
                 </div>
                 <p className="mt-3 font-sans text-sm leading-relaxed text-primary-muted">
-                  Traditional chatbots exist purely in episodic question-and-answer bursts. MIKO maintains gentle continuous situational awareness through lightweight OS hooks, remaining present without requiring prompts.
+                  While conversational assistants typically operate in episodic question-and-answer turns, MIKO maintains gentle continuous situational awareness through lightweight OS hooks, remaining present without requiring prompts.
                 </p>
               </div>
 
@@ -223,7 +223,7 @@ export function MikoCaseStudy() {
             Local Context, Real Reactions
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO evaluates local operating system signals against an in-memory rule-scoring matrix to infer context without shipping telemetry to external servers. All evaluation happens on-device:
+            MIKO evaluates local operating system signals against an in-memory rule-scoring matrix to infer context. Built around a local-first core with no built-in remote telemetry; optional model integrations follow the user-configured endpoint:
           </p>
         </div>
 
@@ -242,7 +242,7 @@ export function MikoCaseStudy() {
             Try Different Contexts
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            This interactive simulator demonstrates MIKO&apos;s behavioral pipeline. Select an active desktop context and adjust intensity or attention policies to see how the companion evaluates signals in real-time:
+            This browser-side simulation demonstrates MIKO&apos;s behavioral pipeline derived from the real runtime architecture. Select a simulated context and adjust intensity or attention policies to inspect how the companion evaluates signals:
           </p>
         </div>
 
@@ -261,7 +261,7 @@ export function MikoCaseStudy() {
             More Than a Response
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO maintains an inspectable local memory file. Preferences, habit patterns, and gentle notes accumulate locally over time without external telemetry:
+            MIKO maintains an inspectable local memory file. Preferences, habit patterns, and notes accumulate locally over time with no built-in remote telemetry:
           </p>
         </div>
 
@@ -281,7 +281,7 @@ export function MikoCaseStudy() {
               Inspectable Decisions
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              A companion shouldn&apos;t be an opaque black box. Operators can inspect the exact sensor event stream, winning heuristic rules, and cooldown counters directly through Persona Studio.
+              A companion shouldn&apos;t be an opaque black box. Operators can inspect representative event traces, winning heuristic rules, and cooldown counters directly through Persona Studio.
             </p>
             <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs text-primary-subtle space-y-2">
               <div>&bull; Repeat avoidance prevents repeating identical lines within 120 minutes.</div>
@@ -293,14 +293,14 @@ export function MikoCaseStudy() {
           <div className="lg:col-span-7">
             <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[10px] uppercase tracking-wider text-primary-subtle">
-                <span>Recent Arbitration Event Log</span>
-                <span className="text-[#f09acb]">Live In-Memory Buffer</span>
+                <span>Representative Event Trace</span>
+                <span className="text-[#f09acb]">Simulated Log</span>
               </div>
 
               <div className="mt-4 space-y-3">
                 <div className="border-b border-white/[0.04] pb-3">
                   <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>14:28:10 &bull; Process Sensor</span>
+                    <span>Sample Event &bull; Process Sensor</span>
                     <span className="text-[#f09acb]">Triggered</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Code.exe &rarr; coding mood</div>
@@ -309,7 +309,7 @@ export function MikoCaseStudy() {
 
                 <div className="border-b border-white/[0.04] pb-3">
                   <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>14:35:42 &bull; Audio Sensor</span>
+                    <span>Sample Event &bull; Audio Sensor</span>
                     <span className="text-amber-400">Restrained</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Spotify.exe &rarr; audible track detected</div>
@@ -318,10 +318,10 @@ export function MikoCaseStudy() {
 
                 <div>
                   <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>15:02:19 &bull; Win32 Input Idle</span>
+                    <span>Sample Event &bull; Win32 Input Idle</span>
                     <span className="text-[#ffadd8]">Standby</span>
                   </div>
-                  <div className="mt-1 font-semibold text-primary">Inactivity &gt; 300s &rarr; sleepy mood</div>
+                  <div className="mt-1 font-semibold text-primary">Inactivity &gt; 90s &rarr; sleepy mood</div>
                   <div className="text-[10px] text-primary-muted mt-0.5">Operator away &bull; Ambient standby posture without audio notifications</div>
                 </div>
               </div>
@@ -355,7 +355,7 @@ export function MikoCaseStudy() {
               127.0.0.1 Loopback
             </h3>
             <p className="font-sans text-xs leading-relaxed text-primary-muted">
-              The PowerShell WPF client and Python sidecar communicate entirely over local loopback sockets. There is no remote cloud server or central telemetry service.
+              The local PowerShell WPF client and Python sidecar communicate over local loopback sockets. There is no built-in remote telemetry; optional model integrations follow the user-configured endpoint.
             </p>
           </div>
 
@@ -428,7 +428,7 @@ export function MikoCaseStudy() {
             </div>
             <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
               <span>Persona Studio // Memory &amp; Learned Facts</span>
-              <span className="text-[#f09acb]">Confidence Ratings</span>
+              <span className="text-[#f09acb]">Memory Weights</span>
             </div>
           </div>
         </div>
@@ -447,7 +447,7 @@ export function MikoCaseStudy() {
               Experimental by Design
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              MIKO is an ongoing personal research project exploring how computing interfaces can provide calm companionship without turning into attention-hungry assistants.
+              MIKO is an ongoing personal research project exploring how computing interfaces can provide calm companionship without requiring constant prompt interaction or disruptive notifications.
             </p>
           </div>
 
@@ -465,10 +465,12 @@ export function MikoCaseStudy() {
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
               <span className="text-[10px] uppercase tracking-wider text-accent">Future Explorations</span>
               <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Rust/Tauri cross-platform companion shell</li>
-                <li>&bull; Deeper workspace context via local project detection</li>
-                <li>&bull; Customizable user sprite packs with standardized frame manifests</li>
-                <li>&bull; Ambient screen-tone calibration for eye-strain and night posture</li>
+                <li>&bull; Packaging &amp; standalone installer distribution</li>
+                <li>&bull; Easier onboarding &amp; browser bridge setup</li>
+                <li>&bull; Refactoring large source modules for maintainability</li>
+                <li>&bull; Voice improvements &amp; speech tuning</li>
+                <li>&bull; Richer ambient behaviour &amp; multi-factor heuristics</li>
+                <li>&bull; Broader real-world multi-monitor testing</li>
               </ul>
             </div>
           </div>

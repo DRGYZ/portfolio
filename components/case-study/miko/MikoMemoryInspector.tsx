@@ -18,7 +18,7 @@ const sanitisedFacts: MemoryItem[] = [
     id: '1',
     fact: 'Prefers dark themes, concise comments, and local models.',
     source: 'persona-studio',
-    confidence: '95%',
+    confidence: '0.84 (preference)',
     confirmation: 'Confirmed 3x',
     category: 'User Preference',
     badge: 'Taught by User',
@@ -28,7 +28,7 @@ const sanitisedFacts: MemoryItem[] = [
     id: '2',
     fact: 'Works primarily in VS Code and PowerShell on Windows.',
     source: 'desktop-menu',
-    confidence: '92%',
+    confidence: '0.90 (explicit)',
     confirmation: 'Confirmed 2x',
     category: 'Environment',
     badge: 'Taught by User',
@@ -38,7 +38,7 @@ const sanitisedFacts: MemoryItem[] = [
     id: '3',
     fact: 'Listens to lo-fi hip hop and instrumental tracks while coding.',
     source: 'audio-routine',
-    confidence: '85%',
+    confidence: '0.66 (inferred)',
     confirmation: 'Confirmed 5x',
     category: 'Acoustic Habit',
     badge: 'Inferred / Detected',
@@ -48,7 +48,7 @@ const sanitisedFacts: MemoryItem[] = [
     id: '4',
     fact: 'Frequent late-night engineering sessions detected.',
     source: 'circadian-heuristic',
-    confidence: '70%',
+    confidence: '0.58 (session)',
     confirmation: 'Confirmed 1x',
     category: 'Work Routine',
     badge: 'Stored Pattern',
@@ -149,7 +149,7 @@ export function MikoMemoryInspector() {
                   </div>
                   <div className="flex items-center gap-3 text-[9px] text-primary-subtle">
                     <span>Source: <code>{item.source}</code></span>
-                    <span>Confidence: <strong className="text-accent">{item.confidence}</strong></span>
+                    <span>Weight: <strong className="text-accent">{item.confidence}</strong></span>
                     <span>{item.confirmation}</span>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export function MikoMemoryInspector() {
 
           <div className="pt-2 flex items-center justify-between text-[9px] uppercase tracking-wider text-primary-subtle border-t border-white/[0.06]">
             <span>Storage: <code>miko-memory.json</code> (Local JSON Schema)</span>
-            <span className="text-[#f09acb]">Sanitised Representative Data</span>
+            <span className="text-[#f09acb]">Sanitised Representative Data &bull; Configured Weights</span>
           </div>
         </div>
       ) : (
