@@ -1,6 +1,6 @@
 import { getAssetPath } from '@/lib/assetPath';
 
-interface FeaturedMood {
+interface Mood {
   id: string;
   name: string;
   category: string;
@@ -9,230 +9,170 @@ interface FeaturedMood {
   assetFile: string;
 }
 
-interface SecondaryMood {
-  id: string;
-  name: string;
-  triggerCondition: string;
-  dialoguePreview: string;
-  assetFile: string;
-}
-
-const featuredMoods: FeaturedMood[] = [
+const featuredMoods: Mood[] = [
   {
     id: 'coding',
-    name: 'Coding / Review',
-    category: 'Engineering Context',
-    triggerCondition: 'Active code editor foregrounded (VS Code, Visual Studio, Windows Terminal) with low ambient audio.',
-    dialoguePreview: '"checking the logic" · "review mode" · "focus focus"',
+    name: 'Coding',
+    category: 'focus',
+    triggerCondition: 'A code editor or terminal becomes the active workspace.',
+    dialoguePreview: '“checking the logic”',
     assetFile: '/case-studies/miko/miko-coding-row.png',
   },
   {
     id: 'listening',
-    name: 'Listening / Audio',
-    category: 'Acoustic Rhythm',
-    triggerCondition: 'Continuous background audio session detected (Spotify, music services) with active media playback.',
-    dialoguePreview: '"hum hum hum" · "this beat is nice" · "tiny concert mode"',
+    name: 'Listening',
+    category: 'rhythm',
+    triggerCondition: 'A background music session remains audible.',
+    dialoguePreview: '“tiny concert mode”',
     assetFile: '/case-studies/miko/miko-listening-row.png',
   },
   {
     id: 'watching',
-    name: 'Watching / Media',
-    category: 'Video Spectator',
-    triggerCondition: 'Video streaming page active (YouTube, Twitch) or local video player in foreground.',
-    dialoguePreview: '"movie mode" · "I am watching too" · "wait, this part"',
+    name: 'Watching',
+    category: 'attention',
+    triggerCondition: 'Video playback takes focus in a browser or local player.',
+    dialoguePreview: '“I am watching too”',
     assetFile: '/case-studies/miko/miko-watching-row.png',
   },
   {
     id: 'annoyed',
-    name: 'Annoyed / Relocation',
-    category: 'Disruption Stance',
-    triggerCondition: 'Triggered by desktop relocation states such as moving MIKO to a secondary monitor, or by explicit/internal annoyed state.',
-    dialoguePreview: '"wrong monitor" · "bring me back" · "hmph"',
+    name: 'Annoyed',
+    category: 'disruption',
+    triggerCondition: 'MIKO is relocated away from the primary display.',
+    dialoguePreview: '“bring me back”',
     assetFile: '/case-studies/miko/miko-annoyed-row.png',
   },
 ];
 
-const secondaryMoods: SecondaryMood[] = [
+const secondaryMoods: Mood[] = [
   {
     id: 'curious',
-    name: 'Curious / Browsing',
-    triggerCondition: 'Technical documentation, research papers, or exploratory browsing tabs.',
-    dialoguePreview: '"what are we reading?" · "new tab adventure"',
+    name: 'Curious',
+    category: 'exploration',
+    triggerCondition: 'Research, documentation, or exploratory browsing.',
+    dialoguePreview: '“what are we reading?”',
     assetFile: '/case-studies/miko/miko-curious-row.png',
   },
   {
     id: 'sleepy',
-    name: 'Sleepy / Standby',
-    triggerCondition: 'User inactivity exceeds the configured Win32 idle threshold (idleThresholdSeconds: 90s).',
-    dialoguePreview: '"still here" · "tiny standby mode"',
+    name: 'Sleepy',
+    category: 'standby',
+    triggerCondition: 'User inactivity passes the configured idle threshold.',
+    dialoguePreview: '“still here”',
     assetFile: '/case-studies/miko/miko-sleepy-row.png',
   },
   {
     id: 'celebrating',
-    name: 'Celebrating / Proud',
-    triggerCondition: 'Personality or explicit mood state used for positive/achievement moments.',
-    dialoguePreview: '"proud mode!" · "yay!" · "level up"',
+    name: 'Celebrating',
+    category: 'reward',
+    triggerCondition: 'An explicit positive or achievement state is triggered.',
+    dialoguePreview: '“proud mode!”',
     assetFile: '/case-studies/miko/miko-celebrating-row.png',
   },
 ];
 
-export function MikoMoodShowcase() {
+function MoodSpecimen({ mood, index }: { mood: Mood; index: number }) {
   return (
-    <div className="space-y-10 font-mono">
-      {/* Editorial Note */}
-      <div className="max-w-3xl border-l border-[#f09acb]/70 pl-4 text-[11px] uppercase tracking-wider text-primary-subtle">
-        <span>Design Architecture: </span>
-        <span className="text-[#f09acb]">
-          MIKO&apos;s visual moods can be driven by sensed desktop context, explicit user state, or internal companion state.
-        </span>
+    <article className="group relative overflow-hidden border-t border-white/[0.11] py-6 sm:py-8">
+      <div aria-hidden="true" className="absolute right-0 top-1 font-display text-6xl font-bold leading-none text-white/[0.025] sm:text-8xl">
+        {String(index + 1).padStart(2, '0')}
       </div>
 
-      {/* 4 Featured Context Moods */}
-      <div className="border-y border-white/[0.08]">
-        {featuredMoods.map((mood) => (
-          <div
-            key={mood.id}
-            className="border-t border-white/[0.08] py-6 first:border-t-0 sm:py-8"
-          >
-            <div className="grid gap-5 lg:grid-cols-12 lg:items-center">
-              {/* Left Column: Mood Info */}
-              <div className="space-y-2 lg:col-span-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-[#f09acb] flex-shrink-0" />
-                  <h3 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
-                    {mood.name}
-                  </h3>
-                  <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#f09acb]/80">
-                    &bull; {mood.category}
-                  </span>
-                </div>
-                <p className="text-xs text-primary-muted font-sans leading-relaxed">
-                  {mood.triggerCondition}
-                </p>
-                <div className="pt-0.5 text-[11px] text-primary-subtle">
-                  <span className="text-primary-subtle">Variants: </span>
-                  <span className="italic text-[#ffadd8]">{mood.dialoguePreview}</span>
-                </div>
-              </div>
-
-              {/* Right Column: Authentic 6-Frame Sprite Strip */}
-              <div className="overflow-x-auto pb-1 lg:col-span-7 lg:pb-0">
-                <div className="inline-block min-w-[320px] sm:min-w-[340px] border-y border-white/[0.08] bg-[#0c0d10] px-2 py-3">
-                  <img
-                    src={getAssetPath(mood.assetFile)}
-                    alt={`${mood.name} 6-frame sprite strip`}
-                    width={1152}
-                    height={208}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-16 sm:h-20 w-auto object-contain select-none [image-rendering:pixelated]"
-                  />
-                  <div className="mt-1 flex items-center justify-between border-t border-white/[0.06] pt-1 text-[10px] uppercase tracking-wider text-primary-subtle">
-                    <span>6-Frame Mood Sequence (192&times;208/cell)</span>
-                    <span className="text-[#f09acb]">Authentic Pixel Asset</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="relative grid gap-5 sm:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] sm:items-center">
+        <div>
+          <div className="flex items-baseline gap-3">
+            <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#f09acb]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.035em] text-primary sm:text-3xl">
+              {mood.name}
+            </h3>
           </div>
+          <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-primary-subtle">{mood.category}</p>
+          <p className="mt-5 max-w-sm font-sans text-sm leading-relaxed text-primary-muted">{mood.triggerCondition}</p>
+          <p className="mt-3 font-editorial text-lg italic text-[#ffadd8]">{mood.dialoguePreview}</p>
+        </div>
+
+        <div className="overflow-hidden border-y border-white/[0.07] bg-[#090a0c] px-3 py-4">
+          <img
+            src={getAssetPath(mood.assetFile)}
+            alt={`${mood.name} six-frame animation sequence`}
+            width={1152}
+            height={208}
+            loading="lazy"
+            decoding="async"
+            className="h-auto w-full select-none object-contain [image-rendering:pixelated] sm:h-20"
+          />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function MikoMoodShowcase() {
+  return (
+    <div>
+      <p className="mb-8 max-w-3xl border-l border-[#f09acb]/65 pl-4 font-mono text-[10px] uppercase leading-relaxed tracking-[0.15em] text-primary-subtle">
+        Context can influence a mood; explicit user and internal companion states can too. The character remains authored, not generated on demand.
+      </p>
+
+      <div className="grid gap-x-10 lg:grid-cols-2">
+        {featuredMoods.map((mood, index) => (
+          <MoodSpecimen key={mood.id} mood={mood} index={index} />
         ))}
       </div>
 
-      {/* 3 Secondary Reference States */}
-      <div className="border-y border-white/[0.08] py-6 sm:py-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 bg-accent" />
-            <h3 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
-              Secondary &amp; Lifecycle Mood Reference
-            </h3>
-          </div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-primary-subtle">
-            Compact Reference Strip
-          </span>
-        </div>
+      <details className="group mt-4 border-y border-white/[0.09] py-4">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#f09acb] [&::-webkit-details-marker]:hidden">
+          <span>Explore secondary moods & locomotion</span>
+          <span className="text-[#f09acb] transition-transform group-open:rotate-45">＋</span>
+        </summary>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-7 pt-8 sm:grid-cols-3">
           {secondaryMoods.map((mood) => (
-            <div key={mood.id} className="border-t border-white/[0.08] pt-4 space-y-2 first:border-t-0 first:pt-0">
-              <div className="flex items-center justify-between gap-1">
-                <span className="font-sans text-xs font-semibold text-primary">{mood.name}</span>
-                <span className="text-[11px] text-[#ffadd8] italic">{mood.dialoguePreview}</span>
+            <article key={mood.id} className="border-t border-white/[0.08] pt-5">
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-display text-xl font-bold uppercase tracking-[-0.025em] text-primary">{mood.name}</h3>
+                <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#f09acb]">{mood.category}</span>
               </div>
-              <p className="font-sans text-[11px] sm:text-xs text-primary-muted leading-relaxed">
-                {mood.triggerCondition}
-              </p>
-              <div className="border-y border-white/[0.06] bg-[#0c0d10] px-1.5 py-2 overflow-x-auto">
+              <div className="mt-4 overflow-hidden bg-[#090a0c] px-2 py-3">
                 <img
                   src={getAssetPath(mood.assetFile)}
-                  alt={`${mood.name} reference strip`}
+                  alt={`${mood.name} animation sequence`}
                   width={1152}
                   height={208}
                   loading="lazy"
                   decoding="async"
-                  className="h-10 sm:h-12 w-auto object-contain select-none [image-rendering:pixelated]"
+                  className="h-auto w-full select-none object-contain [image-rendering:pixelated] sm:h-12"
                 />
               </div>
-            </div>
+              <p className="mt-4 font-sans text-xs leading-relaxed text-primary-muted">{mood.triggerCondition}</p>
+              <p className="mt-2 font-editorial italic text-[#ffadd8]">{mood.dialoguePreview}</p>
+            </article>
           ))}
         </div>
-      </div>
 
-      {/* Movement Atlas Card */}
-      <div className="border-y border-white/[0.08] py-6 sm:py-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] pb-4">
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-            <h3 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
-              Secondary Atlas &amp; Locomotion Map
-            </h3>
+        <div className="mt-10 grid gap-7 border-t border-white/[0.08] pt-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+          <div>
+            <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#f09acb]">Movement atlas · 100 frames</p>
+            <h3 className="mt-3 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary">A body for the desktop.</h3>
+            <p className="mt-4 max-w-lg font-sans text-sm leading-relaxed text-primary-muted">
+              Walking, jumping, waving, crouching, and relocation tantrums let MIKO occupy the edge of the screen like a small physical presence.
+            </p>
           </div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-primary-subtle">
-            Desktop Movement States &bull; 10&times;10 Grid
-          </span>
-        </div>
-        <p className="mt-3 font-sans text-xs sm:text-sm leading-relaxed text-primary-muted max-w-2xl">
-          Beyond activity mood rows, MIKO maintains physical locomotion animations for desktop movement: wandering across taskbars, waving on double-click, crouching on idle, jumping, and secondary monitor relocation tantrums.
-        </p>
-
-        {/* Compact Teaser / Metadata Bar */}
-        <div className="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-y border-white/[0.08] bg-[#0c0d10] px-4 py-3">
-          <div className="flex items-center gap-2 text-xs">
-            <span className="font-semibold text-primary">Locomotion Preview:</span>
-            <span className="text-primary-muted">100 frames &bull; wandering, jumping, idle crouch, tantrums</span>
-          </div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#f09acb]">
-            1920&times;1920 Sprite Matrix
-          </span>
-        </div>
-
-        {/* Progressive Disclosure (Desktop & Mobile) */}
-        <details className="mt-3 group border-y border-white/[0.08] bg-background/50 p-3 sm:p-4">
-          <summary className="cursor-pointer text-xs uppercase tracking-wider text-[#f09acb] font-semibold flex items-center justify-between focus:outline-none focus-visible:ring-1 focus-visible:ring-[#f09acb]">
-            <span className="flex items-center gap-2">
-              <span>View Full 10&times;10 Locomotion Atlas</span>
-              <span className="text-[10px] sm:text-[11px] text-primary-subtle font-normal lowercase tracking-normal">(expand high-resolution matrix)</span>
-            </span>
-            <span className="text-primary-subtle text-xs transition-transform duration-200 group-open:rotate-180">&darr;</span>
-          </summary>
-          <div className="mt-3 overflow-x-auto border border-white/[0.06] bg-[#0c0d10] p-3 sm:p-4">
+          <div className="overflow-x-auto bg-[#090a0c] p-4">
             <img
               src={getAssetPath('/case-studies/miko/miko-spritesheet.png')}
-              alt="MIKO primary sprite atlas showing locomotion animations"
+              alt="MIKO locomotion sprite atlas"
               width={1920}
               height={1920}
               loading="lazy"
               decoding="async"
-              className="max-h-72 sm:max-h-96 w-auto mx-auto object-contain select-none opacity-90 [image-rendering:pixelated]"
+              className="mx-auto max-h-80 w-auto select-none object-contain opacity-90 [image-rendering:pixelated]"
             />
           </div>
-        </details>
-
-        <div className="mt-3 flex items-center justify-between text-[10px] uppercase tracking-wider text-primary-subtle">
-          <span>Atlas Format: 1920&times;1920 Full Sprite Matrix</span>
-          <span className="text-[#f09acb]">WPF Animation Loop</span>
         </div>
-      </div>
+      </details>
     </div>
   );
 }
