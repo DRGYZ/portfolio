@@ -23,10 +23,23 @@ export function ProjectRow({
       <button
         type="button"
         aria-pressed={isActive}
-        aria-label={`Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`}
+        aria-label={
+          isActive && hasProjectLink
+            ? `Open ${project.title} project link in new tab`
+            : `Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`
+        }
         onPointerEnter={onActivate}
         onFocus={onActivate}
-        onClick={onActivate}
+        onClick={() => {
+          if (isActive && hasProjectLink) {
+            const url = getProjectUrl(project);
+            if (url) {
+              window.open(url, '_blank', 'noopener,noreferrer');
+              return;
+            }
+          }
+          onActivate();
+        }}
         className={`group relative block w-full overflow-visible py-7 text-left transition-[opacity,transform] duration-300 sm:py-9 lg:py-11 ${
           isDimmed
             ? 'opacity-20 hover:opacity-100 focus-visible:opacity-100'

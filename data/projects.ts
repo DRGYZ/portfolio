@@ -45,4 +45,18 @@ export const projects: Project[] = [
     accent: '#b9c3ff',
     motionStyle: 'parallax',
   },
+  {
+    id: '05',
+    title: 'Nyxboard',
+    slug: 'nyxboard',
+    year: '2025',
+    category: 'Commerce Dashboard',
+    description: 'An expressive, accessible multi-store commerce operations dashboard built with React and TypeScript.',
+    previewImage: '/projects/nyxboard.svg?v=1',
+    previewType: 'image',
+    accent: '#b9c3ff',
+    motionStyle: 'layers',
+    liveDemoUrl: 'https://drgyz.github.io/nyxboard-commerce-dashboard/',
+    gitHubUrl: 'https://github.com/DRGYZ/nyxboard-commerce-dashboard',
+  },
 ];

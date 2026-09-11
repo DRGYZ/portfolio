@@ -13,6 +13,7 @@ export interface Project {
   caseStudyUrl?: string;
   gitHubUrl?: string;
   liveDemoUrl?: string;
+  description?: string;
   accent?: string;
   motionStyle: MotionStyle;
 }

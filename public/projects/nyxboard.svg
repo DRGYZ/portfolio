@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+  <defs>
+    <clipPath id="nyx-slice"><path d="M0 440 1200 170v136L0 576Z"/></clipPath>
+    <clipPath id="nyx-panel"><path d="M360 0h840v820H140Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="820" fill="#111218"/>
+  <path d="M360 0h840v820H140Z" fill="#b9c3ff" fill-opacity=".045"/>
+  <text x="54" y="78" fill="#b9c3ff" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">NYXBOARD / 05</text>
+  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">COMMERCE DASHBOARD / 2025</text>
+  <text x="-16" y="732" fill="#eeeeee" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">N</text>
+  <g clip-path="url(#nyx-panel)">
+    <text x="-16" y="732" fill="#b9c3ff" fill-opacity=".55" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">N</text>
+  </g>
+  <text x="430" y="240" fill="#eeeeee" fill-opacity=".92" font-family="Georgia,serif" font-size="148" font-style="italic" letter-spacing="-7">Nyxboard</text>
+  <text x="396" y="520" fill="#eeeeee" fill-opacity=".1" font-family="Arial Black,Arial,sans-serif" font-size="205" font-weight="900" letter-spacing="-15">OPERATIONS</text>
+  <g clip-path="url(#nyx-slice)" transform="translate(-24 10)">
+    <text x="-16" y="732" fill="#b9c3ff" fill-opacity=".92" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">N</text>
+    <text x="430" y="240" fill="#b9c3ff" font-family="Georgia,serif" font-size="148" font-style="italic" letter-spacing="-7">Nyxboard</text>
+    <text x="396" y="520" fill="#eeeeee" fill-opacity=".28" font-family="Arial Black,Arial,sans-serif" font-size="205" font-weight="900" letter-spacing="-15">OPERATIONS</text>
+  </g>
+  <path d="M430 354 l136 -36 l114 48 l156 -74 l184 28" fill="none" stroke="#35b9c8" stroke-opacity=".34" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <circle cx="430" cy="354" r="4.5" fill="#35b9c8" fill-opacity=".65"/>
+  <circle cx="566" cy="318" r="4.5" fill="#35b9c8" fill-opacity=".65"/>
+  <circle cx="680" cy="366" r="4.5" fill="#35b9c8" fill-opacity=".65"/>
+  <circle cx="836" cy="292" r="4.5" fill="#35b9c8" fill-opacity=".65"/>
+  <circle cx="1020" cy="320" r="4.5" fill="#35b9c8" fill-opacity=".65"/>
+  <text x="430" y="380" fill="#eeeeee" fill-opacity=".32" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">APEX</text>
+  <text x="680" y="392" fill="#eeeeee" fill-opacity=".32" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">SOLARIA</text>
+  <text x="1020" y="346" fill="#eeeeee" fill-opacity=".32" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">VELOCE</text>
+  <path d="M54 154h380M584 154h562M54 756h236M990 756h156" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
+  <path d="M0 576 424 451M588 402l612-184" stroke="#b9c3ff" stroke-opacity=".68" stroke-width="3"/>
+  <path d="M360 28 140 792M860 38 720 792" stroke="#eeeeee" stroke-opacity=".14" stroke-width="2"/>
+  <text x="1146" y="760" text-anchor="end" fill="#eeeeee" fill-opacity=".48" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">OPERATIONS / 05</text>
+</svg>

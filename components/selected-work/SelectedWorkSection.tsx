@@ -48,7 +48,9 @@ export function SelectedWorkSection() {
   );
 
   const activeIndex = projects.findIndex((project) => project.id === activeProject.id);
-  const previewOffsets = [-92, -30, 32, 94];
+  const previewOffsets = projects.length === 5
+    ? [-120, -60, 0, 60, 120]
+    : [-92, -30, 32, 94];
 
   const activateProject = (project: Project) => {
     const nextIndex = projects.findIndex((item) => item.id === project.id);
@@ -99,7 +101,7 @@ export function SelectedWorkSection() {
         >
           <div>
             <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
-              Portfolio index / 01—04
+              Portfolio index / 01—0{projects.length}
             </p>
             <motion.h2
               id="selected-work-title"
@@ -118,7 +120,7 @@ export function SelectedWorkSection() {
           />
         </motion.div>
 
-        <div ref={stageRef} className="relative lg:min-h-[740px]">
+        <div ref={stageRef} className="relative lg:min-h-[820px]">
           <div
             className="relative lg:w-[74%]"
             onPointerLeave={(event) => {

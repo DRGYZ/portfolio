@@ -18,6 +18,7 @@ const frameClips: Record<string, string> = {
   '02': 'polygon(7% 0, 100% 0, 100% 87%, 93% 100%, 0 100%, 0 13%)',
   '03': 'polygon(0 0, 100% 0, 100% 100%, 9% 100%, 0 84%)',
   '04': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 0 100%, 0 14%)',
+  '05': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
 };
 
 const compactFrameClips: Record<string, string> = {
@@ -25,6 +26,7 @@ const compactFrameClips: Record<string, string> = {
   '02': 'polygon(8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%, 0 9%)',
   '03': 'polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)',
   '04': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%, 0 12%)',
+  '05': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
 };
 
 const sliceClips: Record<string, string> = {
@@ -32,6 +34,7 @@ const sliceClips: Record<string, string> = {
   '02': 'polygon(0 31%, 100% 31%, 100% 49%, 0 49%)',
   '03': 'polygon(0 69%, 100% 30%, 100% 45%, 0 84%)',
   '04': 'polygon(0 58%, 100% 20%, 100% 37%, 0 75%)',
+  '05': 'polygon(0 42%, 100% 18%, 100% 35%, 0 59%)',
 };
 
 const seamPaths: Record<string, string> = {
@@ -39,6 +42,7 @@ const seamPaths: Record<string, string> = {
   '02': 'M0 39 H37 M51 39 H100',
   '03': 'M0 84 L34 73 M49 68 L100 52',
   '04': 'M0 86 L36 75 M51 70 L100 54',
+  '05': 'M0 60 L42 44 M56 39 L100 24',
 };
 
 const compactObjectPositions: Record<string, string> = {
@@ -46,6 +50,7 @@ const compactObjectPositions: Record<string, string> = {
   '02': '55% center',
   '03': '37% center',
   '04': '58% center',
+  '05': '32% center',
 };
 
 const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
@@ -53,6 +58,7 @@ const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
   '02': { x: 12, y: -8 },
   '03': { x: -8, y: -10 },
   '04': { x: 10, y: 10 },
+  '05': { x: -11, y: 9 },
 };
 
 export function ProjectPreview({
@@ -143,6 +149,24 @@ export function ProjectPreview({
             opacity: 0.2,
           },
         };
+      case '05':
+        return {
+          initial: {
+            clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
+            x: 24 * direction,
+            opacity: 0.6,
+          },
+          animate: {
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+            x: 0,
+            opacity: 1,
+          },
+          exit: {
+            clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
+            x: -16 * direction,
+            opacity: 0.2,
+          },
+        };
       default:
         return {
           initial: { opacity: 0 },
@@ -153,7 +177,7 @@ export function ProjectPreview({
   };
 
   const variants = getVariants(project.id);
-  const backing = backingOffsets[project.id];
+  const backing = backingOffsets[project.id] ?? backingOffsets['01'];
 
   return (
     <div className={`relative w-full ${compact ? 'aspect-[1.18/1]' : 'aspect-[1.48/1]'}`}>
@@ -268,17 +292,40 @@ export function ProjectPreview({
               />
             ) : null}
 
-            <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
+            <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex flex-wrap items-end justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
               <span>{project.id} / {project.title}</span>
               {projectUrl ? (
-                <a
-                  href={projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pointer-events-auto bg-accent px-4 py-2.5 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
-                >
-                  View project ↗
-                </a>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  {project.gitHubUrl && (
+                    <a
+                      href={project.gitHubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pointer-events-auto border border-white/20 bg-[#121318]/90 px-3 py-2 text-primary transition-colors hover:border-accent hover:text-accent focus-visible:border-accent"
+                    >
+                      GitHub ↗
+                    </a>
+                  )}
+                  {project.liveDemoUrl ? (
+                    <a
+                      href={project.liveDemoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                    >
+                      Live demo ↗
+                    </a>
+                  ) : (
+                    <a
+                      href={projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                    >
+                      View project ↗
+                    </a>
+                  )}
+                </div>
               ) : (
                 <span className="text-primary/55">Project preview</span>
               )}
