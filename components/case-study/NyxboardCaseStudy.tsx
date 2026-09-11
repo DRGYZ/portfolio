@@ -231,33 +231,41 @@ export function NyxboardCaseStudy() {
               </h2>
               <p className="mt-6 text-base leading-relaxed text-primary-muted">
                 The Orders table is where the operational work happens. Rather than relying on rigid backend roundtrips,
-                the interface maintains URL-synchronized filter state that allows rapid slicing across storefronts,
+                the interface maintains validated two-way URL synchronization with local React view state, allowing rapid slicing across storefronts,
                 lifecycle stages, debounced search queries, sorting preferences, and pagination bounds.
               </p>
 
               {/* State Flow Diagram */}
-              <div className="mt-8 border border-white/[0.08] bg-surface p-6 font-mono">
-                <span className="text-[9px] uppercase tracking-[0.2em] text-accent">Architecture // State Pipeline</span>
-                <div className="mt-4 space-y-3 text-xs">
-                  <div className="flex items-center gap-3 text-primary-muted">
-                    <span className="h-1.5 w-1.5 bg-accent" />
+              <figure className="mt-8 border border-white/[0.08] bg-surface p-6 font-mono">
+                <figcaption className="text-[9px] uppercase tracking-[0.2em] text-accent">
+                  Architecture // State Pipeline
+                </figcaption>
+                <ol className="mt-4 space-y-3 text-xs list-none p-0 m-0">
+                  <li className="flex items-center gap-3 text-primary-muted">
+                    <span className="h-1.5 w-1.5 bg-accent flex-shrink-0" aria-hidden="true" />
                     <span>User inputs (Search, Store, Status, Sort, Page)</span>
-                  </div>
-                  <div className="pl-4 text-primary-subtle text-[11px]">&darr; 250ms debounce &amp; parameter validation</div>
-                  <div className="border-l border-accent/40 pl-4 py-1 text-accent">
+                  </li>
+                  <li className="pl-4 text-primary-subtle text-[11px]" aria-hidden="true">
+                    &darr; 250ms debounce &amp; parameter validation
+                  </li>
+                  <li className="border-l border-accent/40 pl-4 py-1 text-accent">
                     <code>useSearchParams({'{ replace: true }'})</code>
-                  </div>
-                  <div className="pl-4 text-primary-subtle text-[11px]">&darr; URL as single source of truth</div>
-                  <div className="border-l border-white/20 pl-4 py-1 text-primary">
+                  </li>
+                  <li className="pl-4 text-primary-subtle text-[11px]" aria-hidden="true">
+                    &darr; Two-way URL synchronization with local React view state
+                  </li>
+                  <li className="border-l border-white/20 pl-4 py-1 text-primary">
                     <code>orderService.getOrders(filterState)</code>
-                  </div>
-                  <div className="pl-4 text-primary-subtle text-[11px]">&darr; pure query calculation</div>
-                  <div className="flex items-center gap-3 text-primary font-semibold">
-                    <span className="h-1.5 w-1.5 bg-white" />
+                  </li>
+                  <li className="pl-4 text-primary-subtle text-[11px]" aria-hidden="true">
+                    &darr; pure query calculation
+                  </li>
+                  <li className="flex items-center gap-3 text-primary font-semibold">
+                    <span className="h-1.5 w-1.5 bg-white flex-shrink-0" aria-hidden="true" />
                     <span>Synchronized Orders Table &amp; Tab Badges</span>
-                  </div>
-                </div>
-              </div>
+                  </li>
+                </ol>
+              </figure>
 
               <div className="mt-8 space-y-4 text-xs leading-relaxed text-primary-subtle">
                 <p>
@@ -332,8 +340,7 @@ export function NyxboardCaseStudy() {
               <span className="font-mono text-[10px] font-semibold text-accent">01 / Full Order Anatomy</span>
               <h3 className="mt-1 text-sm font-bold uppercase tracking-wider text-primary">Line Items &amp; SKUs</h3>
               <p className="mt-2 text-xs leading-relaxed text-primary-muted">
-                Each product item shows thumbnail previews, SKU codes, unit prices, ordered quantities, customer delivery address,
-                and tax/shipping fee calculations.
+                Each product row details product title, SKU code, ordered quantity, unit price, and extended line total alongside customer delivery information, complimentary freight shipping status, and order total due.
               </p>
             </div>
 
@@ -433,7 +440,7 @@ export function NyxboardCaseStudy() {
                   <span className="font-mono text-[10px] text-accent">01 / Routing &amp; URL Synchronization</span>
                   <h4 className="text-sm font-semibold text-primary">React Router 7</h4>
                   <p className="mt-1 text-xs text-primary-muted">
-                    URL query parameters (<code className="text-accent">q, store, status, sortBy, sortOrder, page</code>) act as the single source of truth for view state, making every filter combination shareable.
+                    URL query parameters (<code className="text-accent">q, store, status, sortBy, sortOrder, page</code>) synchronize bidirectionally with local React view state under defensive runtime parameter validation, keeping every filter combination shareable.
                   </p>
                 </div>
 
@@ -515,13 +522,13 @@ export function NyxboardCaseStudy() {
 
               <div className="mt-8 border border-white/[0.08] bg-surface p-5 font-mono text-xs">
                 <span className="text-[9px] uppercase tracking-[0.2em] text-accent">Focus Lifecycle Hook (`useFocusTrap`)</span>
-                <div className="mt-3 space-y-2 text-primary-muted text-[11px]">
-                  <div>1. <strong>Capture:</strong> Stores <code className="text-primary">document.activeElement</code> on trigger.</div>
-                  <div>2. <strong>Focus Move:</strong> Moves focus to the first interactive element inside drawer.</div>
-                  <div>3. <strong>Cycle Trap:</strong> Intercepts <code className="text-primary">Tab</code> and <code className="text-primary">Shift+Tab</code> to constrain focus within container.</div>
-                  <div>4. <strong>Escape Dismiss:</strong> Global keydown listener dismisses open dialogs.</div>
-                  <div>5. <strong>Restore:</strong> Automatically returns focus to original trigger on close.</div>
-                </div>
+                <ol className="mt-3 space-y-2 text-primary-muted text-[11px] list-none p-0 m-0">
+                  <li>1. <strong>Capture:</strong> Stores <code className="text-primary">document.activeElement</code> on trigger.</li>
+                  <li>2. <strong>Focus Move:</strong> Moves focus to the first interactive element inside drawer.</li>
+                  <li>3. <strong>Cycle Trap:</strong> Intercepts <code className="text-primary">Tab</code> and <code className="text-primary">Shift+Tab</code> to constrain focus within container.</li>
+                  <li>4. <strong>Escape Dismiss:</strong> Global keydown listener dismisses open dialogs.</li>
+                  <li>5. <strong>Restore:</strong> Automatically returns focus to the specific row trigger on close without viewport drift.</li>
+                </ol>
               </div>
             </div>
 
@@ -530,8 +537,7 @@ export function NyxboardCaseStudy() {
                 <span className="font-mono text-[10px] text-accent">01 / Focus Restoration</span>
                 <h3 className="mt-2 text-sm font-bold uppercase tracking-wider text-primary">Zero Context Drift</h3>
                 <p className="mt-2 text-xs leading-relaxed text-primary-muted">
-                  When an operator closes the order drawer, focus reliably returns to the exact table row they were examining,
-                  preventing the browser viewport from resetting to the top.
+                  When closing the order drawer, focus returns reliably to that specific row&apos;s inspection trigger whether opened via keyboard, action button, or mouse row activation, eliminating viewport scroll drift.
                 </p>
               </div>
 
@@ -546,10 +552,9 @@ export function NyxboardCaseStudy() {
 
               <div className="border border-white/[0.08] bg-surface p-6">
                 <span className="font-mono text-[10px] text-accent">03 / Keyboard Control</span>
-                <h3 className="mt-2 text-sm font-bold uppercase tracking-wider text-primary">Escape &amp; Enter</h3>
+                <h3 className="mt-2 text-sm font-bold uppercase tracking-wider text-primary">Native Triggers &amp; Escape</h3>
                 <p className="mt-2 text-xs leading-relaxed text-primary-muted">
-                  All interactive controls are operable via standard keyboard patterns, including Escape key dismissal
-                  and Space/Enter row activation.
+                  The Orders table provides native focusable triggers with distinct focus rings and Enter/Space activation, paired with global Escape key dismissal in drawers and dialogs.
                 </p>
               </div>
 
@@ -579,31 +584,31 @@ export function NyxboardCaseStudy() {
                 Nyxboard&apos;s visual design establishes a purposeful operational environment rather than copying standard generic dashboard styling:
               </p>
 
-              <div className="mt-8 space-y-4 font-mono text-xs">
+              <dl className="mt-8 space-y-4 font-mono text-xs">
                 <div className="flex items-center gap-4">
-                  <div className="h-7 w-7 border border-white/20 bg-[#11121a]" />
-                  <div>
+                  <dt className="h-7 w-7 border border-white/20 bg-[#11121a] flex-shrink-0" aria-label="Color swatch: Nyx Ink" />
+                  <dd>
                     <span className="text-primary font-semibold">Nyx Ink (`#11121a`)</span>
                     <span className="block text-[10px] text-primary-subtle">Quiet, high-contrast operational foundation</span>
-                  </div>
+                  </dd>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="h-7 w-7 border border-white/20 bg-[#6d5dfc]" />
-                  <div>
+                  <dt className="h-7 w-7 border border-white/20 bg-[#6d5dfc] flex-shrink-0" aria-label="Color swatch: Nyx Violet" />
+                  <dd>
                     <span className="text-primary font-semibold">Nyx Violet (`#6d5dfc`)</span>
                     <span className="block text-[10px] text-primary-subtle">Primary interactive accents and diagonal seam cuts</span>
-                  </div>
+                  </dd>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="h-7 w-7 border border-white/20 bg-[#35b9c8]" />
-                  <div>
+                  <dt className="h-7 w-7 border border-white/20 bg-[#35b9c8] flex-shrink-0" aria-label="Color swatch: Nyx Cyan" />
+                  <dd>
                     <span className="text-primary font-semibold">Nyx Cyan (`#35b9c8`)</span>
                     <span className="block text-[10px] text-primary-subtle">Telemetry indicators and live chart trajectory highlights</span>
-                  </div>
+                  </dd>
                 </div>
-              </div>
+              </dl>
             </div>
 
             <div className="lg:col-span-7">
@@ -640,8 +645,8 @@ export function NyxboardCaseStudy() {
             <div className="space-y-6 text-base leading-relaxed text-primary-muted sm:text-lg lg:col-span-8">
               <p>
                 Building Nyxboard demonstrated that dense operational tools do not need to choose between speed, visual clarity,
-                and accessibility. By keeping view parameters strictly synchronized with the URL, UI state remains transparent,
-                shareable, and immune to accidental resets during everyday operations.
+                and accessibility. By keeping view parameters validated and synchronized bidirectionally between the URL and local React state,
+                UI state remains transparent, shareable, and resilient against accidental resets during everyday operations.
               </p>
               <p>
                 The slide-over drawer pattern confirmed that keeping the underlying data table visible preserves orientation far better
@@ -657,24 +662,24 @@ export function NyxboardCaseStudy() {
                   Were this system moved into an enterprise production environment, the following engineering extensions would naturally follow:
                 </p>
 
-                <div className="mt-5 grid gap-4 sm:grid-cols-2 text-xs text-primary-muted">
-                  <div className="border-l border-white/20 pl-3">
+                <ul className="mt-5 grid gap-4 sm:grid-cols-2 text-xs text-primary-muted list-none p-0 m-0">
+                  <li className="border-l border-white/20 pl-3">
                     <strong className="text-primary block font-medium">Real Backend &amp; API Integration</strong>
                     <span>Replacing the in-memory <code className="text-accent">orderService</code> with typed REST or GraphQL endpoints.</span>
-                  </div>
-                  <div className="border-l border-white/20 pl-3">
+                  </li>
+                  <li className="border-l border-white/20 pl-3">
                     <strong className="text-primary block font-medium">Server-Side Data Layer</strong>
                     <span>Implementing cursor-based pagination and database-level indexing for high-volume catalogs.</span>
-                  </div>
-                  <div className="border-l border-white/20 pl-3">
+                  </li>
+                  <li className="border-l border-white/20 pl-3">
                     <strong className="text-primary block font-medium">Authentication &amp; Permissions</strong>
                     <span>Adding role-based access control (RBAC) to restrict order status mutations and export privileges.</span>
-                  </div>
-                  <div className="border-l border-white/20 pl-3">
+                  </li>
+                  <li className="border-l border-white/20 pl-3">
                     <strong className="text-primary block font-medium">Carrier Webhooks</strong>
                     <span>Automated real-time tracking feeds replacing local shipping state toggles.</span>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -691,7 +696,7 @@ export function NyxboardCaseStudy() {
                 href="/#work"
                 className="group inline-flex items-baseline gap-3 font-editorial text-[clamp(2rem,4.5vw,4.5rem)] italic leading-none tracking-[-0.035em] text-primary transition-colors hover:text-accent"
               >
-                <span className="transition-transform duration-300 group-hover:-translate-x-2">&larr;</span>
+                <span className="transition-transform duration-300 group-hover:-translate-x-2 motion-reduce:transform-none">&larr;</span>
                 <span>Back to Selected Work</span>
               </Link>
             </div>

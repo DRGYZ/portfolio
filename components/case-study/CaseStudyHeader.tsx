@@ -22,7 +22,7 @@ export function CaseStudyHeader({
           href="/#work"
           className="group flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-primary transition-colors hover:text-accent"
         >
-          <span className="transition-transform duration-200 group-hover:-translate-x-1">←</span>
+          <span className="transition-transform duration-200 group-hover:-translate-x-1 motion-reduce:transform-none">←</span>
           <span>Back to Selected Work</span>
         </Link>
 
@@ -38,7 +38,7 @@ export function CaseStudyHeader({
               href={liveDemoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-[color,transform] duration-200 hover:-translate-y-0.5 hover:text-primary"
+              className="transition-[color,transform] duration-200 hover:-translate-y-0.5 motion-reduce:transform-none hover:text-primary"
             >
               Live demo ↗
             </a>
@@ -48,7 +48,7 @@ export function CaseStudyHeader({
               href={gitHubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden transition-[color,transform] duration-200 hover:-translate-y-0.5 hover:text-primary sm:inline-block"
+              className="hidden transition-[color,transform] duration-200 hover:-translate-y-0.5 motion-reduce:transform-none hover:text-primary sm:inline-block"
             >
               GitHub ↗
             </a>
