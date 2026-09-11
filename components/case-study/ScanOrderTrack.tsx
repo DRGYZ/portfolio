@@ -16,7 +16,7 @@ const phases: ScanPhase[] = [
     id: 'kpis',
     number: '01',
     title: 'Summary KPIs',
-    detail: 'Revenue, Active Orders, Unshipped Queue, Fulfillment Rate, and AOV.',
+    detail: 'Active Revenue, Total Orders, Pending Review, Fulfillment Queue, and Fulfillment Rate.',
   },
   {
     id: 'trajectory',

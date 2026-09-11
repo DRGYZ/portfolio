@@ -17,26 +17,26 @@ const steps: PipelineStep[] = [
     id: 'inputs',
     label: 'User Intent & View Parameters',
     code: 'Search, Store, Status, Sort, Page',
-    detail: 'Debounced search query, store scope, lifecycle tab, multi-column sort, and page bounds.',
+    detail: 'Debounced search query, store scope, lifecycle tab, single-column sort, and page bounds.',
     badge: 'INTERACTION',
   },
   {
     id: 'validation',
-    label: 'Sanitization & Debounce Intercept',
+    label: 'Validation & Debounce Intercept',
     code: '250ms window · Runtime whitelist',
-    detail: 'Keystrokes debounced by 250ms; query params strictly validated against runtime whitelists.',
+    detail: 'Keystrokes debounce for 250ms; supported query parameters are validated before they reach view state.',
     badge: 'DEFENSE',
   },
   {
     id: 'sync',
-    label: 'Two-Way URL State Synchronization',
+    label: 'URL and Local State Synchronization',
     code: "useSearchParams({ replace: true })",
-    detail: 'URL updates without page reload, keeping active operational filter sets shareable and persistent.',
+    detail: 'The URL mirrors settled filter state without a page reload, keeping supported operational views shareable.',
     badge: 'ROUTING',
   },
   {
     id: 'service',
-    label: 'Pure Service Query Calculation',
+    label: 'Service Query Calculation',
     code: 'orderService.getOrders(filterState)',
     detail: 'Performs filtering, search, sorting, and pagination, returning the matching slice and total count.',
     badge: 'COMPUTE',
@@ -61,7 +61,7 @@ export function StatePipelineFlow() {
           Architecture // Interactive State Pipeline
         </figcaption>
         <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary-subtle hidden sm:inline">
-          Hover stage to inspect data flow
+          Select a stage to inspect data flow
         </span>
       </div>
 
@@ -86,6 +86,7 @@ export function StatePipelineFlow() {
 
               <button
                 type="button"
+                aria-pressed={isSelected}
                 onMouseEnter={() => setActiveStep(step.id)}
                 onMouseLeave={() => setActiveStep(null)}
                 onFocus={() => setActiveStep(step.id)}

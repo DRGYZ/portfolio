@@ -15,13 +15,13 @@ const targets: TargetItem[] = [
   {
     id: 'table',
     name: 'Orders Table Row',
-    effect: 'Status badge flips to "Shipped"; action button updates instantly.',
+    effect: 'Status badge changes to "Shipped" and the available actions change with the new lifecycle state.',
     layer: 'Orders Page View',
   },
   {
     id: 'tabs',
     name: 'Status Tabs',
-    effect: 'Unshipped counter decrements (-1), Shipped counter increments (+1).',
+    effect: 'The originating Pending or Unshipped counter decrements; Shipped increments by one.',
     layer: 'Filter Navigation',
   },
   {
@@ -60,7 +60,7 @@ export function ReactiveMutationLoop() {
           </div>
           <p className="mt-1.5 text-primary font-semibold text-xs">User triggers &ldquo;Mark as Shipped&rdquo; in Drawer</p>
           <p className="mt-1 text-[11px] font-sans text-primary-muted">
-            Initiates asynchronous mutation with inline button spinner state.
+            Updates the local demo state with a short inline loading state for action feedback.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export function ReactiveMutationLoop() {
           </div>
           <p className="mt-1.5 text-primary font-semibold text-xs">orderService.markAsShipped(id) &rarr; version++</p>
           <p className="mt-1 text-[11px] font-sans text-primary-muted">
-            Updates persistent storage and increments internal version counter to invalidate cached selectors.
+            Updates persistent storage and increments an internal version counter so context-derived data recomputes.
           </p>
         </div>
 
@@ -112,11 +112,15 @@ export function ReactiveMutationLoop() {
               const isHovered = activeTarget === t.id;
 
               return (
-                <div
+                <button
                   key={t.id}
+                  type="button"
                   onMouseEnter={() => setActiveTarget(t.id)}
                   onMouseLeave={() => setActiveTarget(null)}
-                  className={`p-2.5 border transition-all cursor-default ${
+                  onFocus={() => setActiveTarget(t.id)}
+                  onBlur={() => setActiveTarget(null)}
+                  aria-pressed={isHovered}
+                  className={`w-full p-2.5 border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     isHovered
                       ? 'border-accent/60 bg-accent/[0.08] shadow-sm'
                       : 'border-white/[0.06] bg-background/40 hover:border-white/20'
@@ -129,7 +133,7 @@ export function ReactiveMutationLoop() {
                   <p className="mt-1 text-[10px] font-sans leading-normal text-primary-muted">
                     {t.effect}
                   </p>
-                </div>
+                </button>
               );
             })}
           </div>

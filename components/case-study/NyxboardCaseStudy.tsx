@@ -10,6 +10,7 @@ import { StatePipelineFlow } from './StatePipelineFlow';
 import { ResponsiveColumnPriority } from './ResponsiveColumnPriority';
 import { ReactiveMutationLoop } from './ReactiveMutationLoop';
 import { StatusTokenMatrix } from './StatusTokenMatrix';
+import { CaseStudyFrame } from './CaseStudyFrame';
 
 export function NyxboardCaseStudy() {
   const prefersReduced = useReducedMotion();
@@ -193,11 +194,8 @@ export function NyxboardCaseStudy() {
         </div>
 
         {/* Full-width Overview Screenshot Frame with Structural Reveal */}
-        <motion.div
-          initial={prefersReduced ? false : { opacity: 0, y: 32, scale: 0.985 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        <CaseStudyFrame
+          direction="up"
           className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 lg:p-6 shadow-2xl"
         >
           <img
@@ -209,7 +207,7 @@ export function NyxboardCaseStudy() {
             decoding="async"
             className="w-full border border-white/[0.05] object-contain shadow-2xl"
           />
-        </motion.div>
+        </CaseStudyFrame>
         <span className="mt-3 block text-right font-mono text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
           Operations Overview // Desktop View
         </span>
@@ -220,12 +218,12 @@ export function NyxboardCaseStudy() {
             {
               num: '01 / Channel Scope',
               title: 'Store Filtering',
-              desc: 'A top-level store selector toggles between consolidated multi-brand performance (Apex Goods, Solaria, Veloce) and individual storefront channels, instantly narrowing all charts and metrics.',
+              desc: 'A top-level store selector toggles between consolidated multi-brand performance (Apex Goods, Solaria, Veloce) and individual storefront channels, updating selected-store metrics and primary charts while retaining a cross-store comparison view.',
             },
             {
               num: '02 / KPI Hierarchy',
               title: 'Key Metrics',
-              desc: '5 core operational cards display Total Revenue, Active Orders, Unshipped Queue, Fulfillment Rate, and Average Order Value with directional trend indicators.',
+              desc: 'Five operational cards show Active Revenue, Total Orders, Pending Review, Fulfillment Queue, and Fulfillment Rate. Revenue and total-order cards include directional trends.',
             },
             {
               num: '03 / Dual Trajectories',
@@ -235,7 +233,7 @@ export function NyxboardCaseStudy() {
             {
               num: '04 / Live Sync',
               title: 'Reactive Updates',
-              desc: 'When orders are shipped or canceled anywhere in the app, the overview metrics, chart data points, and recent order queues recalculate immediately without full-page reloads.',
+              desc: 'Status changes update the affected queues and distribution immediately. Cancellations also remove the order from active revenue; shipping leaves revenue unchanged.',
             },
           ].map((card, idx) => (
             <motion.div
@@ -272,8 +270,8 @@ export function NyxboardCaseStudy() {
             </h2>
             <p className="mt-6 text-base leading-relaxed text-primary-muted">
               The Orders table is where the operational work happens. Rather than relying on rigid backend roundtrips,
-              the interface maintains validated two-way URL synchronization with local React view state, allowing rapid slicing across storefronts,
-              lifecycle stages, debounced search queries, sorting preferences, and pagination bounds.
+              the interface synchronizes shareable URL parameters with local React view state. A debounced search input keeps typing responsive while filters,
+              sorting preferences, and canonical pagination stay aligned.
             </p>
 
             {/* Interactive Animated State Pipeline */}
@@ -289,31 +287,28 @@ export function NyxboardCaseStudy() {
                 reflect the currently selected store channel.
               </p>
               <p>
-                <strong>Defensive Parameter Parsing:</strong> URL search parameters are strictly validated against runtime
-                whitelists; invalid status values or non-numeric pages gracefully fall back to safe defaults.
+                <strong>Defensive Parameter Parsing:</strong> URL search parameters are checked against supported values;
+                invalid statuses, stores, page sizes, and page numbers fall back to safe defaults.
               </p>
             </div>
           </div>
 
           {/* Orders Desktop Screenshot Frame */}
           <div className="lg:col-span-7">
-            <motion.div
-              initial={prefersReduced ? false : { opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            <CaseStudyFrame
+              direction="right"
               className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 shadow-2xl"
             >
               <img
                 src={getAssetPath('/case-studies/nyxboard/orders-desktop.png')}
-                alt="Nyxboard Orders workspace table view showing faceted status tabs, debounced search bar, and multi-column sorting"
+                alt="Nyxboard Orders workspace table view showing faceted status tabs, debounced search bar, and sortable table columns"
                 width="1440"
                 height="900"
                 loading="lazy"
                 decoding="async"
                 className="w-full border border-white/[0.05] object-contain shadow-2xl"
               />
-            </motion.div>
+            </CaseStudyFrame>
             <span className="mt-3 block text-right font-mono text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
               Orders Workspace // Desktop Table View
             </span>
@@ -338,11 +333,8 @@ export function NyxboardCaseStudy() {
         </div>
 
         {/* Slide-over Inspection Metaphor Screenshot Reveal */}
-        <motion.div
-          initial={prefersReduced ? false : { opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        <CaseStudyFrame
+          direction="right"
           className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 lg:p-6 shadow-2xl"
         >
           <img
@@ -354,7 +346,7 @@ export function NyxboardCaseStudy() {
             decoding="async"
             className="w-full border border-white/[0.05] object-contain shadow-2xl"
           />
-        </motion.div>
+        </CaseStudyFrame>
         <span className="mt-3 block text-right font-mono text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
           Order Inspection // Slide-Over Drawer
         </span>
@@ -369,7 +361,7 @@ export function NyxboardCaseStudy() {
             {
               num: '02 / Direct Mutation',
               title: 'Mark as Shipped',
-              desc: 'Triggering “Mark as Shipped” initiates an asynchronous mutation with an inline button loading state, advancing the lifecycle without requiring modal form overhead.',
+              desc: 'Triggering “Mark as Shipped” updates persistent local demo state. A brief inline loading state gives the action clear feedback without modal form overhead.',
             },
             {
               num: '03 / Guarded Actions',
@@ -427,18 +419,14 @@ export function NyxboardCaseStudy() {
                 tuck directly into the mobile Order ID cell, preserving critical context in a single scan.
               </li>
               <li>
-                <strong className="text-primary font-sans font-semibold">Native Touch Target:</strong> Each row provides an expansive,
-                accessible inspection trigger that opens the slide-over detail drawer across all screen sizes.
+                <strong className="text-primary font-sans font-semibold">Primary Inspection Trigger:</strong> Each row keeps a native Order ID button available across screen sizes; pointer row clicks route focus to that trigger before opening the drawer.
               </li>
             </ul>
           </div>
 
           <div className="flex justify-center lg:col-span-6">
-            <motion.div
-              initial={prefersReduced ? false : { opacity: 0, y: 36, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            <CaseStudyFrame
+              direction="up"
               className="max-w-[360px] overflow-hidden border border-white/[0.1] bg-surface p-3 shadow-2xl transition-transform hover:scale-[1.01]"
             >
               <img
@@ -453,7 +441,7 @@ export function NyxboardCaseStudy() {
               <span className="mt-2 block text-center font-mono text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
                 Mobile Orders // Viewport 390px
               </span>
-            </motion.div>
+            </CaseStudyFrame>
           </div>
         </div>
       </section>
@@ -488,7 +476,7 @@ export function NyxboardCaseStudy() {
                 <span className="font-mono text-[10px] text-accent">01 / Routing &amp; URL Synchronization</span>
                 <h4 className="text-sm font-semibold text-primary">React Router 7</h4>
                 <p className="mt-1 text-xs text-primary-muted">
-                  URL query parameters (<code className="text-accent">q, store, status, sortBy, sortOrder, page</code>) synchronize bidirectionally with local React view state under defensive runtime parameter validation, keeping every filter combination shareable.
+                  URL query parameters (<code className="text-accent">q, store, status, sortBy, sortOrder, page, pageSize</code>) synchronize with local React view state under defensive runtime validation, keeping supported filter combinations shareable.
                 </p>
               </div>
 
@@ -504,7 +492,7 @@ export function NyxboardCaseStudy() {
                 <span className="font-mono text-[10px] text-accent">03 / Service Layer</span>
                 <h4 className="text-sm font-semibold text-primary">orderService.ts</h4>
                 <p className="mt-1 text-xs text-primary-muted">
-                  Encapsulates pure data query operations: debounced multi-field searching, multi-column sorting, pagination offset calculations, and KPI metric aggregations.
+                  Encapsulates localStorage-backed order queries and mutations: multi-field filtering, single-column sorting, pagination calculations, KPI aggregation, and CSV preparation. Input debouncing stays in the page layer.
                 </p>
               </div>
 
@@ -566,7 +554,7 @@ export function NyxboardCaseStudy() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent font-bold">5.</span>
-                  <span><strong>Restore:</strong> Automatically returns focus to the specific row trigger on close without viewport drift.</span>
+                  <span><strong>Restore:</strong> Returns focus to the initiating order trigger on close without viewport drift.</span>
                 </li>
               </ol>
             </div>
@@ -592,7 +580,7 @@ export function NyxboardCaseStudy() {
               {
                 num: '04 / Reduced Motion',
                 title: 'prefers-reduced-motion',
-                desc: 'Drawers, metric counters, and chart transitions strictly honor the user’s OS accessibility settings, falling back to instantaneous static state changes.',
+                desc: 'Drawers, metric value transitions, and chart transitions honor the user’s OS accessibility settings, falling back to static end states.',
               },
             ].map((card, idx) => (
               <motion.div
@@ -684,8 +672,8 @@ export function NyxboardCaseStudy() {
               UI state remains transparent, shareable, and resilient against accidental resets during everyday operations.
             </p>
             <p>
-              The slide-over drawer pattern confirmed that keeping the underlying data table visible preserves orientation far better
-              than separate routing paths, while the focused service layer kept state mutations decoupled from presentation components.
+              The slide-over drawer keeps the underlying data table visible during inspection, supporting orientation while the focused
+              service layer keeps state mutations decoupled from presentation components.
             </p>
 
             {/* Clearly labeled future production directions */}
@@ -700,7 +688,7 @@ export function NyxboardCaseStudy() {
               <ul className="mt-5 grid gap-4 sm:grid-cols-2 text-xs text-primary-muted list-none p-0 m-0">
                 <li className="border-l border-white/20 pl-3">
                   <strong className="text-primary block font-medium">Real Backend &amp; API Integration</strong>
-                  <span>Replacing the in-memory <code className="text-accent">orderService</code> with typed REST or GraphQL endpoints.</span>
+                  <span>Replacing the localStorage-backed <code className="text-accent">orderService</code> with typed REST or GraphQL endpoints.</span>
                 </li>
                 <li className="border-l border-white/20 pl-3">
                   <strong className="text-primary block font-medium">Server-Side Data Layer</strong>

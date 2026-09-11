@@ -23,7 +23,7 @@ export default function NyxboardCaseStudyPage() {
         liveDemoUrl="https://drgyz.github.io/nyxboard-commerce-dashboard/"
         gitHubUrl="https://github.com/DRGYZ/nyxboard-commerce-dashboard"
       />
-      <main id="case-study-content">
+      <main id="case-study-content" tabIndex={-1}>
         <NyxboardCaseStudy />
       </main>
     </>

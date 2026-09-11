@@ -24,9 +24,9 @@ const statusTokens: StatusToken[] = [
     textHex: '#92400e',
     borderHex: '#fde68a',
     dotHex: '#f59e0b',
-    contrast: '6.1:1 (AA)',
-    role: 'Awaiting Payment',
-    operationalEffect: 'Checkout or bank settlement in verification queue.',
+    contrast: '6.8:1 (AA)',
+    role: 'Pending Review',
+    operationalEffect: 'Awaiting an operations decision before fulfillment proceeds.',
   },
   {
     id: 'unshipped',
@@ -35,9 +35,9 @@ const statusTokens: StatusToken[] = [
     textHex: '#0369a1',
     borderHex: '#bae6fd',
     dotHex: '#0ea5e9',
-    contrast: '5.4:1 (AA)',
+    contrast: '5.6:1 (AA)',
     role: 'Fulfillment Queue',
-    operationalEffect: 'Payment verified; order actively awaiting packing.',
+    operationalEffect: 'Order is active and awaiting fulfillment work.',
   },
   {
     id: 'shipped',
@@ -48,7 +48,7 @@ const statusTokens: StatusToken[] = [
     dotHex: '#10b981',
     contrast: '5.2:1 (AA)',
     role: 'Carrier Hand-off',
-    operationalEffect: 'Dispatched with tracking assigned; fulfillment rate +1.',
+    operationalEffect: 'Dispatched with tracking assigned; shipped count increments and fulfillment rate rises.',
   },
   {
     id: 'canceled',
@@ -57,9 +57,9 @@ const statusTokens: StatusToken[] = [
     textHex: '#be123c',
     borderHex: '#fecdd3',
     dotHex: '#f43f5e',
-    contrast: '5.6:1 (AA)',
-    role: 'Voided Cycle',
-    operationalEffect: 'Order voided or refunded; excluded from active sales.',
+    contrast: '5.7:1 (AA)',
+    role: 'Canceled',
+    operationalEffect: 'Marked canceled and excluded from active revenue calculations.',
   },
 ];
 
@@ -91,6 +91,7 @@ export function StatusTokenMatrix() {
             <button
               key={token.id}
               type="button"
+              aria-pressed={isSelected}
               onClick={() => setActiveId(token.id)}
               onMouseEnter={() => setActiveId(token.id)}
               className={`text-left p-3 border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
