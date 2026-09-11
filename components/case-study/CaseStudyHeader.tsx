@@ -10,10 +10,10 @@ interface CaseStudyHeaderProps {
 }
 
 export function CaseStudyHeader({
-  projectNumber = '05',
-  projectTitle = 'Nyxboard',
-  liveDemoUrl = 'https://drgyz.github.io/nyxboard-commerce-dashboard/',
-  gitHubUrl = 'https://github.com/DRGYZ/nyxboard-commerce-dashboard',
+  projectNumber = '01',
+  projectTitle = 'Case Study',
+  liveDemoUrl,
+  gitHubUrl,
 }: CaseStudyHeaderProps) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-background/[0.92] backdrop-blur-md">
