@@ -5,6 +5,7 @@ import { getAssetPath } from '@/lib/assetPath';
 import { SeamDivider } from '../SeamDivider';
 import { MikoContextLab } from './MikoContextLab';
 import { MikoMoodShowcase } from './MikoMoodShowcase';
+import { MikoSensorMatrix } from './MikoSensorMatrix';
 
 export function MikoCaseStudy() {
   return (
@@ -52,7 +53,7 @@ export function MikoCaseStudy() {
               </a>
 
               <a
-                href="#local-by-design"
+                href="#architecture"
                 className="flex items-center gap-2 border border-white/20 bg-surface px-6 py-3.5 uppercase tracking-wider text-primary transition-colors hover:border-white/40 hover:text-white"
               >
                 <span>Local by Design</span>
@@ -181,13 +182,32 @@ export function MikoCaseStudy() {
         <MikoMoodShowcase />
       </section>
 
-      {/* CHAPTER 03: FROM CONTEXT TO REACTION */}
+      {/* CHAPTER 03: LOCAL SENSORS */}
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
+
+        <div className="mb-10 max-w-3xl space-y-3">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+            03 / Local Sensors
+          </span>
+          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+            Local Context, Real Reactions
+          </h2>
+          <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
+            MIKO evaluates local operating system signals against an in-memory rule matrix. Built around a local-first core with no built-in remote telemetry; optional model features follow the user&apos;s configured endpoint.
+          </p>
+        </div>
+
+        <MikoSensorMatrix />
+      </section>
+
+      {/* CHAPTER 04: FROM CONTEXT TO REACTION */}
       <section id="context-lab" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
-            03 / From Context to Reaction
+            04 / From Context to Reaction
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
             Signal Arbitration &amp; Context Lab
@@ -199,38 +219,83 @@ export function MikoCaseStudy() {
 
         {/* Interactive Simulation */}
         <MikoContextLab />
+      </section>
 
-        {/* Inline Explainability Note */}
-        <div className="mt-8 border border-white/[0.08] bg-surface p-6 sm:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h3 className="font-display text-base font-bold uppercase tracking-tight text-primary sm:text-lg">
-                Inspectable Runtime State
-              </h3>
-              <p className="mt-1 font-sans text-sm text-primary-muted">
-                Persona Studio exposes runtime state and recent decisions for live debugging. Operators can trace which sensor signal won, which rule matched, and how cooldown gates suppress reaction spam during rapid window switches.
-              </p>
-            </div>
-            <span className="flex-shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#f09acb]">
-              Transparent Diagnostics
+      {/* CHAPTER 05: DIAGNOSTICS & EXPLAINABILITY */}
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
+
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="space-y-4 lg:col-span-5">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+              05 / Diagnostics &amp; Explainability
             </span>
+            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
+              Inspectable Decisions
+            </h2>
+            <p className="font-sans text-base leading-relaxed text-primary-muted">
+              A companion shouldn&apos;t be an opaque black box. Persona Studio provides live visibility into active signals, priority decisions, and cooldown timers so you can see exactly why a reaction occurred.
+            </p>
+            <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs text-primary-subtle space-y-2">
+              <div>&bull; Repeat suppression prevents duplicate reactions for 120–180 minutes.</div>
+              <div>&bull; Cooldown gates prevent reaction spam during rapid window switches.</div>
+              <div>&bull; Priority hierarchy ensures focus tasks take precedence over ambient events.</div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[10px] uppercase tracking-wider text-primary-subtle">
+                <span>Representative Event Trace</span>
+                <span className="text-[#f09acb]">Simulated Log</span>
+              </div>
+
+              <div className="mt-4 space-y-3">
+                <div className="border-b border-white/[0.04] pb-3">
+                  <div className="flex justify-between text-[10px] text-primary-subtle">
+                    <span>Sample Event &bull; Process Sensor</span>
+                    <span className="text-[#f09acb] font-semibold">Triggered</span>
+                  </div>
+                  <div className="mt-1 font-semibold text-primary">Code.exe &rarr; coding mood</div>
+                  <div className="text-[10px] text-primary-muted mt-0.5">Matched rule: activityRules.coding &bull; Cooldown gate: active (1200s)</div>
+                </div>
+
+                <div className="border-b border-white/[0.04] pb-3">
+                  <div className="flex justify-between text-[10px] text-primary-subtle">
+                    <span>Sample Event &bull; Audio Sensor</span>
+                    <span className="text-amber-400 font-semibold">Restrained</span>
+                  </div>
+                  <div className="mt-1 font-semibold text-primary">Spotify.exe &rarr; audible track detected</div>
+                  <div className="text-[10px] text-primary-muted mt-0.5">Bubble suppressed by active coding priority &bull; Passive listening stance set</div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-[10px] text-primary-subtle">
+                    <span>Sample Event &bull; Win32 Input Idle</span>
+                    <span className="text-[#ffadd8] font-semibold">Standby</span>
+                  </div>
+                  <div className="mt-1 font-semibold text-primary">Inactivity &gt; 90s &rarr; sleepy mood</div>
+                  <div className="text-[10px] text-primary-muted mt-0.5">Operator away &bull; Ambient standby posture without audio notifications</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CHAPTER 04: LOCAL BY DESIGN */}
-      <section id="local-by-design" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+      {/* CHAPTER 06: ARCHITECTURE & PRIVACY */}
+      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
-            04 / Local by Design
+            06 / Architecture &amp; Privacy
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-            Architecture, Privacy &amp; Memory
+            Designed for Your Machine
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO operates entirely on your workstation. Context evaluation, preference retention, and animation scheduling run on local loopback without relying on external cloud services.
+            No built-in remote telemetry. Context evaluation, preference memory, and sidecar communication run strictly on your workstation.
           </p>
         </div>
 
@@ -238,37 +303,37 @@ export function MikoCaseStudy() {
         <div className="grid gap-6 sm:grid-cols-3 font-mono">
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-              01 / Local Context
+              01 / Local-First Core
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
-              On-Device Evaluation
+              127.0.0.1 Loopback
             </h3>
             <p className="font-sans text-sm leading-relaxed text-primary-muted">
-              Foreground application, media transport, and activity context are evaluated locally. MIKO&apos;s context sensors do not capture keystrokes, clipboard contents, or document/source-file contents.
+              The local WPF client and Python sidecar communicate over local loopback sockets. There is zero remote telemetry or background tracking.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
-              02 / Inspectable Memory
+              02 / Transient In-Memory Hooks
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
-              Operator-Editable Facts
+              Strict Privacy Boundaries
             </h3>
             <p className="font-sans text-sm leading-relaxed text-primary-muted">
-              MIKO can retain gentle preferences and recurring habits in a local file. Stored facts are directly inspectable and editable by the operator through Persona Studio.
+              Window titles and media metadata are read transiently in memory to infer context. Keystrokes, clipboard contents, and source files are never captured.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.2em] text-[#ffadd8]">
-              03 / Optional Models
+              03 / User-Configured Endpoints
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
-              User-Configured Endpoints
+              Optional AI Integrations
             </h3>
             <p className="font-sans text-sm leading-relaxed text-primary-muted">
-              MIKO does not depend on hosted cloud LLMs. Optional model-backed features route exclusively to endpoints configured by the user (such as local Ollama or compatible local sidecars).
+              MIKO does not rely on an external cloud LLM. If you opt into model dialogue or vision, requests route exclusively to your own configured endpoint (such as local Ollama).
             </p>
           </div>
         </div>
@@ -311,14 +376,14 @@ export function MikoCaseStudy() {
         </div>
       </section>
 
-      {/* CHAPTER 05: PROTOTYPE STATUS */}
+      {/* CHAPTER 07: PROTOTYPE STATUS */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
-              05 / Prototype Status
+              07 / Prototype Status
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               Current Capabilities &amp; Evolution
@@ -407,4 +472,3 @@ export function MikoCaseStudy() {
     </article>
   );
 }
-
