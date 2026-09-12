@@ -83,10 +83,10 @@ export function MikoCaseStudy() {
 
           {/* Right Column: Hero Visual Card */}
           <div className="relative border border-white/[0.08] bg-surface p-6 lg:col-span-5 sm:p-8">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
+            <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] pb-4">
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-primary-subtle">
                 <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-                <span>Persona Studio &bull; Representative Runtime State</span>
+                <span>Context Snapshot</span>
               </div>
               <span className="font-mono text-[10px] uppercase tracking-wider text-[#ffadd8]">
                 127.0.0.1:50558
