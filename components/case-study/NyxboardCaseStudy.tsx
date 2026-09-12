@@ -203,7 +203,7 @@ export function NyxboardCaseStudy() {
             alt="Nyxboard Operations Overview desktop interface showing KPI summary cards, sales volume trajectory, and status distribution"
             width="1440"
             height="900"
-            loading="lazy"
+            loading="eager"
             decoding="async"
             className="w-full border border-white/[0.05] object-contain shadow-2xl"
           />
@@ -304,7 +304,7 @@ export function NyxboardCaseStudy() {
                 alt="Nyxboard Orders workspace table view showing faceted status tabs, debounced search bar, and sortable table columns"
                 width="1440"
                 height="900"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 className="w-full border border-white/[0.05] object-contain shadow-2xl"
               />
@@ -342,7 +342,7 @@ export function NyxboardCaseStudy() {
             alt="Nyxboard Order Detail Drawer open over the orders table displaying line items, shipping address, financial totals, and status actions"
             width="1440"
             height="900"
-            loading="lazy"
+            loading="eager"
             decoding="async"
             className="w-full border border-white/[0.05] object-contain shadow-2xl"
           />
@@ -434,7 +434,7 @@ export function NyxboardCaseStudy() {
                 alt="Nyxboard mobile orders view demonstrating condensed table layout and progressive column prioritization"
                 width="390"
                 height="844"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 className="w-full border border-white/[0.06] object-contain"
               />
