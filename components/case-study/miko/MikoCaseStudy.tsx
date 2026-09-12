@@ -1,21 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { getAssetPath } from '@/lib/assetPath';
 import { SeamDivider } from '../SeamDivider';
 import { MikoContextLab } from './MikoContextLab';
 import { MikoMoodShowcase } from './MikoMoodShowcase';
-import { MikoSensorMatrix } from './MikoSensorMatrix';
-import { MikoMemoryInspector } from './MikoMemoryInspector';
 
 export function MikoCaseStudy() {
-  const prefersReduced = useReducedMotion();
-
   return (
     <article className="relative min-h-screen bg-background text-primary selection:bg-[#f09acb] selection:text-background">
-      {/* Background Ambience */}
+      {/* Subtle Background Ambience */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[#0d0e0f]"
@@ -27,15 +21,15 @@ export function MikoCaseStudy() {
           {/* Left Column: Title & Overview */}
           <div className="space-y-6 lg:col-span-7">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
                 Experimental &bull; Windows &bull; Local-First &bull; 2026
               </span>
-              <span className="border border-[#f09acb]/30 bg-[#f09acb]/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#ffadd8]">
-                Prototype Runtime
+              <span className="border border-[#f09acb]/30 bg-[#f09acb]/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-[#ffadd8]">
+                Active Prototype
               </span>
             </div>
 
-            <h1 className="font-display text-[clamp(2.5rem,8vw,7.2rem)] font-bold uppercase leading-[0.88] tracking-[-0.04em] text-primary">
+            <h1 className="font-display text-[clamp(2.75rem,8vw,7.2rem)] font-bold uppercase leading-[0.88] tracking-[-0.04em] text-primary">
               MIKO
             </h1>
 
@@ -58,31 +52,31 @@ export function MikoCaseStudy() {
               </a>
 
               <a
-                href="#architecture"
+                href="#local-by-design"
                 className="flex items-center gap-2 border border-white/20 bg-surface px-6 py-3.5 uppercase tracking-wider text-primary transition-colors hover:border-white/40 hover:text-white"
               >
-                <span>Architecture</span>
+                <span>Local by Design</span>
                 <span>&rarr;</span>
               </a>
             </div>
 
-            {/* Metadata Chips */}
+            {/* Metadata Definition List */}
             <dl className="grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-6 font-mono text-xs sm:grid-cols-4">
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Shell</dt>
-                <dd className="mt-1 font-semibold text-primary">PowerShell / WPF</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Role</dt>
+                <dd className="mt-1 font-semibold text-primary">Concept / Interaction / Engineering</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Engine</dt>
-                <dd className="mt-1 font-semibold text-primary">Python Sidecar</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Platform</dt>
+                <dd className="mt-1 font-semibold text-primary">Windows</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Mode</dt>
-                <dd className="mt-1 font-semibold text-primary">Peripheral / Ambient</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Runtime</dt>
+                <dd className="mt-1 font-semibold text-primary">WPF + Python Sidecar</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">State</dt>
-                <dd className="mt-1 font-semibold text-[#f09acb]">Working Prototype</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Status</dt>
+                <dd className="mt-1 font-semibold text-[#f09acb]">Active Prototype</dd>
               </div>
             </dl>
           </div>
@@ -92,22 +86,21 @@ export function MikoCaseStudy() {
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-primary-subtle">
                 <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-                <span>Persona Studio &bull; Representative Telemetry</span>
+                <span>Persona Studio &bull; Representative Runtime State</span>
               </div>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-[#ffadd8]">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#ffadd8]">
                 127.0.0.1:50558
               </span>
             </div>
 
-            <div className="relative my-6 flex flex-col items-center justify-center bg-[#0c0d10] p-8 border border-white/[0.06]">
-              {/* Subtle Ambient Pulse */}
+            <div className="relative my-6 flex flex-col items-center justify-center border border-white/[0.06] bg-[#0c0d10] p-8">
               <div
                 aria-hidden="true"
                 className="absolute inset-0 bg-[#f09acb]/[0.03] opacity-60"
               />
               <img
                 src={getAssetPath('/case-studies/miko/frames/coding/02.png')}
-                alt="MIKO in focused review posture"
+                alt="MIKO companion in focused code review posture"
                 width={192}
                 height={208}
                 className="relative z-10 h-36 w-auto object-contain [image-rendering:pixelated]"
@@ -117,7 +110,7 @@ export function MikoCaseStudy() {
               </div>
             </div>
 
-            <div className="space-y-2 border-t border-white/[0.06] pt-4 font-mono text-[11px] text-primary-muted">
+            <div className="space-y-2.5 border-t border-white/[0.06] pt-4 font-mono text-xs text-primary-muted">
               <div className="flex justify-between">
                 <span className="text-primary-subtle">Primary Hook:</span>
                 <span className="font-semibold text-primary">Foreground Window Process</span>
@@ -127,355 +120,254 @@ export function MikoCaseStudy() {
                 <span className="text-accent">Qualitative Active / Silent Detection</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-primary-subtle">Behavior / Attention:</span>
-                <span className="text-[#f09acb]">Balanced &bull; Normal</span>
+                <span className="text-primary-subtle">Interruption Mode:</span>
+                <span className="text-[#f09acb]">Normal &bull; Cooldown Guarded</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ACT 2: DESIGNING FOR THE PERIPHERY */}
+      {/* CHAPTER 01: THE IDEA */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="space-y-4 lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-              01 / Core Premise
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+              01 / The Idea
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
               Designing for the Periphery
             </h2>
             <p className="font-editorial text-xl italic leading-snug text-primary-muted sm:text-2xl">
-              &ldquo;Most assistants wait for a command. MIKO stays quietly present, then expresses only what the moment earns.&rdquo;
+              Traditional assistants wait for prompts. MIKO remains quietly present, expressing only what the moment earns.
             </p>
           </div>
 
           <div className="space-y-6 lg:col-span-7">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="border border-white/[0.08] bg-surface p-6">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-                  <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
-                    Continuous vs. Episodic
-                  </h3>
-                </div>
-                <p className="mt-3 font-sans text-sm leading-relaxed text-primary-muted">
-                  Lightweight local signals give the companion situational awareness without turning every moment into a conversation.
-                </p>
-              </div>
-
-              <div className="border border-white/[0.08] bg-surface p-6">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 bg-[#ffadd8]" />
-                  <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
-                    Presence over Prompting
-                  </h3>
-                </div>
-                <p className="mt-3 font-sans text-sm leading-relaxed text-primary-muted">
-                  Posture, timing, and short reactions create presence without competing with the work happening underneath.
-                </p>
-              </div>
-            </div>
-
-            {/* Pullquote Banner */}
             <div className="border border-[#f09acb]/30 bg-[#f09acb]/[0.05] p-6 sm:p-8">
-              <p className="font-display text-lg font-semibold uppercase tracking-tight text-primary sm:text-xl">
+              <p className="font-display text-xl font-semibold uppercase tracking-tight text-primary sm:text-2xl">
                 A companion should fit into your workflow, not fight for your attention.
               </p>
-              <span className="mt-2 block font-mono text-[10px] uppercase tracking-widest text-[#f09acb]">
-                Design Directive &bull; Ambient Windows Companion
+              <span className="mt-3 block font-mono text-[10px] uppercase tracking-widest text-[#f09acb]">
+                Core Design Principle
               </span>
             </div>
+
+            <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
+              Most digital assistants hijack the foreground with modal windows and voice interruptions. MIKO sits at the perimeter of the screen like a calm physical desktop toy. Rather than demanding conversational turns, she reflects the rhythm of your work through subtle posture changes, occasional idle animations, and brief thought bubbles that respect cognitive flow.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ACT 3: MOOD SYSTEM */}
+      {/* CHAPTER 02: PERSONALITY AS INTERFACE */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-            02 / Mood System
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+            02 / Personality as Interface
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
             A Companion Has Moods
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO&apos;s personality lives in hand-authored pixel animation. Each posture is a readable response to desktop context—not a generic avatar skin.
+            MIKO&apos;s personality lives in hand-authored pixel animation. Each posture is an expressive response to desktop context rather than a generic avatar skin.
           </p>
         </div>
 
         <MikoMoodShowcase />
       </section>
 
-      {/* ACT 4: LOCAL CONTEXT SENSORS */}
-      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
-        <SeamDivider className="mb-8" />
-
-        <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-            03 / Local Sensors
-          </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-            Local Context, Real Reactions
-          </h2>
-          <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO evaluates local operating system signals against an in-memory rule-scoring matrix. The local-first core has no built-in remote telemetry; optional model features follow the endpoint configured by the user.
-          </p>
-        </div>
-
-        <MikoSensorMatrix />
-      </section>
-
-      {/* ACT 5: INTERACTIVE CONTEXT LAB */}
+      {/* CHAPTER 03: FROM CONTEXT TO REACTION */}
       <section id="context-lab" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-            04 / Interactive Context Lab
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+            03 / From Context to Reaction
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-            Try Different Contexts
+            Signal Arbitration &amp; Context Lab
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            This browser-side simulation demonstrates MIKO&apos;s behavioral pipeline. Change the simulated situation and inspect how signal priority, attention policy, and cooldowns shape the reaction. Displayed values are illustrative rather than live telemetry.
+            MIKO evaluates operating system signals locally: active foreground window process, media playback state, audio activity, and user idle ticks. When multiple events coincide, priority arbitration resolves conflicts before a reaction is triggered.
           </p>
         </div>
 
+        {/* Interactive Simulation */}
         <MikoContextLab />
-      </section>
 
-      {/* ACT 6: PERSONA + MEMORY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
-        <SeamDivider className="mb-8" />
-
-        <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-            05 / Persona &amp; Memory
-          </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-            More Than a Response
-          </h2>
-          <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO maintains an inspectable local memory file. Preferences, habit patterns, and notes accumulate locally over time with no built-in remote telemetry:
-          </p>
-        </div>
-
-        <MikoMemoryInspector />
-      </section>
-
-      {/* ACT 7: DIAGNOSTICS & EXPLAINABILITY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
-        <SeamDivider className="mb-8" />
-
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="space-y-4 lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-              06 / Diagnostics &amp; Explainability
+        {/* Inline Explainability Note */}
+        <div className="mt-8 border border-white/[0.08] bg-surface p-6 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 className="font-display text-base font-bold uppercase tracking-tight text-primary sm:text-lg">
+                Inspectable Runtime State
+              </h3>
+              <p className="mt-1 font-sans text-sm text-primary-muted">
+                Persona Studio exposes runtime state and recent decisions for live debugging. Operators can trace which sensor signal won, which rule matched, and how cooldown gates suppress reaction spam during rapid window switches.
+              </p>
+            </div>
+            <span className="flex-shrink-0 font-mono text-[10px] uppercase tracking-widest text-[#f09acb]">
+              Transparent Diagnostics
             </span>
-            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-              Inspectable Decisions
-            </h2>
-            <p className="font-sans text-base leading-relaxed text-primary-muted">
-              A companion shouldn&apos;t be an opaque black box. Operators can inspect context signals, runtime state, reaction history, and representative decision traces through Persona Studio.
-            </p>
-            <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs text-primary-subtle space-y-2">
-              <div>&bull; Reaction-specific repeat suppression typically ranges from 120–180 minutes.</div>
-              <div>&bull; Cooldown gate prevents reaction spam during rapid window switches.</div>
-              <div>&bull; Strict boundary rules keep bubbles short and relevant.</div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7">
-            <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[10px] uppercase tracking-wider text-primary-subtle">
-                <span>Representative Event Trace</span>
-                <span className="text-[#f09acb]">Simulated Log</span>
-              </div>
-
-              <div className="mt-4 space-y-3">
-                <div className="border-b border-white/[0.04] pb-3">
-                  <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>Sample Event &bull; Process Sensor</span>
-                    <span className="text-[#f09acb]">Triggered</span>
-                  </div>
-                  <div className="mt-1 font-semibold text-primary">Code.exe &rarr; coding mood</div>
-                  <div className="text-[10px] text-primary-muted mt-0.5">Matched rule: activityRules.coding &bull; Cooldown gate: active (1200s)</div>
-                </div>
-
-                <div className="border-b border-white/[0.04] pb-3">
-                  <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>Sample Event &bull; Audio Sensor</span>
-                    <span className="text-amber-400">Restrained</span>
-                  </div>
-                  <div className="mt-1 font-semibold text-primary">Spotify.exe &rarr; audible track detected</div>
-                  <div className="text-[10px] text-primary-muted mt-0.5">Bubble suppressed by active coding priority &bull; Passive listening stance set</div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>Sample Event &bull; Win32 Input Idle</span>
-                    <span className="text-[#ffadd8]">Standby</span>
-                  </div>
-                  <div className="mt-1 font-semibold text-primary">Inactivity &gt; 90s &rarr; sleepy mood</div>
-                  <div className="text-[10px] text-primary-muted mt-0.5">Operator away &bull; Ambient standby posture without audio notifications</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ACT 8: PRIVACY / LOCAL-FIRST DESIGN */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+      {/* CHAPTER 04: LOCAL BY DESIGN */}
+      <section id="local-by-design" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-            07 / Architecture &amp; Privacy
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+            04 / Local by Design
           </span>
           <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-            Designed for Your Machine
+            Architecture, Privacy &amp; Memory
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            No built-in remote telemetry. Optional model integrations follow the user-configured endpoint:
+            MIKO operates entirely on your workstation. Context evaluation, preference retention, and animation scheduling run on local loopback without relying on external cloud services.
           </p>
         </div>
 
+        {/* Three Core Pillars */}
         <div className="grid gap-6 sm:grid-cols-3 font-mono">
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-              01 / Local-First Core
+              01 / Local Context
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
-              127.0.0.1 Loopback
+              On-Device Evaluation
             </h3>
-            <p className="font-sans text-xs leading-relaxed text-primary-muted">
-              The PowerShell WPF client and Python sidecar communicate over local loopback sockets. There is no built-in remote telemetry; optional model integrations follow the user-configured endpoint.
+            <p className="font-sans text-sm leading-relaxed text-primary-muted">
+              Foreground application, media transport, and activity context are evaluated locally. MIKO&apos;s context sensors do not capture keystrokes, clipboard contents, or document/source-file contents.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
-              02 / Transient In-Memory Hooks
+              02 / Inspectable Memory
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
-              Strict Privacy Boundaries
+              Operator-Editable Facts
             </h3>
-            <p className="font-sans text-xs leading-relaxed text-primary-muted">
-              Window titles and media metadata are read transiently in memory to infer context. Keystrokes, clipboard contents, and files are never read or stored.
+            <p className="font-sans text-sm leading-relaxed text-primary-muted">
+              MIKO can retain gentle preferences and recurring habits in a local file. Stored facts are directly inspectable and editable by the operator through Persona Studio.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.2em] text-[#ffadd8]">
-              03 / User-Configured Endpoints
+              03 / Optional Models
             </span>
             <h3 className="font-sans text-base font-bold text-primary">
-              Optional AI Integrations
+              User-Configured Endpoints
             </h3>
-            <p className="font-sans text-xs leading-relaxed text-primary-muted">
-              MIKO does not rely on an external LLM. If the user opts into model dialogue or vision, requests route exclusively to their own configured endpoint (such as local Ollama).
+            <p className="font-sans text-sm leading-relaxed text-primary-muted">
+              MIKO does not depend on hosted cloud LLMs. Optional model-backed features route exclusively to endpoints configured by the user (such as local Ollama or compatible local sidecars).
             </p>
           </div>
         </div>
-      </section>
 
-      {/* ACT 9: PROTOTYPE DOCUMENTATION */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
-        <SeamDivider className="mb-8" />
-
-        <div className="mb-10 max-w-3xl space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-            08 / Prototype Documentation
-          </span>
-          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-            Real Runtime Interfaces
-          </h2>
-          <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            Captured interfaces recorded from the working MIKO prototype in action on Windows 11:
-          </p>
-        </div>
-
-        <div className="grid gap-8 lg:grid-cols-12">
-          {/* Awareness Controls Screenshot */}
-          <div className="lg:col-span-6 space-y-3">
+        {/* Real Persona Studio Screenshots */}
+        <div className="mt-8 grid gap-8 lg:grid-cols-12">
+          <div className="space-y-3 lg:col-span-6">
             <div className="border border-white/[0.08] bg-surface p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_awareness.png')}
-                alt="Persona Studio Awareness & Privacy dashboard"
+                alt="Persona Studio Awareness and Privacy Controls panel in the working Windows prototype"
+                loading="lazy"
+                width={800}
+                height={520}
                 className="w-full object-contain"
               />
             </div>
-            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
-              <span>Persona Studio // Awareness &amp; Privacy Controls</span>
-              <span className="text-[#f09acb]">Sensor Toggles</span>
+            <div className="flex justify-between font-mono text-xs text-primary-subtle">
+              <span>Persona Studio &bull; Sensor Toggles &amp; Boundaries</span>
+              <span className="text-[#f09acb]">Working Prototype UI</span>
             </div>
           </div>
 
-          {/* Memory Inspector Screenshot */}
-          <div className="lg:col-span-6 space-y-3">
+          <div className="space-y-3 lg:col-span-6">
             <div className="border border-white/[0.08] bg-surface p-2">
               <img
                 src={getAssetPath('/case-studies/miko/persona_studio_memory_facts.png')}
-                alt="Persona Studio Memory & Context inspection view"
+                alt="Persona Studio Memory and Learned Facts inspection view showing local facts"
+                loading="lazy"
+                width={800}
+                height={520}
                 className="w-full object-contain"
               />
             </div>
-            <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
-              <span>Persona Studio // Memory &amp; Learned Facts</span>
-              <span className="text-[#f09acb]">Local Memory</span>
+            <div className="flex justify-between font-mono text-xs text-primary-subtle">
+              <span>Persona Studio &bull; Inspectable Memory &amp; Context</span>
+              <span className="text-[#f09acb]">Local File Storage</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ACT 10: EXPERIMENTAL STATUS / ROADMAP */}
+      {/* CHAPTER 05: PROTOTYPE STATUS */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
         <SeamDivider className="mb-8" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
-              09 / Experimental Status
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#f09acb]">
+              05 / Prototype Status
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-              Prototype Boundaries
+              Current Capabilities &amp; Evolution
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              MIKO is an active experimental project. This case study documents the working prototype as it exists today; architecture, interaction rules, and packaging may continue to evolve.
+              MIKO is an active experimental project. The runtime operates on Windows 11 today; its architecture, timing models, and packaging continue to evolve.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 font-mono text-xs">
-            <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-[#f09acb]">Current Boundaries</span>
-              <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Windows-specific Win32 and WPF desktop runtime</li>
-                <li>&bull; Local loopback IPC between the UI shell and Python sidecar</li>
-                <li>&bull; Heuristic-first classification rather than continuous capture</li>
-                <li>&bull; Lightweight foreground polling with no built-in remote telemetry</li>
+            <div className="border border-white/[0.08] bg-surface p-6 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 bg-[#f09acb]" />
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#f09acb]">
+                  What Works Today
+                </span>
+              </div>
+              <ul className="space-y-2.5 text-primary-muted leading-relaxed">
+                <li>&bull; Windows companion runtime (WPF shell &amp; Python sidecar)</li>
+                <li>&bull; Context awareness (window titles, media sessions, audio levels)</li>
+                <li>&bull; Hand-authored mood animations &amp; reaction arbitration</li>
+                <li>&bull; Local editable memory &amp; preference learning</li>
+                <li>&bull; Persona Studio desktop management interface</li>
+                <li>&bull; Quiet and focus interruption concentration modes</li>
+                <li>&bull; Local voice synthesis (TTS) &amp; speech input prototype</li>
+                <li>&bull; Optional user-configured local model endpoints</li>
               </ul>
             </div>
 
-            <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-accent">Future Explorations</span>
-              <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Standalone packaging and simpler setup</li>
-                <li>&bull; Multi-monitor and high-DPI validation</li>
-                <li>&bull; Sidecar refactoring for long-term maintainability</li>
-                <li>&bull; Local voice synthesis and response tuning</li>
+            <div className="border border-white/[0.08] bg-surface p-6 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 bg-accent" />
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent">
+                  Still Exploring
+                </span>
+              </div>
+              <ul className="space-y-2.5 text-primary-muted leading-relaxed">
+                <li>&bull; Standalone packaging &amp; simplified distribution</li>
+                <li>&bull; Multi-monitor edge cases &amp; high-DPI scaling robustness</li>
+                <li>&bull; Sidecar IPC &amp; runtime architecture cleanup</li>
+                <li>&bull; Interaction timing, cadence &amp; cooldown tuning</li>
+                <li>&bull; Voice quality, timing, and interaction tuning</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ACT 11: CLOSING / FOOTER BANNER */}
+      {/* CLOSING */}
       <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-20">
         <SeamDivider className="mb-8" />
 
@@ -515,3 +407,4 @@ export function MikoCaseStudy() {
     </article>
   );
 }
+
