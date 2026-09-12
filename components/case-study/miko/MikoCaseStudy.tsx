@@ -44,7 +44,7 @@ export function MikoCaseStudy() {
             </p>
 
             <p className="max-w-2xl font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-              MIKO is an experimental local-first desktop companion for Windows. Unlike conversational chatbots that demand your direct attention, MIKO lives quietly in your peripheral field of view, observing active engineering tasks, audio playback, and media sessions through low-overhead local OS hooks to express calm, context-aware reactions.
+              MIKO explores a quieter kind of computing: a local-first character that notices the rhythm of a Windows workspace and responds through posture, motion, and short reactions.
             </p>
 
             {/* CTA Buttons */}
@@ -69,20 +69,20 @@ export function MikoCaseStudy() {
             {/* Metadata Chips */}
             <dl className="grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-6 font-mono text-xs sm:grid-cols-4">
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Year</dt>
-                <dd className="mt-1 font-semibold text-primary">2026</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Shell</dt>
+                <dd className="mt-1 font-semibold text-primary">PowerShell / WPF</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Runtime</dt>
-                <dd className="mt-1 font-semibold text-primary">Windows (WPF)</dd>
-              </div>
-              <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Core Engine</dt>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Engine</dt>
                 <dd className="mt-1 font-semibold text-primary">Python Sidecar</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Palette</dt>
-                <dd className="mt-1 font-semibold text-[#f09acb]">Miko Pink</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">Mode</dt>
+                <dd className="mt-1 font-semibold text-primary">Peripheral / Ambient</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] uppercase tracking-wider text-primary-subtle">State</dt>
+                <dd className="mt-1 font-semibold text-[#f09acb]">Working Prototype</dd>
               </div>
             </dl>
           </div>
@@ -92,7 +92,7 @@ export function MikoCaseStudy() {
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-primary-subtle">
                 <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-                <span>Persona Studio &bull; Local Telemetry</span>
+                <span>Persona Studio &bull; Representative Telemetry</span>
               </div>
               <span className="font-mono text-[9px] uppercase tracking-wider text-[#ffadd8]">
                 127.0.0.1:50558
@@ -124,11 +124,11 @@ export function MikoCaseStudy() {
               </div>
               <div className="flex justify-between">
                 <span className="text-primary-subtle">Audio State:</span>
-                <span className="text-accent">Active Output (Peak: 0.28)</span>
+                <span className="text-accent">Qualitative Active / Silent Detection</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-primary-subtle">Interruption Mode:</span>
-                <span className="text-[#f09acb]">Balanced Peripheral</span>
+                <span className="text-primary-subtle">Behavior / Attention:</span>
+                <span className="text-[#f09acb]">Balanced &bull; Normal</span>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ export function MikoCaseStudy() {
               Designing for the Periphery
             </h2>
             <p className="font-editorial text-xl italic leading-snug text-primary-muted sm:text-2xl">
-              &ldquo;Most software demands your central attention. MIKO is built for the periphery — staying quietly out of the way until there is genuinely something to express.&rdquo;
+              &ldquo;Most assistants wait for a command. MIKO stays quietly present, then expresses only what the moment earns.&rdquo;
             </p>
           </div>
 
@@ -162,7 +162,7 @@ export function MikoCaseStudy() {
                   </h3>
                 </div>
                 <p className="mt-3 font-sans text-sm leading-relaxed text-primary-muted">
-                  Traditional chatbots exist purely in episodic question-and-answer bursts. MIKO maintains gentle continuous situational awareness through lightweight OS hooks, remaining present without requiring prompts.
+                  Lightweight local signals give the companion situational awareness without turning every moment into a conversation.
                 </p>
               </div>
 
@@ -174,7 +174,7 @@ export function MikoCaseStudy() {
                   </h3>
                 </div>
                 <p className="mt-3 font-sans text-sm leading-relaxed text-primary-muted">
-                  Rather than interrupting your workflow with modal alerts or desktop toasts, MIKO speaks through subtle posture shifts: nodding to music, focusing during code reviews, or nodding off when you step away.
+                  Posture, timing, and short reactions create presence without competing with the work happening underneath.
                 </p>
               </div>
             </div>
@@ -204,7 +204,7 @@ export function MikoCaseStudy() {
             A Companion Has Moods
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO&apos;s personality is expressed through bespoke animated pixel spritesheets rather than generic avatar templates. Each mood corresponds to real desktop activities detected through local OS sensors:
+            MIKO&apos;s personality lives in hand-authored pixel animation. Each posture is a readable response to desktop context—not a generic avatar skin.
           </p>
         </div>
 
@@ -223,7 +223,7 @@ export function MikoCaseStudy() {
             Local Context, Real Reactions
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO evaluates local operating system signals against an in-memory rule-scoring matrix to infer context without shipping telemetry to external servers. All evaluation happens on-device:
+            MIKO evaluates local operating system signals against an in-memory rule-scoring matrix. The local-first core has no built-in remote telemetry; optional model features follow the endpoint configured by the user.
           </p>
         </div>
 
@@ -242,7 +242,7 @@ export function MikoCaseStudy() {
             Try Different Contexts
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            This interactive simulator demonstrates MIKO&apos;s behavioral pipeline. Select an active desktop context and adjust intensity or attention policies to see how the companion evaluates signals in real-time:
+            This browser-side simulation demonstrates MIKO&apos;s behavioral pipeline. Change the simulated situation and inspect how signal priority, attention policy, and cooldowns shape the reaction. Displayed values are illustrative rather than live telemetry.
           </p>
         </div>
 
@@ -261,7 +261,7 @@ export function MikoCaseStudy() {
             More Than a Response
           </h2>
           <p className="font-sans text-base leading-relaxed text-primary-muted sm:text-lg">
-            MIKO maintains an inspectable local memory file. Preferences, habit patterns, and gentle notes accumulate locally over time without external telemetry:
+            MIKO maintains an inspectable local memory file. Preferences, habit patterns, and notes accumulate locally over time with no built-in remote telemetry:
           </p>
         </div>
 
@@ -281,10 +281,10 @@ export function MikoCaseStudy() {
               Inspectable Decisions
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              A companion shouldn&apos;t be an opaque black box. Operators can inspect the exact sensor event stream, winning heuristic rules, and cooldown counters directly through Persona Studio.
+              A companion shouldn&apos;t be an opaque black box. Operators can inspect context signals, runtime state, reaction history, and representative decision traces through Persona Studio.
             </p>
             <div className="border border-white/[0.08] bg-surface p-4 font-mono text-xs text-primary-subtle space-y-2">
-              <div>&bull; Repeat avoidance prevents repeating identical lines within 120 minutes.</div>
+              <div>&bull; Reaction-specific repeat suppression typically ranges from 120–180 minutes.</div>
               <div>&bull; Cooldown gate prevents reaction spam during rapid window switches.</div>
               <div>&bull; Strict boundary rules keep bubbles short and relevant.</div>
             </div>
@@ -293,14 +293,14 @@ export function MikoCaseStudy() {
           <div className="lg:col-span-7">
             <div className="border border-white/[0.08] bg-surface p-6 font-mono text-xs">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-[10px] uppercase tracking-wider text-primary-subtle">
-                <span>Recent Arbitration Event Log</span>
-                <span className="text-[#f09acb]">Live In-Memory Buffer</span>
+                <span>Representative Event Trace</span>
+                <span className="text-[#f09acb]">Simulated Log</span>
               </div>
 
               <div className="mt-4 space-y-3">
                 <div className="border-b border-white/[0.04] pb-3">
                   <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>14:28:10 &bull; Process Sensor</span>
+                    <span>Sample Event &bull; Process Sensor</span>
                     <span className="text-[#f09acb]">Triggered</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Code.exe &rarr; coding mood</div>
@@ -309,7 +309,7 @@ export function MikoCaseStudy() {
 
                 <div className="border-b border-white/[0.04] pb-3">
                   <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>14:35:42 &bull; Audio Sensor</span>
+                    <span>Sample Event &bull; Audio Sensor</span>
                     <span className="text-amber-400">Restrained</span>
                   </div>
                   <div className="mt-1 font-semibold text-primary">Spotify.exe &rarr; audible track detected</div>
@@ -318,10 +318,10 @@ export function MikoCaseStudy() {
 
                 <div>
                   <div className="flex justify-between text-[10px] text-primary-subtle">
-                    <span>15:02:19 &bull; Win32 Input Idle</span>
+                    <span>Sample Event &bull; Win32 Input Idle</span>
                     <span className="text-[#ffadd8]">Standby</span>
                   </div>
-                  <div className="mt-1 font-semibold text-primary">Inactivity &gt; 300s &rarr; sleepy mood</div>
+                  <div className="mt-1 font-semibold text-primary">Inactivity &gt; 90s &rarr; sleepy mood</div>
                   <div className="text-[10px] text-primary-muted mt-0.5">Operator away &bull; Ambient standby posture without audio notifications</div>
                 </div>
               </div>
@@ -355,7 +355,7 @@ export function MikoCaseStudy() {
               127.0.0.1 Loopback
             </h3>
             <p className="font-sans text-xs leading-relaxed text-primary-muted">
-              The PowerShell WPF client and Python sidecar communicate entirely over local loopback sockets. There is no remote cloud server or central telemetry service.
+              The PowerShell WPF client and Python sidecar communicate over local loopback sockets. There is no built-in remote telemetry; optional model integrations follow the user-configured endpoint.
             </p>
           </div>
 
@@ -428,7 +428,7 @@ export function MikoCaseStudy() {
             </div>
             <div className="font-mono text-[10px] text-primary-subtle flex justify-between">
               <span>Persona Studio // Memory &amp; Learned Facts</span>
-              <span className="text-[#f09acb]">Confidence Ratings</span>
+              <span className="text-[#f09acb]">Local Memory</span>
             </div>
           </div>
         </div>
@@ -444,31 +444,31 @@ export function MikoCaseStudy() {
               09 / Experimental Status
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-              Experimental by Design
+              Prototype Boundaries
             </h2>
             <p className="font-sans text-base leading-relaxed text-primary-muted">
-              MIKO is an ongoing personal research project exploring how computing interfaces can provide calm companionship without turning into attention-hungry assistants.
+              MIKO is an active experimental project. This case study documents the working prototype as it exists today; architecture, interaction rules, and packaging may continue to evolve.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 font-mono text-xs">
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
-              <span className="text-[10px] uppercase tracking-wider text-[#f09acb]">Current Status</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#f09acb]">Current Boundaries</span>
               <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Transparent WPF desktop shell with animated pixel sprite loop</li>
-                <li>&bull; Python sidecar over 127.0.0.1 loopback for persona arbitration</li>
-                <li>&bull; Windows Audio Session &amp; Media Transport integration</li>
-                <li>&bull; Persona Studio interface for memory and privacy configuration</li>
+                <li>&bull; Windows-specific Win32 and WPF desktop runtime</li>
+                <li>&bull; Local loopback IPC between the UI shell and Python sidecar</li>
+                <li>&bull; Heuristic-first classification rather than continuous capture</li>
+                <li>&bull; Lightweight foreground polling with no built-in remote telemetry</li>
               </ul>
             </div>
 
             <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
               <span className="text-[10px] uppercase tracking-wider text-accent">Future Explorations</span>
               <ul className="space-y-2 text-primary-muted">
-                <li>&bull; Rust/Tauri cross-platform companion shell</li>
-                <li>&bull; Deeper workspace context via local project detection</li>
-                <li>&bull; Customizable user sprite packs with standardized frame manifests</li>
-                <li>&bull; Ambient screen-tone calibration for eye-strain and night posture</li>
+                <li>&bull; Standalone packaging and simpler setup</li>
+                <li>&bull; Multi-monitor and high-DPI validation</li>
+                <li>&bull; Sidecar refactoring for long-term maintainability</li>
+                <li>&bull; Local voice synthesis and response tuning</li>
               </ul>
             </div>
           </div>

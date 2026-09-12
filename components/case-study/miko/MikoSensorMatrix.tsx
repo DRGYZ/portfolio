@@ -17,38 +17,38 @@ const pipelines: SensorPipeline[] = [
     id: 'process',
     name: 'Window & Process Hooks',
     api: 'Win32 GetForegroundWindow / GetWindowThreadProcessId',
-    samplingRate: 'Polled every 2.0s',
-    privacyGuarantee: 'Only active window title and process name read in RAM. Keystrokes and clipboard never accessed.',
+    samplingRate: 'Polled on 2.0s foreground loop',
+    privacyGuarantee: 'Only active window title and process name are read in RAM to infer task context. Keystrokes, clipboard, and source-file contents are never captured.',
     extractedSignals: [
       'Active process basename (e.g. Code.exe, chrome.exe)',
-      'Cleaned window title (filtered against blacklist)',
-      'Win32 GetLastInputInfo operator idle ticks',
+      'Foreground window title metadata',
+      'Win32 GetLastInputInfo operator idle ticks (90s default threshold)',
     ],
     role: 'Determines primary operator task: coding IDE, terminal, gaming client, or idle desktop.',
   },
   {
     id: 'audio',
     name: 'Audio Session & Media API',
-    api: 'CoreAudio IAudioSessionControl2 + SystemMediaTransportControls',
-    samplingRate: 'Peak level sampled every 1.5s',
-    privacyGuarantee: 'Reads peak amplitude numeric scalar [0.0 - 1.0] and media track metadata. Audio content is never captured or recorded.',
+    api: 'GlobalSystemMediaTransportControlsSessionManager + CoreAudio WASAPI',
+    samplingRate: 'Evaluated on foreground activity loop (2.0s interval)',
+    privacyGuarantee: 'Reads audio session peak volume scalar and media transport metadata. Raw audio is never recorded or streamed.',
     extractedSignals: [
-      'Per-process audio peak levels',
-      'SystemMediaTransportControls artist and track title',
-      'Media playback state: Playing, Paused, Stopped',
+      'Per-process audio session peak levels',
+      'Windows Media Session artist, track title, and playback status',
+      'Distinguishes background music from video and foreground audio',
     ],
-    role: 'Distinguishes background music from video streaming and active gameplay audio.',
+    role: 'Distinguishes background music from video streaming and active foreground audio sessions.',
   },
   {
     id: 'bridge',
     name: 'Browser Bridge & UI Automation',
-    api: 'Unpacked Manifest V3 Extension over 127.0.0.1 TCP Loopback',
-    samplingRate: 'Event-driven on tab switch',
-    privacyGuarantee: 'Evaluates domain category (docs, video, articles) via in-memory whitelist. Page DOM and cookies are strictly excluded.',
+    api: 'Unpacked Manifest V3 Extension over 127.0.0.1 Loopback (Port 50557)',
+    samplingRate: 'Event-driven on tab activation, relevant metadata changes, and browser-window focus',
+    privacyGuarantee: 'Posts title, host, audible, muted, active, and media-likelihood metadata locally using a generated loopback token. DOM content and cookies are excluded.',
     extractedSignals: [
-      'Tab classification tag (docs, media, general)',
-      'Audible background tab flag',
-      'UI Automation foreground control tree snapshot',
+      'Active tab host and page title',
+      'Audible tab and media-playing indicators',
+      'Foreground UI Automation element properties',
     ],
     role: 'Enriches browser context: recognizes when operator is browsing API documentation vs watching video.',
   },
@@ -56,12 +56,12 @@ const pipelines: SensorPipeline[] = [
     id: 'heuristics',
     name: 'Arbitration & Cooldown Engine',
     api: 'Python Sidecar Loopback (127.0.0.1:50558) / WPF Heuristic Core',
-    samplingRate: 'Evaluated on state change',
-    privacyGuarantee: 'Runs completely offline. Optional user-configured model endpoints are disabled by default.',
+    samplingRate: 'Evaluated on state transition',
+    privacyGuarantee: 'Local-first core with no built-in remote telemetry. Optional model features are disabled by default and follow user-configured endpoints.',
     extractedSignals: [
-      'Weighted heuristic score matrix',
-      'Per-mode cooldown gates (15–30 min timer)',
-      'Anti-repeat dialogue queue (avoids identical lines within 120 min)',
+      'Heuristic arbitration across window, media, audio, and browser signals',
+      'Per-reaction cooldown gates (commonly 12–25 min by behaviour)',
+      'Configurable repeat-suppression window (commonly 120–180 min)',
     ],
     role: 'Resolves conflicting signals, suppresses spam, and decides companion mood and reaction bubble.',
   },
@@ -82,7 +82,7 @@ export function MikoSensorMatrix() {
           </span>
         </div>
         <span className="text-[10px] uppercase tracking-wider text-primary-subtle">
-          100% In-Memory Evaluation &bull; Zero Remote Telemetry
+          Local-First Core &bull; No Built-In Remote Telemetry
         </span>
       </div>
 
