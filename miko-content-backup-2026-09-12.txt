@@ -1,0 +1,160 @@
+MIKO CASE STUDY — COPY BACKUP
+Saved before restoring commit 33ffa107e02c49fd43f6fae91c8d7510b04cc954
+Exact source snapshot: commit bf21aa2
+
+This file preserves the editorial copy introduced in the rejected composition.
+The full exact implementation remains recoverable from:
+- bf21aa2:components/case-study/miko/MikoCaseStudy.tsx
+- bf21aa2:components/case-study/miko/MikoMoodShowcase.tsx
+
+============================================================
+01 — ARRIVAL
+============================================================
+
+Experimental desktop companion · Windows · 2026
+
+MIKO
+
+A desktop companion that responds to context, not just prompts.
+
+MIKO explores a quieter kind of computing: a local-first character that notices
+the rhythm of a Windows workspace and responds through posture, motion, and short
+reactions.
+
+Calls to action:
+- Try the context lab
+- See the prototype
+
+Metadata:
+- Shell: PowerShell / WPF
+- Engine: Python sidecar
+- Mode: Peripheral / ambient
+- State: Working prototype
+
+============================================================
+02 — PRESENCE / PREMISE + PROOF
+============================================================
+
+Core premise
+
+DESIGNED FOR THE PERIPHERY.
+
+Most assistants wait for a command. MIKO stays quietly present, then expresses
+only what the moment earns.
+
+01 · Continuous
+Lightweight local signals give the companion situational awareness without
+turning every moment into a conversation.
+
+02 · Restrained
+Posture, timing, and short reactions create presence without competing with the
+work happening underneath.
+
+Prototype captions:
+- Persona Studio · Presence & behavior
+- Working Windows prototype
+- Desktop shell · tray & quick controls
+- Explore supporting prototype captures
+- Awareness & privacy · Granular local sensor boundaries
+- Memory & learned facts · Inspectable, operator-editable memory
+
+============================================================
+03 — PERSONALITY
+============================================================
+
+A COMPANION HAS MOODS.
+
+MIKO's personality lives in hand-authored pixel animation. Each posture is a
+readable response to desktop context—not a generic avatar skin.
+
+Context can influence a mood; explicit user and internal companion states can
+too. The character remains authored, not generated on demand.
+
+01 · Coding / focus
+A code editor or terminal becomes the active workspace.
+“checking the logic”
+
+02 · Listening / rhythm
+A background music session remains audible.
+“tiny concert mode”
+
+03 · Watching / attention
+Video playback takes focus in a browser or local player.
+“I am watching too”
+
+04 · Annoyed / disruption
+MIKO is relocated away from the primary display.
+“bring me back”
+
+Secondary moods:
+- Curious / exploration — Research, documentation, or exploratory browsing.
+  “what are we reading?”
+- Sleepy / standby — User inactivity passes the configured idle threshold.
+  “still here”
+- Celebrating / reward — An explicit positive or achievement state is triggered.
+  “proud mode!”
+
+Movement atlas · 100 frames
+
+A BODY FOR THE DESKTOP.
+
+Walking, jumping, waving, crouching, and relocation tantrums let MIKO occupy the
+edge of the screen like a small physical presence.
+
+============================================================
+04 — DECISION / INTERACTION
+============================================================
+
+Interactive context lab
+
+CONTEXT BECOMES CHARACTER.
+
+Change the simulated situation and inspect how signal priority, attention policy,
+and cooldowns shape the reaction. The values are illustrative; the behavioral
+relationships mirror the current runtime.
+
+Sensor disclosure:
+Inspect local sensor architecture
+Foreground activity, audio state, media metadata, and idle time are evaluated
+locally through explicit privacy boundaries.
+
+Memory disclosure:
+Inspect local memory model
+Preferences and recurring habits remain visible, local, and editable rather than
+disappearing into an opaque profile.
+
+============================================================
+05 — LOCAL-FIRST / BOUNDARIES
+============================================================
+
+DESIGNED FOR YOUR MACHINE.
+
+Local core
+The WPF shell and Python sidecar communicate over local loopback. There is no
+built-in remote telemetry.
+
+Clear limits
+Titles, processes, media state, and idle time are read in memory. Keystrokes,
+clipboard, and file contents are excluded.
+
+User choice
+Optional model features are off by default and follow the endpoint configured by
+the user, such as local Ollama.
+
+Current boundaries:
+- Windows-specific Win32 and WPF runtime
+- Heuristic-first classification and local loopback IPC
+- Lightweight foreground polling rather than persistent capture
+
+Exploring next:
+- Standalone packaging and simpler setup
+- Multi-monitor and high-DPI validation
+- Sidecar refactoring and local voice tuning
+
+MIKO is an active experimental project. This case study documents the working
+prototype as it exists today; architecture, interaction rules, and packaging may
+continue to evolve.
+
+Closing:
+CONTEXT-AWARE. LOCALLY YOURS.
+An ongoing exploration into calm, peripheral desktop computing.

@@ -17,38 +17,38 @@ const pipelines: SensorPipeline[] = [
     id: 'process',
     name: 'Window & Process Hooks',
     api: 'Win32 GetForegroundWindow / GetWindowThreadProcessId',
-    samplingRate: 'Polled on 2.0s foreground loop',
-    privacyGuarantee: 'Only active window title and process name are read in RAM to infer task context. Keystrokes, clipboard, and source-file contents are never captured.',
+    samplingRate: 'Polled every 2.0s',
+    privacyGuarantee: 'Only active window title and process name read in RAM. Keystrokes and clipboard never accessed.',
     extractedSignals: [
       'Active process basename (e.g. Code.exe, chrome.exe)',
-      'Foreground window title metadata',
-      'Win32 GetLastInputInfo operator idle ticks (90s default threshold)',
+      'Cleaned window title (filtered against blacklist)',
+      'Win32 GetLastInputInfo operator idle ticks',
     ],
     role: 'Determines primary operator task: coding IDE, terminal, gaming client, or idle desktop.',
   },
   {
     id: 'audio',
     name: 'Audio Session & Media API',
-    api: 'GlobalSystemMediaTransportControlsSessionManager + CoreAudio WASAPI',
-    samplingRate: 'Evaluated on foreground activity loop (2.0s interval)',
-    privacyGuarantee: 'Reads audio session peak volume scalar and media transport metadata. Raw audio is never recorded or streamed.',
+    api: 'CoreAudio IAudioSessionControl2 + SystemMediaTransportControls',
+    samplingRate: 'Peak level sampled every 1.5s',
+    privacyGuarantee: 'Reads peak amplitude numeric scalar [0.0 - 1.0] and media track metadata. Audio content is never captured or recorded.',
     extractedSignals: [
-      'Per-process audio session peak levels',
-      'Windows Media Session artist, track title, and playback status',
-      'Distinguishes background music from video and foreground audio',
+      'Per-process audio peak levels',
+      'SystemMediaTransportControls artist and track title',
+      'Media playback state: Playing, Paused, Stopped',
     ],
-    role: 'Distinguishes background music from video streaming and active foreground audio sessions.',
+    role: 'Distinguishes background music from video streaming and active gameplay audio.',
   },
   {
     id: 'bridge',
     name: 'Browser Bridge & UI Automation',
-    api: 'Unpacked Manifest V3 Extension over 127.0.0.1 Loopback (Port 50557)',
-    samplingRate: 'Event-driven on tab activation, relevant tab metadata changes and browser-window focus',
-    privacyGuarantee: 'Posts title, host, audible, muted, active, and media-likelihood metadata locally using a generated loopback token. DOM content and cookies are strictly excluded.',
+    api: 'Unpacked Manifest V3 Extension over 127.0.0.1 TCP Loopback',
+    samplingRate: 'Event-driven on tab switch',
+    privacyGuarantee: 'Evaluates domain category (docs, video, articles) via in-memory whitelist. Page DOM and cookies are strictly excluded.',
     extractedSignals: [
-      'Active tab host and page title',
-      'Audible tab and media playing indicators',
-      'Foreground UI Automation element properties (Name, ClassName, FrameworkId, ControlType)',
+      'Tab classification tag (docs, media, general)',
+      'Audible background tab flag',
+      'UI Automation foreground control tree snapshot',
     ],
     role: 'Enriches browser context: recognizes when operator is browsing API documentation vs watching video.',
   },
@@ -56,12 +56,12 @@ const pipelines: SensorPipeline[] = [
     id: 'heuristics',
     name: 'Arbitration & Cooldown Engine',
     api: 'Python Sidecar Loopback (127.0.0.1:50558) / WPF Heuristic Core',
-    samplingRate: 'Evaluated on state transition',
-    privacyGuarantee: 'Local-first core with no built-in remote telemetry. Optional model features are disabled by default and follow user-configured endpoints.',
+    samplingRate: 'Evaluated on state change',
+    privacyGuarantee: 'Runs completely offline. Optional user-configured model endpoints are disabled by default.',
     extractedSignals: [
-      'Heuristic arbitration across window, media, audio, and browser signals',
-      'Per-reaction cooldown gates (commonly 12–25 min by behaviour)',
-      'Configurable repeat-suppression window (commonly 120–180 min)',
+      'Weighted heuristic score matrix',
+      'Per-mode cooldown gates (15–30 min timer)',
+      'Anti-repeat dialogue queue (avoids identical lines within 120 min)',
     ],
     role: 'Resolves conflicting signals, suppresses spam, and decides companion mood and reaction bubble.',
   },
@@ -71,73 +71,40 @@ export function MikoSensorMatrix() {
   const [activeTab, setActiveTab] = useState<string>('process');
   const selected = pipelines.find((p) => p.id === activeTab) ?? pipelines[0];
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
-    let nextIndex = index;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      nextIndex = (index + 1) % pipelines.length;
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      nextIndex = (index - 1 + pipelines.length) % pipelines.length;
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      nextIndex = 0;
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      nextIndex = pipelines.length - 1;
-    } else {
-      return;
-    }
-    const nextId = pipelines[nextIndex].id;
-    setActiveTab(nextId);
-    const btn = document.getElementById(`sensor-tab-${nextId}`);
-    btn?.focus();
-  };
-
   return (
-    <div className="border-y border-white/[0.08] bg-surface/40 font-mono">
+    <div className="border border-white/[0.08] bg-surface font-mono">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] px-0 py-5 sm:px-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary">
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
             Local OS Sensor Pipelines
           </span>
         </div>
-        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-primary-subtle">
-          Local-First Core &bull; No Built-In Remote Telemetry
+        <span className="text-[10px] uppercase tracking-wider text-primary-subtle">
+          100% In-Memory Evaluation &bull; Zero Remote Telemetry
         </span>
       </div>
 
       {/* Tabs */}
-      <div
-        role="tablist"
-        aria-label="Local OS sensor pipelines"
-        className="grid grid-cols-2 border-b border-white/[0.08] sm:grid-cols-4"
-      >
-        {pipelines.map((pipe, idx) => {
+      <div className="grid grid-cols-2 border-b border-white/[0.08] sm:grid-cols-4">
+        {pipelines.map((pipe) => {
           const isSelected = activeTab === pipe.id;
           return (
             <button
               key={pipe.id}
-              role="tab"
-              id={`sensor-tab-${pipe.id}`}
-              aria-selected={isSelected}
-              aria-controls={`sensor-panel-${pipe.id}`}
-              tabIndex={isSelected ? 0 : -1}
               type="button"
               onClick={() => setActiveTab(pipe.id)}
-              onKeyDown={(e) => handleKeyDown(e, idx)}
-              className={`p-3 sm:p-4 text-left border-r last:border-r-0 border-white/[0.08] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f09acb] ${
+              className={`p-3 sm:p-4 text-left border-r last:border-r-0 border-white/[0.08] transition-colors ${
                 isSelected
                   ? 'bg-[#f09acb]/10 border-b-2 border-b-[#f09acb] text-primary'
                   : 'bg-background/20 text-primary-muted hover:bg-background/40 hover:text-primary'
               }`}
             >
-              <span className="block text-[10px] uppercase tracking-widest text-primary-subtle">
+              <span className="block text-[9px] uppercase tracking-widest text-primary-subtle">
                 {pipe.id.toUpperCase()}
               </span>
-              <span className="mt-1 block font-sans text-xs sm:text-sm font-semibold text-primary truncate">
+              <span className="mt-1 block font-sans text-xs font-semibold text-primary truncate">
                 {pipe.name}
               </span>
             </button>
@@ -146,17 +113,12 @@ export function MikoSensorMatrix() {
       </div>
 
       {/* Active Pipeline Detail */}
-      <div
-        role="tabpanel"
-        id={`sensor-panel-${selected.id}`}
-        aria-labelledby={`sensor-tab-${selected.id}`}
-        className="px-0 py-7 sm:px-6 sm:py-9 space-y-7"
-      >
+      <div className="p-6 sm:p-8 space-y-6">
         <div className="grid gap-6 lg:grid-cols-12">
           {/* Left Column: API & Sampling */}
           <div className="space-y-4 lg:col-span-6">
             <div>
-              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
+              <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
                 Underlying OS API / Mechanism
               </span>
               <p className="mt-1 text-sm font-semibold text-primary">
@@ -165,19 +127,19 @@ export function MikoSensorMatrix() {
             </div>
 
             <div>
-              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
+              <span className="block text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
                 Sampling Rate &amp; Hook Type
               </span>
-              <p className="mt-1 text-xs sm:text-[13px] text-primary-muted">
+              <p className="mt-1 text-xs text-primary-muted">
                 {selected.samplingRate}
               </p>
             </div>
 
             <div>
-              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-primary-subtle">
+              <span className="block text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
                 Operational Purpose
               </span>
-              <p className="mt-1 font-sans text-xs sm:text-[13px] leading-relaxed text-primary-muted">
+              <p className="mt-1 font-sans text-xs leading-relaxed text-primary-muted">
                 {selected.role}
               </p>
             </div>
@@ -186,10 +148,10 @@ export function MikoSensorMatrix() {
           {/* Right Column: Signals & Privacy */}
           <div className="space-y-4 lg:col-span-6">
             <div>
-              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-accent">
+              <span className="block text-[9px] uppercase tracking-[0.2em] text-accent">
                 Extracted In-Memory Signals
               </span>
-              <ul className="mt-2 space-y-1.5 text-xs sm:text-[13px] text-primary-muted">
+              <ul className="mt-2 space-y-1.5 text-xs text-primary-muted">
                 {selected.extractedSignals.map((signal, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="text-[#f09acb] select-none">&bull;</span>
@@ -199,11 +161,11 @@ export function MikoSensorMatrix() {
               </ul>
             </div>
 
-            <div className="border-l border-[#f09acb]/60 bg-background/30 pl-4 py-1">
-              <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f09acb]">
+            <div className="border border-white/[0.08] bg-background/50 p-4">
+              <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
                 Privacy &amp; Security Boundary
               </span>
-              <p className="mt-1 font-sans text-xs sm:text-[13px] text-primary-subtle leading-relaxed">
+              <p className="mt-1 font-sans text-xs text-primary-subtle leading-relaxed">
                 {selected.privacyGuarantee}
               </p>
             </div>
