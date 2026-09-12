@@ -26,8 +26,8 @@ const targets: TargetItem[] = [
   },
   {
     id: 'sidebar',
-    name: 'Sidebar Queue Telemetry',
-    effect: 'Orders queue badge decrements across active storefront channel (reflecting pending + unshipped queue).',
+    name: 'Sidebar Queue Count',
+    effect: 'Queue badge decrements for the active store (reflecting pending + unshipped orders).',
     layer: 'App Layout Navigation',
   },
   {
@@ -45,9 +45,9 @@ export function ReactiveMutationLoop() {
   return (
     <div className="border border-white/[0.08] bg-surface p-6 sm:p-8 font-mono text-xs">
       <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
-        <h4 className="text-xs uppercase tracking-[0.2em] text-accent">Reactive Mutation Loop</h4>
+        <h4 className="text-xs uppercase tracking-[0.2em] text-accent">Shared State Refresh</h4>
         <span className="text-[9px] uppercase tracking-[0.14em] text-primary-subtle hidden sm:inline">
-          Version Invalidation Engine
+          Local Mutation Flow
         </span>
       </div>
 
@@ -76,15 +76,15 @@ export function ReactiveMutationLoop() {
           <span>&darr; calls context method</span>
         </div>
 
-        {/* Step 2: Mutation & Version Tick */}
+        {/* Step 2: Persist & Refresh */}
         <div className="border border-white/[0.08] bg-background/50 p-4 transition-colors hover:border-accent/40">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-[0.18em] text-accent">02 / Mutation &amp; Invalidation</span>
+            <span className="text-[10px] uppercase tracking-[0.18em] text-accent">02 / Persist &amp; Refresh</span>
             <span className="text-[9px] text-accent font-semibold">bumpVersion()</span>
           </div>
           <p className="mt-1.5 text-primary font-semibold text-xs">orderService.markAsShipped(id) &rarr; version++</p>
           <p className="mt-1 text-[11px] font-sans text-primary-muted">
-            Updates persistent storage and increments an internal version counter so context-derived data recomputes.
+            Saves the changed order locally and increments the version counter.
           </p>
         </div>
 
@@ -97,14 +97,14 @@ export function ReactiveMutationLoop() {
             transition={{ duration: 0.3, delay: 0.15 }}
             className="inline-block h-3 w-px bg-accent/60 origin-top"
           />
-          <span>&darr; triggers reactive re-memoization</span>
+          <span>&darr; derived state recalculates</span>
         </div>
 
-        {/* Step 3: Broadcast Updates */}
+        {/* Step 3: Dependent View Updates */}
         <div className="border border-accent/30 bg-accent/[0.04] p-4">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-[0.18em] text-accent">03 / Broadcast Updates</span>
-            <span className="text-[9px] text-primary-subtle">Zero Reload Broadcast</span>
+            <span className="text-[10px] uppercase tracking-[0.18em] text-accent">03 / Synchronized View Updates</span>
+            <span className="text-[9px] text-primary-subtle">Dependent Views Update</span>
           </div>
 
           <div className="mt-3 grid gap-2 sm:grid-cols-2">

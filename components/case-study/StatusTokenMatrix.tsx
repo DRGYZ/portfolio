@@ -69,17 +69,17 @@ export function StatusTokenMatrix() {
 
   return (
     <div className="relative border border-white/[0.08] bg-surface p-6 sm:p-8 font-mono">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-4">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
-          Design System / Status Token Matrix
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
+        <span className="text-xs uppercase tracking-[0.2em] text-accent">
+          Operational Status Tokens
         </span>
-        <span className="text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
-          WCAG 1.4.1 Dual-Channel Encoding
+        <span className="text-[9px] uppercase tracking-[0.14em] text-primary-subtle">
+          Text + Color
         </span>
       </div>
 
-      <p className="mt-4 font-editorial text-2xl italic tracking-tight text-primary sm:text-3xl max-w-xl">
-        High-density operational tools require instantaneous visual identification without sacrificing accessibility standards.
+      <p className="mt-3 text-xs text-primary-muted font-sans leading-relaxed">
+        Status uses both text and color, with contrast checked for every badge.
       </p>
 
       {/* Grid of the 4 status pills */}
@@ -143,7 +143,7 @@ export function StatusTokenMatrix() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] uppercase tracking-wider text-accent font-semibold">
-                  {current.label} State Telemetry
+                  {current.label} Status Behavior
                 </span>
                 <span className="text-white/20" aria-hidden="true">&bull;</span>
                 <span className="text-[10px] text-primary-muted font-sans">
@@ -159,8 +159,8 @@ export function StatusTokenMatrix() {
       })()}
 
       <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/[0.06] pt-3 text-[9px] uppercase tracking-[0.16em] text-primary-subtle">
-        <span>Encoding: Paired Color Pill + Micro-Indicator + Typography</span>
-        <span className="text-accent">Accessible Status Primitives</span>
+        <span>Status remains readable without color</span>
+        <span className="text-accent">Contrast checked per badge</span>
       </div>
     </div>
   );

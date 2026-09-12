@@ -7,46 +7,34 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
 interface PipelineStep {
   id: string;
   label: string;
-  code: string;
   detail: string;
-  badge: string;
 }
 
 const steps: PipelineStep[] = [
   {
     id: 'inputs',
-    label: 'User Intent & View Parameters',
-    code: 'Search, Store, Status, Sort, Page',
-    detail: 'Debounced search query, store scope, lifecycle tab, single-column sort, and page bounds.',
-    badge: 'INTERACTION',
+    label: 'INPUTS',
+    detail: 'Search · Store · Status · Sort · Page',
   },
   {
     id: 'validation',
-    label: 'Validation & Debounce Intercept',
-    code: '250ms window · Runtime whitelist',
-    detail: 'Keystrokes debounce for 250ms; supported query parameters are validated before they reach view state.',
-    badge: 'DEFENSE',
+    label: 'VALIDATE & DEBOUNCE',
+    detail: '250ms search delay · Invalid params fall back safely',
   },
   {
     id: 'sync',
-    label: 'URL and Local State Synchronization',
-    code: "useSearchParams({ replace: true })",
-    detail: 'The URL mirrors settled filter state without a page reload, keeping supported operational views shareable.',
-    badge: 'ROUTING',
+    label: 'WRITE URL STATE',
+    detail: 'Filters stay shareable and recoverable',
   },
   {
     id: 'service',
-    label: 'Service Query Calculation',
-    code: 'orderService.getOrders(filterState)',
-    detail: 'Performs filtering, search, sorting, and pagination, returning the matching slice and total count.',
-    badge: 'COMPUTE',
+    label: 'QUERY ORDERS',
+    detail: 'Filter · Sort · Paginate',
   },
   {
     id: 'render',
-    label: 'Synchronized Table & Status Counts',
-    code: 'Table Rows · Status Counts · Pagination',
-    detail: 'Table rows render with active filters; status tab counts and pagination controls reflect the resulting dataset.',
-    badge: 'REACTIVE UI',
+    label: 'RENDER RESULTS',
+    detail: 'Rows · Status counts · Pagination',
   },
 ];
 
@@ -58,10 +46,10 @@ export function StatePipelineFlow() {
     <figure className="mt-8 border border-white/[0.08] bg-surface p-6 font-mono">
       <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
         <figcaption className="text-[9px] uppercase tracking-[0.2em] text-accent">
-          Architecture // Interactive State Pipeline
+          Filter State Flow
         </figcaption>
         <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary-subtle hidden sm:inline">
-          Select a stage to inspect data flow
+          Select a stage
         </span>
       </div>
 
@@ -107,12 +95,8 @@ export function StatePipelineFlow() {
                     <span className="text-[11px] font-semibold text-primary">{step.label}</span>
                   </div>
                   <span className="font-mono text-[8px] uppercase tracking-[0.18em] px-1.5 py-0.5 border border-white/10 text-primary-subtle group-hover:text-accent group-hover:border-accent/40 transition-colors">
-                    {step.badge}
+                    {String(idx + 1).padStart(2, '0')}
                   </span>
-                </div>
-
-                <div className="mt-2 pl-4 text-accent/90 text-[11px]">
-                  <code>{step.code}</code>
                 </div>
 
                 {isSelected && (

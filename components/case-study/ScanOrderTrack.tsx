@@ -16,25 +16,25 @@ const phases: ScanPhase[] = [
     id: 'kpis',
     number: '01',
     title: 'Summary KPIs',
-    detail: 'Active Revenue, Total Orders, Pending Review, Fulfillment Queue, and Fulfillment Rate.',
+    detail: 'The first row answers the immediate questions: how much revenue is active, how many orders need attention, and how much of the queue is already fulfilled.',
   },
   {
     id: 'trajectory',
     number: '02',
-    title: '14-Day Trajectory',
-    detail: 'Daily sales volume area trajectory plotted with Recharts curves.',
+    title: '14-Day Trend',
+    detail: 'The 14-day view shows how revenue and order activity change over time.',
   },
   {
     id: 'status',
     number: '03',
-    title: 'Status Distribution',
-    detail: 'Interactive donut breakdown across active order lifecycle stages.',
+    title: 'Status Breakdown',
+    detail: 'The status split shows where orders sit in the current queue.',
   },
   {
     id: 'channels',
     number: '04',
-    title: 'Channel Breakdown',
-    detail: 'Store selector toggling between multi-brand aggregate and storefront channels.',
+    title: 'Store Comparison',
+    detail: 'The comparison keeps the three stores visible side by side.',
   },
 ];
 
@@ -54,8 +54,8 @@ export function ScanOrderTrack({ onSelectPhase }: ScanOrderTrackProps) {
   return (
     <div className="w-full max-w-xl font-mono text-[10px]">
       <div className="flex items-center justify-between text-primary-subtle uppercase tracking-[0.16em] mb-2">
-        <span>Operator Scanning Order</span>
-        <span className="text-accent/90">Operator Scan Hierarchy</span>
+        <span>Information Priority</span>
+        <span className="text-accent/90">Overview Sequence</span>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 border border-white/[0.08] bg-surface">

@@ -11,15 +11,15 @@ interface ColumnDef {
 }
 
 const desktopColumns: ColumnDef[] = [
-  { name: 'Order ID', priority: 'primary', mobileBehavior: 'Retained as primary tap target' },
-  { name: 'Store', priority: 'secondary', mobileBehavior: 'Collapsed at lg breakpoint' },
-  { name: 'Customer & Account', priority: 'consolidated', mobileBehavior: 'Tucked inside mobile Order ID cell' },
-  { name: 'Items Summary', priority: 'secondary', mobileBehavior: 'Collapsed at xl breakpoint' },
-  { name: 'Order Date', priority: 'secondary', mobileBehavior: 'Collapsed at md breakpoint' },
-  { name: 'Ship Before', priority: 'secondary', mobileBehavior: 'Collapsed at lg breakpoint' },
-  { name: 'Total', priority: 'primary', mobileBehavior: 'Retained on mobile row right' },
-  { name: 'Status', priority: 'primary', mobileBehavior: 'Retained as center status badge' },
-  { name: 'Actions', priority: 'secondary', mobileBehavior: 'Cell collapsed; row tap triggers drawer' },
+  { name: 'Order ID', priority: 'primary', mobileBehavior: 'Always visible and remains the primary order trigger.' },
+  { name: 'Store', priority: 'secondary', mobileBehavior: 'Returns at xl when there is room for store context.' },
+  { name: 'Customer & Account', priority: 'consolidated', mobileBehavior: 'Folds into the Order ID cell on compact screens.' },
+  { name: 'Items Summary', priority: 'secondary', mobileBehavior: 'Returns at 2xl where the table has enough width.' },
+  { name: 'Order Date', priority: 'secondary', mobileBehavior: 'Returns at lg.' },
+  { name: 'Ship Before', priority: 'secondary', mobileBehavior: 'Returns at xl.' },
+  { name: 'Total', priority: 'primary', mobileBehavior: 'Always visible.' },
+  { name: 'Status', priority: 'primary', mobileBehavior: 'Always visible.' },
+  { name: 'Actions', priority: 'secondary', mobileBehavior: 'Explicit action on larger screens; the row opens the order on mobile.' },
 ];
 
 export function ResponsiveColumnPriority() {
@@ -32,7 +32,7 @@ export function ResponsiveColumnPriority() {
         <div>
           <span className="text-[9px] uppercase tracking-[0.2em] text-accent">Column Priority Breakdown</span>
           <p className="mt-0.5 text-[11px] font-sans text-primary-muted">
-            Information tiering across responsive breakpoint transitions.
+            What stays visible as space gets tighter.
           </p>
         </div>
 
