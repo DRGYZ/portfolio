@@ -102,7 +102,7 @@ export function SelectedWorkSection() {
           className="relative mb-10 flex items-end justify-between gap-6 pb-6 lg:mb-14"
         >
           <div>
-            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
               Portfolio index / 01—0{projects.length}
             </p>
             <motion.h2
@@ -112,9 +112,6 @@ export function SelectedWorkSection() {
               Selected Work
             </motion.h2>
           </div>
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-primary-subtle sm:block">
-            Browse by hover or focus
-          </span>
           <motion.span
             aria-hidden="true"
             style={{ scaleX: prefersReduced ? 1 : ruleScale }}

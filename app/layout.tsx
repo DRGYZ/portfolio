@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Yazan Khaled — Front-end Developer & Creative Technologist',
+  title: 'Yazan Khaled — Front-end Developer',
   description:
     'I build polished interfaces and interactive products that make complex systems feel simple. Based in Paris, France.',
 };

@@ -77,7 +77,7 @@ export function NavBar() {
                 key={item.id}
                 href={`#${item.id}`}
                 aria-current={isActive ? 'location' : undefined}
-                className={`group relative py-1 font-mono text-[10px] uppercase tracking-[0.18em] transition-[color,letter-spacing] duration-300 hover:tracking-[0.23em] ${
+                className={`group relative py-1 font-mono text-[11px] uppercase tracking-[0.15em] transition-[color,letter-spacing] duration-300 hover:tracking-[0.18em] ${
                   isActive ? 'text-accent' : 'text-primary-muted hover:text-primary'
                 }`}
               >
@@ -93,7 +93,7 @@ export function NavBar() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-6 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-muted md:flex">
+        <div className="hidden items-center gap-6 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted md:flex">
           <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">
             GitHub
           </a>
@@ -107,7 +107,7 @@ export function NavBar() {
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-muted transition-colors hover:text-primary md:hidden"
+          className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted transition-colors hover:text-primary md:hidden"
         >
           {menuOpen ? 'Close' : 'Index'}
         </button>
@@ -127,13 +127,13 @@ export function NavBar() {
                 }`}
               >
                 <span>{item.label}</span>
-                <span className="font-mono text-[10px] not-italic tracking-[0.16em] text-primary-subtle">
+                <span className="font-mono text-[11px] not-italic tracking-[0.14em] text-primary-muted">
                   0{index + 1}
                 </span>
               </a>
             ))}
           </nav>
-          <div className="mt-6 flex gap-7 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-muted">
+          <div className="mt-6 flex gap-7 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted">
             <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>

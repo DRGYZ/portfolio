@@ -295,7 +295,7 @@ export function ProjectPreview({
               />
             ) : null}
 
-            <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex flex-wrap items-end justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-primary/75 sm:text-[10px]">
+            <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex flex-wrap items-end justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-primary/85 sm:text-[11px]">
               <span>{displayNumber ?? project.id} / {project.title}</span>
               {projectUrl ? (
                 <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">

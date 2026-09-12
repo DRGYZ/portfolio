@@ -58,14 +58,11 @@ export function ExperienceSection() {
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">03 / Experience</p>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">03 / Experience</p>
             <h2 id="experience-title" className="font-display text-3xl font-bold uppercase tracking-[-0.04em] text-primary sm:text-5xl">
               Selected roles
             </h2>
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-subtle">
-            2024 — 2026
-          </span>
         </div>
       </motion.div>
 
@@ -97,13 +94,13 @@ export function ExperienceSection() {
                   >
                     {role.title}
                   </h3>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary-subtle sm:hidden">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted sm:hidden">
                     {role.period}
                   </span>
                 </div>
 
                 {role.context && (
-                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
                     {role.context}
                   </p>
                 )}
@@ -113,7 +110,7 @@ export function ExperienceSection() {
                 </p>
               </div>
 
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-primary-subtle sm:block sm:pt-2 sm:text-right">
+              <span className="hidden font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted sm:block sm:pt-2 sm:text-right">
                 {role.period}
               </span>
             </div>

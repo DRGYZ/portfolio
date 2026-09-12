@@ -53,7 +53,7 @@ export function AboutSection() {
         }}
         className="lg:col-span-3"
       >
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">02 / About</p>
+        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">02 / About</p>
         <h2 id="about-title" className="font-display text-3xl font-bold uppercase tracking-[-0.04em] text-primary sm:text-5xl">
           A little context
         </h2>
@@ -68,7 +68,7 @@ export function AboutSection() {
         className="max-w-4xl lg:col-span-8 lg:col-start-5"
       >
         <p className="font-display text-2xl font-medium leading-[1.25] tracking-[-0.035em] text-primary sm:text-4xl lg:text-5xl">
-          I&apos;m Yazan, a front-end developer and creative technologist based in Paris.
+          I&apos;m Yazan, a front-end developer based in Paris.
           I care about the point where clear systems, careful typography, and useful
           interaction meet.
         </p>
@@ -109,7 +109,7 @@ export function AboutSection() {
                 index > 0 ? 'border-t border-white/[0.08] sm:border-l sm:border-t-0' : ''
               }`}
             >
-              <span className="font-mono text-[9px] tracking-[0.16em] text-accent">{number}</span>
+              <span className="font-mono text-[11px] tracking-[0.14em] text-accent">{number}</span>
               <span className="font-editorial text-2xl italic tracking-[-0.025em] text-primary sm:text-xl lg:text-3xl">
                 {label}
               </span>

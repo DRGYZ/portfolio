@@ -85,7 +85,7 @@ export function ProjectRow({
         <span className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-3 gap-y-3 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:gap-x-5">
           <span
             className={`font-mono text-[11px] font-semibold tracking-[0.08em] transition-colors ${
-              isActive ? 'text-accent' : 'text-primary-subtle'
+              isActive ? 'text-accent' : 'text-primary-muted'
             }`}
           >
             {visibleId}
@@ -105,9 +105,9 @@ export function ProjectRow({
             </span>
           </span>
 
-          <span className="col-start-2 flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-subtle transition-opacity duration-300 sm:col-start-3 sm:row-start-1 sm:justify-self-end lg:opacity-0">
+          <span className="col-start-2 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted transition-opacity duration-300 sm:col-start-3 sm:row-start-1 sm:justify-self-end lg:opacity-0">
             {project.category && (
-              <span className={isActive ? 'text-primary-muted' : undefined}>
+              <span className={isActive ? 'text-primary' : undefined}>
                 {project.category}
               </span>
             )}
@@ -115,7 +115,7 @@ export function ProjectRow({
           </span>
 
           <span
-            className={`col-start-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-[opacity,transform] duration-300 sm:col-start-2 ${
+            className={`col-start-2 font-mono text-[11px] uppercase tracking-[0.14em] transition-[opacity,transform] duration-300 sm:col-start-2 ${
               isActive ? 'translate-x-0 text-accent opacity-100' : '-translate-x-2 opacity-0'
             }`}
           >

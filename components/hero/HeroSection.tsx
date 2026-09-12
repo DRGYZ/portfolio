@@ -117,7 +117,7 @@ export function HeroSection() {
               Yazan Khaled
             </p>
             <p className="text-sm leading-relaxed text-primary-muted sm:text-base">
-              Front-end Developer &amp; Creative Technologist
+              Front-end Developer
               <span className="hidden sm:inline"> — </span>
               <span className="block sm:inline">Paris, France</span>
             </p>
@@ -244,7 +244,7 @@ export function HeroSection() {
         <motion.div
           aria-hidden="true"
           style={{ opacity: prefersReduced ? 1 : cueOpacity }}
-          className="absolute bottom-7 right-6 z-10 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-subtle sm:flex lg:right-16"
+          className="absolute bottom-7 right-6 z-10 hidden items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted sm:flex lg:right-16"
         >
           <motion.span
             animate={prefersReduced ? undefined : { scaleX: [0.45, 1, 0.45], opacity: [0.45, 1, 0.45] }}

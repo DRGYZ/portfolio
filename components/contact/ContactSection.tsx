@@ -78,7 +78,7 @@ export function ContactSection() {
         </div>
       </motion.div>
 
-      <p className="relative z-10 mb-8 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">04 / Contact</p>
+      <p className="relative z-10 mb-8 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">04 / Contact</p>
 
       <motion.h2
         id="contact-title"
@@ -129,12 +129,12 @@ export function ContactSection() {
         </motion.a>
       </motion.div>
 
-      <div className="relative z-10 mt-28 flex flex-col gap-7 border-t border-white/[0.08] pt-7 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-muted sm:flex-row sm:items-center sm:justify-between lg:mt-40">
+      <div className="relative z-10 mt-28 flex flex-col gap-7 border-t border-white/[0.08] pt-7 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted sm:flex-row sm:items-center sm:justify-between lg:mt-40">
         <div className="flex flex-wrap gap-7">
           <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">LinkedIn ↗</a>
         </div>
-        <div className="flex gap-4 text-primary-subtle">
+        <div className="flex gap-4 text-primary-muted">
           <span>Yazan Khaled — Paris, France</span>
           <span>© {new Date().getFullYear()}</span>
         </div>
