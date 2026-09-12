@@ -1,176 +1,132 @@
 'use client';
 
-import { useState } from 'react';
-
-interface SensorPipeline {
-  id: string;
-  name: string;
-  api: string;
-  samplingRate: string;
-  privacyGuarantee: string;
-  extractedSignals: string[];
-  role: string;
-}
-
-const pipelines: SensorPipeline[] = [
-  {
-    id: 'process',
-    name: 'Window & Process Hooks',
-    api: 'Win32 GetForegroundWindow / ProcessId',
-    samplingRate: 'Polled every 2.0s',
-    privacyGuarantee: 'Only the active window title and process name are checked in RAM. Keystrokes, clipboard, and file contents are never accessed.',
-    extractedSignals: [
-      'Active process basename (e.g. Code.exe, chrome.exe)',
-      'Foreground window title metadata',
-      'System idle duration (ticks since last user input)',
-    ],
-    role: 'Identifies the primary workspace: code editor, terminal, browser, or idle desktop.',
-  },
-  {
-    id: 'audio',
-    name: 'Audio Session & Media API',
-    api: 'Windows Media Transport & CoreAudio',
-    samplingRate: 'Evaluated every 2.0s',
-    privacyGuarantee: 'Reads peak volume levels and media playback metadata. Microphones and audio streams are never recorded or listened to.',
-    extractedSignals: [
-      'Per-process audio session peak levels',
-      'Media transport metadata (artist, track title, playback state)',
-      'Distinction between background music and foreground video',
-    ],
-    role: 'Differentiates quiet focus, background music, and active video streaming.',
-  },
-  {
-    id: 'bridge',
-    name: 'Browser Bridge & Extension',
-    api: 'Local Extension over Loopback (127.0.0.1)',
-    samplingRate: 'Event-driven on tab switch & focus',
-    privacyGuarantee: 'Shares only tab title, domain, and media status locally. Page DOM content, passwords, and cookies are strictly excluded.',
-    extractedSignals: [
-      'Active tab domain and page title',
-      'Audible tab and media playing indicators',
-      'Token-authenticated local loopback messaging',
-    ],
-    role: 'Enriches browser context: tells reading technical docs apart from watching video tutorials.',
-  },
-  {
-    id: 'heuristics',
-    name: 'Arbitration & Cooldown Engine',
-    api: 'Python Sidecar Loopback (127.0.0.1:50558)',
-    samplingRate: 'Evaluated on context transition',
-    privacyGuarantee: 'Runs entirely on-device with zero cloud telemetry. Optional AI features connect only to local user-configured endpoints.',
-    extractedSignals: [
-      'Priority scoring across competing signals (e.g. coding > music)',
-      'Per-reaction cooldown gates (12–25 min intervals)',
-      'Configurable repeat-suppression window (120–180 min)',
-    ],
-    role: 'Scores incoming signals, resolves conflicts, and prevents reaction spam.',
-  },
-];
-
 export function MikoSensorMatrix() {
-  const [activeTab, setActiveTab] = useState<string>('process');
-  const selected = pipelines.find((p) => p.id === activeTab) ?? pipelines[0];
-
   return (
-    <div className="border border-white/[0.08] bg-surface font-mono">
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.08] bg-background/50 p-4 sm:px-6">
-        <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
-            Local OS Sensor Pipelines
+    <div className="space-y-6">
+      {/* Visual Architecture Pipeline */}
+      <div className="border border-white/[0.08] bg-surface p-6 sm:p-8">
+        <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
+          <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-primary-subtle">
+            <span className="h-1.5 w-1.5 bg-[#f09acb]" />
+            <span>Architecture Pipeline</span>
+          </div>
+          <span className="font-mono text-[11px] uppercase tracking-wider text-primary-subtle">
+            Lightweight &bull; Local-First
           </span>
         </div>
-        <span className="text-[10px] uppercase tracking-wider text-primary-subtle">
-          Local-First Core &bull; No Built-In Remote Telemetry
-        </span>
-      </div>
 
-      {/* Tabs */}
-      <div className="grid grid-cols-2 border-b border-white/[0.08] sm:grid-cols-4">
-        {pipelines.map((pipe) => {
-          const isSelected = activeTab === pipe.id;
-          return (
-            <button
-              key={pipe.id}
-              type="button"
-              onClick={() => setActiveTab(pipe.id)}
-              className={`p-3 sm:p-4 text-left border-r last:border-r-0 border-white/[0.08] transition-colors ${
-                isSelected
-                  ? 'bg-[#f09acb]/10 border-b-2 border-b-[#f09acb] text-primary'
-                  : 'bg-background/20 text-primary-muted hover:bg-background/40 hover:text-primary'
-              }`}
-            >
-              <span className="block text-[9px] uppercase tracking-widest text-primary-subtle">
-                {pipe.id.toUpperCase()}
+        {/* 4 Pipeline Stages */}
+        <div className="mt-6 grid gap-4 lg:grid-cols-4 sm:grid-cols-2">
+          {/* Stage 1 */}
+          <div className="relative border border-white/[0.08] bg-background/60 p-5 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#f09acb]">
+                01 / Signals
               </span>
-              <span className="mt-1 block font-sans text-xs font-semibold text-primary truncate">
-                {pipe.name}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Active Pipeline Detail */}
-      <div className="p-6 sm:p-8 space-y-6">
-        <div className="grid gap-6 lg:grid-cols-12">
-          {/* Left Column: API & Sampling */}
-          <div className="space-y-4 lg:col-span-6">
-            <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
-                Underlying OS Mechanism
-              </span>
-              <p className="mt-1 text-sm font-semibold text-primary">
-                <code>{selected.api}</code>
-              </p>
+              <span className="hidden lg:inline text-primary-subtle select-none font-mono">&rarr;</span>
             </div>
-
-            <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
-                Sampling Rate &amp; Hook Type
-              </span>
-              <p className="mt-1 text-xs text-primary-muted">
-                {selected.samplingRate}
-              </p>
-            </div>
-
-            <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-primary-subtle">
-                Operational Purpose
-              </span>
-              <p className="mt-1 font-sans text-xs leading-relaxed text-primary-muted">
-                {selected.role}
-              </p>
-            </div>
+            <h3 className="font-display text-[17px] font-bold uppercase tracking-tight text-primary sm:text-lg">
+              Desktop signals
+            </h3>
+            <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
+              Foreground app &bull; Media state &bull; Browser context &bull; Idle state
+            </p>
           </div>
 
-          {/* Right Column: Signals & Privacy */}
-          <div className="space-y-4 lg:col-span-6">
-            <div>
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-accent">
-                Extracted In-Memory Signals
+          {/* Stage 2 */}
+          <div className="relative border border-white/[0.08] bg-background/60 p-5 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#f09acb]">
+                02 / Synthesis
               </span>
-              <ul className="mt-2 space-y-1.5 text-xs text-primary-muted">
-                {selected.extractedSignals.map((signal, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-[#f09acb] select-none">&bull;</span>
-                    <span>{signal}</span>
-                  </li>
-                ))}
-              </ul>
+              <span className="hidden lg:inline text-primary-subtle select-none font-mono">&rarr;</span>
             </div>
+            <h3 className="font-display text-[17px] font-bold uppercase tracking-tight text-primary sm:text-lg">
+              Local interpretation
+            </h3>
+            <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
+              Normalizes activity into a small context model
+            </p>
+          </div>
 
-            <div className="border border-white/[0.08] bg-background/50 p-4">
-              <span className="block text-[9px] uppercase tracking-[0.2em] text-[#f09acb]">
-                Privacy &amp; Security Boundary
+          {/* Stage 3 */}
+          <div className="relative border border-white/[0.08] bg-background/60 p-5 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-accent">
+                03 / Arbitration
               </span>
-              <p className="mt-1 font-sans text-xs text-primary-subtle leading-relaxed">
-                {selected.privacyGuarantee}
-              </p>
+              <span className="hidden lg:inline text-primary-subtle select-none font-mono">&rarr;</span>
             </div>
+            <h3 className="font-display text-[17px] font-bold uppercase tracking-tight text-primary sm:text-lg">
+              Priority + cooldown
+            </h3>
+            <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
+              Resolves competing signals and suppresses reaction spam
+            </p>
+          </div>
+
+          {/* Stage 4 */}
+          <div className="relative border border-[#f09acb]/40 bg-[#f09acb]/[0.05] p-5 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#ffadd8]">
+                04 / Output
+              </span>
+              <span className="text-[#f09acb] text-xs font-mono">&bull;</span>
+            </div>
+            <h3 className="font-display text-[17px] font-bold uppercase tracking-tight text-primary sm:text-lg">
+              MIKO reaction
+            </h3>
+            <p className="font-mono text-[13px] leading-relaxed text-[#ffadd8] sm:text-[13.5px]">
+              Mood &bull; Animation &bull; Short response
+            </p>
           </div>
         </div>
+      </div>
+
+      {/* 3 Behavioural Examples */}
+      <div className="grid gap-4 sm:grid-cols-3 font-mono">
+        <div className="border border-white/[0.08] bg-surface p-5 space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 bg-[#f09acb]" />
+            <h4 className="font-sans text-[15px] font-bold uppercase tracking-tight text-primary">
+              Coding + music
+            </h4>
+          </div>
+          <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
+            Coding takes priority while music remains background context.
+          </p>
+        </div>
+
+        <div className="border border-white/[0.08] bg-surface p-5 space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 bg-accent" />
+            <h4 className="font-sans text-[15px] font-bold uppercase tracking-tight text-primary">
+              Watching video
+            </h4>
+          </div>
+          <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
+            Passive media context produces a quieter watching posture.
+          </p>
+        </div>
+
+        <div className="border border-white/[0.08] bg-surface p-5 space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 bg-[#ffadd8]" />
+            <h4 className="font-sans text-[15px] font-bold uppercase tracking-tight text-primary">
+              Idle / away
+            </h4>
+          </div>
+          <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
+            Extended inactivity shifts MIKO toward standby instead of demanding attention.
+          </p>
+        </div>
+      </div>
+
+      {/* Privacy Note */}
+      <div className="border border-white/[0.08] bg-surface/50 p-4 sm:px-6 font-mono">
+        <p className="font-sans text-[13.5px] text-primary-muted leading-relaxed sm:text-sm">
+          Context is evaluated locally. MIKO’s sensors use lightweight operating-system and browser signals without capturing keystrokes, clipboard contents, or document contents.
+        </p>
       </div>
     </div>
   );
