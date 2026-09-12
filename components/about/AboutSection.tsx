@@ -72,6 +72,12 @@ export function AboutSection() {
           I care about the point where clear systems, careful typography, and useful
           interaction meet.
         </p>
+        <p className="mt-8 max-w-2xl text-base leading-relaxed text-primary-muted sm:text-lg">
+          Most of my professional work has been front-end development for internal
+          tools, dashboards, and data-heavy interfaces. Personal projects are where
+          I push things further, playing with interaction, motion, and ideas that
+          don&apos;t always fit inside normal product work.
+        </p>
       </motion.div>
 
       <div className="relative col-span-full mt-8 lg:mt-14">
