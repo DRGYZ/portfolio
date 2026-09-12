@@ -33,9 +33,6 @@ export function ExperienceSection() {
             Selected roles
           </h2>
         </div>
-        <p className="max-w-sm font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-primary-subtle sm:text-right">
-          Timeline and final CV content coming soon
-        </p>
       </motion.div>
     </section>
   );

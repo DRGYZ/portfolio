@@ -5,6 +5,7 @@ import { getProjectUrl, Project } from '@/types/project';
 
 interface ProjectRowProps {
   project: Project;
+  displayNumber?: string;
   isActive: boolean;
   isEngaged: boolean;
   onActivate: () => void;
@@ -12,6 +13,7 @@ interface ProjectRowProps {
 
 export function ProjectRow({
   project,
+  displayNumber,
   isActive,
   isEngaged,
   onActivate,
@@ -19,6 +21,7 @@ export function ProjectRow({
   const router = useRouter();
   const isDimmed = isEngaged && !isActive;
   const hasProjectLink = Boolean(getProjectUrl(project));
+  const visibleId = displayNumber ?? project.id;
 
   const handleRowClick = () => {
     if (isActive) {
@@ -74,7 +77,7 @@ export function ProjectRow({
         >
           <span className="absolute inset-0 bg-accent/[0.045] [clip-path:polygon(18%_0,100%_0,82%_100%,0_100%)]" />
           <span className="absolute right-[8%] top-1/2 -translate-y-1/2 font-editorial text-[clamp(6rem,11vw,10.5rem)] italic leading-none tracking-[-0.08em] text-accent/[0.09]">
-            {project.id}
+            {visibleId}
           </span>
           <span className="absolute -bottom-[1px] left-0 h-[9px] w-[9px] origin-bottom-left -rotate-[32deg] border-l border-accent" />
         </span>
@@ -85,7 +88,7 @@ export function ProjectRow({
               isActive ? 'text-accent' : 'text-primary-subtle'
             }`}
           >
-            {project.id}
+            {visibleId}
           </span>
 
           <span className="min-w-0">

@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { getAssetPath } from '@/lib/assetPath';
 import { usePointerPosition } from '@/hooks/usePointerPosition';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
@@ -133,8 +132,7 @@ export function ContactSection() {
       <div className="relative z-10 mt-28 flex flex-col gap-7 border-t border-white/[0.08] pt-7 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-muted sm:flex-row sm:items-center sm:justify-between lg:mt-40">
         <div className="flex flex-wrap gap-7">
           <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">GitHub ↗</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">LinkedIn ↗</a>
-          <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">CV ↗</a>
+          <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">LinkedIn ↗</a>
         </div>
         <div className="flex gap-4 text-primary-subtle">
           <span>Yazan Khaled — Paris, France</span>

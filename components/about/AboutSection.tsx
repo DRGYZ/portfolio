@@ -72,10 +72,6 @@ export function AboutSection() {
           I care about the point where clear systems, careful typography, and useful
           interaction meet.
         </p>
-        <p className="mt-8 max-w-2xl text-base leading-relaxed text-primary-muted sm:text-lg">
-          The work is still being assembled. This space will grow with the projects,
-          while the site itself remains the first demonstration of the craft behind them.
-        </p>
       </motion.div>
 
       <div className="relative col-span-full mt-8 lg:mt-14">

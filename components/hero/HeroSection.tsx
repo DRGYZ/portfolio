@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { MonogramYK } from './MonogramYK';
 import { usePointerPosition } from '@/hooks/usePointerPosition';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { getAssetPath } from '@/lib/assetPath';
 
 const containerVariants: Variants = {
   hidden: {},
@@ -230,20 +229,12 @@ export function HeroSection() {
                   GitHub ↗
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/yazankhaled99/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
                 >
                   LinkedIn ↗
-                </a>
-                <a
-                  href={getAssetPath('/cv.pdf')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary focus-visible:text-primary"
-                >
-                  CV ↗
                 </a>
               </div>
             </motion.div>

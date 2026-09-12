@@ -122,7 +122,7 @@ export function SelectedWorkSection() {
           />
         </motion.div>
 
-        <div ref={stageRef} className="relative lg:min-h-[820px]">
+        <div ref={stageRef} className="relative lg:min-h-[480px]">
           <div
             className="relative lg:w-[74%]"
             onPointerLeave={(event) => {
@@ -137,13 +137,15 @@ export function SelectedWorkSection() {
               }
             }}
           >
-            {projects.map((project) => {
+            {projects.map((project, index) => {
               const isActive = activeProject.id === project.id;
+              const displayNumber = String(index + 1).padStart(2, '0');
 
               return (
                 <Fragment key={project.id}>
                   <ProjectRow
                     project={project}
+                    displayNumber={displayNumber}
                     isActive={isActive}
                     isEngaged={isEngaged}
                     onActivate={() => activateProject(project)}
@@ -162,6 +164,7 @@ export function SelectedWorkSection() {
                         <div className="pb-8 pt-4">
                           <ProjectPreview
                             project={project}
+                            displayNumber={displayNumber}
                             direction={previewDirection}
                             compact
                           />
@@ -192,6 +195,7 @@ export function SelectedWorkSection() {
             >
               <ProjectPreview
                 project={activeProject}
+                displayNumber={String(activeIndex + 1).padStart(2, '0')}
                 pointerX={pointer.normalizedX}
                 pointerY={pointer.normalizedY}
                 direction={previewDirection}

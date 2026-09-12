@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getAssetPath } from '@/lib/assetPath';
 
 const sectionLinks = [
   { id: 'work', label: 'Work' },
@@ -98,11 +97,8 @@ export function NavBar() {
           <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">
             GitHub
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">
+          <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-primary">
             LinkedIn
-          </a>
-          <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer" className="transition-[color,transform] duration-300 hover:-translate-y-0.5 hover:text-accent">
-            CV
           </a>
         </div>
 
@@ -139,8 +135,7 @@ export function NavBar() {
           </nav>
           <div className="mt-6 flex gap-7 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-muted">
             <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            <a href={getAssetPath('/cv.pdf')} target="_blank" rel="noopener noreferrer">CV ↗</a>
+            <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
       )}
