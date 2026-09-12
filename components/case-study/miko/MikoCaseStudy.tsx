@@ -136,8 +136,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 2: DESIGNING FOR THE PERIPHERY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
@@ -193,8 +193,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 3: MOOD SYSTEM */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
@@ -212,8 +212,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 4: LOCAL CONTEXT SENSORS */}
-      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section id="architecture" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
@@ -231,8 +231,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 5: INTERACTIVE CONTEXT LAB */}
-      <section id="context-lab" className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section id="context-lab" className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
@@ -250,8 +250,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 6: PERSONA + MEMORY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
@@ -269,8 +269,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 7: DIAGNOSTICS & EXPLAINABILITY */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
@@ -331,8 +331,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 8: PRIVACY / LOCAL-FIRST DESIGN */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
@@ -386,8 +386,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 9: PROTOTYPE DOCUMENTATION */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="mb-10 max-w-3xl space-y-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f09acb]">
@@ -435,8 +435,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 10: EXPERIMENTAL STATUS / ROADMAP */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-24">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-12 lg:px-16 lg:py-16">
+        <SeamDivider className="mb-8" />
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
@@ -476,8 +476,8 @@ export function MikoCaseStudy() {
       </section>
 
       {/* ACT 11: CLOSING / FOOTER BANNER */}
-      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-20 lg:px-16 lg:py-28">
-        <SeamDivider className="mb-12" />
+      <section className="relative mx-auto w-full max-w-[1600px] px-6 py-16 lg:px-16 lg:py-20">
+        <SeamDivider className="mb-8" />
 
         <div className="border border-white/[0.08] bg-surface p-8 sm:p-12">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
