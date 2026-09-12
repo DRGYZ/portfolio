@@ -3,7 +3,6 @@ import { getAssetPath } from '@/lib/assetPath';
 interface MoodState {
   id: string;
   name: string;
-  category: string;
   triggerCondition: string;
   dialoguePreview: string;
   assetFile: string;
@@ -13,32 +12,28 @@ const representativeMoods: MoodState[] = [
   {
     id: 'coding',
     name: 'Coding / Focus',
-    category: 'Engineering',
-    triggerCondition: 'A code editor or terminal becomes the active foreground workspace.',
+    triggerCondition: 'When a code editor or terminal is in front, MIKO shifts into a more focused state.',
     dialoguePreview: '“checking the logic” · “review mode”',
     assetFile: '/case-studies/miko/miko-coding-row.png',
   },
   {
     id: 'watching',
     name: 'Watching / Media',
-    category: 'Video Spectator',
-    triggerCondition: 'Video streaming page active in browser or local media player in focus.',
-    dialoguePreview: '“movie mode” · “I am watching too”',
+    triggerCondition: 'Video in the foreground puts her into a quieter spectator state.',
+    dialoguePreview: '“movie mode” · “I’m watching too”',
     assetFile: '/case-studies/miko/miko-watching-row.png',
   },
   {
     id: 'curious',
     name: 'Curious / Browsing',
-    category: 'Exploration',
-    triggerCondition: 'Research, technical documentation, or exploratory browsing is active.',
+    triggerCondition: 'Research, documentation, or general browsing makes her more curious and reactive.',
     dialoguePreview: '“what are we reading?” · “new tab adventure”',
     assetFile: '/case-studies/miko/miko-curious-row.png',
   },
   {
     id: 'annoyed',
     name: 'Annoyed / Relocation',
-    category: 'Disruption Stance',
-    triggerCondition: 'MIKO is moved to an auxiliary screen or experiences rapid window thrashing.',
+    triggerCondition: 'Move her to another monitor or keep throwing windows around and she gets visibly annoyed.',
     dialoguePreview: '“wrong monitor” · “bring me back”',
     assetFile: '/case-studies/miko/miko-annoyed-row.png',
   },
@@ -62,9 +57,6 @@ export function MikoMoodShowcase() {
                   <h3 className="font-display text-[17px] font-bold uppercase tracking-tight text-primary sm:text-lg">
                     {mood.name}
                   </h3>
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-[#f09acb]">
-                    [{mood.category}]
-                  </span>
                 </div>
                 <p className="font-sans text-[15px] sm:text-base leading-relaxed text-primary-muted">
                   {mood.triggerCondition}
@@ -96,7 +88,7 @@ export function MikoMoodShowcase() {
       {/* Atmospheric Note on Additional States */}
       <div className="border-t border-white/[0.08] pt-4 font-mono text-[13px] text-primary-subtle">
         <p className="text-primary-muted">
-          Additional listening, idle, celebration, and standby states extend the system.
+          These are only four examples. MIKO also has listening, idle, celebration, and standby states.
         </p>
       </div>
     </div>

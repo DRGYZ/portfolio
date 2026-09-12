@@ -98,8 +98,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#f09acb]',
       cooldown: '15m interval',
       repeatSuppression: '120m window',
-      arbitrationRationale: 'Active code editor (Priority 7) takes precedence over background music (Priority 6). Standard reaction permitted.',
-      policyExplanation: 'Normal policy: companion is permitted to acknowledge task focus with brief, peripheral thought bubbles.',
+      arbitrationRationale: 'The code editor has higher priority than background music, so the coding state wins.',
+      policyExplanation: 'Normal allows short peripheral reactions while respecting the current cooldown.',
     },
     quiet: {
       bubblePermitted: true,
@@ -108,8 +108,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-amber-400',
       cooldown: '30m interval',
       repeatSuppression: '180m window',
-      arbitrationRationale: 'Coding priority upheld. Quiet policy dampens reaction frequency and replaces banter with subtle focus state.',
-      policyExplanation: 'Quiet policy: speech cadence is reduced and repeat suppression is extended to protect deep work.',
+      arbitrationRationale: 'The code editor outranks background music, but Quiet mode keeps her reaction subtle.',
+      policyExplanation: 'Quiet slows down reactions and extends cooldowns to protect deep work.',
     },
     focus: {
       bubblePermitted: false,
@@ -118,8 +118,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#ffadd8]',
       cooldown: '60m interval',
       repeatSuppression: '240m window',
-      arbitrationRationale: 'Coding context detected while Focus policy is active. All non-essential desktop reactions are completely blocked.',
-      policyExplanation: 'Focus policy: zero visual speech bubbles allowed during code editing. Character remains in silent review posture.',
+      arbitrationRationale: 'The code editor wins the priority check, but Focus mode blocks all visual reactions.',
+      policyExplanation: 'Focus mode blocks speech bubbles completely while keeping MIKO in her focused posture.',
     },
   },
   youtube: {
@@ -130,8 +130,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#f09acb]',
       cooldown: '20m interval',
       repeatSuppression: '120m window',
-      arbitrationRationale: 'Windows Media Session and browser bridge confirm active video. Normal policy allows a single introductory reaction.',
-      policyExplanation: 'Normal policy: single introductory reaction permitted upon media playback start, then silenced for session duration.',
+      arbitrationRationale: 'Active video takes over the desktop, so the watching state wins.',
+      policyExplanation: 'Normal allows a brief reaction when video starts, then leaves you alone while it plays.',
     },
     quiet: {
       bubblePermitted: false,
@@ -140,8 +140,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-amber-400',
       cooldown: '45m interval',
       repeatSuppression: '180m window',
-      arbitrationRationale: 'Video playback detected. Under Quiet policy, introductory speech is bypassed in favor of immediate silent spectator stance.',
-      policyExplanation: 'Quiet policy: MIKO adopts passive viewing posture immediately without popping a speech bubble over the video.',
+      arbitrationRationale: 'Video playback outranks other signals, but Quiet mode skips dialogue so she watches silently.',
+      policyExplanation: 'Quiet skips speech bubbles so MIKO watches along without interrupting the video.',
     },
     focus: {
       bubblePermitted: false,
@@ -150,8 +150,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#ffadd8]',
       cooldown: '60m interval',
       repeatSuppression: '240m window',
-      arbitrationRationale: 'Focus policy active. Browser video activity is classified as ambient reference; all commentary is strictly silenced.',
-      policyExplanation: 'Focus policy: absolute silence enforced. Companion maintains stationary passive posture with all bubbles locked.',
+      arbitrationRationale: 'Video playback is active, but Focus mode keeps her completely silent.',
+      policyExplanation: 'Focus mode keeps MIKO completely silent with no speech bubbles.',
     },
   },
   idle: {
@@ -162,8 +162,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-primary-subtle',
       cooldown: '25m interval',
       repeatSuppression: '120m window',
-      arbitrationRationale: 'Inactivity timer crosses 90-second threshold. MIKO transitions into standby sleep without popping bubbles.',
-      policyExplanation: 'Normal policy: companion enters resting sleep state. No notification or speech attempted while operator is away.',
+      arbitrationRationale: 'No user input for over 90 seconds, so idle standby takes over.',
+      policyExplanation: 'Normal lets MIKO rest quietly when you step away without trying to grab attention.',
     },
     quiet: {
       bubblePermitted: false,
@@ -172,8 +172,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-amber-400',
       cooldown: '45m interval',
       repeatSuppression: '180m window',
-      arbitrationRationale: 'Quiet policy accelerates sleep transition (60s idle threshold). Wake sensitivity dampened to prevent accidental wake-up.',
-      policyExplanation: 'Quiet policy: companion shifts into deep slumber faster and suppresses any ambient wake animations.',
+      arbitrationRationale: 'Inactivity outranks everything else, and Quiet mode shifts her into sleep even faster.',
+      policyExplanation: 'Quiet shifts MIKO into sleep quickly and ignores minor background wake events.',
     },
     focus: {
       bubblePermitted: false,
@@ -182,8 +182,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#ffadd8]',
       cooldown: '60m interval',
       repeatSuppression: '240m window',
-      arbitrationRationale: 'Focus lock combined with idle state halts all autonomous routines and suspends periodic thought checks.',
-      policyExplanation: 'Focus policy: complete process hibernation. Even when the user steps away, the workspace remains fully undisturbed.',
+      arbitrationRationale: 'The system is idle, and Focus mode keeps all autonomous reactions suspended.',
+      policyExplanation: 'Focus mode suspends thought checks completely while you are away.',
     },
   },
   secondary_monitor: {
@@ -194,8 +194,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#f09acb]',
       cooldown: '12m interval',
       repeatSuppression: '120m window',
-      arbitrationRationale: 'Window dragged to auxiliary display (Priority 8). High-priority physical move triggers playful annoyance tantrum.',
-      policyExplanation: 'Normal policy: physical relocation is treated as direct interaction; expressive annoyance reaction is permitted.',
+      arbitrationRationale: 'Moving MIKO to another display outranks background apps, so the annoyed state wins.',
+      policyExplanation: 'Normal treats window relocation as direct interaction and allows an annoyed reaction.',
     },
     quiet: {
       bubblePermitted: true,
@@ -204,8 +204,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-amber-400',
       cooldown: '30m interval',
       repeatSuppression: '180m window',
-      arbitrationRationale: 'Secondary monitor move detected. Quiet policy softens the tantrum into a subtle placement check.',
-      policyExplanation: 'Quiet policy: softens reaction dialogue and extends cooldown so repeated drags do not generate repetitive quips.',
+      arbitrationRationale: 'Moving displays takes top priority, but Quiet mode softens her reaction.',
+      policyExplanation: 'Quiet softens the reaction and extends cooldowns so repeated drags stay quiet.',
     },
     focus: {
       bubblePermitted: false,
@@ -214,8 +214,8 @@ const outcomeMatrix: Record<ContextKey, Record<InterruptionKey, PolicyOutcome>> 
       statusColor: 'text-[#ffadd8]',
       cooldown: '60m interval',
       repeatSuppression: '240m window',
-      arbitrationRationale: 'Screen relocation detected during Focus session. Tantrum reaction is completely suppressed to avoid interrupting task.',
-      policyExplanation: 'Focus policy: companion accepts window relocation silently. Visual annoyance animation is damped to preserve focus.',
+      arbitrationRationale: 'The display move was detected, but Focus mode suppresses her annoyance reaction completely.',
+      policyExplanation: 'Focus mode suppresses the tantrum so moving windows doesn’t break concentration.',
     },
   },
 };
@@ -440,7 +440,7 @@ export function MikoContextLab() {
           {/* Local Evaluation & Priority Rationale */}
           <div className="border border-white/[0.08] bg-background/50 p-4">
             <span className="block text-[11px] uppercase tracking-[0.2em] text-[#f09acb]">
-              Local Arbitration Rationale
+              Why This State Won
             </span>
             <p className="mt-1.5 font-sans text-[14px] leading-relaxed text-primary-muted sm:text-[14.5px]">
               {outcome.arbitrationRationale}
@@ -451,7 +451,7 @@ export function MikoContextLab() {
           <div className="border border-white/[0.08] bg-background/50 p-4">
             <div className="flex items-center justify-between">
               <span className="text-[11px] uppercase tracking-[0.2em] text-primary-subtle">
-                Interruption Policy
+                Reaction Policy
               </span>
               <span className={`text-[13px] font-bold uppercase tracking-wider ${outcome.statusColor}`}>
                 {outcome.statusLabel}
@@ -479,7 +479,7 @@ export function MikoContextLab() {
               </span>
             </div>
             <p className="font-sans text-[14px] leading-relaxed text-primary-muted sm:text-[15px]">
-              Persona Studio exposes active signals, priority decisions, cooldowns, and recent reactions so behaviour can be debugged instead of treated as a black box.
+              The lab shows the signals, priorities, cooldowns, and recent events behind each reaction, so I can see why MIKO chose a state instead of guessing.
             </p>
           </div>
 

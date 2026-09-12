@@ -56,7 +56,7 @@ export function MikoPersonaStudioShowcase() {
             Persona Studio &bull; Local runtime controls
           </p>
           <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted max-w-2xl sm:text-sm">
-            Persona Studio makes MIKO&rsquo;s local context and memory inspectable instead of hiding them behind the companion interface.
+            Persona Studio exposes what MIKO can sense and remember, so those controls aren’t hidden behind the companion itself.
           </p>
         </div>
 

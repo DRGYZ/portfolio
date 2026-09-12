@@ -40,11 +40,11 @@ export function MikoCaseStudy() {
             </p>
 
             <p className="max-w-2xl font-sans text-[17px] leading-relaxed text-primary-muted sm:text-[19px] sm:leading-relaxed">
-              MIKO explores a quieter kind of computing: a local-first character that notices the rhythm of a Windows workspace and responds through posture, motion, and short reactions.
+              MIKO started as an experiment: could a desktop companion feel present without constantly asking for attention? It watches a small set of local context signals and responds through posture, motion, and short reactions.
             </p>
 
             <p className="max-w-2xl font-sans text-[15px] leading-relaxed text-primary-subtle sm:text-[17px] sm:leading-relaxed">
-              This case study captures an early working prototype. MIKO is still in active development as its behaviour, interaction model, and desktop integration continue to evolve.
+              This is an early snapshot of the project. MIKO is still in active development while I keep refining its behaviour, interaction model, and Windows integration.
             </p>
 
             {/* CTA Buttons */}
@@ -147,7 +147,7 @@ export function MikoCaseStudy() {
               Designing for the Periphery
             </h2>
             <p className="font-editorial text-xl italic leading-snug text-primary-muted sm:text-2xl">
-              Traditional assistants wait for prompts. MIKO remains quietly present, reacting only when the moment calls for it.
+              I didn’t want MIKO to become another app I had to stop and talk to. She should be there when useful, and easy to ignore when she isn’t.
             </p>
           </div>
 
@@ -162,7 +162,7 @@ export function MikoCaseStudy() {
             </div>
 
             <p className="font-sans text-[17px] leading-relaxed text-primary-muted sm:text-[19px] sm:leading-relaxed">
-              Most digital assistants pull interaction into the foreground through chat windows, prompts, or voice responses. MIKO stays at the edge of the workspace as an ambient desktop presence. Rather than demanding conversational turns, she reflects the rhythm of your work through subtle posture changes, occasional idle animations, and brief reactions designed to preserve cognitive flow.
+              Most assistants expect you to open a chat and ask for something. MIKO works differently: she stays on the desktop, watches a small amount of local context, and reacts through animation, mood changes, or short comments. The goal was simple: make her feel present without making her another interruption.
             </p>
           </div>
         </div>
@@ -180,7 +180,7 @@ export function MikoCaseStudy() {
             A Companion Has Moods
           </h2>
           <p className="font-sans text-[17px] leading-relaxed text-primary-muted sm:text-[19px] sm:leading-relaxed">
-            MIKO&apos;s personality is expressed through custom pixel animation. Each posture responds to desktop context rather than acting as a generic avatar skin.
+            MIKO’s personality comes through in how she moves. Different desktop contexts switch her into different poses, reactions, and short lines instead of leaving the sprite as decoration.
           </p>
         </div>
 
@@ -199,7 +199,7 @@ export function MikoCaseStudy() {
             Local Context, Real Reactions
           </h2>
           <p className="font-sans text-[17px] leading-relaxed text-primary-muted sm:text-[19px] sm:leading-relaxed">
-            MIKO combines lightweight desktop, media, browser, and activity signals into a local context model. Competing signals are resolved through priority and cooldown rules before a mood or reaction is selected.
+            MIKO watches a small set of local signals: what app is in front, whether media is playing, what kind of browser context is active, and whether I’ve gone idle. Those signals are weighed against each other before she decides whether to react at all.
           </p>
         </div>
 
@@ -218,10 +218,10 @@ export function MikoCaseStudy() {
             Context Lab
           </h2>
           <p className="font-editorial text-xl italic text-primary-muted sm:text-2xl">
-            Explore how the same desktop context changes under different interruption policies.
+            Try the same desktop context under different reaction rules and see when MIKO responds, stays quiet, or changes posture.
           </p>
           <p className="font-sans text-[17px] leading-relaxed text-primary-muted sm:text-[19px] sm:leading-relaxed">
-            MIKO evaluates operating system signals locally: active foreground window process, media playback state, audio activity, and user idle ticks. When multiple events coincide, priority arbitration resolves conflicts before a reaction is triggered.
+            MIKO reads a few local signals: the active app, media and audio state, and how long I’ve been idle. When several signals overlap, priority and cooldown rules decide which one matters before she reacts.
           </p>
         </div>
 
@@ -241,7 +241,7 @@ export function MikoCaseStudy() {
             Designed for Your Machine
           </h2>
           <p className="font-sans text-[17px] leading-relaxed text-primary-muted sm:text-[19px] sm:leading-relaxed">
-            No built-in remote telemetry. Context evaluation, preference memory, and sidecar communication run strictly on your workstation.
+            MIKO was built to keep context close to the machine. Desktop sensing, preferences, memory, and communication between the app and sidecar happen locally by default.
           </p>
         </div>
 
@@ -255,19 +255,19 @@ export function MikoCaseStudy() {
               127.0.0.1 Loopback
             </h3>
             <p className="font-sans text-[15px] leading-relaxed text-primary-muted">
-              The local WPF client and Python sidecar communicate over local loopback sockets. There is zero remote telemetry or background tracking.
+              The WPF client and Python sidecar talk over 127.0.0.1, so their communication stays on the machine. MIKO doesn’t need a remote service for its core desktop behavior.
             </p>
           </div>
 
           <div className="border border-white/[0.08] bg-surface p-6 space-y-3">
             <span className="text-[11px] uppercase tracking-[0.2em] text-accent">
-              02 / Transient In-Memory Hooks
+              02 / Local Context
             </span>
             <h3 className="font-sans text-[17px] font-bold text-primary">
               Strict Privacy Boundaries
             </h3>
             <p className="font-sans text-[15px] leading-relaxed text-primary-muted">
-              Window titles and media metadata are read transiently in memory to infer context. Keystrokes, clipboard contents, and source files are never captured.
+              MIKO reads window titles and media metadata just long enough to understand the current context. She doesn’t read keystrokes, clipboard contents, or source files.
             </p>
           </div>
 
@@ -279,7 +279,7 @@ export function MikoCaseStudy() {
               Optional AI Integrations
             </h3>
             <p className="font-sans text-[15px] leading-relaxed text-primary-muted">
-              MIKO does not depend on an external hosted LLM. Optional model-backed features use a user-configured OpenAI-compatible endpoint, such as LM Studio.
+              MIKO doesn’t depend on a hosted LLM. If I enable model-backed features, I choose the OpenAI-compatible endpoint, including local options such as LM Studio.
             </p>
           </div>
         </div>
@@ -300,10 +300,10 @@ export function MikoCaseStudy() {
               06 / Prototype Status
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
-              Current Capabilities &amp; Evolution
+              Where MIKO Is Today
             </h2>
             <p className="font-sans text-[17px] leading-relaxed text-primary-muted sm:text-lg sm:leading-relaxed">
-              MIKO is an active experimental project. The runtime operates on Windows 11 today; its architecture, timing models, and packaging continue to evolve.
+              MIKO is still experimental. The Windows 11 runtime works today, but packaging, multi-monitor behavior, interaction timing, and parts of the app/sidecar architecture are still being worked on.
             </p>
           </div>
 
@@ -316,12 +316,12 @@ export function MikoCaseStudy() {
                 </span>
               </div>
               <ul className="space-y-3 text-primary-muted leading-relaxed">
-                <li>&bull; Windows companion runtime</li>
-                <li>&bull; Context awareness &amp; reaction arbitration</li>
+                <li>&bull; Windows desktop companion runtime</li>
+                <li>&bull; Context awareness + reaction rules</li>
                 <li>&bull; Custom mood animations</li>
-                <li>&bull; Local editable memory + Persona Studio</li>
-                <li>&bull; Quiet and Focus interruption modes</li>
-                <li>&bull; Local voice + optional user-configured model integration</li>
+                <li>&bull; Editable local memory + Persona Studio</li>
+                <li>&bull; Quiet and Focus modes</li>
+                <li>&bull; Local voice + optional user-configured model endpoint</li>
               </ul>
             </div>
 
@@ -333,10 +333,10 @@ export function MikoCaseStudy() {
                 </span>
               </div>
               <ul className="space-y-3 text-primary-muted leading-relaxed">
-                <li>&bull; Standalone packaging &amp; simpler distribution</li>
-                <li>&bull; Multi-monitor / high-DPI robustness</li>
-                <li>&bull; Runtime / sidecar architecture cleanup</li>
-                <li>&bull; Interaction timing, voice quality &amp; response tuning</li>
+                <li>&bull; Standalone packaging + easier installation</li>
+                <li>&bull; Multi-monitor and high-DPI edge cases</li>
+                <li>&bull; Simplifying the app / sidecar split</li>
+                <li>&bull; Interaction timing, voice quality, and response tuning</li>
               </ul>
             </div>
           </div>

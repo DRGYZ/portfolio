@@ -8,10 +8,10 @@ export function MikoSensorMatrix() {
         <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
           <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-primary-subtle">
             <span className="h-1.5 w-1.5 bg-[#f09acb]" />
-            <span>Architecture Pipeline</span>
+            <span>How Context Becomes a Reaction</span>
           </div>
           <span className="font-mono text-[11px] uppercase tracking-wider text-primary-subtle">
-            Lightweight &bull; Local-First
+            Lightweight + Local-First
           </span>
         </div>
 
@@ -42,10 +42,10 @@ export function MikoSensorMatrix() {
               <span className="hidden lg:inline text-primary-subtle select-none font-mono">&rarr;</span>
             </div>
             <h3 className="font-display text-[17px] font-bold uppercase tracking-tight text-primary sm:text-lg">
-              Local interpretation
+              Build context
             </h3>
             <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
-              Normalizes activity into a small context model
+              Combines those signals into a small local picture of what’s happening.
             </p>
           </div>
 
@@ -61,7 +61,7 @@ export function MikoSensorMatrix() {
               Priority + cooldown
             </h3>
             <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
-              Resolves competing signals and suppresses reaction spam
+              Decides which signal matters most and prevents MIKO from reacting too often.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export function MikoSensorMatrix() {
             </h4>
           </div>
           <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
-            Passive media context produces a quieter watching posture.
+            When video is the main activity, MIKO settles into a quieter watching state.
           </p>
         </div>
 
@@ -117,7 +117,7 @@ export function MikoSensorMatrix() {
             </h4>
           </div>
           <p className="font-sans text-[13.5px] leading-relaxed text-primary-muted sm:text-sm">
-            Extended inactivity shifts MIKO toward standby instead of demanding attention.
+            If I’m away for a while, MIKO settles into standby instead of trying to pull me back in.
           </p>
         </div>
       </div>
@@ -125,7 +125,7 @@ export function MikoSensorMatrix() {
       {/* Privacy Note */}
       <div className="border border-white/[0.08] bg-surface/50 p-4 sm:px-6 font-mono">
         <p className="font-sans text-[13.5px] text-primary-muted leading-relaxed sm:text-sm">
-          Context is evaluated locally. MIKO’s sensors use lightweight operating-system and browser signals without capturing keystrokes, clipboard contents, or document contents.
+          All of this stays local. MIKO reads lightweight OS and browser signals, not keystrokes, clipboard contents, or the documents I’m working on.
         </p>
       </div>
     </div>
