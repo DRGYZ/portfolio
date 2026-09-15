@@ -38,7 +38,7 @@ export const projects: Project[] = [
     description: 'An OpenClassrooms project I came back to and rebuilt as a complete restaurant discovery and booking experience.',
     previewImage: '/projects/ohmyfood.svg?v=1',
     previewType: 'image',
-    accent: '#c45d48',
+    accent: '#A65F78',
     motionStyle: 'layers',
     caseStudyUrl: '/work/ohmyfood',
     gitHubUrl: 'https://github.com/DRGYZ/OhMyFood/tree/ohmyfood-v2',
