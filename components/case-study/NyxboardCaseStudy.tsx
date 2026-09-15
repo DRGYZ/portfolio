@@ -182,33 +182,23 @@ export function NyxboardCaseStudy() {
           <div className="lg:col-span-4">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">01 / Problem</span>
             <h2 className="mt-3 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-3xl">
-              The Interface Challenge
+              Keeping the dashboard from becoming a mess
             </h2>
           </div>
 
           <div className="max-w-3xl lg:col-span-8">
-            <motion.blockquote
-              initial={prefersReduced ? false : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="font-editorial text-[clamp(1.75rem,3.4vw,2.75rem)] italic leading-[1.2] tracking-[-0.03em] text-primary"
-            >
-              &ldquo;The hard part wasn’t showing more data. It was keeping the operator oriented while they moved through it.&rdquo;
-            </motion.blockquote>
-
             <motion.div
               initial={prefersReduced ? false : { opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 space-y-4 text-base leading-relaxed text-primary-muted sm:text-lg"
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-4 text-base leading-relaxed text-primary-muted sm:text-lg"
             >
               <p>
-                Commerce tools can go wrong in two ways: hide too much behind extra clicks, or show everything at once and make the screen harder to use.
+                Nyxboard has a lot going on: filters, sorting, order details, status updates, and multiple stores. The problem was making all of that usable without cramming everything into the screen.
               </p>
               <p>
-                For Nyxboard, I focused on keeping the operator anchored. Filtering, sorting, order inspection, and status changes all happen without throwing them out of the workspace they were already using.
+                So I kept most actions in the same workspace. You can filter orders, open one, check the details, update its status, and keep going without jumping between pages or losing where you were.
               </p>
             </motion.div>
           </div>
