@@ -19,10 +19,10 @@ export function OhMyFoodCaseStudy() {
           {/* Left Column: Title & Overview */}
           <div className="space-y-6 lg:col-span-6">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9E472A]">
+              <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#B9684C]">
                 01 / Case Study &bull; Rebuild &bull; 2026
               </span>
-              <span className="border border-[#421930] bg-[#421930]/40 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-[#A65F78]">
+              <span className="border border-[#421930] bg-[#421930]/40 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-[#AD687F]">
                 OpenClassrooms &rarr; V2
               </span>
             </div>
@@ -58,7 +58,7 @@ export function OhMyFoodCaseStudy() {
               </div>
               <div>
                 <dt className="text-[11px] uppercase tracking-wider text-primary-subtle">Stack</dt>
-                <dd className="mt-1 font-semibold text-[#A65F78]">React &bull; TypeScript &bull; Vite &bull; React Router</dd>
+                <dd className="mt-1 font-semibold text-[#AD687F]">React &bull; TypeScript &bull; Vite &bull; React Router</dd>
               </div>
             </dl>
           </div>
@@ -70,7 +70,7 @@ export function OhMyFoodCaseStudy() {
               className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 shadow-2xl"
             >
               <div className="mb-2.5 flex items-center justify-between border-b border-white/[0.06] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-subtle">
-                <span className="flex items-center gap-1.5 font-semibold text-[#A65F78]">
+                <span className="flex items-center gap-1.5 font-semibold text-[#AD687F]">
                   <span className="h-1.5 w-1.5 bg-[#9E472A]" aria-hidden="true" />
                   V2 Experience Proof // Discovery
                 </span>
@@ -97,7 +97,7 @@ export function OhMyFoodCaseStudy() {
 
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="space-y-5 lg:col-span-5">
-            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9E472A]">
+            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#B9684C]">
               02 / The Original Project
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl">
@@ -121,7 +121,7 @@ export function OhMyFoodCaseStudy() {
                 href="https://drgyz.github.io/OhMyFood/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-wider text-[#A65F78] transition-colors hover:text-[#F4EFE8]"
+                className="inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-wider text-[#AD687F] transition-colors hover:text-[#F4EFE8]"
               >
                 <span>Original V1 Site</span>
                 <span>↗</span>
@@ -162,7 +162,7 @@ export function OhMyFoodCaseStudy() {
 
         <div className="space-y-8">
           <div className="max-w-3xl space-y-4">
-            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9E472A]">
+            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#B9684C]">
               03 / Product Architecture
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl lg:text-5xl">
@@ -170,7 +170,7 @@ export function OhMyFoodCaseStudy() {
             </h2>
 
             {/* Journey Flow Strip */}
-            <div className="flex flex-wrap items-center gap-2 py-2 font-mono text-[12px] font-semibold uppercase tracking-wider text-[#A65F78] sm:text-[13px]">
+            <div className="flex flex-wrap items-center gap-2 py-2 font-mono text-[12px] font-semibold uppercase tracking-wider text-[#AD687F] sm:text-[13px]">
               <span>Discover</span>
               <span className="text-white/30">&rarr;</span>
               <span>Restaurant</span>
@@ -208,7 +208,7 @@ export function OhMyFoodCaseStudy() {
             className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 shadow-2xl"
           >
             <div className="mb-2.5 flex items-center justify-between border-b border-white/[0.06] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-subtle">
-              <span className="flex items-center gap-1.5 font-semibold text-[#A65F78]">
+              <span className="flex items-center gap-1.5 font-semibold text-[#AD687F]">
                 <span className="h-1.5 w-1.5 bg-[#9E472A]" aria-hidden="true" />
                 V2 Menu Experience // Selection &amp; Tray
               </span>
@@ -234,7 +234,7 @@ export function OhMyFoodCaseStudy() {
 
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="space-y-5 lg:col-span-5">
-            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9E472A]">
+            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#B9684C]">
               04 / Visual Realization
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl lg:text-5xl">
@@ -273,7 +273,7 @@ export function OhMyFoodCaseStudy() {
               className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 shadow-2xl"
             >
               <div className="mb-2.5 flex items-center justify-between border-b border-white/[0.06] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-subtle">
-                <span className="flex items-center gap-1.5 font-semibold text-[#A65F78]">
+                <span className="flex items-center gap-1.5 font-semibold text-[#AD687F]">
                   <span className="h-1.5 w-1.5 bg-[#9E472A]" aria-hidden="true" />
                   Editorial Reservation Flow // Guided Availability
                 </span>
@@ -300,7 +300,7 @@ export function OhMyFoodCaseStudy() {
 
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="space-y-5 lg:col-span-5">
-            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9E472A]">
+            <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#B9684C]">
               05 / Reflection
             </span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-4xl lg:text-5xl">
@@ -329,7 +329,7 @@ export function OhMyFoodCaseStudy() {
               className="relative overflow-hidden border border-white/[0.08] bg-surface p-2 sm:p-4 shadow-2xl"
             >
               <div className="mb-2.5 flex items-center justify-between border-b border-white/[0.06] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-subtle">
-                <span className="flex items-center gap-1.5 font-semibold text-[#A65F78]">
+                <span className="flex items-center gap-1.5 font-semibold text-[#AD687F]">
                   <span className="h-1.5 w-1.5 bg-[#9E472A]" aria-hidden="true" />
                   Reservation Confirmation // Verifiable Record
                 </span>
@@ -357,7 +357,7 @@ export function OhMyFoodCaseStudy() {
         <div className="border border-white/[0.08] bg-surface p-8 sm:p-12">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center border border-[#421930] bg-[#421930]/60 font-display text-xl font-bold text-[#A65F78]">
+              <div className="flex h-12 w-12 items-center justify-center border border-[#421930] bg-[#421930]/60 font-display text-xl font-bold text-[#AD687F]">
                 O
               </div>
               <div>
