@@ -557,40 +557,40 @@ export function NyxboardCaseStudy() {
           <div className="lg:col-span-4">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">07 / Reflection</span>
             <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.03em] text-primary sm:text-3xl">
-              What I’d Keep
+              What worked
             </h2>
           </div>
 
           <div className="space-y-5 text-base leading-relaxed text-primary-muted sm:text-lg lg:col-span-8">
             <p>
-              The main lesson from Nyxboard was that dense interfaces don’t need to feel heavy if state and context stay predictable. URL-backed filters made the workspace recoverable, the drawer kept inspection local, and the service layer kept business rules out of the UI.
+              The biggest thing I’d keep from Nyxboard is how the workspace stays usable even with a lot going on. Filters stay in the URL, order details open in a drawer instead of sending you somewhere else, and the service layer keeps the business logic out of the UI.
             </p>
 
             {/* Clearly labeled production boundaries */}
             <div className="border border-white/[0.08] bg-surface p-6 sm:p-8 font-sans">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
-                Production Boundaries
+                If this were production
               </span>
               <p className="mt-2 text-xs text-primary-subtle">
-                Nyxboard is intentionally client-side: seeded data, browser persistence, and simulated auth. A production version would need real data ownership, permissions, and external integrations behind the interface.
+                Nyxboard is still a front-end project. The data is seeded, persistence happens in the browser, and authentication is simulated. A real version would need a proper backend, real permissions, and integrations with the systems behind the interface.
               </p>
 
               <ul className="mt-5 grid gap-4 sm:grid-cols-2 text-xs text-primary-muted list-none p-0 m-0">
                 <li className="border-l border-white/20 pl-3">
                   <strong className="text-primary block font-medium">Backend API</strong>
-                  <span>Move order reads and mutations out of <code className="text-accent">orderService.ts</code> into authenticated endpoints.</span>
+                  <span>Move order data and updates out of <code className="text-accent">orderService.ts</code> and into authenticated API endpoints.</span>
                 </li>
                 <li className="border-l border-white/20 pl-3">
-                  <strong className="text-primary block font-medium">Server-Side Data</strong>
-                  <span>Filter, sort, and paginate on the server once the dataset is too large to handle comfortably in the browser.</span>
+                  <strong className="text-primary block font-medium">Server-side data</strong>
+                  <span>Handle filtering, sorting, and pagination on the server once the dataset gets too large for the browser.</span>
                 </li>
                 <li className="border-l border-white/20 pl-3">
-                  <strong className="text-primary block font-medium">Role-Based Access Control</strong>
-                  <span>Enforce who can ship, cancel, and export orders instead of giving every user the same demo permissions.</span>
+                  <strong className="text-primary block font-medium">Permissions</strong>
+                  <span>Control who can ship, cancel, or export orders instead of giving everyone the same demo access.</span>
                 </li>
                 <li className="border-l border-white/20 pl-3">
-                  <strong className="text-primary block font-medium">Carrier Webhooks</strong>
-                  <span>Replace generated shipping state with real carrier or commerce events.</span>
+                  <strong className="text-primary block font-medium">Real integrations</strong>
+                  <span>Replace the generated shipping states with actual carrier or commerce events.</span>
                 </li>
               </ul>
             </div>
