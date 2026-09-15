@@ -133,7 +133,7 @@ export function HeroSection() {
                   style={{ x: prefersReduced ? 0 : lineOneX, y: prefersReduced ? 0 : lineOneY }}
                   className="block lg:whitespace-nowrap"
                 >
-                  I build polished{' '}
+                  Front-end{' '}
                   <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
                     <motion.span
                       custom={0}
@@ -144,7 +144,7 @@ export function HeroSection() {
                       }}
                       className="inline-block origin-left"
                     >
-                      interfaces
+                      developer
                     </motion.span>
                   </span>{' '}
                 </motion.span>
@@ -154,9 +154,9 @@ export function HeroSection() {
               <motion.span custom={1} variants={headlineLineVariants} className="block origin-left">
                 <motion.span
                   style={{ x: prefersReduced ? 0 : lineTwoX, y: prefersReduced ? 0 : lineTwoY }}
-                  className="block lg:ml-[7vw] lg:whitespace-nowrap"
+                  className="block lg:ml-[4vw] lg:whitespace-nowrap lg:text-[0.88em] 2xl:text-[0.92em]"
                 >
-                  and interactive products{' '}
+                  building interactive products{' '}
                 </motion.span>
               </motion.span>
             </span>
@@ -166,9 +166,9 @@ export function HeroSection() {
                   style={{ x: prefersReduced ? 0 : lineThreeX, y: prefersReduced ? 0 : lineThreeY }}
                   className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.76em] 2xl:text-[0.8em]"
                 >
-                  that make{' '}
+                  and exploring{' '}
                   <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent lg:hidden">
-                    complex systems feel simple.
+                    AI and infrastructure.
                   </span>
                   <span className="hidden px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent lg:inline">
                     <motion.span
@@ -180,7 +180,7 @@ export function HeroSection() {
                       }}
                       className="inline-block origin-left"
                     >
-                      complex systems
+                      AI
                     </motion.span>{' '}
                     <motion.span
                       custom={2}
@@ -191,7 +191,7 @@ export function HeroSection() {
                       }}
                       className="inline-block"
                     >
-                      feel simple.
+                      and infrastructure.
                     </motion.span>
                   </span>
                 </motion.span>
