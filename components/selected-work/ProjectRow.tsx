@@ -21,7 +21,7 @@ export function ProjectRow({
   const router = useRouter();
   const isDimmed = isEngaged && !isActive;
   const hasProjectLink = Boolean(getProjectUrl(project));
-  const visibleId = displayNumber ?? project.id;
+  const visibleId = displayNumber ?? project.displayNumber ?? project.id;
 
   const handleRowClick = () => {
     if (isActive) {

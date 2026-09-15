@@ -329,7 +329,7 @@ export function ProjectPreview({
 
             <div className="absolute bottom-[5.5%] left-[6%] right-[6%] z-[10] flex flex-wrap items-end justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-primary/85 sm:text-[11px]">
               <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 bg-[#111218]/90 px-2.5 py-1 text-primary shadow-sm backdrop-blur-[2px]">
-                {displayNumber ?? project.id} / {project.title}
+                {displayNumber ?? project.displayNumber ?? project.id} / {project.title}
               </span>
               {projectUrl ? (
                 <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">

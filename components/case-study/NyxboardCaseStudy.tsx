@@ -26,7 +26,7 @@ export function NyxboardCaseStudy() {
       {/* ACT 1: EDITORIAL OPENING */}
       <header className="relative mx-auto w-full max-w-[1600px] px-6 pt-32 pb-12 lg:px-16 lg:pt-40 lg:pb-16">
         {/* Animated architectural top seam */}
-        <SeamDivider label="05 / Selected Work — Case Study" className="mb-10" />
+        <SeamDivider label="01 / Selected Work — Case Study" className="mb-10" />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">

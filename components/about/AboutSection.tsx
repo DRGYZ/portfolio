@@ -69,15 +69,15 @@ export function AboutSection() {
       >
         <p className="font-display text-2xl font-medium leading-[1.25] tracking-[-0.035em] text-primary sm:text-4xl lg:text-5xl">
           I&apos;m Yazan, a front-end developer based in Paris.
-          I care about the point where clear systems, careful typography, and useful
-          interaction meet.
         </p>
-        <p className="mt-8 max-w-2xl text-base leading-relaxed text-primary-muted sm:text-lg">
-          Most of my professional work has been front-end development for internal
-          tools, dashboards, and data-heavy interfaces. Personal projects are where
-          I push things further, playing with interaction, motion, and ideas that
-          don&apos;t always fit inside normal product work.
-        </p>
+        <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-primary-muted sm:text-lg">
+          <p>
+            Most of my professional work has been around internal tools, dashboards, and data-heavy web applications. I mainly work with JavaScript, TypeScript, and React.
+          </p>
+          <p>
+            Outside of that, I build personal projects where I can experiment more with interaction, AI, and whatever else I&apos;m curious about.
+          </p>
+        </div>
       </motion.div>
 
       <div className="relative col-span-full mt-8 lg:mt-14">
@@ -87,16 +87,16 @@ export function AboutSection() {
           className="absolute inset-x-0 top-0 h-px origin-left bg-white/[0.14]"
         />
         <motion.ul
-          aria-label="Design priorities"
+          aria-label="Focus areas"
           className="grid border-b border-white/[0.08] sm:grid-cols-3"
         >
           {[
-            ['01', 'Clear systems'],
-            ['02', 'Careful typography'],
-            ['03', 'Useful interaction'],
-          ].map(([number, label], index) => (
+            { tag: '01 / FRONT-END', label: 'React + JavaScript' },
+            { tag: '02 / INTERACTION', label: 'UI + motion' },
+            { tag: '03 / EXPLORING', label: 'AI + infrastructure' },
+          ].map(({ tag, label }, index) => (
             <motion.li
-              key={number}
+              key={tag}
               initial={prefersReduced ? false : { opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.65 }}
@@ -105,11 +105,13 @@ export function AboutSection() {
                 delay: prefersReduced ? 0 : index * 0.07,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`flex items-baseline gap-5 py-6 sm:px-6 lg:py-8 ${
+              className={`flex flex-col gap-2.5 py-6 sm:px-6 lg:py-8 ${
                 index > 0 ? 'border-t border-white/[0.08] sm:border-l sm:border-t-0' : ''
               }`}
             >
-              <span className="font-mono text-[11px] tracking-[0.14em] text-accent">{number}</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                {tag}
+              </span>
               <span className="font-editorial text-2xl italic tracking-[-0.025em] text-primary sm:text-xl lg:text-3xl">
                 {label}
               </span>

@@ -4,6 +4,7 @@ export type MotionStyle = 'default' | 'clip' | 'slide' | 'scale' | 'layers' | 'p
 
 export interface Project {
   id: string;
+  displayNumber?: string;
   title: string;
   slug: string;
   year?: string;

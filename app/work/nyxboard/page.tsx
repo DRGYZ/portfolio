@@ -18,7 +18,7 @@ export default function NyxboardCaseStudyPage() {
         Skip to content
       </a>
       <CaseStudyHeader
-        projectNumber="05"
+        projectNumber="01"
         projectTitle="Nyxboard"
         liveDemoUrl="https://drgyz.github.io/nyxboard-commerce-dashboard/"
         gitHubUrl="https://github.com/DRGYZ/nyxboard-commerce-dashboard"

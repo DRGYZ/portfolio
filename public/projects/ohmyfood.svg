@@ -5,7 +5,7 @@
   </defs>
   <rect width="1200" height="820" fill="#111218"/>
   <path d="M360 0h840v820H140Z" fill="#421930" fill-opacity=".35"/>
-  <text x="140" y="82" fill="#AD687F" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="6">OHMYFOOD / 07</text>
+  <text x="140" y="82" fill="#AD687F" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="6">OHMYFOOD / 03</text>
   <text x="1060" y="82" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="16" letter-spacing="4">RESTAURANT EXPERIENCE / 2026</text>
   <text x="-16" y="732" fill="#eeeeee" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">O</text>
   <g clip-path="url(#omf-panel)">
@@ -31,5 +31,5 @@
   <path d="M0 598 424 493M588 454l612-162" stroke="#421930" stroke-opacity=".85" stroke-width="3"/>
   <path d="M360 28 140 792M860 38 720 792" stroke="#eeeeee" stroke-opacity=".14" stroke-width="2"/>
   <path d="M140 660h220M880 660h180" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
-  <text x="1060" y="666" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">EXPERIENCE / 07</text>
+  <text x="1060" y="666" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">EXPERIENCE / 03</text>
 </svg>

@@ -18,7 +18,7 @@ export default function MikoCaseStudyPage() {
         Skip to content
       </a>
       <CaseStudyHeader
-        projectNumber="06"
+        projectNumber="02"
         projectTitle="MIKO"
       />
       <main id="case-study-content">

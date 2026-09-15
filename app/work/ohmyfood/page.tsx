@@ -18,7 +18,7 @@ export default function OhMyFoodCaseStudyPage() {
         Skip to content
       </a>
       <CaseStudyHeader
-        projectNumber="07"
+        projectNumber="03"
         projectTitle="OhMyFood"
         gitHubUrl="https://github.com/DRGYZ/OhMyFood/tree/ohmyfood-v2"
       />
