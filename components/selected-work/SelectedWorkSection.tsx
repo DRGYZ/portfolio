@@ -174,7 +174,7 @@ export function SelectedWorkSection() {
             })}
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[55%] items-center lg:flex">
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden w-[55%] items-center lg:flex">
             <motion.div
               animate={{
                 y: previewOffsets[activeIndex] ?? 0,

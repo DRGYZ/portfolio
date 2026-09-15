@@ -21,6 +21,8 @@ const frameClips: Record<string, string> = {
   '03': 'polygon(0 0, 100% 0, 100% 100%, 9% 100%, 0 84%)',
   '04': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 0 100%, 0 14%)',
   '05': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
+  '06': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
+  '07': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 7% 100%, 0 87%)',
 };
 
 const compactFrameClips: Record<string, string> = {
@@ -29,6 +31,8 @@ const compactFrameClips: Record<string, string> = {
   '03': 'polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)',
   '04': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%, 0 12%)',
   '05': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
+  '06': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
+  '07': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 7% 100%, 0 92%)',
 };
 
 const sliceClips: Record<string, string> = {
@@ -36,7 +40,9 @@ const sliceClips: Record<string, string> = {
   '02': 'polygon(0 31%, 100% 31%, 100% 49%, 0 49%)',
   '03': 'polygon(0 69%, 100% 30%, 100% 45%, 0 84%)',
   '04': 'polygon(0 58%, 100% 20%, 100% 37%, 0 75%)',
-  '05': 'polygon(0 42%, 100% 18%, 100% 35%, 0 59%)',
+  '05': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
+  '06': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
+  '07': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
 };
 
 const seamPaths: Record<string, string> = {
@@ -44,7 +50,9 @@ const seamPaths: Record<string, string> = {
   '02': 'M0 39 H37 M51 39 H100',
   '03': 'M0 84 L34 73 M49 68 L100 52',
   '04': 'M0 86 L36 75 M51 70 L100 54',
-  '05': 'M0 60 L42 44 M56 39 L100 24',
+  '05': 'M0 73 L35 60 M49 56 L100 36',
+  '06': 'M0 73 L35 60 M49 56 L100 36',
+  '07': 'M0 73 L35 60 M49 56 L100 36',
 };
 
 const compactObjectPositions: Record<string, string> = {
@@ -53,6 +61,8 @@ const compactObjectPositions: Record<string, string> = {
   '03': '37% center',
   '04': '58% center',
   '05': '32% center',
+  '06': '36% center',
+  '07': '38% center',
 };
 
 const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
@@ -61,6 +71,8 @@ const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
   '03': { x: -8, y: -10 },
   '04': { x: 10, y: 10 },
   '05': { x: -11, y: 9 },
+  '06': { x: 10, y: -8 },
+  '07': { x: -9, y: 11 },
 };
 
 export function ProjectPreview({
@@ -168,6 +180,26 @@ export function ProjectPreview({
             clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
             x: -16 * direction,
             opacity: 0.2,
+          },
+        };
+      case '06':
+        return {
+          initial: { x: 40 * direction, rotate: 0.5 * direction, opacity: 0 },
+          animate: { x: 0, rotate: 0, opacity: 1 },
+          exit: { x: -30 * direction, rotate: -0.3 * direction, opacity: 0 },
+        };
+      case '07':
+        return {
+          initial: {
+            clipPath: direction > 0 ? 'inset(100% 0 0 0)' : 'inset(0 0 100% 0)',
+            y: 16 * direction,
+            opacity: 0.7,
+          },
+          animate: { clipPath: 'inset(0 0 0 0)', y: 0, opacity: 1 },
+          exit: {
+            clipPath: direction > 0 ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)',
+            y: -10 * direction,
+            opacity: 0.3,
           },
         };
       default:
@@ -295,8 +327,10 @@ export function ProjectPreview({
               />
             ) : null}
 
-            <div className="absolute bottom-[7%] left-[8%] right-[7%] z-[6] flex flex-wrap items-end justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-primary/85 sm:text-[11px]">
-              <span>{displayNumber ?? project.id} / {project.title}</span>
+            <div className="absolute bottom-[5.5%] left-[6%] right-[6%] z-[10] flex flex-wrap items-end justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-primary/85 sm:text-[11px]">
+              <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 bg-[#111218]/90 px-2.5 py-1 text-primary shadow-sm backdrop-blur-[2px]">
+                {displayNumber ?? project.id} / {project.title}
+              </span>
               {projectUrl ? (
                 <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
                   {project.caseStudyUrl && (
@@ -344,7 +378,9 @@ export function ProjectPreview({
                   )}
                 </div>
               ) : (
-                <span className="text-primary/55">Project preview</span>
+                <span className="inline-flex items-center rounded-sm border border-white/10 bg-[#111218]/90 px-2.5 py-1 text-primary/55">
+                  Project preview
+                </span>
               )}
             </div>
           </motion.div>

@@ -41,7 +41,7 @@ export function ProjectRow({
   };
 
   return (
-    <article className={`relative overflow-visible border-b border-white/[0.075] first:border-t ${isActive ? 'z-30' : 'z-0'}`}>
+    <article className={`relative overflow-visible border-b border-white/[0.075] first:border-t ${isActive ? 'z-10' : 'z-0'}`}>
       <button
         type="button"
         aria-pressed={isActive}
@@ -53,6 +53,7 @@ export function ProjectRow({
               : `Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`
         }
         onPointerEnter={onActivate}
+        onMouseEnter={onActivate}
         onFocus={onActivate}
         onClick={handleRowClick}
         className={`group relative block w-full overflow-visible py-7 text-left transition-[opacity,transform] duration-300 sm:py-9 lg:py-11 ${
@@ -71,7 +72,7 @@ export function ProjectRow({
         />
         <span
           aria-hidden="true"
-          className={`pointer-events-none absolute -right-[34%] top-1/2 hidden h-[78%] w-[42%] -translate-y-1/2 transition-[opacity,transform] duration-500 lg:block ${
+          className={`pointer-events-none absolute -right-[34%] top-1/2 -z-10 hidden h-[78%] w-[42%] -translate-y-1/2 transition-[opacity,transform] duration-500 lg:block ${
             isActive ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
           }`}
         >

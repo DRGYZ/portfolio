@@ -1,22 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
   <defs>
-    <clipPath id="omf-slice"><path d="M0 440 1200 170v136L0 576Z"/></clipPath>
+    <clipPath id="omf-slice"><path d="M0 480 1200 300v136L0 616Z"/></clipPath>
     <clipPath id="omf-panel"><path d="M360 0h840v820H140Z"/></clipPath>
   </defs>
   <rect width="1200" height="820" fill="#111218"/>
   <path d="M360 0h840v820H140Z" fill="#421930" fill-opacity=".35"/>
-  <text x="54" y="78" fill="#AD687F" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6">OHMYFOOD / 07</text>
-  <text x="1146" y="80" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">RESTAURANT EXPERIENCE / 2026</text>
+  <text x="140" y="82" fill="#AD687F" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="6">OHMYFOOD / 07</text>
+  <text x="1060" y="82" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="16" letter-spacing="4">RESTAURANT EXPERIENCE / 2026</text>
   <text x="-16" y="732" fill="#eeeeee" fill-opacity=".88" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">O</text>
   <g clip-path="url(#omf-panel)">
     <text x="-16" y="732" fill="#421930" fill-opacity=".85" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">O</text>
   </g>
-  <text x="430" y="240" fill="#eeeeee" fill-opacity=".92" font-family="Georgia,serif" font-size="148" font-style="italic" letter-spacing="-7">OhMyFood</text>
-  <text x="396" y="520" fill="#eeeeee" fill-opacity=".1" font-family="Arial Black,Arial,sans-serif" font-size="180" font-weight="900" letter-spacing="-12">HOSPITALITY</text>
+  <text x="390" y="516" fill="#eeeeee" fill-opacity=".10" font-family="Arial Black,Arial,sans-serif" font-size="102" font-weight="900" letter-spacing="-5">HOSPITALITY</text>
   <g clip-path="url(#omf-slice)" transform="translate(-24 10)">
     <text x="-16" y="732" fill="#421930" fill-opacity=".95" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">O</text>
-    <text x="430" y="240" fill="#A65F78" font-family="Georgia,serif" font-size="148" font-style="italic" letter-spacing="-7">OhMyFood</text>
-    <text x="396" y="520" fill="#eeeeee" fill-opacity=".28" font-family="Arial Black,Arial,sans-serif" font-size="180" font-weight="900" letter-spacing="-12">HOSPITALITY</text>
+    <text x="390" y="516" fill="#eeeeee" fill-opacity=".22" font-family="Arial Black,Arial,sans-serif" font-size="102" font-weight="900" letter-spacing="-5">HOSPITALITY</text>
   </g>
   <!-- Journey steps -->
   <path d="M430 354 l140 -28 l120 42 l160 -64 l170 30" fill="none" stroke="#421930" stroke-opacity=".75" stroke-width="2.5" stroke-dasharray="6 4"/>
@@ -28,8 +26,10 @@
   <text x="430" y="380" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">DISCOVERY</text>
   <text x="686" y="392" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">SELECTION</text>
   <text x="1016" y="356" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">BOOKING</text>
-  <path d="M54 154h380M584 154h562M54 756h236M990 756h156" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
-  <path d="M0 576 424 451M588 402l612-184" stroke="#421930" stroke-opacity=".85" stroke-width="3"/>
+  <text x="430" y="225" fill="#eeeeee" fill-opacity=".96" font-family="Georgia,serif" font-size="124" font-style="italic" letter-spacing="-5">OhMyFood</text>
+  <path d="M140 154h280M584 154h476" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
+  <path d="M0 598 424 493M588 454l612-162" stroke="#421930" stroke-opacity=".85" stroke-width="3"/>
   <path d="M360 28 140 792M860 38 720 792" stroke="#eeeeee" stroke-opacity=".14" stroke-width="2"/>
-  <text x="1146" y="760" text-anchor="end" fill="#eeeeee" fill-opacity=".48" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">EXPERIENCE / 07</text>
+  <path d="M140 660h220M880 660h180" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
+  <text x="1060" y="666" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">EXPERIENCE / 07</text>
 </svg>
