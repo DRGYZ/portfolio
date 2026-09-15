@@ -47,7 +47,7 @@ export function NyxboardCaseStudy() {
               transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 font-editorial text-[clamp(1.6rem,3.2vw,3rem)] italic leading-[1.12] tracking-[-0.03em] text-accent"
             >
-              Commerce operations, without losing context.
+              A dashboard for multi-store commerce.
             </motion.p>
 
             <motion.p
@@ -56,9 +56,7 @@ export function NyxboardCaseStudy() {
               transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="mt-8 max-w-2xl text-base leading-relaxed text-primary-muted sm:text-lg"
             >
-              Nyxboard started with a simple problem: operational dashboards need a lot of information, but they stop
-              working when that information gets in the way. I focused on fast filtering, in-place order inspection,
-              and clear state changes across a multi-store workspace.
+              Nyxboard started with a simple idea: put the important parts of multi-store commerce in one place without turning the dashboard into a mess. I focused on fast filtering, checking orders without leaving the page, and making changes easy to follow.
             </motion.p>
 
             <motion.div
