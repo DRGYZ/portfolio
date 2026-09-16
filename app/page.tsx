@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <a
         href="#content"
-        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-background transition-transform focus:translate-y-0"
+        className="fixed left-1/2 top-4 z-[100] -translate-x-1/2 -translate-y-24 border border-background bg-accent px-5 py-2.5 font-mono text-xs font-semibold uppercase tracking-widest text-background shadow-lg transition-transform duration-200 focus:translate-y-0"
       >
         Skip to content
       </a>

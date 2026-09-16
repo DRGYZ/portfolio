@@ -11,15 +11,10 @@ export function AboutSection() {
     target: sectionRef,
     offset: ['start 84%', 'start 34%'],
   });
-  const titleX = useTransform(scrollYProgress, [0, 1], [-28, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.28, 1], [0, 0.42, 1]);
-  const copyY = useTransform(scrollYProgress, [0, 1], [48, 0]);
-  const copyOpacity = useTransform(scrollYProgress, [0, 0.22, 1], [0, 0.34, 1]);
-  const copyClip = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['inset(0 0 32% 0)', 'inset(0 0 0% 0)']
-  );
+  const titleX = useTransform(scrollYProgress, [0, 1], [-20, 0]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [0.3, 0.75, 1]);
+  const copyY = useTransform(scrollYProgress, [0, 1], [24, 0]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [0.35, 0.8, 1]);
   const listRuleScale = useTransform(scrollYProgress, [0.35, 1], [0, 1]);
   const seamRotate = useTransform(scrollYProgress, [0, 1], [-3.4, 0]);
   const seamX = useTransform(scrollYProgress, [0, 1], [-22, 0]);
@@ -63,7 +58,6 @@ export function AboutSection() {
         style={{
           y: prefersReduced ? 0 : copyY,
           opacity: prefersReduced ? 1 : copyOpacity,
-          clipPath: prefersReduced ? 'none' : copyClip,
         }}
         className="max-w-4xl lg:col-span-8 lg:col-start-5"
       >

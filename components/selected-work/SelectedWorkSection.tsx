@@ -70,7 +70,7 @@ export function SelectedWorkSection() {
       id="work"
       ref={sectionRef}
       aria-labelledby="selected-work-title"
-      className="relative z-20 -mt-[18svh] w-full px-6 pb-24 pt-24 lg:-mt-[32svh] lg:px-16 lg:pb-28 lg:pt-28"
+      className="relative z-20 -mt-[8svh] w-full px-6 pb-24 pt-24 lg:-mt-[14svh] lg:px-16 lg:pb-28 lg:pt-28"
     >
       <motion.div
         aria-hidden="true"
@@ -121,7 +121,7 @@ export function SelectedWorkSection() {
 
         <div ref={stageRef} className="relative lg:min-h-[480px]">
           <div
-            className="relative lg:w-[74%]"
+            className="relative lg:w-[56%] xl:w-[58%]"
             onPointerLeave={(event) => {
               if (!event.currentTarget.contains(document.activeElement)) {
                 setIsEngaged(false);
@@ -155,7 +155,7 @@ export function SelectedWorkSection() {
                         initial={prefersReduced ? false : { height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={prefersReduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                        transition={{ duration: prefersReduced ? 0.01 : 0.42, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: prefersReduced ? 0.01 : 0.38, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden lg:hidden"
                       >
                         <div className="pb-8 pt-4">
@@ -174,7 +174,7 @@ export function SelectedWorkSection() {
             })}
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden w-[55%] items-center lg:flex">
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden w-[42%] xl:w-[40%] items-center lg:flex">
             <motion.div
               animate={{
                 y: previewOffsets[activeIndex] ?? 0,
@@ -205,25 +205,6 @@ export function SelectedWorkSection() {
           </p>
         </div>
       </div>
-
-      <motion.svg
-        aria-hidden="true"
-        viewBox="0 0 100 8"
-        preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[5%] w-full text-accent"
-      >
-        <motion.path
-          d="M0 5.5 L55 7.2 M68.5 7.8 L100 4"
-          initial={prefersReduced ? false : { pathLength: 0, opacity: 0 }}
-          whileInView={{ pathLength: 1, opacity: 0.3 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: prefersReduced ? 0.01 : 0.9, ease: [0.16, 1, 0.3, 1] }}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.18"
-          vectorEffect="non-scaling-stroke"
-        />
-      </motion.svg>
     </section>
   );
 }

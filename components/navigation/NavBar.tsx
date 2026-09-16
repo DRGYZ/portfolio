@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const sectionLinks = [
   { id: 'work', label: 'Work' },
@@ -18,6 +20,8 @@ export function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
+  const prefersReduced = useReducedMotion();
+
   useEffect(() => {
     if (!menuOpen) return;
 
@@ -25,6 +29,28 @@ export function NavBar() {
       if (event.key === 'Escape') {
         setMenuOpen(false);
         toggleButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const modal = document.getElementById('mobile-navigation');
+        if (!modal) return;
+        const focusable = [
+          toggleButtonRef.current,
+          ...Array.from(modal.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])'))
+        ].filter(Boolean) as HTMLElement[];
+
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
 
@@ -47,8 +73,11 @@ export function NavBar() {
 
       for (const id of ['hero', ...sectionLinks.map(({ id }) => id)] as SectionId[]) {
         const section = document.getElementById(id);
-        if (section && section.offsetTop <= marker) {
-          currentSection = id;
+        if (section) {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+          if (sectionTop <= marker) {
+            currentSection = id;
+          }
         }
       }
 
@@ -75,8 +104,10 @@ export function NavBar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || menuOpen
-          ? 'border-white/[0.07] bg-background/[0.92] backdrop-blur-md'
+        menuOpen
+          ? 'border-white/[0.07] bg-[#0d0e0f]'
+          : scrolled
+          ? 'border-white/[0.07] bg-[#0d0e0f]/95 backdrop-blur-md'
           : 'border-transparent bg-transparent'
       }`}
     >
@@ -98,7 +129,7 @@ export function NavBar() {
                 key={item.id}
                 href={`#${item.id}`}
                 aria-current={isActive ? 'location' : undefined}
-                className={`group relative py-1 font-mono text-[11px] uppercase tracking-[0.15em] transition-[color,letter-spacing] duration-300 hover:tracking-[0.18em] ${
+                className={`group relative py-1 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-200 ${
                   isActive ? 'text-accent' : 'text-primary-muted hover:text-primary'
                 }`}
               >
@@ -136,38 +167,44 @@ export function NavBar() {
         </button>
       </div>
 
-      {menuOpen && (
-        <div
-          id="mobile-navigation"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile Navigation Index"
-          className="border-t border-white/[0.07] bg-background px-6 pb-8 pt-3 md:hidden"
-        >
-          <nav aria-label="Mobile navigation" className="flex flex-col">
-            {sectionLinks.map((item, index) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                aria-current={activeSection === item.id ? 'location' : undefined}
-                onClick={() => setMenuOpen(false)}
-                className={`flex items-baseline justify-between border-b border-white/[0.07] py-4 font-display text-2xl uppercase tracking-[-0.03em] ${
-                  activeSection === item.id ? 'font-editorial italic text-accent' : 'text-primary'
-                }`}
-              >
-                <span>{item.label}</span>
-                <span className="font-mono text-[11px] not-italic tracking-[0.14em] text-primary-muted">
-                  0{index + 1}
-                </span>
-              </a>
-            ))}
-          </nav>
-          <div className="mt-6 flex gap-7 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted">
-            <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Index"
+            initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-x-0 top-20 bottom-0 h-[calc(100dvh-5rem)] z-50 flex flex-col justify-between overflow-y-auto border-t border-white/[0.07] bg-[#0d0e0f] px-6 pb-12 pt-4 md:hidden"
+          >
+            <nav aria-label="Mobile navigation" className="flex flex-col">
+              {sectionLinks.map((item, index) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  aria-current={activeSection === item.id ? 'location' : undefined}
+                  onClick={() => setMenuOpen(false)}
+                  className={`flex items-baseline justify-between border-b border-white/[0.07] py-5 font-display text-3xl uppercase tracking-[-0.03em] transition-colors ${
+                    activeSection === item.id ? 'font-editorial italic text-accent' : 'text-primary hover:text-accent'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <span className="font-mono text-[11px] not-italic tracking-[0.14em] text-primary-muted">
+                    0{index + 1}
+                  </span>
+                </a>
+              ))}
+            </nav>
+            <div className="mt-8 flex gap-7 border-t border-white/[0.07] pt-6 font-mono text-xs uppercase tracking-[0.14em] text-primary-muted">
+              <a href="https://github.com/DRGYZ" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">GitHub ↗</a>
+              <a href="https://www.linkedin.com/in/yazankhaled99/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primary">LinkedIn ↗</a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

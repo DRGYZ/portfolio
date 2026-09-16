@@ -1,57 +1,55 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { MonogramYK } from './MonogramYK';
 import { usePointerPosition } from '@/hooks/usePointerPosition';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const containerVariants: Variants = {
-  hidden: {},
+  hidden: { opacity: 0 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.05,
+      staggerChildren: 0.04,
+      delayChildren: 0.02,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.56,
+      duration: 0.42,
       ease: [0.16, 1, 0.3, 1],
     },
   },
 };
 
 const headlineLineVariants: Variants = {
-  hidden: { y: '106%', rotate: 0.8, scale: 0.985, opacity: 0.2 },
+  hidden: { y: '40%', opacity: 0 },
   visible: (index: number) => ({
     y: '0%',
-    rotate: 0,
-    scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.68,
-      delay: index * 0.055,
+      duration: 0.52,
+      delay: index * 0.04,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
 
 const accentWordVariants: Variants = {
-  hidden: { y: '92%', opacity: 0, scale: 0.97 },
+  hidden: { y: '30%', opacity: 0 },
   visible: (index: number) => ({
     y: '0%',
     opacity: 1,
-    scale: 1,
     transition: {
-      duration: 0.58,
-      delay: 0.16 + index * 0.045,
+      duration: 0.46,
+      delay: 0.06 + index * 0.03,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -59,31 +57,36 @@ const accentWordVariants: Variants = {
 
 export function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
   const prefersReduced = useReducedMotion();
   const pointer = usePointerPosition(containerRef, prefersReduced);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const { scrollY, scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   });
 
-  const textY = useTransform(scrollYProgress, [0, 0.2, 0.62, 1], [0, -4, -52, -126]);
-  const textScale = useTransform(scrollYProgress, [0, 0.24, 1], [1, 1, 0.94]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.24, 0.64, 0.9], [1, 1, 0.46, 0]);
-  const lineOneX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, -76, -142]);
-  const lineTwoX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, 58, 112]);
-  const lineThreeX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, -34, -82]);
-  const lineOneY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, -36]);
-  const lineTwoY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 8]);
-  const lineThreeY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 42]);
-  const interfacesX = useTransform(scrollYProgress, [0, 0.22, 0.7, 1], [0, 0, 25, 68]);
-  const interfacesY = useTransform(scrollYProgress, [0, 0.22, 1], [0, 0, -18]);
-  const complexX = useTransform(scrollYProgress, [0, 0.22, 0.7, 1], [0, 0, -12, -34]);
-  const complexScale = useTransform(scrollYProgress, [0, 0.24, 0.72, 1], [1, 1, 1.025, 1.055]);
-  const simpleX = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [0, 0, 18, 52]);
-  const simpleY = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0, 20]);
-  const actionsOpacity = useTransform(scrollY, [0, 180, 320], [1, 0.18, 0]);
-  const cueOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.2, 0.62, 1], [0, -4, -36, -80]);
+  const textScale = useTransform(scrollYProgress, [0, 0.24, 1], [1, 1, 0.96]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.15, 0.45, 0.7], [1, 1, 0.2, 0]);
+  const lineOneX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, -18, -32]);
+  const lineTwoX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, 16, 28]);
+  const lineThreeX = useTransform(scrollYProgress, [0, 0.18, 0.68, 1], [0, 0, -12, -20]);
+  const lineOneY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, -8]);
+  const lineTwoY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 4]);
+  const lineThreeY = useTransform(scrollYProgress, [0, 0.2, 1], [0, 0, 10]);
+  const interfacesX = useTransform(scrollYProgress, [0, 0.22, 0.7, 1], [0, 0, 8, 14]);
+  const interfacesY = useTransform(scrollYProgress, [0, 0.22, 1], [0, 0, -6]);
+  const complexX = useTransform(scrollYProgress, [0, 0.22, 0.7, 1], [0, 0, -6, -10]);
+  const complexScale = useTransform(scrollYProgress, [0, 0.24, 0.72, 1], [1, 1, 1.015, 1.025]);
+  const simpleX = useTransform(scrollYProgress, [0, 0.3, 0.72, 1], [0, 0, 8, 14]);
+  const simpleY = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0, 8]);
+  const actionsOpacity = useTransform(scrollY, [0, 100, 200], [1, 0.2, 0]);
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
     <section
@@ -100,7 +103,7 @@ export function HeroSection() {
 
         <motion.div
           variants={containerVariants}
-          initial={prefersReduced ? 'visible' : 'hidden'}
+          initial={mounted && !prefersReduced ? 'hidden' : false}
           animate="visible"
           style={{
             y: prefersReduced ? 0 : textY,
@@ -125,13 +128,13 @@ export function HeroSection() {
 
           <motion.h1
             variants={itemVariants}
-            className="max-w-[1420px] text-balance font-display text-[clamp(2.25rem,7.15vw,6.9rem)] font-bold leading-[0.92] tracking-[-0.055em] text-primary"
+            className="max-w-[1420px] text-balance font-display text-[clamp(2.25rem,6.3vw,6.5rem)] font-bold leading-[0.94] tracking-[-0.055em] text-primary"
           >
-            <span className="block overflow-clip pb-[0.08em]">
+            <span className="block overflow-clip py-[0.05em]">
               <motion.span custom={0} variants={headlineLineVariants} className="block origin-left">
                 <motion.span
                   style={{ x: prefersReduced ? 0 : lineOneX, y: prefersReduced ? 0 : lineOneY }}
-                  className="block lg:whitespace-nowrap"
+                  className="block"
                 >
                   Front-end{' '}
                   <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent">
@@ -150,21 +153,21 @@ export function HeroSection() {
                 </motion.span>
               </motion.span>
             </span>{' '}
-            <span className="block overflow-clip pb-[0.08em]">
+            <span className="block overflow-clip py-[0.05em]">
               <motion.span custom={1} variants={headlineLineVariants} className="block origin-left">
                 <motion.span
                   style={{ x: prefersReduced ? 0 : lineTwoX, y: prefersReduced ? 0 : lineTwoY }}
-                  className="block lg:ml-[4vw] lg:whitespace-nowrap lg:text-[0.88em] 2xl:text-[0.92em]"
+                  className="block lg:ml-[3.5vw] lg:text-[0.88em] 2xl:text-[0.92em]"
                 >
                   building interactive products{' '}
                 </motion.span>
               </motion.span>
             </span>
-            <span className="block overflow-clip pb-[0.16em]">
+            <span className="block overflow-clip pb-[0.12em] pt-[0.05em]">
               <motion.span custom={2} variants={headlineLineVariants} className="block origin-left">
                 <motion.span
                   style={{ x: prefersReduced ? 0 : lineThreeX, y: prefersReduced ? 0 : lineThreeY }}
-                  className="block lg:ml-[2vw] lg:whitespace-nowrap lg:text-[0.76em] 2xl:text-[0.8em]"
+                  className="block lg:ml-[1.8vw] lg:text-[0.76em] 2xl:text-[0.8em]"
                 >
                   and exploring{' '}
                   <span className="px-[0.04em] font-editorial font-normal italic tracking-[-0.035em] text-accent lg:hidden">
@@ -204,7 +207,7 @@ export function HeroSection() {
             style={{ opacity: prefersReduced ? 1 : actionsOpacity }}
           >
             <motion.div
-              initial={prefersReduced ? 'visible' : 'hidden'}
+              initial={mounted && !prefersReduced ? 'hidden' : false}
               animate="visible"
               variants={itemVariants}
               className="mt-10 flex flex-col items-start gap-7 sm:mt-12 sm:flex-row sm:items-center sm:gap-9"

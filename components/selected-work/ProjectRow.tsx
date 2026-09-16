@@ -24,7 +24,14 @@ export function ProjectRow({
   const visibleId = displayNumber ?? project.displayNumber ?? project.id;
 
   const handleRowClick = () => {
-    if (isActive) {
+    if (!isActive) {
+      onActivate();
+      return;
+    }
+
+    // On fine pointer (desktop), clicking an already active row navigates
+    const isFinePointer = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
+    if (isFinePointer) {
       if (project.caseStudyUrl) {
         router.push(project.caseStudyUrl);
         return;
@@ -37,7 +44,6 @@ export function ProjectRow({
         }
       }
     }
-    onActivate();
   };
 
   return (
@@ -50,7 +56,8 @@ export function ProjectRow({
       </h3>
       <button
         type="button"
-        aria-pressed={isActive}
+        aria-expanded={isActive}
+        aria-controls={`mobile-preview-${project.id}`}
         aria-label={
           isActive && project.caseStudyUrl
             ? `View ${project.title} case study`
@@ -58,8 +65,11 @@ export function ProjectRow({
               ? `Open ${project.title} project link in new tab`
               : `Show preview for ${project.title}${project.category ? `, ${project.category}` : ''}${project.year ? `, ${project.year}` : ''}`
         }
-        onPointerEnter={onActivate}
-        onMouseEnter={onActivate}
+        onPointerEnter={(e) => {
+          if (e.pointerType === 'mouse') {
+            onActivate();
+          }
+        }}
         onFocus={onActivate}
         onClick={handleRowClick}
         className={`group relative block w-full overflow-visible py-7 text-left transition-[opacity,transform] duration-300 sm:py-9 lg:py-11 ${
@@ -73,17 +83,17 @@ export function ProjectRow({
         <span
           aria-hidden="true"
           className={`absolute bottom-0 left-0 h-px bg-accent transition-[width,opacity] duration-500 ${
-            isActive ? 'w-[72%] opacity-100 lg:w-[132%]' : 'w-0 opacity-0'
+            isActive ? 'w-[72%] opacity-100 lg:w-full' : 'w-0 opacity-0'
           }`}
         />
         <span
           aria-hidden="true"
-          className={`pointer-events-none absolute -right-[34%] top-1/2 -z-10 hidden h-[78%] w-[42%] -translate-y-1/2 transition-[opacity,transform] duration-500 lg:block ${
-            isActive ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+          className={`pointer-events-none absolute right-2 top-1/2 -z-10 hidden h-[78%] w-[28%] -translate-y-1/2 transition-[opacity,transform] duration-500 lg:block ${
+            isActive ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
           }`}
         >
           <span className="absolute inset-0 bg-accent/[0.045] [clip-path:polygon(18%_0,100%_0,82%_100%,0_100%)]" />
-          <span className="absolute right-[8%] top-1/2 -translate-y-1/2 font-editorial text-[clamp(6rem,11vw,10.5rem)] italic leading-none tracking-[-0.08em] text-accent/[0.09]">
+          <span className="absolute right-[8%] top-1/2 -translate-y-1/2 font-editorial text-[clamp(5rem,9vw,9.5rem)] italic leading-none tracking-[-0.08em] text-accent/[0.09]">
             {visibleId}
           </span>
           <span className="absolute -bottom-[1px] left-0 h-[9px] w-[9px] origin-bottom-left -rotate-[32deg] border-l border-accent" />
@@ -100,7 +110,7 @@ export function ProjectRow({
 
           <span className="min-w-0">
             <span
-              className={`relative z-20 inline-block font-display text-[clamp(2.15rem,5.6vw,5.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-[color,transform] duration-300 ${
+              className={`relative z-20 inline-block font-display text-[clamp(2.15rem,5vw,5.4rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-[color,transform] duration-300 ${
                 isActive
                   ? 'translate-x-2 font-editorial font-normal italic tracking-[-0.035em] text-accent lg:translate-x-4'
                   : 'text-primary'

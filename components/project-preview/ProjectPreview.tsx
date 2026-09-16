@@ -15,61 +15,43 @@ interface ProjectPreviewProps {
   direction?: number;
 }
 
+const defaultFrameClip = 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)';
+const defaultCompactFrameClip = 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)';
+const defaultSliceClip = 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)';
+const defaultSeamPath = 'M0 73 L35 60 M49 56 L100 36';
+const defaultBackingOffset = { x: -11, y: 9 };
+
 const frameClips: Record<string, string> = {
-  '01': 'polygon(0 0, 92% 0, 100% 13%, 100% 100%, 8% 100%, 0 87%)',
-  '02': 'polygon(7% 0, 100% 0, 100% 87%, 93% 100%, 0 100%, 0 13%)',
-  '03': 'polygon(0 0, 100% 0, 100% 100%, 9% 100%, 0 84%)',
-  '04': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 0 100%, 0 14%)',
   '05': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
   '06': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
   '07': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 7% 100%, 0 87%)',
 };
 
 const compactFrameClips: Record<string, string> = {
-  '01': 'polygon(0 0, 90% 0, 100% 10%, 100% 100%, 7% 100%, 0 92%)',
-  '02': 'polygon(8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%, 0 9%)',
-  '03': 'polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%)',
-  '04': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%, 0 12%)',
   '05': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
   '06': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
   '07': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 7% 100%, 0 92%)',
 };
 
 const sliceClips: Record<string, string> = {
-  '01': 'polygon(0 60%, 100% 21%, 100% 38%, 0 77%)',
-  '02': 'polygon(0 31%, 100% 31%, 100% 49%, 0 49%)',
-  '03': 'polygon(0 69%, 100% 30%, 100% 45%, 0 84%)',
-  '04': 'polygon(0 58%, 100% 20%, 100% 37%, 0 75%)',
   '05': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
-  '06': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
-  '07': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
+  '06': 'polygon(0 42%, 100% 28%, 100% 45%, 0 60%)',
+  '07': 'polygon(0 62%, 100% 32%, 100% 48%, 0 78%)',
 };
 
 const seamPaths: Record<string, string> = {
-  '01': 'M0 78 L38 66 M52 61 L100 46',
-  '02': 'M0 39 H37 M51 39 H100',
-  '03': 'M0 84 L34 73 M49 68 L100 52',
-  '04': 'M0 86 L36 75 M51 70 L100 54',
   '05': 'M0 73 L35 60 M49 56 L100 36',
-  '06': 'M0 73 L35 60 M49 56 L100 36',
-  '07': 'M0 73 L35 60 M49 56 L100 36',
+  '06': 'M0 58 L38 48 M52 44 L100 28',
+  '07': 'M0 76 L34 62 M48 57 L100 40',
 };
 
 const compactObjectPositions: Record<string, string> = {
-  '01': '18% center',
-  '02': '55% center',
-  '03': '37% center',
-  '04': '58% center',
   '05': '32% center',
   '06': '36% center',
   '07': '38% center',
 };
 
-const backingOffsets: Record<Project['id'], { x: number; y: number }> = {
-  '01': { x: -10, y: 12 },
-  '02': { x: 12, y: -8 },
-  '03': { x: -8, y: -10 },
-  '04': { x: 10, y: 10 },
+const backingOffsets: Record<string, { x: number; y: number }> = {
   '05': { x: -11, y: 9 },
   '06': { x: 10, y: -8 },
   '07': { x: -9, y: 11 },
@@ -88,8 +70,8 @@ export function ProjectPreview({
   const idleY = useMotionValue(0);
   const sourceX = pointerX ?? idleX;
   const sourceY = pointerY ?? idleY;
-  const imageTravelX = project.id === '03' ? 18 : 13;
-  const imageTravelY = project.id === '03' ? 15 : 10;
+  const imageTravelX = 14;
+  const imageTravelY = 10;
   const imageX = useSpring(useTransform(sourceX, [-1, 1], [-imageTravelX, imageTravelX]), {
     stiffness: 70,
     damping: 24,
@@ -99,15 +81,15 @@ export function ProjectPreview({
     damping: 24,
   });
   const sliceX = useSpring(
-    useTransform(sourceX, [-1, 1], project.id === '02' ? [8, -8] : [-7, 7]),
+    useTransform(sourceX, [-1, 1], [-7, 7]),
     { stiffness: 82, damping: 26 }
   );
   const sliceY = useSpring(
-    useTransform(sourceY, [-1, 1], project.id === '03' ? [5, -5] : [-3, 3]),
+    useTransform(sourceY, [-1, 1], [-3, 3]),
     { stiffness: 82, damping: 26 }
   );
   const projectUrl = getProjectUrl(project);
-  const frameClip = (compact ? compactFrameClips : frameClips)[project.id] ?? frameClips['01'];
+  const frameClip = (compact ? compactFrameClips : frameClips)[project.id] ?? (compact ? defaultCompactFrameClip : defaultFrameClip);
   const objectPosition = compact ? compactObjectPositions[project.id] ?? 'center' : 'center';
 
   const getVariants = (projectId: Project['id']) => {
@@ -120,56 +102,12 @@ export function ProjectPreview({
     }
 
     switch (projectId) {
-      case '01':
-        return {
-          initial: {
-            clipPath: direction > 0 ? 'inset(100% 0 0 0)' : 'inset(0 0 100% 0)',
-            y: 16 * direction,
-            opacity: 0.7,
-          },
-          animate: { clipPath: 'inset(0 0 0 0)', y: 0, opacity: 1 },
-          exit: {
-            clipPath: direction > 0 ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)',
-            y: -10 * direction,
-            opacity: 0.3,
-          },
-        };
-      case '02':
-        return {
-          initial: { x: 76 * direction, rotate: 0.8 * direction, opacity: 0 },
-          animate: { x: 0, rotate: 0, opacity: 1 },
-          exit: { x: -48 * direction, rotate: -0.45 * direction, opacity: 0 },
-        };
-      case '03':
-        return {
-          initial: { y: 18, scale: 0.9, opacity: 0.25 },
-          animate: { y: 0, scale: 1, opacity: 1 },
-          exit: { y: -10, scale: 1.055, opacity: 0 },
-        };
-      case '04':
-        return {
-          initial: {
-            clipPath: 'polygon(0 50%, 100% 50%, 100% 50%, 0 50%, 0 50%, 100% 50%, 100% 50%, 0 50%)',
-            scale: 1.025,
-            opacity: 0.55,
-          },
-          animate: {
-            clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%, 0 50%, 100% 50%, 100% 100%, 0 100%)',
-            scale: 1,
-            opacity: 1,
-          },
-          exit: {
-            clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0, 0 100%, 100% 100%, 100% 100%, 0 100%)',
-            scale: 0.985,
-            opacity: 0.2,
-          },
-        };
       case '05':
         return {
           initial: {
             clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
-            x: 24 * direction,
-            opacity: 0.6,
+            x: 20 * direction,
+            opacity: 0,
           },
           animate: {
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
@@ -177,29 +115,27 @@ export function ProjectPreview({
             opacity: 1,
           },
           exit: {
-            clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
+            opacity: 0,
             x: -16 * direction,
-            opacity: 0.2,
           },
         };
       case '06':
         return {
-          initial: { x: 40 * direction, rotate: 0.5 * direction, opacity: 0 },
+          initial: { x: 32 * direction, rotate: 0.4 * direction, opacity: 0 },
           animate: { x: 0, rotate: 0, opacity: 1 },
-          exit: { x: -30 * direction, rotate: -0.3 * direction, opacity: 0 },
+          exit: { x: -24 * direction, rotate: -0.2 * direction, opacity: 0 },
         };
       case '07':
         return {
           initial: {
             clipPath: direction > 0 ? 'inset(100% 0 0 0)' : 'inset(0 0 100% 0)',
             y: 16 * direction,
-            opacity: 0.7,
+            opacity: 0,
           },
           animate: { clipPath: 'inset(0 0 0 0)', y: 0, opacity: 1 },
           exit: {
-            clipPath: direction > 0 ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)',
-            y: -10 * direction,
-            opacity: 0.3,
+            opacity: 0,
+            y: -12 * direction,
           },
         };
       default:
@@ -212,7 +148,7 @@ export function ProjectPreview({
   };
 
   const variants = getVariants(project.id);
-  const backing = backingOffsets[project.id] ?? backingOffsets['01'];
+  const backing = backingOffsets[project.id] ?? defaultBackingOffset;
 
   return (
     <div className={`relative w-full ${compact ? 'aspect-[1.18/1]' : 'aspect-[1.48/1]'}`}>
@@ -232,31 +168,20 @@ export function ProjectPreview({
         className="absolute inset-[1%] overflow-hidden bg-surface-low"
         style={{ clipPath: frameClip }}
       >
-        <AnimatePresence mode="sync" initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={project.id}
             initial={variants.initial}
             animate={variants.animate}
             exit={variants.exit}
-            transition={{ duration: prefersReduced ? 0.01 : 0.44, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: prefersReduced ? 0.01 : 0.26, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
-            {project.id === '02' ? (
-              <motion.span
-                aria-hidden="true"
-                initial={prefersReduced ? false : { x: `${72 * direction}%`, opacity: 0.5 }}
-                animate={{ x: '0%', opacity: 0 }}
-                exit={{ x: `${-55 * direction}%`, opacity: 0 }}
-                transition={{ duration: prefersReduced ? 0.01 : 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 z-10 bg-accent/25"
-              />
-            ) : null}
-
             <motion.div
               style={{
                 x: prefersReduced ? 0 : imageX,
                 y: prefersReduced ? 0 : imageY,
-                scale: prefersReduced ? 1 : project.id === '03' ? 1.055 : 1.025,
+                scale: prefersReduced ? 1 : 1.025,
               }}
               className="absolute inset-[-3%]"
             >
@@ -277,7 +202,7 @@ export function ProjectPreview({
               style={{
                 x: prefersReduced ? 0 : sliceX,
                 y: prefersReduced ? 0 : sliceY,
-                clipPath: sliceClips[project.id] ?? sliceClips['01'],
+                clipPath: sliceClips[project.id] ?? defaultSliceClip,
               }}
               className="absolute inset-[-3%] z-[2]"
             >
@@ -304,10 +229,10 @@ export function ProjectPreview({
               className="pointer-events-none absolute inset-0 z-[4] h-full w-full"
             >
               <motion.path
-                d={seamPaths[project.id] ?? seamPaths['01']}
+                d={seamPaths[project.id] ?? defaultSeamPath}
                 initial={prefersReduced ? false : { pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.74 }}
-                transition={{ duration: prefersReduced ? 0.01 : 0.58, delay: prefersReduced ? 0 : 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: prefersReduced ? 0.01 : 0.44, delay: prefersReduced ? 0 : 0.05, ease: [0.16, 1, 0.3, 1] }}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="0.28"
@@ -316,27 +241,21 @@ export function ProjectPreview({
               />
             </motion.svg>
 
-            {project.id === '04' ? (
-              <motion.span
-                aria-hidden="true"
-                initial={prefersReduced ? false : { scaleX: 0, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 0.42 }}
-                exit={{ scaleX: 0, opacity: 0 }}
-                transition={{ duration: prefersReduced ? 0.01 : 0.44, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-x-0 top-1/2 z-[5] h-px origin-center bg-accent"
-              />
-            ) : null}
-
-            <div className="absolute bottom-[5.5%] left-[6%] right-[6%] z-[10] flex flex-wrap items-end justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-primary/85 sm:text-[11px]">
-              <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 bg-[#111218]/90 px-2.5 py-1 text-primary shadow-sm backdrop-blur-[2px]">
+            {/* Top identifier badge */}
+            <div className="absolute left-[5%] top-[5%] z-[10] flex items-center">
+              <span className="inline-flex items-center gap-1.5 border border-white/10 bg-[#111218]/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary shadow-sm backdrop-blur-[2px] sm:text-[11px]">
                 {displayNumber ?? project.displayNumber ?? project.id} / {project.title}
               </span>
+            </div>
+
+            {/* Bottom action bar */}
+            <div className="absolute bottom-[5%] left-[5%] right-[5%] z-[10] flex flex-wrap items-center justify-end gap-2 font-mono text-[10px] uppercase tracking-[0.16em] sm:gap-2.5 sm:text-[11px]">
               {projectUrl ? (
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                <>
                   {project.caseStudyUrl && (
                     <Link
                       href={project.caseStudyUrl}
-                      className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                      className="pointer-events-auto bg-accent px-3.5 py-1.5 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary sm:px-4 sm:py-2"
                     >
                       Case study →
                     </Link>
@@ -346,7 +265,7 @@ export function ProjectPreview({
                       href={project.liveDemoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`pointer-events-auto px-3.5 py-2 font-semibold transition-colors ${
+                      className={`pointer-events-auto px-3 py-1.5 font-semibold transition-colors sm:px-3.5 sm:py-2 ${
                         project.caseStudyUrl
                           ? 'border border-white/20 bg-[#121318]/90 text-primary hover:border-accent hover:text-accent focus-visible:border-accent'
                           : 'bg-accent text-background hover:bg-primary focus-visible:bg-primary'
@@ -360,7 +279,7 @@ export function ProjectPreview({
                         href={projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="pointer-events-auto bg-accent px-4 py-2 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary"
+                        className="pointer-events-auto bg-accent px-3.5 py-1.5 font-semibold text-background transition-colors hover:bg-primary focus-visible:bg-primary sm:px-4 sm:py-2"
                       >
                         View project ↗
                       </a>
@@ -371,14 +290,14 @@ export function ProjectPreview({
                       href={project.gitHubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="pointer-events-auto border border-white/20 bg-[#121318]/90 px-3 py-2 text-primary transition-colors hover:border-accent hover:text-accent focus-visible:border-accent"
+                      className="pointer-events-auto border border-white/20 bg-[#121318]/90 px-3 py-1.5 text-primary transition-colors hover:border-accent hover:text-accent focus-visible:border-accent sm:py-2"
                     >
                       GitHub ↗
                     </a>
                   )}
-                </div>
+                </>
               ) : (
-                <span className="inline-flex items-center rounded-sm border border-white/10 bg-[#111218]/90 px-2.5 py-1 text-primary/55">
+                <span className="inline-flex items-center border border-white/10 bg-[#111218]/90 px-2.5 py-1 text-primary/55">
                   Project preview
                 </span>
               )}
