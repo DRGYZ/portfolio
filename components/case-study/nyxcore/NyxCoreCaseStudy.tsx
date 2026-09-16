@@ -12,72 +12,36 @@ const workflowSteps = [
     name: "SCAN",
     subtitle: "Look through the local collection",
     detail: "Read files and metadata from the selected library.",
-    findingLabel: "Source",
-    findingText: "Target directory indexing",
-    evidenceLabel: "Context",
-    evidenceText: "Audio containers, ID3/Vorbis tags, bitrates",
-    actionLabel: "Output",
-    actionText: "Populates uncommitted analysis cache",
   },
   {
     step: "02",
     name: "DETECT",
     subtitle: "Turn problems into findings",
     detail: "Duplicates, missing information, suspicious values, and health issues become reviewable items.",
-    findingLabel: "Finding",
-    findingText: "Potential duplicate: 2 tracks with matching audio tags",
-    evidenceLabel: "Evidence",
-    evidenceText: "Exact duration match, similar bitrate, differing paths",
-    actionLabel: "Next",
-    actionText: "Surfaces into Review Inbox queue",
   },
   {
     step: "03",
     name: "REVIEW",
     subtitle: "See the evidence",
     detail: "Inspect the finding, affected tracks, paths, and relevant context.",
-    findingLabel: "Finding",
-    findingText: "Track comparison side-by-side",
-    evidenceLabel: "Evidence",
-    evidenceText: "FLAC 24-bit 96kHz vs MP3 320kbps in Archives",
-    actionLabel: "Decision",
-    actionText: "Clear view of quality, path, and tag discrepancies",
   },
   {
     step: "04",
     name: "DECIDE",
     subtitle: "Choose what should happen",
     detail: "Ignore it, postpone it, or generate an action.",
-    findingLabel: "Finding",
-    findingText: "Selected duplicate resolution",
-    evidenceLabel: "Evidence",
-    evidenceText: "Keep higher-fidelity FLAC, relocate redundant MP3",
-    actionLabel: "Action",
-    actionText: "Stage action plan without mutating filesystem yet",
   },
   {
     step: "05",
     name: "APPLY",
     subtitle: "Run only the selected operation",
     detail: "No background cleanup mode deciding everything on the user’s behalf.",
-    findingLabel: "Execution",
-    findingText: "Action plan execution modal",
-    evidenceLabel: "Safety",
-    evidenceText: "Non-destructive quarantine move with safety verification",
-    actionLabel: "Commit",
-    actionText: "Atomic batch commit with journal record",
   },
   {
     step: "06",
     name: "HISTORY",
     subtitle: "Keep the result visible",
     detail: "Applied operations remain inspectable afterward.",
-    findingLabel: "Log",
-    findingText: "Batch #08 applied at 14:32",
-    evidenceLabel: "Audit",
-    evidenceText: "1 file quarantined, destination hash verified",
-    actionLabel: "Reversal",
-    actionText: "One-click safe reversal available if file untouched",
   },
 ];
 
@@ -250,13 +214,13 @@ export function NyxCoreCaseStudy() {
                   Curatorial Evolution
                 </span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-[#c4b5fd]">
-                  3 Architectural Phases
+                  Product direction
                 </span>
               </div>
 
               {/* Stage 1: CLEAN (Strongest emphasis) */}
-              <div className="relative border border-[#c4b5fd]/50 bg-[#c4b5fd]/[0.07] p-6">
-                <div className="flex items-center justify-between mb-3">
+              <div className="relative border border-[#c4b5fd]/50 bg-[#c4b5fd]/[0.07] p-5">
+                <div className="flex items-center justify-between mb-2">
                   <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#c4b5fd]">
                     <span className="h-2 w-2 bg-[#c4b5fd]" />
                     CLEAN
@@ -265,22 +229,22 @@ export function NyxCoreCaseStudy() {
                     v0.3.0 • Shipped
                   </span>
                 </div>
-                <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-primary">
+                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-primary">
                   Metadata • Duplicates
                 </h3>
-                <p className="mt-2 font-sans text-[14px] text-primary-muted leading-relaxed">
-                  Establish an inspectable review inbox. Surface exact and likely duplicates, diagnose tag health anomalies, and execute controlled quarantine actions with full history.
+                <p className="mt-1.5 font-sans text-[13.5px] text-primary-muted leading-relaxed">
+                  Establish an inspectable review inbox. Surface duplicates, review metadata health, and apply controlled changes with full history.
                 </p>
               </div>
 
               {/* Connector */}
-              <div className="flex items-center justify-center py-1 text-[#c4b5fd]/40 font-mono text-xs">
+              <div className="flex items-center justify-center py-0.5 text-[#c4b5fd]/40 font-mono text-xs">
                 ↓
               </div>
 
               {/* Stage 2: UNDERSTAND (Medium emphasis / quieter) */}
-              <div className="relative border border-white/[0.12] bg-[#111218]/80 p-6 opacity-75 transition-opacity hover:opacity-100">
-                <div className="flex items-center justify-between mb-3">
+              <div className="relative border border-white/[0.12] bg-[#111218]/80 p-5 opacity-80 transition-opacity hover:opacity-100">
+                <div className="flex items-center justify-between mb-2">
                   <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-primary-muted">
                     <span className="h-2 w-2 border border-white/40" />
                     UNDERSTAND
@@ -289,22 +253,22 @@ export function NyxCoreCaseStudy() {
                     Next Horizon
                   </span>
                 </div>
-                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-primary-muted">
+                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-primary-muted">
                   Tempo • Track Characteristics
                 </h3>
-                <p className="mt-2 font-sans text-[14px] text-primary-subtle leading-relaxed">
-                  Move beyond surface tags toward musical attributes: tempo (BPM), key, and acoustic profile. Move from spotting gaps to suggesting high-confidence metadata repair.
+                <p className="mt-1.5 font-sans text-[13.5px] text-primary-subtle leading-relaxed">
+                  Move beyond surface tags toward musical attributes: tempo (BPM), metadata repair suggestions, and better relationships between tracks.
                 </p>
               </div>
 
               {/* Connector */}
-              <div className="flex items-center justify-center py-1 text-white/20 font-mono text-xs">
+              <div className="flex items-center justify-center py-0.5 text-white/20 font-mono text-xs">
                 ↓
               </div>
 
               {/* Stage 3: CURATE (Quietest / future-facing) */}
-              <div className="relative border border-white/[0.07] bg-[#0c0d10] p-6 opacity-50 transition-opacity hover:opacity-85">
-                <div className="flex items-center justify-between mb-3">
+              <div className="relative border border-white/[0.07] bg-[#0c0d10] p-5 opacity-60 transition-opacity hover:opacity-85">
+                <div className="flex items-center justify-between mb-2">
                   <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-primary-subtle">
                     <span className="h-2 w-2 border border-white/20" />
                     CURATE
@@ -313,11 +277,11 @@ export function NyxCoreCaseStudy() {
                     Direction
                   </span>
                 </div>
-                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-primary-subtle">
-                  Playlists • Collections
+                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-primary-subtle">
+                  Playlists • Exploration
                 </h3>
-                <p className="mt-2 font-sans text-[14px] text-primary-subtle leading-relaxed">
-                  Create fluid musical collections based on energy curves and acoustic relationships, turning static directories into an expressive, interactive archive.
+                <p className="mt-1.5 font-sans text-[13.5px] text-primary-subtle leading-relaxed">
+                  Build playlists from BPM ranges and richer track properties, giving the collection useful views that emerge from the music itself.
                 </p>
               </div>
             </div>
@@ -358,7 +322,7 @@ export function NyxCoreCaseStudy() {
                 Separates exact copies from likely matches.
               </p>
               <p className="font-sans text-[15px] leading-relaxed text-primary-muted sm:text-[16px]">
-                Instead of treating every similarity as certainty, NyxCore isolates exact bit-for-bit or tag duplicates from fuzzy, likely matches. The comparison remains fully visible before any file is touched.
+                Separates exact copies from likely matches and keeps the comparison visible instead of treating every similarity as certainty.
               </p>
             </div>
 
@@ -374,7 +338,7 @@ export function NyxCoreCaseStudy() {
                 />
               </div>
               <p className="mt-2 font-mono text-[11px] text-primary-subtle">
-                Duplicates — comparison remains visible across bitrates, file formats, and paths.
+                Duplicates — comparison remains visible before any changes are made.
               </p>
             </div>
           </div>
@@ -393,7 +357,7 @@ export function NyxCoreCaseStudy() {
                 />
               </div>
               <p className="mt-2 font-mono text-[11px] text-primary-subtle">
-                Library Health — diagnostic overview of metadata anomalies across the collection.
+                Library Health — diagnostic overview of metadata findings across the collection.
               </p>
             </div>
 
@@ -408,7 +372,7 @@ export function NyxCoreCaseStudy() {
                 Surfaces missing metadata and suspicious values.
               </p>
               <p className="font-sans text-[15px] leading-relaxed text-primary-muted sm:text-[16px]">
-                A collection-wide audit identifies missing tags, suspicious values, artwork gaps, and encoding anomalies without altering the underlying audio files.
+                A collection-wide audit identifies missing metadata, suspicious values, artwork gaps, and quality-related findings without altering the underlying audio files.
               </p>
             </div>
           </div>
@@ -453,7 +417,7 @@ export function NyxCoreCaseStudy() {
                 History
               </h3>
               <p className="font-sans text-[15px] leading-relaxed text-primary-muted">
-                Keeps applied operations visible afterward, including the actions that can still be safely reversed. The journal preserves operation parameters and target verification.
+                Keeps applied operations visible afterward. Supported reversal remains available when the recorded filesystem state still matches.
               </p>
               <div className="border border-white/[0.06] bg-[#0d0e0f] p-2">
                 <img
@@ -525,8 +489,9 @@ export function NyxCoreCaseStudy() {
                 <button
                   key={step.name}
                   type="button"
+                  aria-pressed={isActive}
                   onClick={() => setActiveStepIndex(idx)}
-                  className={`relative text-left p-4 transition-all ${
+                  className={`relative text-left p-4 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4b5fd] ${
                     isActive
                       ? "border border-[#c4b5fd] bg-[#c4b5fd]/15 text-primary shadow-sm"
                       : "border border-white/[0.08] bg-[#111218] text-primary-muted hover:border-white/20 hover:text-primary"
@@ -549,42 +514,22 @@ export function NyxCoreCaseStudy() {
             })}
           </div>
 
-          {/* Stage Detail Panel & Finding/Evidence/Action Breakdown */}
-          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-center border-t border-white/[0.08] pt-8">
-            <div className="space-y-6 lg:col-span-5">
-              <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#c4b5fd]">
-                  Stage {activeStep.step} • {activeStep.name}
-                </span>
-                <h3 className="mt-1 font-display text-2xl font-bold uppercase text-primary">
-                  {activeStep.subtitle}
-                </h3>
-                <p className="mt-2 font-sans text-[15px] leading-relaxed text-primary-muted">
-                  {activeStep.detail}
-                </p>
-              </div>
-
-              {/* 3-Pillar Annotation: Finding / Evidence / Action */}
-              <div className="space-y-3 font-mono text-[12px]">
-                <div className="border-l-2 border-[#c4b5fd] bg-[#111218] px-3.5 py-2.5">
-                  <span className="text-[10px] uppercase tracking-wider text-[#c4b5fd] block">
-                    {activeStep.findingLabel}
-                  </span>
-                  <span className="text-primary mt-0.5 block">{activeStep.findingText}</span>
-                </div>
-                <div className="border-l-2 border-white/30 bg-[#111218] px-3.5 py-2.5">
-                  <span className="text-[10px] uppercase tracking-wider text-primary-subtle block">
-                    {activeStep.evidenceLabel}
-                  </span>
-                  <span className="text-primary-muted mt-0.5 block">{activeStep.evidenceText}</span>
-                </div>
-                <div className="border-l-2 border-accent/40 bg-[#111218] px-3.5 py-2.5">
-                  <span className="text-[10px] uppercase tracking-wider text-accent block">
-                    {activeStep.actionLabel}
-                  </span>
-                  <span className="text-primary-muted mt-0.5 block">{activeStep.actionText}</span>
-                </div>
-              </div>
+          {/* Stage Detail Panel */}
+          <div
+            role="region"
+            aria-label="Workflow stage detail"
+            className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-center border-t border-white/[0.08] pt-8"
+          >
+            <div className="space-y-4 lg:col-span-5">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#c4b5fd]">
+                Stage {activeStep.step} • {activeStep.name}
+              </span>
+              <h3 className="font-display text-2xl font-bold uppercase text-primary sm:text-3xl">
+                {activeStep.subtitle}
+              </h3>
+              <p className="font-sans text-[15px] leading-relaxed text-primary-muted sm:text-[16px]">
+                {activeStep.detail}
+              </p>
             </div>
 
             {/* Supporting Screenshot Crop (Tablet Review Inbox view) */}
@@ -665,7 +610,7 @@ export function NyxCoreCaseStudy() {
                   04 • Reverse only when safe
                 </span>
                 <p className="font-sans text-[14px] text-primary-muted leading-relaxed">
-                  Supported reversals verify that the underlying file still matches the state NyxCore expects.
+                  Supported reversal remains available when the recorded filesystem state still matches.
                 </p>
               </div>
             </div>
@@ -804,7 +749,7 @@ export function NyxCoreCaseStudy() {
 
                   <div>
                     <h4 className="font-mono text-[13px] font-bold uppercase tracking-wider text-primary-muted">
-                      Tempo &amp; audio characteristics
+                      Tempo &amp; track characteristics
                     </h4>
                     <p className="mt-1 font-sans text-[14px] text-primary-subtle">
                       Make properties such as BPM useful inside the library rather than treating them as isolated technical metadata.
@@ -823,7 +768,7 @@ export function NyxCoreCaseStudy() {
               </div>
 
               <div className="mt-8 border-t border-white/[0.08] pt-4 font-mono text-[11px] text-primary-subtle leading-relaxed">
-                Future horizon: contextual repair and acoustic properties.
+                Future horizon: metadata repair and broader track characteristics.
               </div>
             </div>
 
@@ -870,7 +815,7 @@ export function NyxCoreCaseStudy() {
               </div>
 
               <div className="mt-8 border-t border-white/[0.06] pt-4 font-mono text-[11px] text-primary-subtle/70 leading-relaxed">
-                Future horizon: curation workflows emerging from audio understanding.
+                Future horizon: curation workflows emerging from track properties and BPM ranges.
               </div>
             </div>
           </div>
@@ -1014,7 +959,7 @@ export function NyxCoreCaseStudy() {
         </div>
 
         <div className="mt-16 flex flex-col justify-between gap-4 border-t border-white/[0.06] pt-8 font-mono text-[10px] uppercase tracking-[0.15em] text-primary-subtle sm:flex-row sm:items-center">
-          <span>Yazan Khaled — Front-end Developer &amp; Creative Technologist</span>
+          <span>Yazan Khaled — Front-end Developer</span>
           <span>Paris, France • 2026</span>
         </div>
       </section>
