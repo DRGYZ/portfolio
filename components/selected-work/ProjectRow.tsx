@@ -41,7 +41,13 @@ export function ProjectRow({
   };
 
   return (
-    <article className={`relative overflow-visible border-b border-white/[0.075] first:border-t ${isActive ? 'z-10' : 'z-0'}`}>
+    <article
+      aria-labelledby={`project-heading-${project.id}`}
+      className={`relative overflow-visible border-b border-white/[0.075] first:border-t ${isActive ? 'z-10' : 'z-0'}`}
+    >
+      <h3 id={`project-heading-${project.id}`} className="sr-only">
+        {project.title}
+      </h3>
       <button
         type="button"
         aria-pressed={isActive}
@@ -94,8 +100,6 @@ export function ProjectRow({
 
           <span className="min-w-0">
             <span
-              role="heading"
-              aria-level={3}
               className={`relative z-20 inline-block font-display text-[clamp(2.15rem,5.6vw,5.8rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-[color,transform] duration-300 ${
                 isActive
                   ? 'translate-x-2 font-editorial font-normal italic tracking-[-0.035em] text-accent lg:translate-x-4'

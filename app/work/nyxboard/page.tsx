@@ -3,9 +3,34 @@ import { CaseStudyHeader } from '@/components/case-study/CaseStudyHeader';
 import { NyxboardCaseStudy } from '@/components/case-study/NyxboardCaseStudy';
 
 export const metadata: Metadata = {
-  title: 'Nyxboard — Case Study — Yazan Khaled',
+  title: 'Nyxboard — Case Study',
   description:
     'An expressive, accessible multi-store commerce operations dashboard built with React and TypeScript, exploring information density, context preservation, and state architecture.',
+  alternates: {
+    canonical: '/work/nyxboard/',
+  },
+  openGraph: {
+    title: 'Nyxboard — Case Study — Yazan Khaled',
+    description:
+      'An expressive, accessible multi-store commerce operations dashboard built with React and TypeScript.',
+    url: '/work/nyxboard/',
+    type: 'article',
+    images: [
+      {
+        url: '/projects/nyxboard.svg',
+        width: 1200,
+        height: 820,
+        alt: 'Nyxboard Commerce Dashboard',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nyxboard — Case Study — Yazan Khaled',
+    description:
+      'An expressive, accessible multi-store commerce operations dashboard built with React and TypeScript.',
+    images: ['/projects/nyxboard.svg'],
+  },
 };
 
 export default function NyxboardCaseStudyPage() {
@@ -23,7 +48,7 @@ export default function NyxboardCaseStudyPage() {
         liveDemoUrl="https://drgyz.github.io/nyxboard-commerce-dashboard/"
         gitHubUrl="https://github.com/DRGYZ/nyxboard-commerce-dashboard"
       />
-      <main id="case-study-content" tabIndex={-1}>
+      <main id="case-study-content" tabIndex={-1} className="focus:outline-none">
         <NyxboardCaseStudy />
       </main>
     </>

@@ -27,10 +27,46 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://drgyz.github.io/portfolio';
+
 export const metadata: Metadata = {
-  title: 'Yazan Khaled — Front-end Developer',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Yazan Khaled — Front-end Developer',
+    template: '%s — Yazan Khaled',
+  },
   description:
     'I build polished interfaces and interactive products that make complex systems feel simple. Based in Paris, France.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Yazan Khaled — Front-end Developer',
+    description:
+      'I build polished interfaces and interactive products that make complex systems feel simple. Based in Paris, France.',
+    url: '/',
+    siteName: 'Yazan Khaled Portfolio',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/projects/nyxboard.svg',
+        width: 1200,
+        height: 820,
+        alt: 'Yazan Khaled — Front-end Developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Yazan Khaled — Front-end Developer',
+    description:
+      'I build polished interfaces and interactive products that make complex systems feel simple. Based in Paris, France.',
+    images: ['/projects/nyxboard.svg'],
+  },
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({

@@ -17,7 +17,8 @@ export default function Home() {
       <NavBar />
       <main
         id="content"
-        className="relative min-h-screen bg-background text-primary selection:bg-accent selection:text-background"
+        tabIndex={-1}
+        className="relative min-h-screen bg-background text-primary selection:bg-accent selection:text-background focus:outline-none"
       >
         <HeroSection />
         <SelectedWorkSection />

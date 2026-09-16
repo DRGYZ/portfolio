@@ -58,7 +58,7 @@ export function ScanOrderTrack({ onSelectPhase }: ScanOrderTrackProps) {
         <span className="text-accent/90">Overview Sequence</span>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 border border-white/[0.08] bg-surface">
+      <div role="group" aria-label="Overview sequence phases" className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 border border-white/[0.08] bg-surface">
         {phases.map((phase, idx) => {
           const isActive = activeId === phase.id;
 
@@ -66,6 +66,7 @@ export function ScanOrderTrack({ onSelectPhase }: ScanOrderTrackProps) {
             <button
               key={phase.id}
               type="button"
+              aria-pressed={isActive}
               onClick={() => handleSelect(phase.id)}
               onMouseEnter={() => handleSelect(phase.id)}
               className={`group text-left p-2.5 transition-all focus:outline-none focus-visible:ring-1 focus-visible:ring-accent ${

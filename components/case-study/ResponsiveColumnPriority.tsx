@@ -37,9 +37,10 @@ export function ResponsiveColumnPriority() {
         </div>
 
         {/* View mode toggle */}
-        <div className="inline-flex p-0.5 border border-white/10 bg-background/50">
+        <div role="group" aria-label="Column priority view mode" className="inline-flex p-0.5 border border-white/10 bg-background/50">
           <button
             type="button"
+            aria-pressed={viewMode === 'desktop'}
             onClick={() => setViewMode('desktop')}
             className={`px-3 py-1 font-mono text-[10px] uppercase tracking-wider transition-colors ${
               viewMode === 'desktop' ? 'bg-accent text-background font-semibold' : 'text-primary-subtle hover:text-primary'
@@ -49,6 +50,7 @@ export function ResponsiveColumnPriority() {
           </button>
           <button
             type="button"
+            aria-pressed={viewMode === 'mobile'}
             onClick={() => setViewMode('mobile')}
             className={`px-3 py-1 font-mono text-[10px] uppercase tracking-wider transition-colors ${
               viewMode === 'mobile' ? 'bg-accent text-background font-semibold' : 'text-primary-subtle hover:text-primary'

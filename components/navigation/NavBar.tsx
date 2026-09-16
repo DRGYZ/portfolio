@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 const sectionLinks = [
@@ -16,6 +16,27 @@ export function NavBar() {
   const [activeSection, setActiveSection] = useState<SectionId>('hero');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        toggleButtonRef.current?.focus();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     let animationFrameId = 0;
@@ -103,18 +124,26 @@ export function NavBar() {
         </div>
 
         <button
+          ref={toggleButtonRef}
           type="button"
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
+          aria-label={menuOpen ? 'Close navigation index' : 'Open navigation index'}
           onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted transition-colors hover:text-primary md:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center -mr-2 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted transition-colors hover:text-primary md:hidden"
         >
           {menuOpen ? 'Close' : 'Index'}
         </button>
       </div>
 
       {menuOpen && (
-        <div id="mobile-navigation" className="border-t border-white/[0.07] bg-background px-6 pb-8 pt-3 md:hidden">
+        <div
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile Navigation Index"
+          className="border-t border-white/[0.07] bg-background px-6 pb-8 pt-3 md:hidden"
+        >
           <nav aria-label="Mobile navigation" className="flex flex-col">
             {sectionLinks.map((item, index) => (
               <a
