@@ -101,6 +101,7 @@ export function HeroSection() {
           scrollProgress={scrollYProgress}
         />
 
+
         <motion.div
           variants={containerVariants}
           initial={mounted && !prefersReduced ? 'hidden' : false}

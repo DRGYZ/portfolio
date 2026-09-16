@@ -2,6 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { getProjectUrl, Project } from '@/types/project';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { ProjectTitleShutter } from './ProjectTitleShutter';
 
 interface ProjectRowProps {
   project: Project;
@@ -19,6 +21,7 @@ export function ProjectRow({
   onActivate,
 }: ProjectRowProps) {
   const router = useRouter();
+  const prefersReduced = useReducedMotion();
   const isDimmed = isEngaged && !isActive;
   const hasProjectLink = Boolean(getProjectUrl(project));
   const visibleId = displayNumber ?? project.displayNumber ?? project.id;
@@ -82,9 +85,10 @@ export function ProjectRow({
       >
         <span
           aria-hidden="true"
-          className={`absolute bottom-0 left-0 h-px bg-accent transition-[width,opacity] duration-500 ${
+          className={`absolute bottom-0 left-0 h-px transition-[width,opacity,background-color] duration-500 ${
             isActive ? 'w-[72%] opacity-100 lg:w-full' : 'w-0 opacity-0'
           }`}
+          style={{ backgroundColor: isActive ? project.accent : 'var(--accent)' }}
         />
         <span
           aria-hidden="true"
@@ -92,32 +96,42 @@ export function ProjectRow({
             isActive ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
           }`}
         >
-          <span className="absolute inset-0 bg-accent/[0.045] [clip-path:polygon(18%_0,100%_0,82%_100%,0_100%)]" />
-          <span className="absolute right-[8%] top-1/2 -translate-y-1/2 font-editorial text-[clamp(5rem,9vw,9.5rem)] italic leading-none tracking-[-0.08em] text-accent/[0.09]">
+          <span
+            className="absolute inset-0 transition-colors duration-500 [clip-path:polygon(18%_0,100%_0,82%_100%,0_100%)]"
+            style={{
+              backgroundColor: isActive ? `${project.accent}14` : 'rgba(185, 195, 255, 0.045)',
+            }}
+          />
+          <span
+            className="absolute right-[8%] top-1/2 -translate-y-1/2 font-editorial text-[clamp(5rem,9vw,9.5rem)] italic leading-none tracking-[-0.08em] transition-colors duration-500"
+            style={{
+              color: isActive ? project.accent : 'var(--accent)',
+              opacity: isActive ? 0.12 : 0.08,
+            }}
+          >
             {visibleId}
           </span>
-          <span className="absolute -bottom-[1px] left-0 h-[9px] w-[9px] origin-bottom-left -rotate-[32deg] border-l border-accent" />
+          <span
+            className="absolute -bottom-[1px] left-0 h-[9px] w-[9px] origin-bottom-left -rotate-[32deg] border-l transition-colors duration-500"
+            style={{ borderColor: isActive ? project.accent : 'var(--accent)' }}
+          />
         </span>
 
         <span className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-3 gap-y-3 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:gap-x-5">
           <span
-            className={`font-mono text-[11px] font-semibold tracking-[0.08em] transition-colors ${
-              isActive ? 'text-accent' : 'text-primary-muted'
-            }`}
+            className="font-mono text-[11px] font-semibold tracking-[0.08em] transition-colors duration-300"
+            style={{ color: isActive ? project.accent : undefined }}
           >
             {visibleId}
           </span>
 
           <span className="min-w-0">
-            <span
-              className={`relative z-20 inline-block font-display text-[clamp(2.15rem,5vw,5.4rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] transition-[color,transform] duration-300 ${
-                isActive
-                  ? 'translate-x-2 font-editorial font-normal italic tracking-[-0.035em] text-accent lg:translate-x-4'
-                  : 'text-primary'
-              }`}
-            >
-              {project.title}
-            </span>
+            <ProjectTitleShutter
+              title={project.title}
+              isActive={isActive}
+              accent={project.accent ?? '#b9c3ff'}
+              prefersReduced={prefersReduced}
+            />
           </span>
 
           <span className="col-start-2 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-muted transition-opacity duration-300 sm:col-start-3 sm:row-start-1 sm:justify-self-end lg:opacity-0">
@@ -130,9 +144,10 @@ export function ProjectRow({
           </span>
 
           <span
-            className={`col-start-2 font-mono text-[11px] uppercase tracking-[0.14em] transition-[opacity,transform] duration-300 sm:col-start-2 ${
-              isActive ? 'translate-x-0 text-accent opacity-100' : '-translate-x-2 opacity-0'
+            className={`col-start-2 font-mono text-[11px] uppercase tracking-[0.14em] transition-[opacity,transform,color] duration-300 sm:col-start-2 ${
+              isActive ? 'translate-x-0 opacity-100' : '-translate-x-2 opacity-0'
             }`}
+            style={{ color: isActive ? project.accent : 'var(--accent)' }}
           >
             {project.caseStudyUrl
               ? 'Case study →'

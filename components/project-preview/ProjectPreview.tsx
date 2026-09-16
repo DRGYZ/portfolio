@@ -154,14 +154,14 @@ export function ProjectPreview({
     <div className={`relative w-full ${compact ? 'aspect-[1.18/1]' : 'aspect-[1.48/1]'}`}>
       <motion.span
         aria-hidden="true"
-        className="absolute inset-[4%] border border-accent/25"
+        className="absolute inset-[4%] border transition-colors duration-500"
         animate={
           prefersReduced
             ? { x: 0, y: 0 }
             : { x: backing.x, y: backing.y }
         }
         transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-        style={{ clipPath: frameClip }}
+        style={{ clipPath: frameClip, borderColor: `${project.accent}35` }}
       />
 
       <motion.div
@@ -237,7 +237,8 @@ export function ProjectPreview({
                 stroke="currentColor"
                 strokeWidth="0.28"
                 vectorEffect="non-scaling-stroke"
-                className="text-accent"
+                style={{ color: project.accent }}
+                className="transition-colors duration-500"
               />
             </motion.svg>
 

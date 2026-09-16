@@ -8,6 +8,7 @@ import { ProjectPreview } from '../project-preview/ProjectPreview';
 import { Project } from '@/types/project';
 import { usePointerPosition } from '@/hooks/usePointerPosition';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { HandoffSeam } from './HandoffSeam';
 
 export function SelectedWorkSection() {
   const [activeProject, setActiveProject] = useState<Project>(projects[0]);
@@ -94,6 +95,8 @@ export function SelectedWorkSection() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-[1600px]">
+        <HandoffSeam sectionRef={sectionRef} />
+
         <motion.div
           style={{
             y: prefersReduced ? 0 : headerY,
@@ -120,6 +123,7 @@ export function SelectedWorkSection() {
         </motion.div>
 
         <div ref={stageRef} className="relative lg:min-h-[480px]">
+
           <div
             className="relative lg:w-[56%] xl:w-[58%]"
             onPointerLeave={(event) => {

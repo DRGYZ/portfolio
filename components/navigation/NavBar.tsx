@@ -16,6 +16,7 @@ type SectionId = 'hero' | (typeof sectionLinks)[number]['id'];
 
 export function NavBar() {
   const [activeSection, setActiveSection] = useState<SectionId>('hero');
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
@@ -121,25 +122,37 @@ export function NavBar() {
           <span className="font-semibold">Yazan Khaled</span>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-10 md:flex">
+        <nav
+          aria-label="Main navigation"
+          className="hidden items-center gap-10 md:flex"
+          onMouseLeave={() => setHoveredSection(null)}
+        >
           {sectionLinks.map((item) => {
             const isActive = activeSection === item.id;
+            const isTarget = (hoveredSection ?? (activeSection === 'hero' ? null : activeSection)) === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 aria-current={isActive ? 'location' : undefined}
+                onMouseEnter={() => setHoveredSection(item.id)}
                 className={`group relative py-1 font-mono text-[11px] uppercase tracking-[0.15em] transition-colors duration-200 ${
                   isActive ? 'text-accent' : 'text-primary-muted hover:text-primary'
                 }`}
               >
                 {item.label}
-                <span
-                  aria-hidden="true"
-                  className={`absolute inset-x-0 bottom-0 h-px origin-left bg-accent transition-transform ${
-                    isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`}
-                />
+                {isTarget && (
+                  <motion.span
+                    layoutId="nav-caliper"
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-px bg-accent"
+                    transition={
+                      prefersReduced
+                        ? { duration: 0.01 }
+                        : { type: 'spring', stiffness: 380, damping: 32 }
+                    }
+                  />
+                )}
               </a>
             );
           })}

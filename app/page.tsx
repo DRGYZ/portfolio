@@ -18,7 +18,7 @@ export default function Home() {
       <main
         id="content"
         tabIndex={-1}
-        className="relative min-h-screen bg-background text-primary selection:bg-accent selection:text-background focus:outline-none"
+        className="relative min-h-screen overflow-x-clip bg-background text-primary selection:bg-accent selection:text-background focus:outline-none"
       >
         <HeroSection />
         <SelectedWorkSection />
