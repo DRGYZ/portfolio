@@ -5,14 +5,14 @@ import { NyxCoreCaseStudy } from '@/components/case-study/nyxcore/NyxCoreCaseStu
 export const metadata: Metadata = {
   title: 'NyxCore — Case Study',
   description:
-    'A local-first music-library toolkit for reviewing duplicates, metadata health, controlled cleanup, and the path toward audio-aware curation.',
+    'A local tool for cleaning and organizing my music library.',
   alternates: {
     canonical: '/work/nyxcore/',
   },
   openGraph: {
     title: 'NyxCore — Case Study — Yazan Khaled',
     description:
-      'A local-first music-library toolkit for reviewing duplicates, metadata health, controlled cleanup, and the path toward audio-aware curation.',
+      'A local tool for cleaning and organizing my music library.',
     url: '/work/nyxcore/',
     type: 'article',
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'NyxCore — Case Study — Yazan Khaled',
     description:
-      'A local-first music-library toolkit for reviewing duplicates, metadata health, controlled cleanup, and the path toward audio-aware curation.',
+      'A local tool for cleaning and organizing my music library.',
     images: ['/case-studies/nyxcore/02_review_inbox_selected_1440.png'],
   },
 };
@@ -38,7 +38,7 @@ export default function NyxCoreCaseStudyPage() {
     <>
       <a
         href="#case-study-content"
-        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-background transition-transform focus:translate-y-0"
+        className="fixed left-4 top-4 z-[100] -translate-y-[200%] bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-background transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-accent"
       >
         Skip to content
       </a>
