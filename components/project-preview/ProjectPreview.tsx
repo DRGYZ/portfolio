@@ -25,36 +25,42 @@ const frameClips: Record<string, string> = {
   '05': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
   '06': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
   '07': 'polygon(0 0, 94% 0, 100% 10%, 100% 100%, 7% 100%, 0 87%)',
+  '08': 'polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%)',
 };
 
 const compactFrameClips: Record<string, string> = {
   '05': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
   '06': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
   '07': 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 7% 100%, 0 92%)',
+  '08': 'polygon(6% 0, 100% 0, 100% 90%, 94% 100%, 0 100%, 0 10%)',
 };
 
 const sliceClips: Record<string, string> = {
   '05': 'polygon(0 58%, 100% 37%, 100% 53%, 0 75%)',
   '06': 'polygon(0 42%, 100% 28%, 100% 45%, 0 60%)',
   '07': 'polygon(0 62%, 100% 32%, 100% 48%, 0 78%)',
+  '08': 'polygon(0 50%, 100% 32%, 100% 48%, 0 66%)',
 };
 
 const seamPaths: Record<string, string> = {
   '05': 'M0 73 L35 60 M49 56 L100 36',
   '06': 'M0 58 L38 48 M52 44 L100 28',
   '07': 'M0 76 L34 62 M48 57 L100 40',
+  '08': 'M0 65 L40 52 M54 48 L100 32',
 };
 
 const compactObjectPositions: Record<string, string> = {
   '05': '32% center',
   '06': '36% center',
   '07': '38% center',
+  '08': '34% center',
 };
 
 const backingOffsets: Record<string, { x: number; y: number }> = {
   '05': { x: -11, y: 9 },
   '06': { x: 10, y: -8 },
   '07': { x: -9, y: 11 },
+  '08': { x: 11, y: 9 },
 };
 
 export function ProjectPreview({
@@ -136,6 +142,23 @@ export function ProjectPreview({
           exit: {
             opacity: 0,
             y: -12 * direction,
+          },
+        };
+      case '08':
+        return {
+          initial: {
+            clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+            y: 20 * direction,
+            opacity: 0,
+          },
+          animate: {
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+            y: 0,
+            opacity: 1,
+          },
+          exit: {
+            opacity: 0,
+            y: -16 * direction,
           },
         };
       default:
