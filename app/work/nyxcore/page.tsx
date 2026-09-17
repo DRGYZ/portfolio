@@ -38,7 +38,7 @@ export default function NyxCoreCaseStudyPage() {
     <>
       <a
         href="#case-study-content"
-        className="fixed left-4 top-4 z-[100] -translate-y-[200%] bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-background transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-accent"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-background transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-accent"
       >
         Skip to content
       </a>

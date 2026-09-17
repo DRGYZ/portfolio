@@ -257,7 +257,7 @@ export function NyxCoreCaseStudy() {
       {/* ========================================================================= */}
       {/* SECTION 04 — WHY I WAS CAREFUL WITH CHANGES */}
       {/* ========================================================================= */}
-      <section id="careful-with-changes" className="relative mx-auto w-full max-w-[1500px] px-6 py-16 lg:px-16 lg:py-24">
+      <section id="why-i-was-careful-with-changes" className="relative mx-auto w-full max-w-[1500px] px-6 py-16 lg:px-16 lg:py-24">
         <SeamDivider label="04 / WHY I WAS CAREFUL WITH CHANGES" className="mb-12" />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -277,13 +277,13 @@ export function NyxCoreCaseStudy() {
           </div>
 
           <div className="lg:col-span-7">
-            <figure className="relative overflow-hidden border border-white/[0.08] bg-[#111216] aspect-[16/11] sm:aspect-[16/10] flex items-center justify-center">
+            <figure className="relative overflow-hidden border border-white/[0.08] bg-[#111216]">
               <img
-                src={getAssetPath('/case-studies/nyxcore/08_plan_modal_1440.png')}
+                src={getAssetPath('/case-studies/nyxcore/08_plan_modal_cropped.png')}
                 alt="NyxCore Action Plan dialog exposing planned operations before execution"
-                width={1440}
-                height={900}
-                className="w-full h-auto object-cover scale-[1.34] transform origin-center"
+                width={896}
+                height={705}
+                className="w-full h-auto object-contain"
                 loading="lazy"
               />
             </figure>
@@ -383,7 +383,7 @@ export function NyxCoreCaseStudy() {
       {/* ========================================================================= */}
       {/* SECTION 06 — WHAT SHIPPED IN v0.3.0 */}
       {/* ========================================================================= */}
-      <section id="release-ending" className="relative mx-auto w-full max-w-[1500px] px-6 py-16 lg:px-16 lg:py-24">
+      <section id="what-shipped-in-v0-3-0" className="relative mx-auto w-full max-w-[1500px] px-6 py-16 lg:px-16 lg:py-24">
         <SeamDivider label="06 / WHAT SHIPPED IN v0.3.0" className="mb-12" />
 
         <div className="max-w-4xl space-y-6 mb-10">
