@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820">
+  <defs>
+    <clipPath id="nyxcore-slice"><path d="M0 480 1200 300v136L0 616Z"/></clipPath>
+    <clipPath id="nyxcore-panel"><path d="M360 0h840v820H140Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="820" fill="#111218"/>
+  <path d="M360 0h840v820H140Z" fill="#c4b5fd" fill-opacity=".045"/>
+  <text x="140" y="82" fill="#c4b5fd" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="6">NYXCORE / 02</text>
+  <text x="1060" y="82" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="16" letter-spacing="4">LOCAL-FIRST MUSIC TOOLKIT / 2026</text>
+  <text x="-16" y="732" fill="#eeeeee" fill-opacity=".85" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">N</text>
+  <g clip-path="url(#nyxcore-panel)">
+    <text x="-16" y="732" fill="#c4b5fd" fill-opacity=".55" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">N</text>
+  </g>
+  <text x="390" y="516" fill="#eeeeee" fill-opacity=".10" font-family="Arial Black,Arial,sans-serif" font-size="108" font-weight="900" letter-spacing="-5">CURATION</text>
+  <g clip-path="url(#nyxcore-slice)" transform="translate(-24 10)">
+    <text x="-16" y="732" fill="#c4b5fd" fill-opacity=".92" font-family="Arial Black,Arial,sans-serif" font-size="780" font-weight="900" letter-spacing="-62">N</text>
+    <text x="390" y="516" fill="#eeeeee" fill-opacity=".22" font-family="Arial Black,Arial,sans-serif" font-size="108" font-weight="900" letter-spacing="-5">CURATION</text>
+  </g>
+  <!-- Inspection & waveform telemetry -->
+  <path d="M430 354 l140 -32 l110 46 l160 -68 l180 30" fill="none" stroke="#c4b5fd" stroke-opacity=".4" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <rect x="426" y="350" width="8" height="8" fill="#c4b5fd" fill-opacity=".85"/>
+  <rect x="566" y="318" width="8" height="8" fill="#c4b5fd" fill-opacity=".85"/>
+  <rect x="676" y="364" width="8" height="8" fill="#c4b5fd" fill-opacity=".85"/>
+  <rect x="836" y="296" width="8" height="8" fill="#c4b5fd" fill-opacity=".85"/>
+  <rect x="1016" y="326" width="8" height="8" fill="#c4b5fd" fill-opacity=".85"/>
+  <text x="430" y="380" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">FINDING</text>
+  <text x="676" y="392" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">EVIDENCE</text>
+  <text x="1016" y="352" fill="#eeeeee" fill-opacity=".36" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">ACTION</text>
+  <text x="430" y="225" fill="#eeeeee" fill-opacity=".96" font-family="Georgia,serif" font-size="130" font-style="italic" letter-spacing="-5">NyxCore</text>
+  <path d="M140 154h280M584 154h476" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
+  <path d="M0 598 424 493M588 454l612-162" stroke="#c4b5fd" stroke-opacity=".68" stroke-width="3"/>
+  <path d="M360 28 140 792M860 38 720 792" stroke="#eeeeee" stroke-opacity=".14" stroke-width="2"/>
+  <path d="M140 660h220M880 660h180" stroke="#eeeeee" stroke-opacity=".24" stroke-width="2"/>
+  <text x="1060" y="666" text-anchor="end" fill="#eeeeee" fill-opacity=".52" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">TOOLKIT / 02</text>
+</svg>

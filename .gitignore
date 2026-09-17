@@ -37,4 +37,4 @@ yarn-error.log*
 # local scratch & agent tools
 .agents/
 scratch/
-
+/screenshots-review/
